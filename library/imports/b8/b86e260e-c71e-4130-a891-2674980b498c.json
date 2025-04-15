@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "first",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "name,number\nland,3\ntomatoSeed,10\nblueberrySeed,10\nmilkCow,2\nworker,1\nmachine,1"
+}

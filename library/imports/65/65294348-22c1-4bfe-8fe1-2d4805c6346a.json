@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "pngtree-sudokuinspired-vector-template-of-a-3x3-puzzle-grid-with-square-cells-vector-png-image_31894736-2",
+    "texture": "413ab620-a808-47bd-b436-395d2668dd24",
+    "atlas": "",
+    "rect": [
+      29,
+      29,
+      302,
+      302
+    ],
+    "offset": [
+      0,
+      0
+    ],
+    "originalSize": [
+      360,
+      360
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

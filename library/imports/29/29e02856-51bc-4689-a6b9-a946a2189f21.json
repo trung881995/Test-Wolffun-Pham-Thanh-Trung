@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.SpriteFrame",
+  "content": {
+    "name": "construction-worker-emoji-clipart-lg",
+    "texture": "bd5806d4-4825-4678-bda8-9d4f92a4c2e6",
+    "atlas": "",
+    "rect": [
+      142,
+      0,
+      997,
+      1280
+    ],
+    "offset": [
+      0.5,
+      0
+    ],
+    "originalSize": [
+      1280,
+      1280
+    ],
+    "capInsets": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

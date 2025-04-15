@@ -1,0 +1,38 @@
+{
+  "ver": "2.3.7",
+  "uuid": "413ab620-a808-47bd-b436-395d2668dd24",
+  "importer": "texture",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "genMipmaps": false,
+  "packable": true,
+  "width": 360,
+  "height": 360,
+  "platformSettings": {},
+  "subMetas": {
+    "pngtree-sudokuinspired-vector-template-of-a-3x3-puzzle-grid-with-square-cells-vector-png-image_31894736-2": {
+      "ver": "1.0.6",
+      "uuid": "65294348-22c1-4bfe-8fe1-2d4805c6346a",
+      "importer": "sprite-frame",
+      "rawTextureUuid": "413ab620-a808-47bd-b436-395d2668dd24",
+      "trimType": "auto",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 29,
+      "trimY": 29,
+      "width": 302,
+      "height": 302,
+      "rawWidth": 360,
+      "rawHeight": 360,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

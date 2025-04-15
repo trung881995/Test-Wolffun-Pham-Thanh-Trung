@@ -201,7 +201,7 @@ function loadFirstConfigFromCSV() {
         var records;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, CSVLoader_1.CSVLoader.load("first.csv")];
+                case 0: return [4 /*yield*/, CSVLoader_1.CSVLoader.load("first")];
                 case 1:
                     records = _a.sent();
                     records.forEach(function (row) {

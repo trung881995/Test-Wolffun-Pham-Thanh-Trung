@@ -1,0 +1,1 @@
+{"version":3,"sources":["assets/core/mvc/BaseModel.ts"],"names":[],"mappings":";;;;;;;AAAA;IAAA;IAEA,CAAC;IAAD,gBAAC;AAAD,CAFA,AAEC,IAAA;AAFqB,8BAAS","file":"","sourceRoot":"/","sourcesContent":["export abstract class BaseModel {\n  abstract init(...args: any[]): void;\n}\n"]}

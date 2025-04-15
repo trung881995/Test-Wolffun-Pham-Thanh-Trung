@@ -192,7 +192,7 @@ export const FirstConfigs: Record<Type, FirstConfig> = {
   },
 };
 export async function loadFirstConfigFromCSV(): Promise<void> {
-  const records = await CSVLoader.load("first.csv");
+  const records = await CSVLoader.load("first");
 
   records.forEach((row) => {
     const type = row.name.toLowerCase() as Type;

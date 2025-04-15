@@ -500,18 +500,18 @@
     "relativePath": "model/primitives.fbx"
   },
   "34a4edbf-dbed-4854-b717-91b2b1e9e5dd": {
-    "asset": 1744714065837,
-    "meta": 1744712952335,
+    "asset": 1744743860335,
+    "meta": 1744746191260,
     "relativePath": "resources/configs"
   },
   "b0e3f1a3-db36-4b93-a87f-1e3aac1c3a6a": {
-    "asset": 1744713137478,
-    "meta": 1744713137479,
+    "asset": 1744713152964,
+    "meta": 1744746191259,
     "relativePath": "core"
   },
   "b53c3b20-2817-4f81-bbc9-81fa3588fea5": {
-    "asset": 1744713150643,
-    "meta": 1744713150644,
+    "asset": 1744713193969,
+    "meta": 1744746191259,
     "relativePath": "core/mvc"
   },
   "3b6dd67d-4c74-4df8-844b-f15eeb13f51b": {
@@ -535,23 +535,23 @@
     "relativePath": "resources/configs/firstData.CSV"
   },
   "9e962b52-2b5c-4320-9ad8-c0cba6f4a2a0": {
-    "asset": 1744714071499,
-    "meta": 1744714071500,
+    "asset": 1744714085808,
+    "meta": 1744746191259,
     "relativePath": "resources"
   },
   "a80137bd-a8e0-42a8-ab2e-3f7473fcc38b": {
-    "asset": 1744714130148,
-    "meta": 1744714130149,
+    "asset": 1744737387146,
+    "meta": 1744746191259,
     "relativePath": "scripts"
   },
   "7ec856cd-1b8e-4b48-a732-bbe88893330f": {
-    "asset": 1744714139949,
-    "meta": 1744714139951,
+    "asset": 1744714231557,
+    "meta": 1744746191260,
     "relativePath": "scripts/utils"
   },
   "43ba2072-7c8b-45c2-ad31-de977a4b4b17": {
-    "asset": 1744714160837,
-    "meta": 1744714160838,
+    "asset": 1744714254427,
+    "meta": 1744746191260,
     "relativePath": "scripts/data"
   },
   "917b1b02-066a-4198-aad2-692cdd67292d": {
@@ -560,8 +560,8 @@
     "relativePath": "scripts/utils/CSVLoader.ts"
   },
   "1f2d561e-3bfd-4295-bd35-739fedc63d4c": {
-    "asset": 1744715285968,
-    "meta": 1744715285969,
+    "asset": 1744732725587,
+    "meta": 1744746191259,
     "relativePath": "enums"
   },
   "e0a62040-0a76-4745-a682-19a897e065f9": {
@@ -599,19 +599,134 @@
     "meta": 1744735828448,
     "relativePath": "enums/WorkerType.ts"
   },
-  "1c45b0c1-5435-4197-85ac-4bb912977fe5": {
-    "asset": 1744734822227,
-    "meta": 1744735828484,
-    "relativePath": "scripts/data/GameConfig.ts"
-  },
   "e358fdc1-e533-4fba-be45-65b427f5c74c": {
-    "asset": 1744735875343,
-    "meta": 1744735875344,
+    "asset": 1744742869705,
+    "meta": 1744746191260,
     "relativePath": "scripts/Manager"
   },
   "af14a609-f9f8-412a-bc95-40d09066bdb0": {
     "asset": 1744737291226,
     "meta": 1744737311059,
     "relativePath": "scripts/Manager/ConfigManager.ts"
+  },
+  "7bd021e0-449f-4650-bfd9-91c925b88436": {
+    "asset": 1744737558756,
+    "meta": 1744746191260,
+    "relativePath": "scripts/models"
+  },
+  "a29a238d-fe85-44b4-9a4a-43cfc238d6c2": {
+    "asset": 1744737745276,
+    "meta": 1744746191260,
+    "relativePath": "scripts/controllers"
+  },
+  "27a9ed83-6c9e-47f6-8f41-2e36325cf391": {
+    "asset": 1744740196127,
+    "meta": 1744746191261,
+    "relativePath": "scripts/views"
+  },
+  "4b85b63a-0d40-4f67-accb-4d7bf196ff22": {
+    "asset": 1744737453825,
+    "meta": 1744737459505,
+    "relativePath": "scripts/models/PlantModel.ts"
+  },
+  "a5f6e694-236f-4f68-a635-a3cdc44ddbbe": {
+    "asset": 1744737464340,
+    "meta": 1744737470821,
+    "relativePath": "scripts/models/CattleModel.ts"
+  },
+  "6053186f-7bf1-4738-9053-39df567ac786": {
+    "asset": 1744737475514,
+    "meta": 1744737484504,
+    "relativePath": "scripts/models/WorkerModel.ts"
+  },
+  "29c3c545-7af6-4376-a5fd-399ce9d3cca4": {
+    "asset": 1744737488661,
+    "meta": 1744737493848,
+    "relativePath": "scripts/models/MachineModel.ts"
+  },
+  "4aae11e6-51c9-48a7-bab5-b9f3f2f5f38f": {
+    "asset": 1744737503206,
+    "meta": 1744737506550,
+    "relativePath": "scripts/models/LandModel.ts"
+  },
+  "cb2f9803-4a6f-4ea9-a67d-0369acc9112c": {
+    "asset": 1744737545157,
+    "meta": 1744737558764,
+    "relativePath": "scripts/models/YieldModel.ts"
+  },
+  "2686bd4a-882a-46a9-9305-5d43e42429ea": {
+    "asset": 1744742412903,
+    "meta": 1744742841164,
+    "relativePath": "scripts/views/GameView.ts"
+  },
+  "99488f47-6bb1-49a4-9cba-1a3598640caf": {
+    "asset": 1744743149450,
+    "meta": 1744746191258,
+    "relativePath": "Sprites"
+  },
+  "991a2dd6-551a-45b6-b7f1-e5da9611bef6": {
+    "asset": 1744332635465,
+    "meta": 1744743149466,
+    "relativePath": "Sprites/2942783.png"
+  },
+  "4d15a3b1-d451-4b4c-8e35-943f59c50070": {
+    "asset": 1744655355250,
+    "meta": 1744743149475,
+    "relativePath": "Sprites/5194802.png"
+  },
+  "413ab620-a808-47bd-b436-395d2668dd24": {
+    "asset": 1744655722296,
+    "meta": 1744743149481,
+    "relativePath": "Sprites/pngtree-sudokuinspired-vector-template-of-a-3x3-puzzle-grid-with-square-cells-vector-png-image_31894736-2.png"
+  },
+  "1f022480-15e8-4399-8855-bc63b2433f2a": {
+    "asset": 1744332489463,
+    "meta": 1744743149483,
+    "relativePath": "Sprites/51jpIkbEsTNqE.png!sw800.png"
+  },
+  "bd5806d4-4825-4678-bda8-9d4f92a4c2e6": {
+    "asset": 1744332550096,
+    "meta": 1744743149485,
+    "relativePath": "Sprites/construction-worker-emoji-clipart-lg.png"
+  },
+  "48138da1-ba51-4708-ae55-c0932a0aa837": {
+    "asset": 1744656368208,
+    "meta": 1744743149485,
+    "relativePath": "Sprites/ZycTu.png"
+  },
+  "a0554158-4587-4e68-a044-b6ec1b61eb95": {
+    "asset": 1744332386431,
+    "meta": 1744743149509,
+    "relativePath": "Sprites/berries-1294799_1280.webp"
+  },
+  "b86e260e-c71e-4130-a891-2674980b498c": {
+    "asset": 1744743857014,
+    "meta": 1744743860336,
+    "relativePath": "resources/configs/first.CSV"
+  },
+  "e7a15517-dad8-44a6-8702-aa8b0664c068": {
+    "asset": 1744745391730,
+    "meta": 1744745494570,
+    "relativePath": "scripts/controllers/GameController.ts"
+  },
+  "fd7df33d-3ebd-4c95-815c-ea012e2cea8d": {
+    "asset": 1744745492480,
+    "meta": 1744745494579,
+    "relativePath": "scripts/Manager/UIManager.ts"
+  },
+  "4666a4d1-788e-49e0-9333-0d80f0ccd728": {
+    "asset": 1744745296118,
+    "meta": 1744745494588,
+    "relativePath": "scripts/models/GameModel.ts"
+  },
+  "3b22d275-0baa-4d53-b2bb-36b393fb46d4": {
+    "asset": 1744745610252,
+    "meta": 1744745610254,
+    "relativePath": "Scene.fire"
+  },
+  "1c45b0c1-5435-4197-85ac-4bb912977fe5": {
+    "asset": 1744745774033,
+    "meta": 1744745780023,
+    "relativePath": "scripts/data/GameConfig.ts"
   }
 }
