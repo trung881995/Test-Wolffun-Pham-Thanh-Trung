@@ -1,0 +1,1 @@
+{"version":3,"sources":["assets/enums/LandType.ts"],"names":[],"mappings":";;;;;;;AAAA,IAAY,QAIX;AAJD,WAAY,QAAQ;IAClB,uBAAW,CAAA;IACX,2BAAe,CAAA;IACf,2BAAe,CAAA;AACjB,CAAC,EAJW,QAAQ,GAAR,gBAAQ,KAAR,gBAAQ,QAInB","file":"","sourceRoot":"/","sourcesContent":["export enum LandType {\n  Red = \"red\",\n  Green = \"green\",\n  Brown = \"brown\",\n}\n"]}

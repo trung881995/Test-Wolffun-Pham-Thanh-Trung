@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "firstData",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "name,number,level\nland,3,0\ntomatoSeed,10,0\nblueberrySeed,10,0\nmilkCow,2,0\nworker,1,0\nmachine,1,1\n"
+}

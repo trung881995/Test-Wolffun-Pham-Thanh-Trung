@@ -500,9 +500,9 @@
     "relativePath": "model/primitives.fbx"
   },
   "34a4edbf-dbed-4854-b717-91b2b1e9e5dd": {
-    "asset": 1744712952334,
+    "asset": 1744714065837,
     "meta": 1744712952335,
-    "relativePath": "configs"
+    "relativePath": "resources/configs"
   },
   "b0e3f1a3-db36-4b93-a87f-1e3aac1c3a6a": {
     "asset": 1744713137478,
@@ -514,11 +514,6 @@
     "meta": 1744713150644,
     "relativePath": "core/mvc"
   },
-  "2b94bfed-35ea-418b-b667-68ee19d9f42a": {
-    "asset": 1744713188739,
-    "meta": 1744713193979,
-    "relativePath": "core/mvc/BaseView.ts"
-  },
   "3b6dd67d-4c74-4df8-844b-f15eeb13f51b": {
     "asset": 1744713236039,
     "meta": 1744713251290,
@@ -528,5 +523,95 @@
     "asset": 1744713271158,
     "meta": 1744713295611,
     "relativePath": "core/mvc/BaseController.ts"
+  },
+  "2b94bfed-35ea-418b-b667-68ee19d9f42a": {
+    "asset": 1744713313009,
+    "meta": 1744714065844,
+    "relativePath": "core/mvc/BaseView.ts"
+  },
+  "567ad486-ce15-4619-83ee-4e48b254ed27": {
+    "asset": 1744713926087,
+    "meta": 1744714065846,
+    "relativePath": "resources/configs/firstData.CSV"
+  },
+  "9e962b52-2b5c-4320-9ad8-c0cba6f4a2a0": {
+    "asset": 1744714071499,
+    "meta": 1744714071500,
+    "relativePath": "resources"
+  },
+  "a80137bd-a8e0-42a8-ab2e-3f7473fcc38b": {
+    "asset": 1744714130148,
+    "meta": 1744714130149,
+    "relativePath": "scripts"
+  },
+  "7ec856cd-1b8e-4b48-a732-bbe88893330f": {
+    "asset": 1744714139949,
+    "meta": 1744714139951,
+    "relativePath": "scripts/utils"
+  },
+  "43ba2072-7c8b-45c2-ad31-de977a4b4b17": {
+    "asset": 1744714160837,
+    "meta": 1744714160838,
+    "relativePath": "scripts/data"
+  },
+  "917b1b02-066a-4198-aad2-692cdd67292d": {
+    "asset": 1744714908321,
+    "meta": 1744714926497,
+    "relativePath": "scripts/utils/CSVLoader.ts"
+  },
+  "1f2d561e-3bfd-4295-bd35-739fedc63d4c": {
+    "asset": 1744715285968,
+    "meta": 1744715285969,
+    "relativePath": "enums"
+  },
+  "e0a62040-0a76-4745-a682-19a897e065f9": {
+    "asset": 1744715363335,
+    "meta": 1744715488793,
+    "relativePath": "enums/PlantType.ts"
+  },
+  "d4cea23e-ac79-47f9-9bf3-c53344982a81": {
+    "asset": 1744715596700,
+    "meta": 1744716516794,
+    "relativePath": "enums/CattleType.ts"
+  },
+  "f2e19673-cd2a-4606-9bfb-4738ed770571": {
+    "asset": 1744731199531,
+    "meta": 1744731508925,
+    "relativePath": "enums/YieldType.ts"
+  },
+  "dcd90cc5-befa-42be-98fb-830873d1df1a": {
+    "asset": 1744731643846,
+    "meta": 1744731955424,
+    "relativePath": "enums/LandType.ts"
+  },
+  "4755ca9e-b08c-4e88-906a-5d485e8ddd7a": {
+    "asset": 1744732344005,
+    "meta": 1744732703920,
+    "relativePath": "enums/MachineType.ts"
+  },
+  "aee3e7ba-69df-4d9a-9f5e-40f913310751": {
+    "asset": 1744733596216,
+    "meta": 1744735828445,
+    "relativePath": "enums/Type.ts"
+  },
+  "647dd4a1-3554-4f52-8abd-ed5bc3251d78": {
+    "asset": 1744733126096,
+    "meta": 1744735828448,
+    "relativePath": "enums/WorkerType.ts"
+  },
+  "1c45b0c1-5435-4197-85ac-4bb912977fe5": {
+    "asset": 1744734822227,
+    "meta": 1744735828484,
+    "relativePath": "scripts/data/GameConfig.ts"
+  },
+  "e358fdc1-e533-4fba-be45-65b427f5c74c": {
+    "asset": 1744735875343,
+    "meta": 1744735875344,
+    "relativePath": "scripts/Manager"
+  },
+  "af14a609-f9f8-412a-bc95-40d09066bdb0": {
+    "asset": 1744737291226,
+    "meta": 1744737311059,
+    "relativePath": "scripts/Manager/ConfigManager.ts"
   }
 }
