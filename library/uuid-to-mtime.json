@@ -654,11 +654,6 @@
     "meta": 1744737558764,
     "relativePath": "scripts/models/YieldModel.ts"
   },
-  "2686bd4a-882a-46a9-9305-5d43e42429ea": {
-    "asset": 1744742412903,
-    "meta": 1744742841164,
-    "relativePath": "scripts/views/GameView.ts"
-  },
   "99488f47-6bb1-49a4-9cba-1a3598640caf": {
     "asset": 1744743149450,
     "meta": 1744746191258,
@@ -704,29 +699,34 @@
     "meta": 1744743860336,
     "relativePath": "resources/configs/first.CSV"
   },
-  "e7a15517-dad8-44a6-8702-aa8b0664c068": {
-    "asset": 1744745391730,
-    "meta": 1744745494570,
-    "relativePath": "scripts/controllers/GameController.ts"
-  },
-  "fd7df33d-3ebd-4c95-815c-ea012e2cea8d": {
-    "asset": 1744745492480,
-    "meta": 1744745494579,
-    "relativePath": "scripts/Manager/UIManager.ts"
-  },
   "4666a4d1-788e-49e0-9333-0d80f0ccd728": {
     "asset": 1744745296118,
     "meta": 1744745494588,
     "relativePath": "scripts/models/GameModel.ts"
   },
   "3b22d275-0baa-4d53-b2bb-36b393fb46d4": {
-    "asset": 1744745610252,
-    "meta": 1744745610254,
+    "asset": 1744750979957,
+    "meta": 1744750979963,
     "relativePath": "Scene.fire"
   },
   "1c45b0c1-5435-4197-85ac-4bb912977fe5": {
     "asset": 1744745774033,
     "meta": 1744745780023,
     "relativePath": "scripts/data/GameConfig.ts"
+  },
+  "e7a15517-dad8-44a6-8702-aa8b0664c068": {
+    "asset": 1744747823306,
+    "meta": 1744747827063,
+    "relativePath": "scripts/controllers/GameController.ts"
+  },
+  "fd7df33d-3ebd-4c95-815c-ea012e2cea8d": {
+    "asset": 1744747823307,
+    "meta": 1744747827071,
+    "relativePath": "scripts/Manager/UIManager.ts"
+  },
+  "2686bd4a-882a-46a9-9305-5d43e42429ea": {
+    "asset": 1744747823307,
+    "meta": 1744747827077,
+    "relativePath": "scripts/views/GameView.ts"
   }
 }
