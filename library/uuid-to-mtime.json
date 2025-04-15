@@ -498,5 +498,35 @@
     "asset": 1743154904000,
     "meta": 1744711739117,
     "relativePath": "model/primitives.fbx"
+  },
+  "34a4edbf-dbed-4854-b717-91b2b1e9e5dd": {
+    "asset": 1744712952334,
+    "meta": 1744712952335,
+    "relativePath": "configs"
+  },
+  "b0e3f1a3-db36-4b93-a87f-1e3aac1c3a6a": {
+    "asset": 1744713137478,
+    "meta": 1744713137479,
+    "relativePath": "core"
+  },
+  "b53c3b20-2817-4f81-bbc9-81fa3588fea5": {
+    "asset": 1744713150643,
+    "meta": 1744713150644,
+    "relativePath": "core/mvc"
+  },
+  "2b94bfed-35ea-418b-b667-68ee19d9f42a": {
+    "asset": 1744713188739,
+    "meta": 1744713193979,
+    "relativePath": "core/mvc/BaseView.ts"
+  },
+  "3b6dd67d-4c74-4df8-844b-f15eeb13f51b": {
+    "asset": 1744713236039,
+    "meta": 1744713251290,
+    "relativePath": "core/mvc/BaseModel.ts"
+  },
+  "f2dad672-cbe7-4246-9807-c9e9ee6557d9": {
+    "asset": 1744713271158,
+    "meta": 1744713295611,
+    "relativePath": "core/mvc/BaseController.ts"
   }
 }
