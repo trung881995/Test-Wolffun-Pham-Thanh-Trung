@@ -699,14 +699,9 @@
     "meta": 1744743860336,
     "relativePath": "resources/configs/first.CSV"
   },
-  "4666a4d1-788e-49e0-9333-0d80f0ccd728": {
-    "asset": 1744745296118,
-    "meta": 1744745494588,
-    "relativePath": "scripts/models/GameModel.ts"
-  },
   "3b22d275-0baa-4d53-b2bb-36b393fb46d4": {
-    "asset": 1744750979957,
-    "meta": 1744750979963,
+    "asset": 1744780557575,
+    "meta": 1744780557582,
     "relativePath": "Scene.fire"
   },
   "1c45b0c1-5435-4197-85ac-4bb912977fe5": {
@@ -719,14 +714,39 @@
     "meta": 1744747827063,
     "relativePath": "scripts/controllers/GameController.ts"
   },
-  "fd7df33d-3ebd-4c95-815c-ea012e2cea8d": {
-    "asset": 1744747823307,
-    "meta": 1744747827071,
-    "relativePath": "scripts/Manager/UIManager.ts"
-  },
   "2686bd4a-882a-46a9-9305-5d43e42429ea": {
     "asset": 1744747823307,
     "meta": 1744747827077,
     "relativePath": "scripts/views/GameView.ts"
+  },
+  "4666a4d1-788e-49e0-9333-0d80f0ccd728": {
+    "asset": 1744774938558,
+    "meta": 1744774974374,
+    "relativePath": "scripts/models/GameModel.ts"
+  },
+  "bf43b20d-60d9-4995-9a1b-6136ba94558e": {
+    "asset": 1744776134729,
+    "meta": 1744776134736,
+    "relativePath": "scripts/ui"
+  },
+  "cf0ec30f-dfbb-4f81-805b-ae2b7678e7df": {
+    "asset": 1744776192560,
+    "meta": 1744776202720,
+    "relativePath": "scripts/ui/StorageUI.ts"
+  },
+  "5fbc3f85-aa3f-4273-8a5f-579b34683cfc": {
+    "asset": 1744777176520,
+    "meta": 1744777194744,
+    "relativePath": "scripts/ui/LandUI.ts"
+  },
+  "fd7df33d-3ebd-4c95-815c-ea012e2cea8d": {
+    "asset": 1744777971487,
+    "meta": 1744777976406,
+    "relativePath": "scripts/Manager/UIManager.ts"
+  },
+  "66f8fe43-f752-44a0-822c-f83d2f33efab": {
+    "asset": 1744779364126,
+    "meta": 1744779365798,
+    "relativePath": "scripts/ui/StoreUI.ts"
   }
 }

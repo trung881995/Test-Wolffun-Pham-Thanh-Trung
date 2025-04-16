@@ -20,5 +20,8 @@ require('./assets/scripts/models/MachineModel');
 require('./assets/scripts/models/PlantModel');
 require('./assets/scripts/models/WorkerModel');
 require('./assets/scripts/models/YieldModel');
+require('./assets/scripts/ui/LandUI');
+require('./assets/scripts/ui/StorageUI');
+require('./assets/scripts/ui/StoreUI');
 require('./assets/scripts/utils/CSVLoader');
 require('./assets/scripts/views/GameView');

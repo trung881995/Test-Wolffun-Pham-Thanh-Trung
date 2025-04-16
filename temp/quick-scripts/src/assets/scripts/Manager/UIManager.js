@@ -67,12 +67,16 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var GameController_1 = require("../controllers/GameController");
+var LandUI_1 = require("../ui/LandUI");
+var StorageUI_1 = require("../ui/StorageUI");
+var StoreUI_1 = require("../ui/StoreUI");
 var UIManager = /** @class */ (function (_super) {
     __extends(UIManager, _super);
     function UIManager() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.label = null;
-        _this.text = "hello";
+        _this.landUIArray = [];
+        _this.storeUI = null;
+        _this.storageUI = null;
         return _this;
         // update (dt) {}
     }
@@ -90,18 +94,20 @@ var UIManager = /** @class */ (function (_super) {
                     case 0: return [4 /*yield*/, this.gameController.model.loadData()];
                     case 1:
                         _a.sent();
-                        this.label.string = this.gameController.model.getLandNumber().toString();
                         return [2 /*return*/];
                 }
             });
         });
     };
     __decorate([
-        property(cc.Label)
-    ], UIManager.prototype, "label", void 0);
+        property(LandUI_1.default)
+    ], UIManager.prototype, "landUIArray", void 0);
     __decorate([
-        property
-    ], UIManager.prototype, "text", void 0);
+        property(StoreUI_1.default)
+    ], UIManager.prototype, "storeUI", void 0);
+    __decorate([
+        property(StorageUI_1.default)
+    ], UIManager.prototype, "storageUI", void 0);
     UIManager = __decorate([
         ccclass
     ], UIManager);

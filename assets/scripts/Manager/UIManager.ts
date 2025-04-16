@@ -7,14 +7,15 @@
 
 const { ccclass, property } = cc._decorator;
 import { GameController } from "../controllers/GameController";
+import LandUI from "../ui/LandUI";
+import StorageUI from "../ui/StorageUI";
+import StoreUI from "../ui/StoreUI";
 
 @ccclass
 export default class UIManager extends cc.Component {
-  @property(cc.Label)
-  label: cc.Label = null;
-
-  @property
-  text: string = "hello";
+  @property(LandUI) landUIArray: LandUI[] = [];
+  @property(StoreUI) storeUI: StoreUI = null;
+  @property(StorageUI) storageUI: StorageUI = null;
 
   gameController: GameController;
   // LIFE-CYCLE CALLBACKS:
@@ -28,7 +29,7 @@ export default class UIManager extends cc.Component {
   }
   async setupUI() {
     await this.gameController.model.loadData();
-    this.label.string = this.gameController.model.getLandNumber().toString();
+    //this.label.string = this.gameController.model.getFirstData().land.number.toString();
   }
   // update (dt) {}
 }

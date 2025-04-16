@@ -74,37 +74,49 @@ var GameModel = /** @class */ (function (_super) {
                     case 0: return [4 /*yield*/, GameConfig_1.loadFirstConfigFromCSV()];
                     case 1:
                         _a.sent();
+                        return [4 /*yield*/, GameConfig_1.loadCattleConfigFromCSV()];
+                    case 2:
+                        _a.sent();
+                        return [4 /*yield*/, GameConfig_1.loadPlantConfigFromCSV()];
+                    case 3:
+                        _a.sent();
+                        return [4 /*yield*/, GameConfig_1.loadLandConfigFromCSV()];
+                    case 4:
+                        _a.sent();
+                        return [4 /*yield*/, GameConfig_1.loadYieldConfigFromCSV()];
+                    case 5:
+                        _a.sent();
+                        return [4 /*yield*/, GameConfig_1.loadWorkerConfigFromCSV()];
+                    case 6:
+                        _a.sent();
+                        return [4 /*yield*/, GameConfig_1.loadMachineConfigFromCSV()];
+                    case 7:
+                        _a.sent();
                         return [2 /*return*/];
                 }
             });
         });
     };
-    GameModel.prototype.getData = function () {
+    GameModel.prototype.getFirstData = function () {
         return GameConfig_1.FirstConfigs;
     };
-    GameModel.prototype.getLandNumber = function () {
-        var firstConfig = this.getData();
-        return firstConfig.land.number;
+    GameModel.prototype.getPlantData = function () {
+        return GameConfig_1.PlantConfigs;
     };
-    GameModel.prototype.getTomatoSeedNumber = function () {
-        var firstConfig = this.getData();
-        return firstConfig.tomatoseed.number;
+    GameModel.prototype.getLandData = function () {
+        return GameConfig_1.LandConfigs;
     };
-    GameModel.prototype.getBlueberrySeedNumber = function () {
-        var firstConfig = this.getData();
-        return firstConfig.blueberryseed.number;
+    GameModel.prototype.getCattleData = function () {
+        return GameConfig_1.CattleConfigs;
     };
-    GameModel.prototype.getMilkCowNumber = function () {
-        var firstConfig = this.getData();
-        return firstConfig.milkcow.number;
+    GameModel.prototype.getYieldData = function () {
+        return GameConfig_1.YieldConfigs;
     };
-    GameModel.prototype.getWokerNumber = function () {
-        var firstConfig = this.getData();
-        return firstConfig.worker.number;
+    GameModel.prototype.getWorkerData = function () {
+        return GameConfig_1.WorkerConfigs;
     };
-    GameModel.prototype.getMachineNumber = function () {
-        var firstConfig = this.getData();
-        return firstConfig.machine.number;
+    GameModel.prototype.getMachineData = function () {
+        return GameConfig_1.MachineConfigs;
     };
     return GameModel;
 }(BaseModel_1.BaseModel));
