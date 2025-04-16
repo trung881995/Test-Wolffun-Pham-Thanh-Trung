@@ -30,30 +30,85 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
-var NewClass = /** @class */ (function (_super) {
-    __extends(NewClass, _super);
-    function NewClass() {
+var StorageUI = /** @class */ (function (_super) {
+    __extends(StorageUI, _super);
+    function StorageUI() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.label = null;
-        _this.text = 'hello';
+        _this.tomatoSeed = null;
+        _this.blueberrySeed = null;
+        _this.strawberrySeed = null;
+        _this.milkCow = null;
+        _this.workerIdle = null;
+        _this.workerWorking = null;
+        _this.machineLevel = null;
+        _this.gold = null;
+        _this.tomato = null;
+        _this.blueberry = null;
+        _this.strawberry = null;
+        _this.milk = null;
+        _this.sellTomatoBtn = null;
+        _this.sellBlueberryBtn = null;
+        _this.sellStrawberrBtn = null;
+        _this.sellMilkBtn = null;
         return _this;
         // update (dt) {}
     }
     // LIFE-CYCLE CALLBACKS:
     // onLoad () {}
-    NewClass.prototype.start = function () {
-    };
+    StorageUI.prototype.start = function () { };
     __decorate([
         property(cc.Label)
-    ], NewClass.prototype, "label", void 0);
+    ], StorageUI.prototype, "tomatoSeed", void 0);
     __decorate([
-        property
-    ], NewClass.prototype, "text", void 0);
-    NewClass = __decorate([
+        property(cc.Label)
+    ], StorageUI.prototype, "blueberrySeed", void 0);
+    __decorate([
+        property(cc.Label)
+    ], StorageUI.prototype, "strawberrySeed", void 0);
+    __decorate([
+        property(cc.Label)
+    ], StorageUI.prototype, "milkCow", void 0);
+    __decorate([
+        property(cc.Label)
+    ], StorageUI.prototype, "workerIdle", void 0);
+    __decorate([
+        property(cc.Label)
+    ], StorageUI.prototype, "workerWorking", void 0);
+    __decorate([
+        property(cc.Label)
+    ], StorageUI.prototype, "machineLevel", void 0);
+    __decorate([
+        property(cc.Label)
+    ], StorageUI.prototype, "gold", void 0);
+    __decorate([
+        property(cc.Label)
+    ], StorageUI.prototype, "tomato", void 0);
+    __decorate([
+        property(cc.Label)
+    ], StorageUI.prototype, "blueberry", void 0);
+    __decorate([
+        property(cc.Label)
+    ], StorageUI.prototype, "strawberry", void 0);
+    __decorate([
+        property(cc.Label)
+    ], StorageUI.prototype, "milk", void 0);
+    __decorate([
+        property(cc.Button)
+    ], StorageUI.prototype, "sellTomatoBtn", void 0);
+    __decorate([
+        property(cc.Button)
+    ], StorageUI.prototype, "sellBlueberryBtn", void 0);
+    __decorate([
+        property(cc.Button)
+    ], StorageUI.prototype, "sellStrawberrBtn", void 0);
+    __decorate([
+        property(cc.Button)
+    ], StorageUI.prototype, "sellMilkBtn", void 0);
+    StorageUI = __decorate([
         ccclass
-    ], NewClass);
-    return NewClass;
+    ], StorageUI);
+    return StorageUI;
 }(cc.Component));
-exports.default = NewClass;
+exports.default = StorageUI;
 
 cc._RF.pop();

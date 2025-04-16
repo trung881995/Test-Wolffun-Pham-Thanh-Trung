@@ -30,9 +30,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
-var NewClass = /** @class */ (function (_super) {
-    __extends(NewClass, _super);
-    function NewClass() {
+var StoreUI = /** @class */ (function (_super) {
+    __extends(StoreUI, _super);
+    function StoreUI() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.buyTomatoSeedBtn = null;
         _this.buyBlueberrySeedBtn = null;
@@ -46,33 +46,33 @@ var NewClass = /** @class */ (function (_super) {
     }
     // LIFE-CYCLE CALLBACKS:
     // onLoad () {}
-    NewClass.prototype.start = function () { };
+    StoreUI.prototype.start = function () { };
     __decorate([
         property(cc.Button)
-    ], NewClass.prototype, "buyTomatoSeedBtn", void 0);
+    ], StoreUI.prototype, "buyTomatoSeedBtn", void 0);
     __decorate([
         property(cc.Button)
-    ], NewClass.prototype, "buyBlueberrySeedBtn", void 0);
+    ], StoreUI.prototype, "buyBlueberrySeedBtn", void 0);
     __decorate([
         property(cc.Button)
-    ], NewClass.prototype, "buyStrawberrySeedBtn", void 0);
+    ], StoreUI.prototype, "buyStrawberrySeedBtn", void 0);
     __decorate([
         property(cc.Button)
-    ], NewClass.prototype, "buyMilkCowBtn", void 0);
+    ], StoreUI.prototype, "buyMilkCowBtn", void 0);
     __decorate([
         property(cc.Button)
-    ], NewClass.prototype, "buyWorkerBtn", void 0);
+    ], StoreUI.prototype, "buyWorkerBtn", void 0);
     __decorate([
         property(cc.Button)
-    ], NewClass.prototype, "upgradeMachineBtn", void 0);
+    ], StoreUI.prototype, "upgradeMachineBtn", void 0);
     __decorate([
         property(cc.Button)
-    ], NewClass.prototype, "upgradeLandBtn", void 0);
-    NewClass = __decorate([
+    ], StoreUI.prototype, "upgradeLandBtn", void 0);
+    StoreUI = __decorate([
         ccclass
-    ], NewClass);
-    return NewClass;
+    ], StoreUI);
+    return StoreUI;
 }(cc.Component));
-exports.default = NewClass;
+exports.default = StoreUI;
 
 cc._RF.pop();

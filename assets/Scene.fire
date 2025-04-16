@@ -27222,7 +27222,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "New Button",
+    "_name": "SellTomatoBtn",
     "_objFlags": 0,
     "_parent": {
       "__id__": 475
@@ -27593,7 +27593,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "New Button copy",
+    "_name": "SellBlueberryBtn",
     "_objFlags": 0,
     "_parent": {
       "__id__": 475
@@ -27964,7 +27964,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "New Button copy",
+    "_name": "SellStrawberryBtn",
     "_objFlags": 0,
     "_parent": {
       "__id__": 475
@@ -28174,8 +28174,8 @@
     ],
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_string": "sell Blueberry",
-    "_N$string": "sell Blueberry",
+    "_string": "sell Strawberry",
+    "_N$string": "sell Strawberry",
     "_fontSize": 20,
     "_lineHeight": 40,
     "_enableWrapText": false,
@@ -28335,7 +28335,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "New Button copy",
+    "_name": "SellMilkBtn",
     "_objFlags": 0,
     "_parent": {
       "__id__": 475
@@ -28712,8 +28712,54 @@
       "__id__": 475
     },
     "_enabled": true,
-    "label": null,
-    "text": "hello",
+    "tomatoSeed": {
+      "__id__": 499
+    },
+    "blueberrySeed": {
+      "__id__": 503
+    },
+    "strawberrySeed": {
+      "__id__": 507
+    },
+    "milkCow": {
+      "__id__": 511
+    },
+    "workerIdle": {
+      "__id__": 515
+    },
+    "workerWorking": {
+      "__id__": 519
+    },
+    "machineLevel": {
+      "__id__": 523
+    },
+    "gold": {
+      "__id__": 479
+    },
+    "tomato": {
+      "__id__": 483
+    },
+    "blueberry": {
+      "__id__": 487
+    },
+    "strawberry": {
+      "__id__": 491
+    },
+    "milk": {
+      "__id__": 495
+    },
+    "sellTomatoBtn": {
+      "__id__": 530
+    },
+    "sellBlueberryBtn": {
+      "__id__": 537
+    },
+    "sellStrawberrBtn": {
+      "__id__": 544
+    },
+    "sellMilkBtn": {
+      "__id__": 551
+    },
     "_id": "1dYctqdXdCK7RsUJQrDfTD"
   },
   {

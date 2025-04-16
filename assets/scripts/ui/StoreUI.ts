@@ -8,7 +8,7 @@
 const { ccclass, property } = cc._decorator;
 
 @ccclass
-export default class NewClass extends cc.Component {
+export default class StoreUI extends cc.Component {
   @property(cc.Button)
   buyTomatoSeedBtn: cc.Button = null;
   @property(cc.Button)

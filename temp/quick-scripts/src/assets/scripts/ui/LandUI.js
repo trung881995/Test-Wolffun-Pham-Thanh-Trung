@@ -30,9 +30,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
-var NewClass = /** @class */ (function (_super) {
-    __extends(NewClass, _super);
-    function NewClass() {
+var LandUI = /** @class */ (function (_super) {
+    __extends(LandUI, _super);
+    function LandUI() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.tomatoSeedBtn = null;
         _this.blueberrySeedBtn = null;
@@ -48,39 +48,39 @@ var NewClass = /** @class */ (function (_super) {
     }
     // LIFE-CYCLE CALLBACKS:
     // onLoad () {}
-    NewClass.prototype.start = function () { };
+    LandUI.prototype.start = function () { };
     __decorate([
         property(cc.Button)
-    ], NewClass.prototype, "tomatoSeedBtn", void 0);
+    ], LandUI.prototype, "tomatoSeedBtn", void 0);
     __decorate([
         property(cc.Button)
-    ], NewClass.prototype, "blueberrySeedBtn", void 0);
+    ], LandUI.prototype, "blueberrySeedBtn", void 0);
     __decorate([
         property(cc.Button)
-    ], NewClass.prototype, "milkCowBtn", void 0);
+    ], LandUI.prototype, "milkCowBtn", void 0);
     __decorate([
         property(cc.Button)
-    ], NewClass.prototype, "harvestBtn", void 0);
+    ], LandUI.prototype, "harvestBtn", void 0);
     __decorate([
         property(cc.Button)
-    ], NewClass.prototype, "milkBtn", void 0);
+    ], LandUI.prototype, "milkBtn", void 0);
     __decorate([
         property(cc.Label)
-    ], NewClass.prototype, "nameLb", void 0);
+    ], LandUI.prototype, "nameLb", void 0);
     __decorate([
         property(cc.Label)
-    ], NewClass.prototype, "timeLb", void 0);
+    ], LandUI.prototype, "timeLb", void 0);
     __decorate([
         property(cc.Sprite)
-    ], NewClass.prototype, "workerSprite", void 0);
+    ], LandUI.prototype, "workerSprite", void 0);
     __decorate([
         property(cc.Sprite)
-    ], NewClass.prototype, "Sprite", void 0);
-    NewClass = __decorate([
+    ], LandUI.prototype, "Sprite", void 0);
+    LandUI = __decorate([
         ccclass
-    ], NewClass);
-    return NewClass;
+    ], LandUI);
+    return LandUI;
 }(cc.Component));
-exports.default = NewClass;
+exports.default = LandUI;
 
 cc._RF.pop();
