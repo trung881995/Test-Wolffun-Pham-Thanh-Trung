@@ -1,0 +1,1 @@
+{"version":3,"sources":["assets/interfaces/IStore.ts"],"names":[],"mappings":"","file":"","sourceRoot":"/","sourcesContent":["export interface IStore {\n  buyTomatoSeed(): void;\n  buyBlueberrySeed(): void;\n  buyStrawberrySeed(): void;\n  buyMilkCow(): void;\n  buyCow(): void;\n  buyWorker(): void;\n  upgradeMachine(): void;\n  buyLand(): void;\n}\n"]}

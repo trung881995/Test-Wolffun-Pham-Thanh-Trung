@@ -1,0 +1,7 @@
+export interface ILand {
+  name: string;
+  number: number;
+  missionNumber: number;
+  containInterval: number;
+  buyPrice: number;
+}

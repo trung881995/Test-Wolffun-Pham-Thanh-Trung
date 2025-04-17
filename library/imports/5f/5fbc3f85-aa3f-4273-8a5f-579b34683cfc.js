@@ -33,6 +33,7 @@ exports.LandState = void 0;
 var CattleType_1 = require("../../enums/CattleType");
 var PlantType_1 = require("../../enums/PlantType");
 var GameConfig_1 = require("../data/GameConfig");
+var Storage_1 = require("../storage/Storage");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var LandState;
 (function (LandState) {
@@ -56,10 +57,6 @@ var LandUI = /** @class */ (function (_super) {
         _this.timeLb = null;
         _this.workerSprite = null;
         _this.Sprite = null;
-        _this.isEmpty = true;
-        _this.landState = LandState.Empty;
-        _this.plantType = null;
-        _this.cattleType = null;
         _this.loadImage = function (imageName, sprite) {
             var path = "images/" + imageName;
             if (imageName == "") {
@@ -77,26 +74,28 @@ var LandUI = /** @class */ (function (_super) {
         return _this;
     }
     // LIFE-CYCLE CALLBACKS:
-    // onLoad () {}
+    LandUI.prototype.onLoad = function () {
+        this.land = new Storage_1.Land();
+    };
     LandUI.prototype.start = function () { };
     LandUI.prototype.update = function (dt) {
-        if (!this.isEmpty) {
-            this.time -= dt;
-            if (this.time == 0) {
-                this.landState = LandState.Empty;
+        if (!this.land.isEmpty) {
+            this.land.time -= dt;
+            if (this.land.time == 0) {
+                this.land.landState = LandState.Empty;
             }
-            else if (this.time < 0) {
-                this.landState = LandState.Harvest;
+            else if (this.land.time < 0) {
+                this.land.landState = LandState.Harvest;
             }
             else {
-                this.landState =
-                    this.plantType != null ? LandState.Plant : LandState.Cattle;
+                this.land.landState =
+                    this.land.plantType != null ? LandState.Plant : LandState.Cattle;
             }
             this.DisplayUI();
         }
     };
     LandUI.prototype.DisplayUI = function () {
-        switch (this.landState) {
+        switch (this.land.landState) {
             case LandState.Empty:
                 //this.resetUI();
                 this.setupUI();
@@ -130,10 +129,10 @@ var LandUI = /** @class */ (function (_super) {
         console.log("setup UI Done!!!!");
     };
     LandUI.prototype.updateUI = function () {
-        this.setTimeLb(this.time);
-        if (this.time > 0) {
-            if (this.landState == LandState.Plant) {
-                switch (this.plantType) {
+        this.setTimeLb(this.land.time);
+        if (this.land.time > 0) {
+            if (this.land.landState == LandState.Plant) {
+                switch (this.land.plantType) {
                     case PlantType_1.PlantType.tomatoSeed:
                         this.setSprite(GameConfig_1.PlantConfigs.tomatoseed.name);
                         this.setNameLb(GameConfig_1.PlantConfigs.tomatoseed.name);
@@ -150,8 +149,8 @@ var LandUI = /** @class */ (function (_super) {
                         break;
                 }
             }
-            else if (this.landState == LandState.Cattle) {
-                switch (this.cattleType) {
+            else if (this.land.landState == LandState.Cattle) {
+                switch (this.land.cattleType) {
                     case CattleType_1.CattleType.Cow:
                         this.setSprite(GameConfig_1.CattleConfigs.cow.name);
                         this.setNameLb(GameConfig_1.CattleConfigs.cow.name);
@@ -172,33 +171,33 @@ var LandUI = /** @class */ (function (_super) {
             this.timeLb.node.active = true;
             this.Sprite.node.active = true;
         }
-        else if (this.time < 0) {
-            this.harvestBtn.node.active = this.plantType != null;
-            this.milkBtn.node.active = this.cattleType != null;
+        else if (this.land.time < 0) {
+            this.harvestBtn.node.active = this.land.plantType != null;
+            this.milkBtn.node.active = this.land.cattleType != null;
         }
         else {
         }
     };
     LandUI.prototype.onClickTomatoSeedBtn = function () {
-        this.isEmpty = false;
-        this.plantType = PlantType_1.PlantType.tomatoSeed;
-        this.time = GameConfig_1.PlantConfigs.tomatoseed.harvestInterval * 60;
+        this.land.isEmpty = false;
+        this.land.plantType = PlantType_1.PlantType.tomatoSeed;
+        this.land.time = GameConfig_1.PlantConfigs.tomatoseed.harvestInterval * 60;
         //this.updateUI();
     };
     LandUI.prototype.onClickBlueberrySeedBtn = function () {
-        this.time = GameConfig_1.PlantConfigs.tomatoseed.harvestInterval * 60;
-        this.isEmpty = false;
-        this.plantType = PlantType_1.PlantType.blueberrySeed;
+        this.land.time = GameConfig_1.PlantConfigs.tomatoseed.harvestInterval * 60;
+        this.land.isEmpty = false;
+        this.land.plantType = PlantType_1.PlantType.blueberrySeed;
     };
     LandUI.prototype.onClickStrawberrySeedBtn = function () {
-        this.time = GameConfig_1.PlantConfigs.tomatoseed.harvestInterval * 60;
-        this.isEmpty = false;
-        this.plantType = PlantType_1.PlantType.strawberrySeed;
+        this.land.time = GameConfig_1.PlantConfigs.tomatoseed.harvestInterval * 60;
+        this.land.isEmpty = false;
+        this.land.plantType = PlantType_1.PlantType.strawberrySeed;
     };
     LandUI.prototype.onClickMilkCowBtn = function () {
-        this.time = GameConfig_1.PlantConfigs.tomatoseed.harvestInterval * 60;
-        this.isEmpty = false;
-        this.cattleType = CattleType_1.CattleType.Milkcow;
+        this.land.time = GameConfig_1.PlantConfigs.tomatoseed.harvestInterval * 60;
+        this.land.isEmpty = false;
+        this.land.cattleType = CattleType_1.CattleType.Milkcow;
     };
     LandUI.prototype.onClickHarvestBtn = function () {
         this.resetUI();
@@ -237,10 +236,10 @@ var LandUI = /** @class */ (function (_super) {
         this.timeLb.node.active = false;
         this.workerSprite.node.active = false;
         this.Sprite.node.active = false;
-        this.plantType = null;
-        this.cattleType = null;
-        this.time = 0;
-        this.isEmpty = true;
+        this.land.plantType = null;
+        this.land.cattleType = null;
+        this.land.time = 0;
+        this.land.isEmpty = true;
     };
     __decorate([
         property(cc.Button)

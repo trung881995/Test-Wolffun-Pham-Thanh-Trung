@@ -1,0 +1,1 @@
+{"version":3,"sources":["assets/interfaces/IWorker.ts"],"names":[],"mappings":"","file":"","sourceRoot":"/","sourcesContent":["export interface IWorker {\n  name: string;\n  number: number;\n  workingInterval: number;\n  buyPrice: number;\n\n  Work(): void;\n}\n"]}

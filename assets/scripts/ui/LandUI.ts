@@ -9,6 +9,7 @@ import { CattleType } from "../../enums/CattleType";
 import { PlantType } from "../../enums/PlantType";
 import UIManager from "../Manager/UIManager";
 import { CattleConfigs, PlantConfigs } from "../data/GameConfig";
+import { Land } from "../storage/Storage";
 
 const { ccclass, property } = cc._decorator;
 export enum LandState {
@@ -45,32 +46,30 @@ export default class LandUI extends cc.Component {
   @property(cc.Sprite)
   Sprite: cc.Sprite = null;
 
-  isEmpty: boolean = true;
-  time: number;
-  landState: LandState = LandState.Empty;
-  plantType: PlantType = null;
-  cattleType: CattleType = null;
+  land: Land;
   // LIFE-CYCLE CALLBACKS:
-  // onLoad () {}
+  onLoad() {
+    this.land = new Land();
+  }
 
   start() {}
 
   update(dt) {
-    if (!this.isEmpty) {
-      this.time -= dt;
-      if (this.time == 0) {
-        this.landState = LandState.Empty;
-      } else if (this.time < 0) {
-        this.landState = LandState.Harvest;
+    if (!this.land.isEmpty) {
+      this.land.time -= dt;
+      if (this.land.time == 0) {
+        this.land.landState = LandState.Empty;
+      } else if (this.land.time < 0) {
+        this.land.landState = LandState.Harvest;
       } else {
-        this.landState =
-          this.plantType != null ? LandState.Plant : LandState.Cattle;
+        this.land.landState =
+          this.land.plantType != null ? LandState.Plant : LandState.Cattle;
       }
       this.DisplayUI();
     }
   }
   public DisplayUI() {
-    switch (this.landState) {
+    switch (this.land.landState) {
       case LandState.Empty:
         //this.resetUI();
         this.setupUI();
@@ -129,11 +128,11 @@ export default class LandUI extends cc.Component {
     console.log("setup UI Done!!!!");
   }
   public updateUI() {
-    this.setTimeLb(this.time);
+    this.setTimeLb(this.land.time);
 
-    if (this.time > 0) {
-      if (this.landState == LandState.Plant) {
-        switch (this.plantType) {
+    if (this.land.time > 0) {
+      if (this.land.landState == LandState.Plant) {
+        switch (this.land.plantType) {
           case PlantType.tomatoSeed:
             this.setSprite(PlantConfigs.tomatoseed.name);
             this.setNameLb(PlantConfigs.tomatoseed.name);
@@ -149,8 +148,8 @@ export default class LandUI extends cc.Component {
           default:
             break;
         }
-      } else if (this.landState == LandState.Cattle) {
-        switch (this.cattleType) {
+      } else if (this.land.landState == LandState.Cattle) {
+        switch (this.land.cattleType) {
           case CattleType.Cow:
             this.setSprite(CattleConfigs.cow.name);
             this.setNameLb(CattleConfigs.cow.name);
@@ -172,33 +171,33 @@ export default class LandUI extends cc.Component {
       this.nameLb.node.active = true;
       this.timeLb.node.active = true;
       this.Sprite.node.active = true;
-    } else if (this.time < 0) {
-      this.harvestBtn.node.active = this.plantType != null;
-      this.milkBtn.node.active = this.cattleType != null;
+    } else if (this.land.time < 0) {
+      this.harvestBtn.node.active = this.land.plantType != null;
+      this.milkBtn.node.active = this.land.cattleType != null;
     } else {
     }
   }
 
   onClickTomatoSeedBtn() {
-    this.isEmpty = false;
-    this.plantType = PlantType.tomatoSeed;
-    this.time = PlantConfigs.tomatoseed.harvestInterval * 60;
+    this.land.isEmpty = false;
+    this.land.plantType = PlantType.tomatoSeed;
+    this.land.time = PlantConfigs.tomatoseed.harvestInterval * 60;
     //this.updateUI();
   }
   onClickBlueberrySeedBtn() {
-    this.time = PlantConfigs.tomatoseed.harvestInterval * 60;
-    this.isEmpty = false;
-    this.plantType = PlantType.blueberrySeed;
+    this.land.time = PlantConfigs.tomatoseed.harvestInterval * 60;
+    this.land.isEmpty = false;
+    this.land.plantType = PlantType.blueberrySeed;
   }
   onClickStrawberrySeedBtn() {
-    this.time = PlantConfigs.tomatoseed.harvestInterval * 60;
-    this.isEmpty = false;
-    this.plantType = PlantType.strawberrySeed;
+    this.land.time = PlantConfigs.tomatoseed.harvestInterval * 60;
+    this.land.isEmpty = false;
+    this.land.plantType = PlantType.strawberrySeed;
   }
   onClickMilkCowBtn() {
-    this.time = PlantConfigs.tomatoseed.harvestInterval * 60;
-    this.isEmpty = false;
-    this.cattleType = CattleType.Milkcow;
+    this.land.time = PlantConfigs.tomatoseed.harvestInterval * 60;
+    this.land.isEmpty = false;
+    this.land.cattleType = CattleType.Milkcow;
   }
   onClickHarvestBtn() {
     this.resetUI();
@@ -252,10 +251,10 @@ export default class LandUI extends cc.Component {
     this.workerSprite.node.active = false;
     this.Sprite.node.active = false;
 
-    this.plantType = null;
-    this.cattleType = null;
+    this.land.plantType = null;
+    this.land.cattleType = null;
 
-    this.time = 0;
-    this.isEmpty = true;
+    this.land.time = 0;
+    this.land.isEmpty = true;
   }
 }

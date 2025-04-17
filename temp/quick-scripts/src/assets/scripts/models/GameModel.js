@@ -55,7 +55,9 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GameModel = void 0;
 var BaseModel_1 = require("../../core/mvc/BaseModel");
+var Store_1 = require("../Store/Store");
 var GameConfig_1 = require("../data/GameConfig");
+var Storage_1 = require("../storage/Storage");
 var GameModel = /** @class */ (function (_super) {
     __extends(GameModel, _super);
     function GameModel() {
@@ -66,6 +68,37 @@ var GameModel = /** @class */ (function (_super) {
         for (var _i = 0; _i < arguments.length; _i++) {
             args[_i] = arguments[_i];
         }
+    };
+    GameModel.prototype.setup = function () {
+        this.storage = new Storage_1.Storage();
+        this.store = new Store_1.Store(this.storage);
+        this.storage.land = new Storage_1.Land();
+        this.storage.tomatoSeed = new Storage_1.TomatoSeed();
+        this.storage.blueberrySeed = new Storage_1.BlueberrySeed();
+        this.storage.strawberrySeed = new Storage_1.StrawberrySeed();
+        this.storage.milkCow = new Storage_1.MilkCow();
+        this.storage.cow = new Storage_1.Cow();
+        this.storage.worker = new Storage_1.Worker();
+    };
+    GameModel.prototype.setData = function () {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.loadData()];
+                    case 1:
+                        _a.sent();
+                        this.setup();
+                        this.storage.land.number = GameConfig_1.FirstConfigs.land.number;
+                        this.storage.blueberrySeed.number = GameConfig_1.FirstConfigs.blueberryseed.number;
+                        this.storage.tomatoSeed.number = GameConfig_1.FirstConfigs.tomatoseed.number;
+                        this.storage.strawberrySeed.number = 0;
+                        this.storage.milkCow.number = GameConfig_1.FirstConfigs.milkcow.number;
+                        this.storage.cow.number = 0;
+                        this.storage.worker.number = GameConfig_1.FirstConfigs.worker.number;
+                        return [2 /*return*/];
+                }
+            });
+        });
     };
     GameModel.prototype.loadData = function () {
         return __awaiter(this, void 0, void 0, function () {

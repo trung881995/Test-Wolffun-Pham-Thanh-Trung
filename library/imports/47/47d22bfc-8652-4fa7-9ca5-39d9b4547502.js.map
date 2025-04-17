@@ -1,0 +1,1 @@
+{"version":3,"sources":["assets/interfaces/ILand.ts"],"names":[],"mappings":"","file":"","sourceRoot":"/","sourcesContent":["export interface ILand {\n  name: string;\n  number: number;\n  missionNumber: number;\n  containInterval: number;\n  buyPrice: number;\n}\n"]}

@@ -1,4 +1,5 @@
 import { BaseModel } from "../../core/mvc/BaseModel";
+import { Store } from "../Store/Store";
 import {
   FirstConfigs,
   PlantConfigs,
@@ -15,10 +16,47 @@ import {
   loadWorkerConfigFromCSV,
   loadYieldConfigFromCSV,
 } from "../data/GameConfig";
+import {
+  BlueberrySeed,
+  Cow,
+  Land,
+  MilkCow,
+  Storage,
+  StrawberrySeed,
+  TomatoSeed,
+  Worker,
+} from "../storage/Storage";
 
 export class GameModel extends BaseModel {
   init(...args: any[]): void {}
+  store: Store;
+  storage: Storage;
 
+  startLandNumber: number;
+
+  landArray: Land[];
+  setup() {
+    this.storage = new Storage();
+    this.store = new Store(this.storage);
+    this.storage.land = new Land();
+    this.storage.tomatoSeed = new TomatoSeed();
+    this.storage.blueberrySeed = new BlueberrySeed();
+    this.storage.strawberrySeed = new StrawberrySeed();
+    this.storage.milkCow = new MilkCow();
+    this.storage.cow = new Cow();
+    this.storage.worker = new Worker();
+  }
+  async setData() {
+    await this.loadData();
+    this.setup();
+    this.storage.land.number = FirstConfigs.land.number;
+    this.storage.blueberrySeed.number = FirstConfigs.blueberryseed.number;
+    this.storage.tomatoSeed.number = FirstConfigs.tomatoseed.number;
+    this.storage.strawberrySeed.number = 0;
+    this.storage.milkCow.number = FirstConfigs.milkcow.number;
+    this.storage.cow.number = 0;
+    this.storage.worker.number = FirstConfigs.worker.number;
+  }
   async loadData() {
     await loadFirstConfigFromCSV();
     await loadCattleConfigFromCSV();

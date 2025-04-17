@@ -18,6 +18,7 @@ export default class UIManager extends cc.Component {
   @property(StorageUI) storageUI: StorageUI = null;
   public static instance: UIManager;
   public gameController: GameController;
+
   // LIFE-CYCLE CALLBACKS:
 
   onLoad() {
@@ -32,8 +33,18 @@ export default class UIManager extends cc.Component {
     this.setupUI();
   }
   async setupUI() {
-    await this.gameController.model.loadData();
-    this.landUIArray[0].DisplayUI();
+    await this.gameController.model.setData();
+    const clones = Array.from({ length: 5 }, () => ({
+      ...this.gameController.model.storage.land,
+    }));
+
+    for (let i = 0; i < this.gameController.model.storage.land.number; i++) {
+      this.landUIArray[i].node.active = true;
+
+      this.landUIArray[i].land = clones[i];
+      this.landUIArray[i].DisplayUI();
+    }
+
     //this.label.string = this.gameController.model.getFirstData().land.number.toString();
   }
   // update (dt) {}

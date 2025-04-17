@@ -1,0 +1,1 @@
+{"version":3,"sources":["assets/interfaces/IYield.ts"],"names":[],"mappings":"","file":"","sourceRoot":"/","sourcesContent":["export interface IYield {\n  name: string;\n  number: number;\n  sellPrice: number;\n\n  sellForStore(): void;\n}\n"]}

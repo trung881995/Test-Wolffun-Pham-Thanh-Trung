@@ -1,0 +1,1 @@
+{"version":3,"sources":["assets/interfaces/IAsset.ts"],"names":[],"mappings":"","file":"","sourceRoot":"/","sourcesContent":["export interface IAsset {\n  name: string;\n  harvestInterval: number;\n  maxHarvest: number;\n  buyPrice;\n\n  useForFarm(): void;\n}\n"]}
