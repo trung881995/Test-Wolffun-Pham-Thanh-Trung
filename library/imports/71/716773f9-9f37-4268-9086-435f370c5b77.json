@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "cattles",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "name,harvestInterval,maxHarvest,buyPrice\nMilkcow,1,2,500\nCow,60,100,700"
+}

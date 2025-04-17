@@ -500,8 +500,8 @@
     "relativePath": "model/primitives.fbx"
   },
   "34a4edbf-dbed-4854-b717-91b2b1e9e5dd": {
-    "asset": 1744743860335,
-    "meta": 1744746191260,
+    "asset": 1744809623421,
+    "meta": 1744810355299,
     "relativePath": "resources/configs"
   },
   "b0e3f1a3-db36-4b93-a87f-1e3aac1c3a6a": {
@@ -535,8 +535,8 @@
     "relativePath": "resources/configs/firstData.CSV"
   },
   "9e962b52-2b5c-4320-9ad8-c0cba6f4a2a0": {
-    "asset": 1744714085808,
-    "meta": 1744746191259,
+    "asset": 1744809739477,
+    "meta": 1744810355299,
     "relativePath": "resources"
   },
   "a80137bd-a8e0-42a8-ab2e-3f7473fcc38b": {
@@ -564,20 +564,10 @@
     "meta": 1744746191259,
     "relativePath": "enums"
   },
-  "e0a62040-0a76-4745-a682-19a897e065f9": {
-    "asset": 1744715363335,
-    "meta": 1744715488793,
-    "relativePath": "enums/PlantType.ts"
-  },
   "d4cea23e-ac79-47f9-9bf3-c53344982a81": {
     "asset": 1744715596700,
     "meta": 1744716516794,
     "relativePath": "enums/CattleType.ts"
-  },
-  "f2e19673-cd2a-4606-9bfb-4738ed770571": {
-    "asset": 1744731199531,
-    "meta": 1744731508925,
-    "relativePath": "enums/YieldType.ts"
   },
   "dcd90cc5-befa-42be-98fb-830873d1df1a": {
     "asset": 1744731643846,
@@ -655,44 +645,44 @@
     "relativePath": "scripts/models/YieldModel.ts"
   },
   "99488f47-6bb1-49a4-9cba-1a3598640caf": {
-    "asset": 1744743149450,
-    "meta": 1744746191258,
+    "asset": 1744809754068,
+    "meta": 1744810355298,
     "relativePath": "Sprites"
   },
   "991a2dd6-551a-45b6-b7f1-e5da9611bef6": {
     "asset": 1744332635465,
-    "meta": 1744743149466,
-    "relativePath": "Sprites/2942783.png"
+    "meta": 1744809917605,
+    "relativePath": "resources/images/China.png"
   },
   "4d15a3b1-d451-4b4c-8e35-943f59c50070": {
     "asset": 1744655355250,
-    "meta": 1744743149475,
-    "relativePath": "Sprites/5194802.png"
+    "meta": 1744814262963,
+    "relativePath": "resources/images/tomatoSeed.png"
   },
   "413ab620-a808-47bd-b436-395d2668dd24": {
     "asset": 1744655722296,
     "meta": 1744743149481,
-    "relativePath": "Sprites/pngtree-sudokuinspired-vector-template-of-a-3x3-puzzle-grid-with-square-cells-vector-png-image_31894736-2.png"
+    "relativePath": "resources/images/pngtree-sudokuinspired-vector-template-of-a-3x3-puzzle-grid-with-square-cells-vector-png-image_31894736-2.png"
   },
   "1f022480-15e8-4399-8855-bc63b2433f2a": {
     "asset": 1744332489463,
-    "meta": 1744743149483,
-    "relativePath": "Sprites/51jpIkbEsTNqE.png!sw800.png"
+    "meta": 1744861875826,
+    "relativePath": "resources/images/Milkcow.png"
   },
   "bd5806d4-4825-4678-bda8-9d4f92a4c2e6": {
     "asset": 1744332550096,
-    "meta": 1744743149485,
-    "relativePath": "Sprites/construction-worker-emoji-clipart-lg.png"
+    "meta": 1744810010457,
+    "relativePath": "resources/images/Middle.png"
   },
   "48138da1-ba51-4708-ae55-c0932a0aa837": {
     "asset": 1744656368208,
     "meta": 1744743149485,
-    "relativePath": "Sprites/ZycTu.png"
+    "relativePath": "resources/images/ZycTu.png"
   },
   "a0554158-4587-4e68-a044-b6ec1b61eb95": {
     "asset": 1744332386431,
-    "meta": 1744743149509,
-    "relativePath": "Sprites/berries-1294799_1280.webp"
+    "meta": 1744809961536,
+    "relativePath": "resources/images/blueberrySeed.webp"
   },
   "b86e260e-c71e-4130-a891-2674980b498c": {
     "asset": 1744743857014,
@@ -700,14 +690,9 @@
     "relativePath": "resources/configs/first.CSV"
   },
   "3b22d275-0baa-4d53-b2bb-36b393fb46d4": {
-    "asset": 1744788059380,
-    "meta": 1744788059386,
+    "asset": 1744862125183,
+    "meta": 1744862125189,
     "relativePath": "Scene.fire"
-  },
-  "1c45b0c1-5435-4197-85ac-4bb912977fe5": {
-    "asset": 1744745774033,
-    "meta": 1744745780023,
-    "relativePath": "scripts/data/GameConfig.ts"
   },
   "e7a15517-dad8-44a6-8702-aa8b0664c068": {
     "asset": 1744747823306,
@@ -729,11 +714,6 @@
     "meta": 1744788072474,
     "relativePath": "scripts/ui"
   },
-  "fd7df33d-3ebd-4c95-815c-ea012e2cea8d": {
-    "asset": 1744777971487,
-    "meta": 1744777976406,
-    "relativePath": "scripts/Manager/UIManager.ts"
-  },
   "66f8fe43-f752-44a0-822c-f83d2f33efab": {
     "asset": 1744780868753,
     "meta": 1744780985500,
@@ -744,9 +724,74 @@
     "meta": 1744781193219,
     "relativePath": "scripts/ui/StorageUI.ts"
   },
+  "f2e19673-cd2a-4606-9bfb-4738ed770571": {
+    "asset": 1744808936666,
+    "meta": 1744809623427,
+    "relativePath": "enums/YieldType.ts"
+  },
+  "b9589a9a-eaa9-4564-89b7-2e574bb8cadc": {
+    "asset": 1744809618300,
+    "meta": 1744809623486,
+    "relativePath": "resources/configs/machines.CSV"
+  },
+  "09df2735-f7f0-4d89-9bca-917236ce3b91": {
+    "asset": 1744809230141,
+    "meta": 1744809623487,
+    "relativePath": "resources/configs/lands.CSV"
+  },
+  "38f84d52-33c3-426b-b33b-d4e82993dedd": {
+    "asset": 1744809459419,
+    "meta": 1744809623488,
+    "relativePath": "resources/configs/workers.CSV"
+  },
+  "3d167302-9f28-4b34-8e7b-f8ef522e29ff": {
+    "asset": 1744808867503,
+    "meta": 1744809623488,
+    "relativePath": "resources/configs/yields.CSV"
+  },
+  "0c212de4-d35c-4412-bb6e-06534816a7c7": {
+    "asset": 1744810076123,
+    "meta": 1744810355299,
+    "relativePath": "resources/images"
+  },
+  "a6b0b324-ebdf-40eb-95b9-3ed995e74350": {
+    "asset": 1744809855970,
+    "meta": 1744809894027,
+    "relativePath": "resources/images/cow.png"
+  },
+  "efdf3fd4-d795-4e4f-82c6-d2b0bd50c83e": {
+    "asset": 1744810061540,
+    "meta": 1744810076137,
+    "relativePath": "resources/images/strawberrySeed.png"
+  },
+  "fd7df33d-3ebd-4c95-815c-ea012e2cea8d": {
+    "asset": 1744812187276,
+    "meta": 1744812188855,
+    "relativePath": "scripts/Manager/UIManager.ts"
+  },
+  "716773f9-9f37-4268-9086-435f370c5b77": {
+    "asset": 1744861135661,
+    "meta": 1744861248802,
+    "relativePath": "resources/configs/cattles.CSV"
+  },
+  "e0a62040-0a76-4745-a682-19a897e065f9": {
+    "asset": 1744861510239,
+    "meta": 1744861538679,
+    "relativePath": "enums/PlantType.ts"
+  },
+  "1c45b0c1-5435-4197-85ac-4bb912977fe5": {
+    "asset": 1744861537696,
+    "meta": 1744861538719,
+    "relativePath": "scripts/data/GameConfig.ts"
+  },
+  "ae14abc0-67ae-4c49-a61e-80da127c836a": {
+    "asset": 1744861611318,
+    "meta": 1744861614077,
+    "relativePath": "resources/configs/plants.CSV"
+  },
   "5fbc3f85-aa3f-4273-8a5f-579b34683cfc": {
-    "asset": 1744787733788,
-    "meta": 1744787754123,
+    "asset": 1744862933098,
+    "meta": 1744862939400,
     "relativePath": "scripts/ui/LandUI.ts"
   }
 }

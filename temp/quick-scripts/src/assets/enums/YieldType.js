@@ -9,6 +9,7 @@ var YieldType;
 (function (YieldType) {
     YieldType["Tomato"] = "tomato";
     YieldType["Blueberry"] = "blueberry";
+    YieldType["Strawberry"] = "strawberry";
     YieldType["Milk"] = "milk";
     YieldType["Beef"] = "beef";
 })(YieldType = exports.YieldType || (exports.YieldType = {}));

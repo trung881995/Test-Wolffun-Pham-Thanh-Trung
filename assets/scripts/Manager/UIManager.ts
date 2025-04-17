@@ -16,11 +16,15 @@ export default class UIManager extends cc.Component {
   @property(LandUI) landUIArray: LandUI[] = [];
   @property(StoreUI) storeUI: StoreUI = null;
   @property(StorageUI) storageUI: StorageUI = null;
-
-  gameController: GameController;
+  public static instance: UIManager;
+  public gameController: GameController;
   // LIFE-CYCLE CALLBACKS:
 
   onLoad() {
+    if (UIManager.instance == null) {
+      UIManager.instance = this;
+    }
+
     this.gameController = new GameController();
   }
 
@@ -29,6 +33,7 @@ export default class UIManager extends cc.Component {
   }
   async setupUI() {
     await this.gameController.model.loadData();
+    this.landUIArray[0].DisplayUI();
     //this.label.string = this.gameController.model.getFirstData().land.number.toString();
   }
   // update (dt) {}

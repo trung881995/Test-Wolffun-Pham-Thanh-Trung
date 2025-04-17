@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "lands",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "name,missionNumber,containInterval,buyPrice\nRed,1,60,500\nGreen,2,100,800\nBrown,3,150,1000"
+}

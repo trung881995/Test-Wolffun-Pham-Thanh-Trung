@@ -80,8 +80,12 @@ var UIManager = /** @class */ (function (_super) {
         return _this;
         // update (dt) {}
     }
+    UIManager_1 = UIManager;
     // LIFE-CYCLE CALLBACKS:
     UIManager.prototype.onLoad = function () {
+        if (UIManager_1.instance == null) {
+            UIManager_1.instance = this;
+        }
         this.gameController = new GameController_1.GameController();
     };
     UIManager.prototype.start = function () {
@@ -94,11 +98,13 @@ var UIManager = /** @class */ (function (_super) {
                     case 0: return [4 /*yield*/, this.gameController.model.loadData()];
                     case 1:
                         _a.sent();
+                        this.landUIArray[0].DisplayUI();
                         return [2 /*return*/];
                 }
             });
         });
     };
+    var UIManager_1;
     __decorate([
         property(LandUI_1.default)
     ], UIManager.prototype, "landUIArray", void 0);
@@ -108,7 +114,7 @@ var UIManager = /** @class */ (function (_super) {
     __decorate([
         property(StorageUI_1.default)
     ], UIManager.prototype, "storageUI", void 0);
-    UIManager = __decorate([
+    UIManager = UIManager_1 = __decorate([
         ccclass
     ], UIManager);
     return UIManager;

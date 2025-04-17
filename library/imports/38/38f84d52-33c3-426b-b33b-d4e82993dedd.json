@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "workers",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "name,workingInterval,buyPrice\nFresher,4,100\nJunior,3,300\nMiddle,2,500\nSenior,1,1000"
+}

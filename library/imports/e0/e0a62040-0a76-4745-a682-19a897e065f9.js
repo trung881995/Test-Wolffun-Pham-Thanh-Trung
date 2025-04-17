@@ -7,9 +7,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.PlantType = void 0;
 var PlantType;
 (function (PlantType) {
-    PlantType["Tomato"] = "tomato";
-    PlantType["Blueberry"] = "blueberry";
-    PlantType["Strawberry"] = "strawberry";
+    PlantType["tomatoSeed"] = "tomatoseed";
+    PlantType["blueberrySeed"] = "blueberryseed";
+    PlantType["strawberrySeed"] = "strawberryseed";
 })(PlantType = exports.PlantType || (exports.PlantType = {}));
 
 cc._RF.pop();

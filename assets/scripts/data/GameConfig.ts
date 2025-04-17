@@ -30,7 +30,7 @@ export interface PlantConfig {
 export interface LandConfig {
   name: string;
   missionNumber: number;
-  emptyInterval: number;
+  containInterval: number;
   buyPrice: number;
 }
 export interface WorkerConfig {
@@ -45,19 +45,19 @@ export interface MachineConfig {
   upgradePrice: number;
 }
 export const PlantConfigs: Record<PlantType, PlantConfig> = {
-  [PlantType.Tomato]: {
+  [PlantType.tomatoSeed]: {
     name: "",
     harvestInterval: 0,
     maxHarvest: 0,
     buyPrice: 0,
   },
-  [PlantType.Blueberry]: {
+  [PlantType.blueberrySeed]: {
     name: "",
     harvestInterval: 0,
     maxHarvest: 0,
     buyPrice: 0,
   },
-  [PlantType.Strawberry]: {
+  [PlantType.strawberrySeed]: {
     name: "",
     harvestInterval: 0,
     maxHarvest: 0,
@@ -87,6 +87,10 @@ export const YieldConfigs: Record<YieldType, YieldConfig> = {
     name: "",
     sellPrice: 0,
   },
+  [YieldType.Strawberry]: {
+    name: "",
+    sellPrice: 0,
+  },
   [YieldType.Milk]: {
     name: "",
     sellPrice: 0,
@@ -100,19 +104,19 @@ export const LandConfigs: Record<LandType, LandConfig> = {
   [LandType.Red]: {
     name: "",
     missionNumber: 0,
-    emptyInterval: 0,
+    containInterval: 0,
     buyPrice: 0,
   },
   [LandType.Green]: {
     name: "",
     missionNumber: 0,
-    emptyInterval: 0,
+    containInterval: 0,
     buyPrice: 0,
   },
   [LandType.Brown]: {
     name: "",
     missionNumber: 0,
-    emptyInterval: 0,
+    containInterval: 0,
     buyPrice: 0,
   },
 };
@@ -209,7 +213,7 @@ export async function loadFirstConfigFromCSV(): Promise<void> {
 }
 
 export async function loadPlantConfigFromCSV(): Promise<void> {
-  const records = await CSVLoader.load("plants.csv");
+  const records = await CSVLoader.load("plants");
 
   records.forEach((row) => {
     const type = row.name.toLowerCase() as PlantType;
@@ -228,7 +232,7 @@ export async function loadPlantConfigFromCSV(): Promise<void> {
 }
 
 export async function loadCattleConfigFromCSV(): Promise<void> {
-  const records = await CSVLoader.load("cattles.csv");
+  const records = await CSVLoader.load("cattles");
 
   records.forEach((row) => {
     const type = row.name.toLowerCase() as CattleType;
@@ -247,7 +251,7 @@ export async function loadCattleConfigFromCSV(): Promise<void> {
 }
 
 export async function loadYieldConfigFromCSV(): Promise<void> {
-  const records = await CSVLoader.load("Yields.csv");
+  const records = await CSVLoader.load("yields");
 
   records.forEach((row) => {
     const type = row.name.toLowerCase() as YieldType;
@@ -263,7 +267,7 @@ export async function loadYieldConfigFromCSV(): Promise<void> {
   console.log("[CSV] YieldConfigs loaded:", YieldConfigs);
 }
 export async function loadWorkerConfigFromCSV(): Promise<void> {
-  const records = await CSVLoader.load("Workers.csv");
+  const records = await CSVLoader.load("workers");
 
   records.forEach((row) => {
     const type = row.name.toLowerCase() as WorkerType;
@@ -281,7 +285,7 @@ export async function loadWorkerConfigFromCSV(): Promise<void> {
 }
 
 export async function loadMachineConfigFromCSV(): Promise<void> {
-  const records = await CSVLoader.load("Machines.csv");
+  const records = await CSVLoader.load("machines");
 
   records.forEach((row) => {
     const type = row.name.toLowerCase() as MachineType;
@@ -299,7 +303,7 @@ export async function loadMachineConfigFromCSV(): Promise<void> {
   console.log("[CSV] MachineConfigs loaded:", MachineConfigs);
 }
 export async function loadLandConfigFromCSV(): Promise<void> {
-  const records = await CSVLoader.load("Lands.csv");
+  const records = await CSVLoader.load("lands");
 
   records.forEach((row) => {
     const type = row.name.toLowerCase() as LandType;
@@ -308,7 +312,7 @@ export async function loadLandConfigFromCSV(): Promise<void> {
       LandConfigs[type] = {
         name: row.name,
         missionNumber: parseInt(row.missionNumber),
-        emptyInterval: parseFloat(row.emptyInterval),
+        containInterval: parseFloat(row.emptyInterval),
         buyPrice: parseInt(row.buyPrice),
       };
     }

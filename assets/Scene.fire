@@ -2267,7 +2267,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 61.14,
+      "width": 130,
       "height": 50.4
     },
     "_anchorPoint": {
@@ -2321,7 +2321,7 @@
     "_dstBlendFactor": 771,
     "_string": "tomato",
     "_N$string": "tomato",
-    "_fontSize": 20,
+    "_fontSize": 15,
     "_lineHeight": 40,
     "_enableWrapText": true,
     "_N$file": null,
@@ -2333,7 +2333,7 @@
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
-    "_N$overflow": 0,
+    "_N$overflow": 2,
     "_N$cacheMode": 0,
     "_id": "29WgB4OutBrocdgLZpYex7"
   },
@@ -5039,7 +5039,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 61.14,
+      "width": 130,
       "height": 50.4
     },
     "_anchorPoint": {
@@ -5093,7 +5093,7 @@
     "_dstBlendFactor": 771,
     "_string": "tomato",
     "_N$string": "tomato",
-    "_fontSize": 20,
+    "_fontSize": 15,
     "_lineHeight": 40,
     "_enableWrapText": true,
     "_N$file": null,
@@ -5105,7 +5105,7 @@
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
-    "_N$overflow": 0,
+    "_N$overflow": 2,
     "_N$cacheMode": 0,
     "_id": "6b1P52C9RC758m3yUm3AoZ"
   },
@@ -7811,7 +7811,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 61.14,
+      "width": 130,
       "height": 50.4
     },
     "_anchorPoint": {
@@ -7865,7 +7865,7 @@
     "_dstBlendFactor": 771,
     "_string": "tomato",
     "_N$string": "tomato",
-    "_fontSize": 20,
+    "_fontSize": 15,
     "_lineHeight": 40,
     "_enableWrapText": true,
     "_N$file": null,
@@ -7877,7 +7877,7 @@
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
-    "_N$overflow": 0,
+    "_N$overflow": 2,
     "_N$cacheMode": 0,
     "_id": "243p1PTZJJ2pXj/bA6dH7M"
   },
@@ -10583,7 +10583,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 61.14,
+      "width": 130,
       "height": 50.4
     },
     "_anchorPoint": {
@@ -10637,7 +10637,7 @@
     "_dstBlendFactor": 771,
     "_string": "tomato",
     "_N$string": "tomato",
-    "_fontSize": 20,
+    "_fontSize": 15,
     "_lineHeight": 40,
     "_enableWrapText": true,
     "_N$file": null,
@@ -10649,7 +10649,7 @@
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
-    "_N$overflow": 0,
+    "_N$overflow": 2,
     "_N$cacheMode": 0,
     "_id": "34A7WiEmZLjoqKDpb44JFB"
   },
@@ -13355,7 +13355,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 61.14,
+      "width": 130,
       "height": 50.4
     },
     "_anchorPoint": {
@@ -13409,7 +13409,7 @@
     "_dstBlendFactor": 771,
     "_string": "tomato",
     "_N$string": "tomato",
-    "_fontSize": 20,
+    "_fontSize": 15,
     "_lineHeight": 40,
     "_enableWrapText": true,
     "_N$file": null,
@@ -13421,7 +13421,7 @@
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
-    "_N$overflow": 0,
+    "_N$overflow": 2,
     "_N$cacheMode": 0,
     "_id": "ae8OB7C9ZNKrzuC+Al2JfJ"
   },
@@ -16127,7 +16127,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 61.14,
+      "width": 130,
       "height": 50.4
     },
     "_anchorPoint": {
@@ -16181,7 +16181,7 @@
     "_dstBlendFactor": 771,
     "_string": "tomato",
     "_N$string": "tomato",
-    "_fontSize": 20,
+    "_fontSize": 15,
     "_lineHeight": 40,
     "_enableWrapText": true,
     "_N$file": null,
@@ -16193,7 +16193,7 @@
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
-    "_N$overflow": 0,
+    "_N$overflow": 2,
     "_N$cacheMode": 0,
     "_id": "4bJNKA3tFLDJEzhzlWsKlZ"
   },
@@ -18899,7 +18899,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 61.14,
+      "width": 130,
       "height": 50.4
     },
     "_anchorPoint": {
@@ -18953,7 +18953,7 @@
     "_dstBlendFactor": 771,
     "_string": "tomato",
     "_N$string": "tomato",
-    "_fontSize": 20,
+    "_fontSize": 15,
     "_lineHeight": 40,
     "_enableWrapText": true,
     "_N$file": null,
@@ -18965,7 +18965,7 @@
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
-    "_N$overflow": 0,
+    "_N$overflow": 2,
     "_N$cacheMode": 0,
     "_id": "47XFc96gNELLDd2JHS7NRi"
   },
@@ -21671,7 +21671,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 61.14,
+      "width": 130,
       "height": 50.4
     },
     "_anchorPoint": {
@@ -21725,7 +21725,7 @@
     "_dstBlendFactor": 771,
     "_string": "tomato",
     "_N$string": "tomato",
-    "_fontSize": 20,
+    "_fontSize": 15,
     "_lineHeight": 40,
     "_enableWrapText": true,
     "_N$file": null,
@@ -21737,7 +21737,7 @@
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
-    "_N$overflow": 0,
+    "_N$overflow": 2,
     "_N$cacheMode": 0,
     "_id": "2dCmqPzGJFJqyR878i3+aU"
   },
@@ -24340,14 +24340,14 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
+      "r": 20,
       "g": 255,
-      "b": 255,
+      "b": 0,
       "a": 255
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 61.14,
+      "width": 130,
       "height": 50.4
     },
     "_anchorPoint": {
@@ -24401,7 +24401,7 @@
     "_dstBlendFactor": 771,
     "_string": "tomato",
     "_N$string": "tomato",
-    "_fontSize": 20,
+    "_fontSize": 15,
     "_lineHeight": 40,
     "_enableWrapText": true,
     "_N$file": null,
@@ -24413,7 +24413,7 @@
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
-    "_N$overflow": 0,
+    "_N$overflow": 2,
     "_N$cacheMode": 0,
     "_id": "01k8xaRc5Fzo+i2yhxJjMp"
   },

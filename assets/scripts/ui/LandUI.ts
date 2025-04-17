@@ -7,6 +7,7 @@
 
 import { CattleType } from "../../enums/CattleType";
 import { PlantType } from "../../enums/PlantType";
+import UIManager from "../Manager/UIManager";
 import { CattleConfigs, PlantConfigs } from "../data/GameConfig";
 
 const { ccclass, property } = cc._decorator;
@@ -44,40 +45,35 @@ export default class LandUI extends cc.Component {
   @property(cc.Sprite)
   Sprite: cc.Sprite = null;
 
-  isEmpty: boolean;
+  isEmpty: boolean = true;
   time: number;
-  type: any;
-  landState: LandState = LandState.Undefined;
+  landState: LandState = LandState.Empty;
+  plantType: PlantType = null;
+  cattleType: CattleType = null;
   // LIFE-CYCLE CALLBACKS:
-
   // onLoad () {}
 
-  start() {
-    this.DisplayUI();
-  }
+  start() {}
 
   update(dt) {
     if (!this.isEmpty) {
       this.time -= dt;
       if (this.time == 0) {
         this.landState = LandState.Empty;
-        this.setupUI();
       } else if (this.time < 0) {
         this.landState = LandState.Harvest;
-        this.setupUI();
       } else {
-        this.landState = LandState.Cattle || LandState.Plant;
-        this.setupUI();
+        this.landState =
+          this.plantType != null ? LandState.Plant : LandState.Cattle;
       }
+      this.DisplayUI();
     }
   }
   public DisplayUI() {
     switch (this.landState) {
-      case LandState.Undefined:
-        this.setupUI();
-        break;
       case LandState.Empty:
-        this.resetUI();
+        //this.resetUI();
+        this.setupUI();
         break;
       case LandState.Harvest:
         this.updateUI();
@@ -93,121 +89,116 @@ export default class LandUI extends cc.Component {
     }
   }
   public setupUI() {
-    this.tomatoSeedBtn.enabled = true;
+    this.tomatoSeedBtn.node.active = true;
     this.tomatoSeedBtn.node.on(
       cc.Node.EventType.TOUCH_END,
       this.onClickTomatoSeedBtn,
       this
     );
-    this.blueberrySeedBtn.enabled = true;
+    this.blueberrySeedBtn.node.active = true;
     this.blueberrySeedBtn.node.on(
       cc.Node.EventType.TOUCH_END,
       this.onClickBlueberrySeedBtn,
       this
     );
-    this.strawberrySeedBtn.enabled = true;
+    this.strawberrySeedBtn.node.active = true;
     this.strawberrySeedBtn.node.on(
       cc.Node.EventType.TOUCH_END,
       this.onClickStrawberrySeedBtn,
       this
     );
-    this.milkCowBtn.enabled = true;
-    this.tomatoSeedBtn.node.on(
+    this.milkCowBtn.node.active = true;
+    this.milkCowBtn.node.on(
       cc.Node.EventType.TOUCH_END,
       this.onClickMilkCowBtn,
       this
     );
+    //this.harvestBtn.node.active = true;
+    this.harvestBtn.node.on(
+      cc.Node.EventType.TOUCH_END,
+      this.onClickHarvestBtn,
+      this
+    );
+    //this.milkBtn.node.active = true;
+    this.milkBtn.node.on(
+      cc.Node.EventType.TOUCH_END,
+      this.onClickMilkBtn,
+      this
+    );
+
+    console.log("setup UI Done!!!!");
   }
   public updateUI() {
     this.setTimeLb(this.time);
 
     if (this.time > 0) {
-      switch (this.type) {
-        case PlantType.Tomato:
-          this.setSprite(PlantConfigs.tomato.name);
-          this.setNameLb(PlantConfigs.tomato.name);
-          break;
-        case PlantType.Blueberry:
-          this.setSprite(PlantConfigs.blueberry.name);
-          this.setNameLb(PlantConfigs.blueberry.name);
-          break;
-        case PlantType.Strawberry:
-          this.setSprite(PlantConfigs.strawberry.name);
-          this.setNameLb(PlantConfigs.strawberry.name);
-          break;
-        case CattleType.Cow:
-          this.setSprite(CattleConfigs.cow.name);
-          this.setNameLb(CattleConfigs.cow.name);
-          break;
-        case CattleType.Milkcow:
-          this.setSprite(CattleConfigs.milkcow.name);
-          this.setNameLb(CattleConfigs.milkcow.name);
-          break;
-        default:
-          break;
+      if (this.landState == LandState.Plant) {
+        switch (this.plantType) {
+          case PlantType.tomatoSeed:
+            this.setSprite(PlantConfigs.tomatoseed.name);
+            this.setNameLb(PlantConfigs.tomatoseed.name);
+            break;
+          case PlantType.blueberrySeed:
+            this.setSprite(PlantConfigs.blueberryseed.name);
+            this.setNameLb(PlantConfigs.blueberryseed.name);
+            break;
+          case PlantType.strawberrySeed:
+            this.setSprite(PlantConfigs.strawberryseed.name);
+            this.setNameLb(PlantConfigs.strawberryseed.name);
+            break;
+          default:
+            break;
+        }
+      } else if (this.landState == LandState.Cattle) {
+        switch (this.cattleType) {
+          case CattleType.Cow:
+            this.setSprite(CattleConfigs.cow.name);
+            this.setNameLb(CattleConfigs.cow.name);
+            break;
+          case CattleType.Milkcow:
+            this.setSprite(CattleConfigs.milkcow.name);
+            this.setNameLb(CattleConfigs.milkcow.name);
+            break;
+          default:
+            break;
+        }
       }
+
+      this.tomatoSeedBtn.node.active = false;
+      this.blueberrySeedBtn.node.active = false;
+      this.strawberrySeedBtn.node.active = false;
+      this.milkCowBtn.node.active = false;
+
+      this.nameLb.node.active = true;
+      this.timeLb.node.active = true;
+      this.Sprite.node.active = true;
     } else if (this.time < 0) {
-      this.harvestBtn.enabled =
-        this.type == PlantType.Tomato ||
-        this.type == PlantType.Blueberry ||
-        this.type == PlantType.Strawberry;
-      this.milkBtn.enabled =
-        this.type == CattleType.Cow || this.type == CattleType.Milkcow;
+      this.harvestBtn.node.active = this.plantType != null;
+      this.milkBtn.node.active = this.cattleType != null;
     } else {
     }
   }
 
   onClickTomatoSeedBtn() {
-    this.tomatoSeedBtn.enabled = false;
-    this.blueberrySeedBtn.enabled = false;
-    this.milkCowBtn.enabled = false;
-
-    this.setNameLb(PlantConfigs.tomato.name);
-    this.setTimeLb(PlantConfigs.tomato.harvestInterval);
-    this.setSprite(PlantConfigs.tomato.name);
-
-    this.time = PlantConfigs.tomato.harvestInterval;
     this.isEmpty = false;
-    this.type = PlantType.Tomato;
+    this.plantType = PlantType.tomatoSeed;
+    this.time = PlantConfigs.tomatoseed.harvestInterval * 60;
+    //this.updateUI();
   }
   onClickBlueberrySeedBtn() {
-    this.tomatoSeedBtn.enabled = false;
-    this.blueberrySeedBtn.enabled = false;
-    this.milkCowBtn.enabled = false;
-
-    this.setNameLb(PlantConfigs.blueberry.name);
-    this.setTimeLb(PlantConfigs.blueberry.harvestInterval);
-    this.setSprite(PlantConfigs.blueberry.name);
-
-    this.time = PlantConfigs.tomato.harvestInterval;
+    this.time = PlantConfigs.tomatoseed.harvestInterval * 60;
     this.isEmpty = false;
-    this.type = PlantType.Blueberry;
+    this.plantType = PlantType.blueberrySeed;
   }
   onClickStrawberrySeedBtn() {
-    this.tomatoSeedBtn.enabled = false;
-    this.blueberrySeedBtn.enabled = false;
-    this.milkCowBtn.enabled = false;
-
-    this.setNameLb(PlantConfigs.blueberry.name);
-    this.setTimeLb(PlantConfigs.blueberry.harvestInterval);
-    this.setSprite(PlantConfigs.blueberry.name);
-
-    this.time = PlantConfigs.tomato.harvestInterval;
+    this.time = PlantConfigs.tomatoseed.harvestInterval * 60;
     this.isEmpty = false;
-    this.type = PlantType.Blueberry;
+    this.plantType = PlantType.strawberrySeed;
   }
   onClickMilkCowBtn() {
-    this.tomatoSeedBtn.enabled = false;
-    this.blueberrySeedBtn.enabled = false;
-    this.milkCowBtn.enabled = false;
-
-    this.setNameLb(CattleConfigs.milkcow.name);
-    this.setTimeLb(CattleConfigs.milkcow.harvestInterval);
-    this.setSprite(CattleConfigs.milkcow.name);
-
-    this.time = PlantConfigs.tomato.harvestInterval;
+    this.time = PlantConfigs.tomatoseed.harvestInterval * 60;
     this.isEmpty = false;
-    this.type = CattleType.Milkcow;
+    this.cattleType = CattleType.Milkcow;
   }
   onClickHarvestBtn() {
     this.resetUI();
@@ -215,12 +206,15 @@ export default class LandUI extends cc.Component {
   onClickMilkBtn() {
     this.resetUI();
   }
-  setNameLb(name: string) {}
+  setNameLb(name: string) {
+    this.nameLb.string = name;
+  }
   setTimeLb(time: number) {
     if (time < 0) {
       this.timeLb.string = "0s";
     } else {
-      this.timeLb.string = time.toString() + "s";
+      let _time = parseInt(time.toString());
+      this.timeLb.string = _time.toString() + "s";
     }
   }
   setWorkerSprite() {
@@ -245,17 +239,21 @@ export default class LandUI extends cc.Component {
     });
   };
   resetUI() {
-    this.tomatoSeedBtn.enabled = true;
-    this.blueberrySeedBtn.enabled = true;
-    this.milkCowBtn.enabled = true;
-    this.harvestBtn.enabled = false;
-    this.milkBtn.enabled = false;
+    this.tomatoSeedBtn.node.active = true;
+    this.blueberrySeedBtn.node.active = true;
+    this.strawberrySeedBtn.node.active = true;
+    this.milkCowBtn.node.active = true;
+    this.harvestBtn.node.active = false;
+    this.milkBtn.node.active = false;
     this.nameLb.string = "";
-    this.nameLb.enabled = false;
+    this.nameLb.node.active = false;
     this.timeLb.string = "";
-    this.timeLb.enabled = false;
-    this.workerSprite.enabled = false;
-    this.Sprite.enabled = false;
+    this.timeLb.node.active = false;
+    this.workerSprite.node.active = false;
+    this.Sprite.node.active = false;
+
+    this.plantType = null;
+    this.cattleType = null;
 
     this.time = 0;
     this.isEmpty = true;

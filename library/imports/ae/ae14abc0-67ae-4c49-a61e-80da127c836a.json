@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "plants",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "name,harvestInterval,maxHarvest,buyPrice\ntomatoSeed,1,2,30\nblueberrySeed,1,2,50\nstrawberrySeed,1,2,40"
+}

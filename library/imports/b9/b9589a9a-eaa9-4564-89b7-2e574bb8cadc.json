@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "machines",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "name,level,support,upgradePrice\nChina,1,10,500\nJapan,1,30,800\nAmerica,1,50,1000\nVietnam,1,5,300"
+}

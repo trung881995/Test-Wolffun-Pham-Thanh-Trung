@@ -1,0 +1,7 @@
+{
+  "__type__": "cc.TextAsset",
+  "_name": "yields",
+  "_objFlags": 0,
+  "_native": "",
+  "text": "name,sellPrice\nTomato,5\nBlueberry,8\nStrawberry,10\nMilk,15\nBeef,20"
+}

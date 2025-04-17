@@ -51,19 +51,19 @@ var MachineType_1 = require("../../enums/MachineType");
 var Type_1 = require("../../enums/Type");
 var CSVLoader_1 = require("../utils/CSVLoader");
 exports.PlantConfigs = (_a = {},
-    _a[PlantType_1.PlantType.Tomato] = {
+    _a[PlantType_1.PlantType.tomatoSeed] = {
         name: "",
         harvestInterval: 0,
         maxHarvest: 0,
         buyPrice: 0,
     },
-    _a[PlantType_1.PlantType.Blueberry] = {
+    _a[PlantType_1.PlantType.blueberrySeed] = {
         name: "",
         harvestInterval: 0,
         maxHarvest: 0,
         buyPrice: 0,
     },
-    _a[PlantType_1.PlantType.Strawberry] = {
+    _a[PlantType_1.PlantType.strawberrySeed] = {
         name: "",
         harvestInterval: 0,
         maxHarvest: 0,
@@ -93,6 +93,10 @@ exports.YieldConfigs = (_c = {},
         name: "",
         sellPrice: 0,
     },
+    _c[YieldType_1.YieldType.Strawberry] = {
+        name: "",
+        sellPrice: 0,
+    },
     _c[YieldType_1.YieldType.Milk] = {
         name: "",
         sellPrice: 0,
@@ -106,19 +110,19 @@ exports.LandConfigs = (_d = {},
     _d[LandType_1.LandType.Red] = {
         name: "",
         missionNumber: 0,
-        emptyInterval: 0,
+        containInterval: 0,
         buyPrice: 0,
     },
     _d[LandType_1.LandType.Green] = {
         name: "",
         missionNumber: 0,
-        emptyInterval: 0,
+        containInterval: 0,
         buyPrice: 0,
     },
     _d[LandType_1.LandType.Brown] = {
         name: "",
         missionNumber: 0,
-        emptyInterval: 0,
+        containInterval: 0,
         buyPrice: 0,
     },
     _d);
@@ -225,7 +229,7 @@ function loadPlantConfigFromCSV() {
         var records;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, CSVLoader_1.CSVLoader.load("plants.csv")];
+                case 0: return [4 /*yield*/, CSVLoader_1.CSVLoader.load("plants")];
                 case 1:
                     records = _a.sent();
                     records.forEach(function (row) {
@@ -251,7 +255,7 @@ function loadCattleConfigFromCSV() {
         var records;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, CSVLoader_1.CSVLoader.load("cattles.csv")];
+                case 0: return [4 /*yield*/, CSVLoader_1.CSVLoader.load("cattles")];
                 case 1:
                     records = _a.sent();
                     records.forEach(function (row) {
@@ -277,7 +281,7 @@ function loadYieldConfigFromCSV() {
         var records;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, CSVLoader_1.CSVLoader.load("Yields.csv")];
+                case 0: return [4 /*yield*/, CSVLoader_1.CSVLoader.load("yields")];
                 case 1:
                     records = _a.sent();
                     records.forEach(function (row) {
@@ -301,7 +305,7 @@ function loadWorkerConfigFromCSV() {
         var records;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, CSVLoader_1.CSVLoader.load("Workers.csv")];
+                case 0: return [4 /*yield*/, CSVLoader_1.CSVLoader.load("workers")];
                 case 1:
                     records = _a.sent();
                     records.forEach(function (row) {
@@ -326,7 +330,7 @@ function loadMachineConfigFromCSV() {
         var records;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, CSVLoader_1.CSVLoader.load("Machines.csv")];
+                case 0: return [4 /*yield*/, CSVLoader_1.CSVLoader.load("machines")];
                 case 1:
                     records = _a.sent();
                     records.forEach(function (row) {
@@ -352,7 +356,7 @@ function loadLandConfigFromCSV() {
         var records;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, CSVLoader_1.CSVLoader.load("Lands.csv")];
+                case 0: return [4 /*yield*/, CSVLoader_1.CSVLoader.load("lands")];
                 case 1:
                     records = _a.sent();
                     records.forEach(function (row) {
@@ -361,7 +365,7 @@ function loadLandConfigFromCSV() {
                             exports.LandConfigs[type] = {
                                 name: row.name,
                                 missionNumber: parseInt(row.missionNumber),
-                                emptyInterval: parseFloat(row.emptyInterval),
+                                containInterval: parseFloat(row.emptyInterval),
                                 buyPrice: parseInt(row.buyPrice),
                             };
                         }
