@@ -118,6 +118,7 @@ export class Machine implements IMachine {
   }
 }
 export class Land implements ILand {
+  containYield: number;
   name: string;
   number: number;
   missionNumber: number;
@@ -179,8 +180,8 @@ export class Storage implements IStorage {
     this.addGold(this.beef.number * this.beef.sellPrice);
     this.beef.number = 0;
   }
-  public addGold(gold: number): void {
-    gold += gold;
+  public addGold(_gold: number): void {
+    this.gold += _gold;
   }
   public getWorkerIdle(workingWorker: number): number {
     let idleWorker = this.worker.number - workingWorker;
@@ -215,5 +216,21 @@ export class Storage implements IStorage {
   }
   addLand(): void {
     this.land.number += 1;
+  }
+
+  public addTomato(tomatoNumber: number): void {
+    this.tomato.number += tomatoNumber;
+  }
+  addBlueberry(blueberryNumber: number): void {
+    this.blueberry.number += blueberryNumber;
+  }
+  addStrawberry(strawberryNumber: number): void {
+    this.strawberry.number += strawberryNumber;
+  }
+  addMilk(milkNumber: number): void {
+    this.milk.number += milkNumber;
+  }
+  addBeef(beefNumber: number): void {
+    this.beef.number += beefNumber;
   }
 }

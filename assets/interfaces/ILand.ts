@@ -4,4 +4,6 @@ export interface ILand {
   missionNumber: number;
   containInterval: number;
   buyPrice: number;
+  containYield: number;
+  currentAsset: any;
 }

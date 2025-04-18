@@ -82,6 +82,9 @@ export default class StorageUI extends cc.Component {
       UIManager.instance.gameController.model.storage.getIdleWorker();
     const workingWorker =
       UIManager.instance.gameController.model.storage.getWorkingWorker();
+
+    UIManager.instance.createLand();
+
     this.tomatoSeed.string =
       UIManager.instance.gameController.model.storage.tomatoSeed.number.toString();
     this.blueberrySeed.string =
@@ -106,23 +109,33 @@ export default class StorageUI extends cc.Component {
       UIManager.instance.gameController.model.storage.strawberry.number.toString();
     this.milk.string =
       UIManager.instance.gameController.model.storage.milk.number.toString();
+
+    console.log("update Storage UI Done !!!");
   }
   resetUI() {}
 
   onClickSellTomatoBtn() {
-    UIManager.instance.gameController.model.storage.sellTomato();
-    UIManager.instance.storageUI.updateUI();
+    if (UIManager.instance.gameController.model.storage.tomato.number > 0) {
+      UIManager.instance.gameController.model.storage.sellTomato();
+      UIManager.instance.storageUI.updateUI();
+    }
   }
   onClickSellBlueberryBtn() {
-    UIManager.instance.gameController.model.storage.sellBlueberry();
-    UIManager.instance.storageUI.updateUI();
+    if (UIManager.instance.gameController.model.storage.blueberry.number > 0) {
+      UIManager.instance.gameController.model.storage.sellBlueberry();
+      UIManager.instance.storageUI.updateUI();
+    }
   }
   onClickSellStrawberryBtn() {
-    UIManager.instance.gameController.model.storage.sellStrawberry();
-    UIManager.instance.storageUI.updateUI();
+    if (UIManager.instance.gameController.model.storage.blueberry.number > 0) {
+      UIManager.instance.gameController.model.storage.sellStrawberry();
+      UIManager.instance.storageUI.updateUI();
+    }
   }
   onClickSellMilkBtn() {
-    UIManager.instance.gameController.model.storage.sellMilk();
-    UIManager.instance.storageUI.updateUI();
+    if (UIManager.instance.gameController.model.storage.milk.number > 0) {
+      UIManager.instance.gameController.model.storage.sellMilk();
+      UIManager.instance.storageUI.updateUI();
+    }
   }
 }

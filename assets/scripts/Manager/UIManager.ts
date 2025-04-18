@@ -47,5 +47,13 @@ export default class UIManager extends cc.Component {
 
     this.storageUI.setupUI();
     this.storageUI.updateUI();
+
+    this.storeUI.setupUI();
+  }
+
+  createLand() {
+    for (let i = 0; i < this.gameController.model.storage.land.number; i++) {
+      this.landUIArray[i].enableLand();
+    }
   }
 }

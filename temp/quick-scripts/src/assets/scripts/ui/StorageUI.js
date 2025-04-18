@@ -70,6 +70,7 @@ var StorageUI = /** @class */ (function (_super) {
     StorageUI.prototype.updateUI = function () {
         var idleWorker = UIManager_1.default.instance.gameController.model.storage.getIdleWorker();
         var workingWorker = UIManager_1.default.instance.gameController.model.storage.getWorkingWorker();
+        UIManager_1.default.instance.createLand();
         this.tomatoSeed.string =
             UIManager_1.default.instance.gameController.model.storage.tomatoSeed.number.toString();
         this.blueberrySeed.string =
@@ -92,23 +93,32 @@ var StorageUI = /** @class */ (function (_super) {
             UIManager_1.default.instance.gameController.model.storage.strawberry.number.toString();
         this.milk.string =
             UIManager_1.default.instance.gameController.model.storage.milk.number.toString();
+        console.log("update Storage UI Done !!!");
     };
     StorageUI.prototype.resetUI = function () { };
     StorageUI.prototype.onClickSellTomatoBtn = function () {
-        UIManager_1.default.instance.gameController.model.storage.sellTomato();
-        UIManager_1.default.instance.storageUI.updateUI();
+        if (UIManager_1.default.instance.gameController.model.storage.tomato.number > 0) {
+            UIManager_1.default.instance.gameController.model.storage.sellTomato();
+            UIManager_1.default.instance.storageUI.updateUI();
+        }
     };
     StorageUI.prototype.onClickSellBlueberryBtn = function () {
-        UIManager_1.default.instance.gameController.model.storage.sellBlueberry();
-        UIManager_1.default.instance.storageUI.updateUI();
+        if (UIManager_1.default.instance.gameController.model.storage.blueberry.number > 0) {
+            UIManager_1.default.instance.gameController.model.storage.sellBlueberry();
+            UIManager_1.default.instance.storageUI.updateUI();
+        }
     };
     StorageUI.prototype.onClickSellStrawberryBtn = function () {
-        UIManager_1.default.instance.gameController.model.storage.sellStrawberry();
-        UIManager_1.default.instance.storageUI.updateUI();
+        if (UIManager_1.default.instance.gameController.model.storage.blueberry.number > 0) {
+            UIManager_1.default.instance.gameController.model.storage.sellStrawberry();
+            UIManager_1.default.instance.storageUI.updateUI();
+        }
     };
     StorageUI.prototype.onClickSellMilkBtn = function () {
-        UIManager_1.default.instance.gameController.model.storage.sellMilk();
-        UIManager_1.default.instance.storageUI.updateUI();
+        if (UIManager_1.default.instance.gameController.model.storage.milk.number > 0) {
+            UIManager_1.default.instance.gameController.model.storage.sellMilk();
+            UIManager_1.default.instance.storageUI.updateUI();
+        }
     };
     __decorate([
         property(cc.Label)

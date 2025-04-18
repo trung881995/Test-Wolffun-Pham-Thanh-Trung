@@ -151,8 +151,8 @@ var Storage = /** @class */ (function () {
         this.addGold(this.beef.number * this.beef.sellPrice);
         this.beef.number = 0;
     };
-    Storage.prototype.addGold = function (gold) {
-        gold += gold;
+    Storage.prototype.addGold = function (_gold) {
+        this.gold += _gold;
     };
     Storage.prototype.getWorkerIdle = function (workingWorker) {
         var idleWorker = this.worker.number - workingWorker;
@@ -186,6 +186,21 @@ var Storage = /** @class */ (function () {
     };
     Storage.prototype.addLand = function () {
         this.land.number += 1;
+    };
+    Storage.prototype.addTomato = function (tomatoNumber) {
+        this.tomato.number += tomatoNumber;
+    };
+    Storage.prototype.addBlueberry = function (blueberryNumber) {
+        this.blueberry.number += blueberryNumber;
+    };
+    Storage.prototype.addStrawberry = function (strawberryNumber) {
+        this.strawberry.number += strawberryNumber;
+    };
+    Storage.prototype.addMilk = function (milkNumber) {
+        this.milk.number += milkNumber;
+    };
+    Storage.prototype.addBeef = function (beefNumber) {
+        this.beef.number += beefNumber;
     };
     return Storage;
 }());

@@ -118,10 +118,16 @@ var UIManager = /** @class */ (function (_super) {
                         }
                         this.storageUI.setupUI();
                         this.storageUI.updateUI();
+                        this.storeUI.setupUI();
                         return [2 /*return*/];
                 }
             });
         });
+    };
+    UIManager.prototype.createLand = function () {
+        for (var i = 0; i < this.gameController.model.storage.land.number; i++) {
+            this.landUIArray[i].enableLand();
+        }
     };
     var UIManager_1;
     __decorate([

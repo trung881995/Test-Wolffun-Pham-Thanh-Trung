@@ -65,33 +65,57 @@ var StoreUI = /** @class */ (function (_super) {
         this.buyLandBtn.node.on(cc.Node.EventType.TOUCH_END, this.onClickBuyLandBtn, this);
         console.log("setup UI Done!!!!");
     };
+    StoreUI.prototype.updateUI = function () { };
+    StoreUI.prototype.resetUI = function () { };
     StoreUI.prototype.onClickBuyTomatoSeedBtn = function () {
-        UIManager_1.default.instance.gameController.model.store.buyTomatoSeed();
-        UIManager_1.default.instance.storageUI.updateUI();
+        console.log("onClickBuyTomatoSeedBtn!!!!");
+        if (UIManager_1.default.instance.gameController.model.storage.gold >=
+            UIManager_1.default.instance.gameController.model.storage.tomatoSeed.buyPrice) {
+            UIManager_1.default.instance.gameController.model.store.buyTomatoSeed();
+            UIManager_1.default.instance.storageUI.updateUI();
+        }
     };
     StoreUI.prototype.onClickBuyBlueberrySeedBtn = function () {
-        UIManager_1.default.instance.gameController.model.store.buyBlueberrySeed();
-        UIManager_1.default.instance.storageUI.updateUI();
+        if (UIManager_1.default.instance.gameController.model.storage.gold >=
+            UIManager_1.default.instance.gameController.model.storage.blueberrySeed.buyPrice) {
+            UIManager_1.default.instance.gameController.model.store.buyBlueberrySeed();
+            UIManager_1.default.instance.storageUI.updateUI();
+        }
     };
     StoreUI.prototype.onClickBuyStrawberrySeedBtn = function () {
-        UIManager_1.default.instance.gameController.model.store.buyStrawberrySeed();
-        UIManager_1.default.instance.storageUI.updateUI();
+        if (UIManager_1.default.instance.gameController.model.storage.gold >=
+            UIManager_1.default.instance.gameController.model.storage.strawberrySeed.buyPrice) {
+            UIManager_1.default.instance.gameController.model.store.buyStrawberrySeed();
+            UIManager_1.default.instance.storageUI.updateUI();
+        }
     };
     StoreUI.prototype.onClickBuyMilkcowBtn = function () {
-        UIManager_1.default.instance.gameController.model.store.buyMilkCow();
-        UIManager_1.default.instance.storageUI.updateUI();
+        if (UIManager_1.default.instance.gameController.model.storage.gold >=
+            UIManager_1.default.instance.gameController.model.storage.milkCow.buyPrice) {
+            UIManager_1.default.instance.gameController.model.store.buyMilkCow();
+            UIManager_1.default.instance.storageUI.updateUI();
+        }
     };
     StoreUI.prototype.onClickBuyWorkerBtn = function () {
-        UIManager_1.default.instance.gameController.model.store.buyWorker();
-        UIManager_1.default.instance.storageUI.updateUI();
+        if (UIManager_1.default.instance.gameController.model.storage.gold >=
+            UIManager_1.default.instance.gameController.model.storage.worker.buyPrice) {
+            UIManager_1.default.instance.gameController.model.store.buyWorker();
+            UIManager_1.default.instance.storageUI.updateUI();
+        }
     };
     StoreUI.prototype.onClickUpgradeMachineBtn = function () {
-        UIManager_1.default.instance.gameController.model.store.upgradeMachine();
-        UIManager_1.default.instance.storageUI.updateUI();
+        if (UIManager_1.default.instance.gameController.model.storage.gold >=
+            UIManager_1.default.instance.gameController.model.storage.machine.upgradePrice) {
+            UIManager_1.default.instance.gameController.model.store.upgradeMachine();
+            UIManager_1.default.instance.storageUI.updateUI();
+        }
     };
     StoreUI.prototype.onClickBuyLandBtn = function () {
-        UIManager_1.default.instance.gameController.model.store.buyLand();
-        UIManager_1.default.instance.storageUI.updateUI();
+        if (UIManager_1.default.instance.gameController.model.storage.gold >=
+            UIManager_1.default.instance.gameController.model.storage.land.buyPrice) {
+            UIManager_1.default.instance.gameController.model.store.buyLand();
+            UIManager_1.default.instance.storageUI.updateUI();
+        }
     };
     __decorate([
         property(cc.Button)

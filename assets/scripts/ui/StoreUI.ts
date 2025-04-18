@@ -79,33 +79,70 @@ export default class StoreUI extends cc.Component {
     );
     console.log("setup UI Done!!!!");
   }
-
+  updateUI() {}
+  resetUI() {}
   onClickBuyTomatoSeedBtn() {
-    UIManager.instance.gameController.model.store.buyTomatoSeed();
-    UIManager.instance.storageUI.updateUI();
+    console.log("onClickBuyTomatoSeedBtn!!!!");
+    if (
+      UIManager.instance.gameController.model.storage.gold >=
+      UIManager.instance.gameController.model.storage.tomatoSeed.buyPrice
+    ) {
+      UIManager.instance.gameController.model.store.buyTomatoSeed();
+      UIManager.instance.storageUI.updateUI();
+    }
   }
   onClickBuyBlueberrySeedBtn() {
-    UIManager.instance.gameController.model.store.buyBlueberrySeed();
-    UIManager.instance.storageUI.updateUI();
+    if (
+      UIManager.instance.gameController.model.storage.gold >=
+      UIManager.instance.gameController.model.storage.blueberrySeed.buyPrice
+    ) {
+      UIManager.instance.gameController.model.store.buyBlueberrySeed();
+      UIManager.instance.storageUI.updateUI();
+    }
   }
   onClickBuyStrawberrySeedBtn() {
-    UIManager.instance.gameController.model.store.buyStrawberrySeed();
-    UIManager.instance.storageUI.updateUI();
+    if (
+      UIManager.instance.gameController.model.storage.gold >=
+      UIManager.instance.gameController.model.storage.strawberrySeed.buyPrice
+    ) {
+      UIManager.instance.gameController.model.store.buyStrawberrySeed();
+      UIManager.instance.storageUI.updateUI();
+    }
   }
   onClickBuyMilkcowBtn() {
-    UIManager.instance.gameController.model.store.buyMilkCow();
-    UIManager.instance.storageUI.updateUI();
+    if (
+      UIManager.instance.gameController.model.storage.gold >=
+      UIManager.instance.gameController.model.storage.milkCow.buyPrice
+    ) {
+      UIManager.instance.gameController.model.store.buyMilkCow();
+      UIManager.instance.storageUI.updateUI();
+    }
   }
   onClickBuyWorkerBtn() {
-    UIManager.instance.gameController.model.store.buyWorker();
-    UIManager.instance.storageUI.updateUI();
+    if (
+      UIManager.instance.gameController.model.storage.gold >=
+      UIManager.instance.gameController.model.storage.worker.buyPrice
+    ) {
+      UIManager.instance.gameController.model.store.buyWorker();
+      UIManager.instance.storageUI.updateUI();
+    }
   }
   onClickUpgradeMachineBtn() {
-    UIManager.instance.gameController.model.store.upgradeMachine();
-    UIManager.instance.storageUI.updateUI();
+    if (
+      UIManager.instance.gameController.model.storage.gold >=
+      UIManager.instance.gameController.model.storage.machine.upgradePrice
+    ) {
+      UIManager.instance.gameController.model.store.upgradeMachine();
+      UIManager.instance.storageUI.updateUI();
+    }
   }
   onClickBuyLandBtn() {
-    UIManager.instance.gameController.model.store.buyLand();
-    UIManager.instance.storageUI.updateUI();
+    if (
+      UIManager.instance.gameController.model.storage.gold >=
+      UIManager.instance.gameController.model.storage.land.buyPrice
+    ) {
+      UIManager.instance.gameController.model.store.buyLand();
+      UIManager.instance.storageUI.updateUI();
+    }
   }
 }

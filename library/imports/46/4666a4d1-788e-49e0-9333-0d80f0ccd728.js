@@ -105,19 +105,66 @@ var GameModel = /** @class */ (function (_super) {
                         _a.sent();
                         this.storage.gold = 0;
                         this.storage.land.number = GameConfig_1.FirstConfigs.land.number;
+                        this.storage.land.buyPrice = GameConfig_1.LandConfigs.red.buyPrice;
+                        this.storage.land.name = GameConfig_1.LandConfigs.red.name;
+                        this.storage.land.missionNumber = GameConfig_1.LandConfigs.red.missionNumber;
+                        this.storage.land.containInterval = GameConfig_1.LandConfigs.red.containInterval;
+                        this.storage.land.containYield = 0;
                         this.storage.blueberrySeed.number = GameConfig_1.FirstConfigs.blueberryseed.number;
+                        this.storage.blueberrySeed.name = GameConfig_1.PlantConfigs.blueberryseed.name;
+                        this.storage.blueberrySeed.buyPrice = GameConfig_1.PlantConfigs.blueberryseed.buyPrice;
+                        this.storage.blueberrySeed.harvestInterval =
+                            GameConfig_1.PlantConfigs.blueberryseed.harvestInterval;
+                        this.storage.blueberrySeed.maxHarvest =
+                            GameConfig_1.PlantConfigs.blueberryseed.maxHarvest;
                         this.storage.tomatoSeed.number = GameConfig_1.FirstConfigs.tomatoseed.number;
+                        this.storage.tomatoSeed.name = GameConfig_1.PlantConfigs.tomatoseed.name;
+                        this.storage.tomatoSeed.buyPrice = GameConfig_1.PlantConfigs.tomatoseed.buyPrice;
+                        this.storage.tomatoSeed.harvestInterval =
+                            GameConfig_1.PlantConfigs.tomatoseed.harvestInterval;
+                        this.storage.tomatoSeed.maxHarvest = GameConfig_1.PlantConfigs.tomatoseed.maxHarvest;
                         this.storage.strawberrySeed.number = 0;
+                        this.storage.strawberrySeed.name = GameConfig_1.PlantConfigs.strawberryseed.name;
+                        this.storage.strawberrySeed.buyPrice = GameConfig_1.PlantConfigs.strawberryseed.buyPrice;
+                        this.storage.strawberrySeed.harvestInterval =
+                            GameConfig_1.PlantConfigs.strawberryseed.harvestInterval;
+                        this.storage.strawberrySeed.maxHarvest =
+                            GameConfig_1.PlantConfigs.strawberryseed.maxHarvest;
                         this.storage.milkCow.number = GameConfig_1.FirstConfigs.milkcow.number;
+                        this.storage.milkCow.name = GameConfig_1.CattleConfigs.milkcow.name;
+                        this.storage.milkCow.buyPrice = GameConfig_1.CattleConfigs.milkcow.buyPrice;
+                        this.storage.milkCow.harvestInterval =
+                            GameConfig_1.CattleConfigs.milkcow.harvestInterval;
+                        this.storage.milkCow.maxHarvest = GameConfig_1.CattleConfigs.milkcow.maxHarvest;
                         this.storage.cow.number = 0;
+                        this.storage.cow.name = GameConfig_1.CattleConfigs.cow.name;
+                        this.storage.cow.buyPrice = GameConfig_1.CattleConfigs.cow.buyPrice;
+                        this.storage.cow.harvestInterval = GameConfig_1.CattleConfigs.cow.harvestInterval;
+                        this.storage.cow.maxHarvest = GameConfig_1.CattleConfigs.cow.maxHarvest;
                         this.storage.worker.number = GameConfig_1.FirstConfigs.worker.number;
+                        this.storage.worker.name = GameConfig_1.WorkerConfigs.middle.name;
+                        this.storage.worker.workingInterval = GameConfig_1.WorkerConfigs.middle.workingInterval;
+                        this.storage.worker.buyPrice = GameConfig_1.WorkerConfigs.middle.buyPrice;
                         this.storage.workingWorkerNumber = 0;
-                        this.storage.machine.level = 1;
+                        this.storage.machine.level = GameConfig_1.MachineConfigs.china.level;
+                        this.storage.machine.name = GameConfig_1.MachineConfigs.china.name;
+                        this.storage.machine.support = GameConfig_1.MachineConfigs.china.support;
+                        this.storage.machine.upgradePrice = GameConfig_1.MachineConfigs.china.upgradePrice;
                         this.storage.tomato.number = 0;
+                        this.storage.tomato.name = GameConfig_1.YieldConfigs.tomato.name;
+                        this.storage.tomato.sellPrice = GameConfig_1.YieldConfigs.tomato.sellPrice;
                         this.storage.blueberry.number = 0;
+                        this.storage.blueberry.name = GameConfig_1.YieldConfigs.blueberry.name;
+                        this.storage.blueberry.sellPrice = GameConfig_1.YieldConfigs.blueberry.sellPrice;
                         this.storage.strawberry.number = 0;
+                        this.storage.strawberry.name = GameConfig_1.YieldConfigs.strawberry.name;
+                        this.storage.strawberry.sellPrice = GameConfig_1.YieldConfigs.strawberry.sellPrice;
                         this.storage.milk.number = 0;
+                        this.storage.milk.name = GameConfig_1.YieldConfigs.milk.name;
+                        this.storage.milk.sellPrice = GameConfig_1.YieldConfigs.milk.sellPrice;
                         this.storage.beef.number = 0;
+                        this.storage.beef.name = GameConfig_1.YieldConfigs.beef.name;
+                        this.storage.beef.sellPrice = GameConfig_1.YieldConfigs.beef.sellPrice;
                         return [2 /*return*/];
                 }
             });
