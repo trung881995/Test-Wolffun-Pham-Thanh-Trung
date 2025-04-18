@@ -29,6 +29,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var UIManager_1 = require("../Manager/UIManager");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var StoreUI = /** @class */ (function (_super) {
     __extends(StoreUI, _super);
@@ -40,13 +41,58 @@ var StoreUI = /** @class */ (function (_super) {
         _this.buyMilkCowBtn = null;
         _this.buyWorkerBtn = null;
         _this.upgradeMachineBtn = null;
-        _this.upgradeLandBtn = null;
+        _this.buyLandBtn = null;
         return _this;
-        // update (dt) {}
     }
     // LIFE-CYCLE CALLBACKS:
     // onLoad () {}
     StoreUI.prototype.start = function () { };
+    // update (dt) {}
+    StoreUI.prototype.setupUI = function () {
+        this.buyTomatoSeedBtn.node.active = true;
+        this.buyTomatoSeedBtn.node.on(cc.Node.EventType.TOUCH_END, this.onClickBuyTomatoSeedBtn, this);
+        this.buyBlueberrySeedBtn.node.active = true;
+        this.buyBlueberrySeedBtn.node.on(cc.Node.EventType.TOUCH_END, this.onClickBuyBlueberrySeedBtn, this);
+        this.buyStrawberrySeedBtn.node.active = true;
+        this.buyStrawberrySeedBtn.node.on(cc.Node.EventType.TOUCH_END, this.onClickBuyStrawberrySeedBtn, this);
+        this.buyMilkCowBtn.node.active = true;
+        this.buyMilkCowBtn.node.on(cc.Node.EventType.TOUCH_END, this.onClickBuyMilkcowBtn, this);
+        this.buyWorkerBtn.node.active = true;
+        this.buyWorkerBtn.node.on(cc.Node.EventType.TOUCH_END, this.onClickBuyWorkerBtn, this);
+        this.upgradeMachineBtn.node.active = true;
+        this.upgradeMachineBtn.node.on(cc.Node.EventType.TOUCH_END, this.onClickUpgradeMachineBtn, this);
+        this.buyLandBtn.node.active = true;
+        this.buyLandBtn.node.on(cc.Node.EventType.TOUCH_END, this.onClickBuyLandBtn, this);
+        console.log("setup UI Done!!!!");
+    };
+    StoreUI.prototype.onClickBuyTomatoSeedBtn = function () {
+        UIManager_1.default.instance.gameController.model.store.buyTomatoSeed();
+        UIManager_1.default.instance.storageUI.updateUI();
+    };
+    StoreUI.prototype.onClickBuyBlueberrySeedBtn = function () {
+        UIManager_1.default.instance.gameController.model.store.buyBlueberrySeed();
+        UIManager_1.default.instance.storageUI.updateUI();
+    };
+    StoreUI.prototype.onClickBuyStrawberrySeedBtn = function () {
+        UIManager_1.default.instance.gameController.model.store.buyStrawberrySeed();
+        UIManager_1.default.instance.storageUI.updateUI();
+    };
+    StoreUI.prototype.onClickBuyMilkcowBtn = function () {
+        UIManager_1.default.instance.gameController.model.store.buyMilkCow();
+        UIManager_1.default.instance.storageUI.updateUI();
+    };
+    StoreUI.prototype.onClickBuyWorkerBtn = function () {
+        UIManager_1.default.instance.gameController.model.store.buyWorker();
+        UIManager_1.default.instance.storageUI.updateUI();
+    };
+    StoreUI.prototype.onClickUpgradeMachineBtn = function () {
+        UIManager_1.default.instance.gameController.model.store.upgradeMachine();
+        UIManager_1.default.instance.storageUI.updateUI();
+    };
+    StoreUI.prototype.onClickBuyLandBtn = function () {
+        UIManager_1.default.instance.gameController.model.store.buyLand();
+        UIManager_1.default.instance.storageUI.updateUI();
+    };
     __decorate([
         property(cc.Button)
     ], StoreUI.prototype, "buyTomatoSeedBtn", void 0);
@@ -67,7 +113,7 @@ var StoreUI = /** @class */ (function (_super) {
     ], StoreUI.prototype, "upgradeMachineBtn", void 0);
     __decorate([
         property(cc.Button)
-    ], StoreUI.prototype, "upgradeLandBtn", void 0);
+    ], StoreUI.prototype, "buyLandBtn", void 0);
     StoreUI = __decorate([
         ccclass
     ], StoreUI);

@@ -126,7 +126,7 @@ var LandUI = /** @class */ (function (_super) {
         this.harvestBtn.node.on(cc.Node.EventType.TOUCH_END, this.onClickHarvestBtn, this);
         //this.milkBtn.node.active = true;
         this.milkBtn.node.on(cc.Node.EventType.TOUCH_END, this.onClickMilkBtn, this);
-        console.log("setup UI Done!!!!");
+        console.log("setup LandUI Done!!!!");
     };
     LandUI.prototype.updateUI = function () {
         this.setTimeLb(this.land.time);

@@ -125,6 +125,12 @@ exports.Land = Land;
 var Storage = /** @class */ (function () {
     function Storage() {
     }
+    Storage.prototype.getIdleWorker = function () {
+        return this.worker.number - this.workingWorkerNumber;
+    };
+    Storage.prototype.getWorkingWorker = function () {
+        return this.workingWorkerNumber;
+    };
     Storage.prototype.sellTomato = function () {
         this.addGold(this.tomato.number * this.tomato.sellPrice);
         this.tomato.number = 0;

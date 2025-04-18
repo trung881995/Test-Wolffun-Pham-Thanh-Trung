@@ -151,6 +151,14 @@ export class Storage implements IStorage {
   milkCow: MilkCow;
   cow: Cow;
 
+  workingWorkerNumber: number;
+  getIdleWorker() {
+    return this.worker.number - this.workingWorkerNumber;
+  }
+  getWorkingWorker() {
+    return this.workingWorkerNumber;
+  }
+
   public sellTomato(): void {
     this.addGold(this.tomato.number * this.tomato.sellPrice);
     this.tomato.number = 0;

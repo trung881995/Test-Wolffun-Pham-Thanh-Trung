@@ -45,7 +45,7 @@ export default class UIManager extends cc.Component {
       this.landUIArray[i].DisplayUI();
     }
 
-    //this.label.string = this.gameController.model.getFirstData().land.number.toString();
+    this.storageUI.setupUI();
+    this.storageUI.updateUI();
   }
-  // update (dt) {}
 }

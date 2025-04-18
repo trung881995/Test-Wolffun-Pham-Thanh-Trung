@@ -125,7 +125,7 @@ export default class LandUI extends cc.Component {
       this
     );
 
-    console.log("setup UI Done!!!!");
+    console.log("setup LandUI Done!!!!");
   }
   public updateUI() {
     this.setTimeLb(this.land.time);

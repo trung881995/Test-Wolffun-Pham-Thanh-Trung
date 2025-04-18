@@ -25406,9 +25406,7 @@
     "upgradeMachineBtn": {
       "__id__": 530
     },
-    "upgradeLandBtn": {
-      "__id__": 537
-    },
+    "buyLandBtn": null,
     "_id": "1cD+2B2aZMo6wnWoHx3t4t"
   },
   {
@@ -28240,7 +28238,7 @@
     "sellBlueberryBtn": {
       "__id__": 601
     },
-    "sellStrawberrBtn": {
+    "sellStrawberryBtn": {
       "__id__": 608
     },
     "sellMilkBtn": {

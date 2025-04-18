@@ -89,7 +89,6 @@ var UIManager = /** @class */ (function (_super) {
         _this.storeUI = null;
         _this.storageUI = null;
         return _this;
-        // update (dt) {}
     }
     UIManager_1 = UIManager;
     // LIFE-CYCLE CALLBACKS:
@@ -117,6 +116,8 @@ var UIManager = /** @class */ (function (_super) {
                             this.landUIArray[i].land = clones[i];
                             this.landUIArray[i].DisplayUI();
                         }
+                        this.storageUI.setupUI();
+                        this.storageUI.updateUI();
                         return [2 /*return*/];
                 }
             });
