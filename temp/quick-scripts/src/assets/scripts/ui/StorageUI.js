@@ -110,7 +110,7 @@ var StorageUI = /** @class */ (function (_super) {
         }
     };
     StorageUI.prototype.onClickSellStrawberryBtn = function () {
-        if (UIManager_1.default.instance.gameController.model.storage.blueberry.number > 0) {
+        if (UIManager_1.default.instance.gameController.model.storage.strawberry.number > 0) {
             UIManager_1.default.instance.gameController.model.storage.sellStrawberry();
             UIManager_1.default.instance.storageUI.updateUI();
         }

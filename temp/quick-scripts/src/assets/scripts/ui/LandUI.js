@@ -29,7 +29,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LandState = void 0;
+exports.YeildAction = exports.LandState = void 0;
 var CattleType_1 = require("../../enums/CattleType");
 var PlantType_1 = require("../../enums/PlantType");
 var UIManager_1 = require("../Manager/UIManager");
@@ -44,6 +44,13 @@ var LandState;
     LandState[LandState["Cattle"] = 3] = "Cattle";
     LandState[LandState["Harvest"] = 4] = "Harvest";
 })(LandState = exports.LandState || (exports.LandState = {}));
+var YeildAction;
+(function (YeildAction) {
+    YeildAction["Undefined"] = "";
+    YeildAction["Harvest"] = "Harvest";
+    YeildAction["Milk"] = "Milk";
+    YeildAction["Butcher"] = "Butcher";
+})(YeildAction = exports.YeildAction || (exports.YeildAction = {}));
 var LandUI = /** @class */ (function (_super) {
     __extends(LandUI, _super);
     function LandUI() {
@@ -52,12 +59,12 @@ var LandUI = /** @class */ (function (_super) {
         _this.blueberrySeedBtn = null;
         _this.strawberrySeedBtn = null;
         _this.milkCowBtn = null;
-        _this.harvestBtn = null;
-        _this.milkBtn = null;
+        _this.yieldBtn = null;
         _this.nameLb = null;
         _this.timeLb = null;
         _this.yieldContainLb = null;
         _this.cropLb = null;
+        _this.yieldButtonLb = null;
         _this.workerSprite = null;
         _this.Sprite = null;
         _this.loadImage = function (imageName, sprite) {
@@ -137,9 +144,7 @@ var LandUI = /** @class */ (function (_super) {
         this.milkCowBtn.node.active = true;
         this.milkCowBtn.node.on(cc.Node.EventType.TOUCH_END, this.onClickMilkCowBtn, this);
         //this.harvestBtn.node.active = true;
-        this.harvestBtn.node.on(cc.Node.EventType.TOUCH_END, this.onClickHarvestBtn, this);
-        //this.milkBtn.node.active = true;
-        this.milkBtn.node.on(cc.Node.EventType.TOUCH_END, this.onClickMilkBtn, this);
+        this.yieldBtn.node.on(cc.Node.EventType.TOUCH_END, this.onClickYieldBtn, this);
         console.log("setup LandUI Done!!!!");
     };
     LandUI.prototype.updateUI = function () {
@@ -191,10 +196,30 @@ var LandUI = /** @class */ (function (_super) {
         }
         else {
         }
-        this.harvestBtn.node.active =
-            this.land.plantType != null && this.land.containYield > 0;
-        this.milkBtn.node.active =
-            this.land.cattleType != null && this.land.containYield > 0;
+        this.yieldBtn.node.active =
+            (this.land.plantType != null || this.land.cattleType != null) &&
+                this.land.containYield > 0;
+        if (this.yieldBtn.node.active) {
+            switch (this.land.currentAsset) {
+                case UIManager_1.default.instance.gameController.model.storage.tomatoSeed:
+                    this.yieldButtonLb.string = YeildAction.Harvest;
+                    break;
+                case UIManager_1.default.instance.gameController.model.storage.blueberrySeed:
+                    this.yieldButtonLb.string = YeildAction.Harvest;
+                    break;
+                case UIManager_1.default.instance.gameController.model.storage.strawberrySeed:
+                    this.yieldButtonLb.string = YeildAction.Harvest;
+                    break;
+                case UIManager_1.default.instance.gameController.model.storage.milkCow:
+                    this.yieldButtonLb.string = YeildAction.Milk;
+                    break;
+                case UIManager_1.default.instance.gameController.model.storage.cow:
+                    this.yieldButtonLb.string = YeildAction.Butcher;
+                    break;
+                default:
+                    break;
+            }
+        }
     };
     LandUI.prototype.onClickTomatoSeedBtn = function () {
         this.land.isEmpty = false;
@@ -203,6 +228,8 @@ var LandUI = /** @class */ (function (_super) {
         this.land.currentAsset =
             UIManager_1.default.instance.gameController.model.storage.tomatoSeed;
         this.land.crop = this.land.currentAsset.maxHarvest;
+        UIManager_1.default.instance.gameController.model.storage.tomatoSeed.number -= 1;
+        UIManager_1.default.instance.storageUI.updateUI();
         //this.updateUI();
     };
     LandUI.prototype.onClickBlueberrySeedBtn = function () {
@@ -212,6 +239,8 @@ var LandUI = /** @class */ (function (_super) {
         this.land.currentAsset =
             UIManager_1.default.instance.gameController.model.storage.blueberrySeed;
         this.land.crop = this.land.currentAsset.maxHarvest;
+        UIManager_1.default.instance.gameController.model.storage.blueberrySeed.number -= 1;
+        UIManager_1.default.instance.storageUI.updateUI();
     };
     LandUI.prototype.onClickStrawberrySeedBtn = function () {
         this.land.time = GameConfig_1.PlantConfigs.tomatoseed.harvestInterval * 60;
@@ -220,6 +249,8 @@ var LandUI = /** @class */ (function (_super) {
         this.land.currentAsset =
             UIManager_1.default.instance.gameController.model.storage.strawberrySeed;
         this.land.crop = this.land.currentAsset.maxHarvest;
+        UIManager_1.default.instance.gameController.model.storage.strawberrySeed.number -= 1;
+        UIManager_1.default.instance.storageUI.updateUI();
     };
     LandUI.prototype.onClickMilkCowBtn = function () {
         this.land.time = GameConfig_1.PlantConfigs.tomatoseed.harvestInterval * 60;
@@ -228,8 +259,10 @@ var LandUI = /** @class */ (function (_super) {
         this.land.currentAsset =
             UIManager_1.default.instance.gameController.model.storage.milkCow;
         this.land.crop = this.land.currentAsset.maxHarvest;
+        UIManager_1.default.instance.gameController.model.storage.milkCow.number -= 1;
+        UIManager_1.default.instance.storageUI.updateUI();
     };
-    LandUI.prototype.onClickHarvestBtn = function () {
+    LandUI.prototype.onClickYieldBtn = function () {
         //this.resetUI();
         switch (this.land.currentAsset) {
             case UIManager_1.default.instance.gameController.model.storage.tomatoSeed:
@@ -250,13 +283,13 @@ var LandUI = /** @class */ (function (_super) {
                 this.updateUI();
                 UIManager_1.default.instance.storageUI.updateUI();
                 break;
-            case UIManager_1.default.instance.gameController.model.storage.milk:
+            case UIManager_1.default.instance.gameController.model.storage.milkCow:
                 UIManager_1.default.instance.gameController.model.storage.addMilk(this.land.containYield);
                 this.land.containYield = 0;
                 this.updateUI();
                 UIManager_1.default.instance.storageUI.updateUI();
                 break;
-            case UIManager_1.default.instance.gameController.model.storage.beef:
+            case UIManager_1.default.instance.gameController.model.storage.cow:
                 UIManager_1.default.instance.gameController.model.storage.addBeef(this.land.containYield);
                 this.land.containYield = 0;
                 this.updateUI();
@@ -301,12 +334,13 @@ var LandUI = /** @class */ (function (_super) {
         this.blueberrySeedBtn.node.active = true;
         this.strawberrySeedBtn.node.active = true;
         this.milkCowBtn.node.active = true;
-        this.harvestBtn.node.active = false;
-        this.milkBtn.node.active = false;
+        this.yieldBtn.node.active = false;
         this.nameLb.string = "";
         this.nameLb.node.active = false;
         this.yieldContainLb.string = "";
         this.yieldContainLb.node.active = false;
+        this.cropLb.string = "";
+        this.cropLb.node.active = false;
         this.timeLb.string = "";
         this.timeLb.node.active = false;
         this.workerSprite.node.active = false;
@@ -337,10 +371,7 @@ var LandUI = /** @class */ (function (_super) {
     ], LandUI.prototype, "milkCowBtn", void 0);
     __decorate([
         property(cc.Button)
-    ], LandUI.prototype, "harvestBtn", void 0);
-    __decorate([
-        property(cc.Button)
-    ], LandUI.prototype, "milkBtn", void 0);
+    ], LandUI.prototype, "yieldBtn", void 0);
     __decorate([
         property(cc.Label)
     ], LandUI.prototype, "nameLb", void 0);
@@ -353,6 +384,9 @@ var LandUI = /** @class */ (function (_super) {
     __decorate([
         property(cc.Label)
     ], LandUI.prototype, "cropLb", void 0);
+    __decorate([
+        property(cc.Label)
+    ], LandUI.prototype, "yieldButtonLb", void 0);
     __decorate([
         property(cc.Sprite)
     ], LandUI.prototype, "workerSprite", void 0);

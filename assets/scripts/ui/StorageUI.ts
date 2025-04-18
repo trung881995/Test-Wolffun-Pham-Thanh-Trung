@@ -128,7 +128,7 @@ export default class StorageUI extends cc.Component {
     }
   }
   onClickSellStrawberryBtn() {
-    if (UIManager.instance.gameController.model.storage.blueberry.number > 0) {
+    if (UIManager.instance.gameController.model.storage.strawberry.number > 0) {
       UIManager.instance.gameController.model.storage.sellStrawberry();
       UIManager.instance.storageUI.updateUI();
     }

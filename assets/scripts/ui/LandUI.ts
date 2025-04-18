@@ -19,6 +19,12 @@ export enum LandState {
   Cattle,
   Harvest,
 }
+export enum YeildAction {
+  Undefined = "",
+  Harvest = "Harvest",
+  Milk = "Milk",
+  Butcher = "Butcher",
+}
 @ccclass
 export default class LandUI extends cc.Component {
   @property(cc.Button)
@@ -31,9 +37,7 @@ export default class LandUI extends cc.Component {
   milkCowBtn: cc.Button = null;
 
   @property(cc.Button)
-  harvestBtn: cc.Button = null;
-  @property(cc.Button)
-  milkBtn: cc.Button = null;
+  yieldBtn: cc.Button = null;
 
   @property(cc.Label)
   nameLb: cc.Label = null;
@@ -43,6 +47,9 @@ export default class LandUI extends cc.Component {
   yieldContainLb: cc.Label = null;
   @property(cc.Label)
   cropLb: cc.Label = null;
+
+  @property(cc.Label)
+  yieldButtonLb: cc.Label = null;
 
   @property(cc.Sprite)
   workerSprite: cc.Sprite = null;
@@ -129,15 +136,9 @@ export default class LandUI extends cc.Component {
       this
     );
     //this.harvestBtn.node.active = true;
-    this.harvestBtn.node.on(
+    this.yieldBtn.node.on(
       cc.Node.EventType.TOUCH_END,
-      this.onClickHarvestBtn,
-      this
-    );
-    //this.milkBtn.node.active = true;
-    this.milkBtn.node.on(
-      cc.Node.EventType.TOUCH_END,
-      this.onClickMilkBtn,
+      this.onClickYieldBtn,
       this
     );
 
@@ -193,10 +194,30 @@ export default class LandUI extends cc.Component {
     } else {
     }
 
-    this.harvestBtn.node.active =
-      this.land.plantType != null && this.land.containYield > 0;
-    this.milkBtn.node.active =
-      this.land.cattleType != null && this.land.containYield > 0;
+    this.yieldBtn.node.active =
+      (this.land.plantType != null || this.land.cattleType != null) &&
+      this.land.containYield > 0;
+    if (this.yieldBtn.node.active) {
+      switch (this.land.currentAsset) {
+        case UIManager.instance.gameController.model.storage.tomatoSeed:
+          this.yieldButtonLb.string = YeildAction.Harvest;
+          break;
+        case UIManager.instance.gameController.model.storage.blueberrySeed:
+          this.yieldButtonLb.string = YeildAction.Harvest;
+          break;
+        case UIManager.instance.gameController.model.storage.strawberrySeed:
+          this.yieldButtonLb.string = YeildAction.Harvest;
+          break;
+        case UIManager.instance.gameController.model.storage.milkCow:
+          this.yieldButtonLb.string = YeildAction.Milk;
+          break;
+        case UIManager.instance.gameController.model.storage.cow:
+          this.yieldButtonLb.string = YeildAction.Butcher;
+          break;
+        default:
+          break;
+      }
+    }
   }
 
   onClickTomatoSeedBtn() {
@@ -206,6 +227,8 @@ export default class LandUI extends cc.Component {
     this.land.currentAsset =
       UIManager.instance.gameController.model.storage.tomatoSeed;
     this.land.crop = this.land.currentAsset.maxHarvest;
+    UIManager.instance.gameController.model.storage.tomatoSeed.number -= 1;
+    UIManager.instance.storageUI.updateUI();
     //this.updateUI();
   }
   onClickBlueberrySeedBtn() {
@@ -215,6 +238,8 @@ export default class LandUI extends cc.Component {
     this.land.currentAsset =
       UIManager.instance.gameController.model.storage.blueberrySeed;
     this.land.crop = this.land.currentAsset.maxHarvest;
+    UIManager.instance.gameController.model.storage.blueberrySeed.number -= 1;
+    UIManager.instance.storageUI.updateUI();
   }
   onClickStrawberrySeedBtn() {
     this.land.time = PlantConfigs.tomatoseed.harvestInterval * 60;
@@ -223,6 +248,8 @@ export default class LandUI extends cc.Component {
     this.land.currentAsset =
       UIManager.instance.gameController.model.storage.strawberrySeed;
     this.land.crop = this.land.currentAsset.maxHarvest;
+    UIManager.instance.gameController.model.storage.strawberrySeed.number -= 1;
+    UIManager.instance.storageUI.updateUI();
   }
   onClickMilkCowBtn() {
     this.land.time = PlantConfigs.tomatoseed.harvestInterval * 60;
@@ -231,8 +258,10 @@ export default class LandUI extends cc.Component {
     this.land.currentAsset =
       UIManager.instance.gameController.model.storage.milkCow;
     this.land.crop = this.land.currentAsset.maxHarvest;
+    UIManager.instance.gameController.model.storage.milkCow.number -= 1;
+    UIManager.instance.storageUI.updateUI();
   }
-  onClickHarvestBtn() {
+  onClickYieldBtn() {
     //this.resetUI();
 
     switch (this.land.currentAsset) {
@@ -260,7 +289,7 @@ export default class LandUI extends cc.Component {
         this.updateUI();
         UIManager.instance.storageUI.updateUI();
         break;
-      case UIManager.instance.gameController.model.storage.milk:
+      case UIManager.instance.gameController.model.storage.milkCow:
         UIManager.instance.gameController.model.storage.addMilk(
           this.land.containYield
         );
@@ -268,7 +297,7 @@ export default class LandUI extends cc.Component {
         this.updateUI();
         UIManager.instance.storageUI.updateUI();
         break;
-      case UIManager.instance.gameController.model.storage.beef:
+      case UIManager.instance.gameController.model.storage.cow:
         UIManager.instance.gameController.model.storage.addBeef(
           this.land.containYield
         );
@@ -330,12 +359,13 @@ export default class LandUI extends cc.Component {
     this.blueberrySeedBtn.node.active = true;
     this.strawberrySeedBtn.node.active = true;
     this.milkCowBtn.node.active = true;
-    this.harvestBtn.node.active = false;
-    this.milkBtn.node.active = false;
+    this.yieldBtn.node.active = false;
     this.nameLb.string = "";
     this.nameLb.node.active = false;
     this.yieldContainLb.string = "";
     this.yieldContainLb.node.active = false;
+    this.cropLb.string = "";
+    this.cropLb.node.active = false;
     this.timeLb.string = "";
     this.timeLb.node.active = false;
     this.workerSprite.node.active = false;
