@@ -115,6 +115,7 @@ export default class StorageUI extends cc.Component {
   resetUI() {}
 
   onClickSellTomatoBtn() {
+    console.log("onClickSellTomatoBtn");
     if (UIManager.instance.gameController.model.storage.tomato.number > 0) {
       UIManager.instance.gameController.model.storage.sellTomato();
       UIManager.instance.storageUI.updateUI();

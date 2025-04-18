@@ -6,4 +6,5 @@ export interface ILand {
   buyPrice: number;
   containYield: number;
   currentAsset: any;
+  crop: number;
 }

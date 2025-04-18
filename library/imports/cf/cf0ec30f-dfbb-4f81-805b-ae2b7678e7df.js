@@ -97,6 +97,7 @@ var StorageUI = /** @class */ (function (_super) {
     };
     StorageUI.prototype.resetUI = function () { };
     StorageUI.prototype.onClickSellTomatoBtn = function () {
+        console.log("onClickSellTomatoBtn");
         if (UIManager_1.default.instance.gameController.model.storage.tomato.number > 0) {
             UIManager_1.default.instance.gameController.model.storage.sellTomato();
             UIManager_1.default.instance.storageUI.updateUI();

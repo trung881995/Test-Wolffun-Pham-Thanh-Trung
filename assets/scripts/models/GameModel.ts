@@ -70,6 +70,7 @@ export class GameModel extends BaseModel {
     this.storage.land.missionNumber = LandConfigs.red.missionNumber;
     this.storage.land.containInterval = LandConfigs.red.containInterval;
     this.storage.land.containYield = 0;
+    this.storage.land.crop = 0;
 
     this.storage.blueberrySeed.number = FirstConfigs.blueberryseed.number;
     this.storage.blueberrySeed.name = PlantConfigs.blueberryseed.name;

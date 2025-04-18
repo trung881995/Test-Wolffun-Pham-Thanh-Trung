@@ -118,6 +118,7 @@ export class Machine implements IMachine {
   }
 }
 export class Land implements ILand {
+  crop: number;
   containYield: number;
   name: string;
   number: number;
