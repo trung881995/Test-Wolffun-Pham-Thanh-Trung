@@ -6,7 +6,7 @@ import { IStorage } from "../../interfaces/IStorage";
 import { IWorker } from "../../interfaces/IWorker";
 import { IYield } from "../../interfaces/IYield";
 import { IAsset } from "../../interfaces/IAsset";
-import { LandState } from "../ui/LandUI";
+import { LandState, WorkerAction } from "../ui/LandUI";
 
 export class TomatoSeed implements IAsset {
   name: string;
@@ -118,6 +118,7 @@ export class Machine implements IMachine {
   }
 }
 export class Land implements ILand {
+  workerAction: WorkerAction;
   crop: number;
   containYield: number;
   name: string;
@@ -133,6 +134,8 @@ export class Land implements ILand {
   cattleType: CattleType = null;
 
   currentAsset: any;
+
+  workingTime: number;
 }
 
 export class Storage implements IStorage {
@@ -184,8 +187,8 @@ export class Storage implements IStorage {
   public addGold(_gold: number): void {
     this.gold += _gold;
   }
-  public getWorkerIdle(workingWorker: number): number {
-    let idleWorker = this.worker.number - workingWorker;
+  getWorkerIdle(workingWorkerNumber: number) {
+    let idleWorker = this.worker.number - workingWorkerNumber;
     return idleWorker;
   }
   public getPerformaceMachine(): number {

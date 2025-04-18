@@ -58,6 +58,7 @@ var BaseModel_1 = require("../../core/mvc/BaseModel");
 var Store_1 = require("../Store/Store");
 var GameConfig_1 = require("../data/GameConfig");
 var Storage_1 = require("../storage/Storage");
+var LandUI_1 = require("../ui/LandUI");
 var GameModel = /** @class */ (function (_super) {
     __extends(GameModel, _super);
     function GameModel() {
@@ -104,6 +105,7 @@ var GameModel = /** @class */ (function (_super) {
                     case 1:
                         _a.sent();
                         this.storage.gold = 0;
+                        this.storage.workingWorkerNumber = 0;
                         this.storage.land.number = GameConfig_1.FirstConfigs.land.number;
                         this.storage.land.buyPrice = GameConfig_1.LandConfigs.red.buyPrice;
                         this.storage.land.name = GameConfig_1.LandConfigs.red.name;
@@ -111,6 +113,8 @@ var GameModel = /** @class */ (function (_super) {
                         this.storage.land.containInterval = GameConfig_1.LandConfigs.red.containInterval;
                         this.storage.land.containYield = 0;
                         this.storage.land.crop = 0;
+                        this.storage.land.workerAction = LandUI_1.WorkerAction.TomatoPlant;
+                        this.storage.land.workingTime = 0;
                         this.storage.blueberrySeed.number = GameConfig_1.FirstConfigs.blueberryseed.number;
                         this.storage.blueberrySeed.name = GameConfig_1.PlantConfigs.blueberryseed.name;
                         this.storage.blueberrySeed.buyPrice = GameConfig_1.PlantConfigs.blueberryseed.buyPrice;

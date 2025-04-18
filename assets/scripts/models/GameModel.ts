@@ -32,6 +32,7 @@ import {
   TomatoSeed,
   Worker,
 } from "../storage/Storage";
+import { WorkerAction } from "../ui/LandUI";
 
 export class GameModel extends BaseModel {
   init(...args: any[]): void {}
@@ -63,6 +64,7 @@ export class GameModel extends BaseModel {
   async setData() {
     await this.setup();
     this.storage.gold = 0;
+    this.storage.workingWorkerNumber = 0;
 
     this.storage.land.number = FirstConfigs.land.number;
     this.storage.land.buyPrice = LandConfigs.red.buyPrice;
@@ -71,6 +73,8 @@ export class GameModel extends BaseModel {
     this.storage.land.containInterval = LandConfigs.red.containInterval;
     this.storage.land.containYield = 0;
     this.storage.land.crop = 0;
+    this.storage.land.workerAction = WorkerAction.TomatoPlant;
+    this.storage.land.workingTime = 0;
 
     this.storage.blueberrySeed.number = FirstConfigs.blueberryseed.number;
     this.storage.blueberrySeed.name = PlantConfigs.blueberryseed.name;

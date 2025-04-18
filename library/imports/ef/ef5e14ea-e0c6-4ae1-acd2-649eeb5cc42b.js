@@ -154,8 +154,8 @@ var Storage = /** @class */ (function () {
     Storage.prototype.addGold = function (_gold) {
         this.gold += _gold;
     };
-    Storage.prototype.getWorkerIdle = function (workingWorker) {
-        var idleWorker = this.worker.number - workingWorker;
+    Storage.prototype.getWorkerIdle = function (workingWorkerNumber) {
+        var idleWorker = this.worker.number - workingWorkerNumber;
         return idleWorker;
     };
     Storage.prototype.getPerformaceMachine = function () {

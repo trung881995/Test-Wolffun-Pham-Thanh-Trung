@@ -73,6 +73,7 @@ var StoreUI = /** @class */ (function (_super) {
             UIManager_1.default.instance.gameController.model.storage.tomatoSeed.buyPrice) {
             UIManager_1.default.instance.gameController.model.store.buyTomatoSeed();
             UIManager_1.default.instance.storageUI.updateUI();
+            UIManager_1.default.instance.createLand();
         }
     };
     StoreUI.prototype.onClickBuyBlueberrySeedBtn = function () {
@@ -80,6 +81,7 @@ var StoreUI = /** @class */ (function (_super) {
             UIManager_1.default.instance.gameController.model.storage.blueberrySeed.buyPrice) {
             UIManager_1.default.instance.gameController.model.store.buyBlueberrySeed();
             UIManager_1.default.instance.storageUI.updateUI();
+            UIManager_1.default.instance.createLand();
         }
     };
     StoreUI.prototype.onClickBuyStrawberrySeedBtn = function () {
@@ -87,6 +89,7 @@ var StoreUI = /** @class */ (function (_super) {
             UIManager_1.default.instance.gameController.model.storage.strawberrySeed.buyPrice) {
             UIManager_1.default.instance.gameController.model.store.buyStrawberrySeed();
             UIManager_1.default.instance.storageUI.updateUI();
+            UIManager_1.default.instance.createLand();
         }
     };
     StoreUI.prototype.onClickBuyMilkcowBtn = function () {
@@ -94,6 +97,7 @@ var StoreUI = /** @class */ (function (_super) {
             UIManager_1.default.instance.gameController.model.storage.milkCow.buyPrice) {
             UIManager_1.default.instance.gameController.model.store.buyMilkCow();
             UIManager_1.default.instance.storageUI.updateUI();
+            UIManager_1.default.instance.createLand();
         }
     };
     StoreUI.prototype.onClickBuyWorkerBtn = function () {

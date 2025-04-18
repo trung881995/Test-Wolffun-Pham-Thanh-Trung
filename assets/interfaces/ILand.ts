@@ -1,3 +1,5 @@
+import { WorkerAction } from "../scripts/ui/LandUI";
+
 export interface ILand {
   name: string;
   number: number;
@@ -7,4 +9,6 @@ export interface ILand {
   containYield: number;
   currentAsset: any;
   crop: number;
+  workerAction: WorkerAction;
+  workingTime: number;
 }

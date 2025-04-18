@@ -89,6 +89,7 @@ export default class StoreUI extends cc.Component {
     ) {
       UIManager.instance.gameController.model.store.buyTomatoSeed();
       UIManager.instance.storageUI.updateUI();
+      UIManager.instance.createLand();
     }
   }
   onClickBuyBlueberrySeedBtn() {
@@ -98,6 +99,7 @@ export default class StoreUI extends cc.Component {
     ) {
       UIManager.instance.gameController.model.store.buyBlueberrySeed();
       UIManager.instance.storageUI.updateUI();
+      UIManager.instance.createLand();
     }
   }
   onClickBuyStrawberrySeedBtn() {
@@ -107,6 +109,7 @@ export default class StoreUI extends cc.Component {
     ) {
       UIManager.instance.gameController.model.store.buyStrawberrySeed();
       UIManager.instance.storageUI.updateUI();
+      UIManager.instance.createLand();
     }
   }
   onClickBuyMilkcowBtn() {
@@ -116,6 +119,7 @@ export default class StoreUI extends cc.Component {
     ) {
       UIManager.instance.gameController.model.store.buyMilkCow();
       UIManager.instance.storageUI.updateUI();
+      UIManager.instance.createLand();
     }
   }
   onClickBuyWorkerBtn() {
