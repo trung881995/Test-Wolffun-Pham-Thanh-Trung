@@ -70,7 +70,6 @@ var StorageUI = /** @class */ (function (_super) {
     StorageUI.prototype.updateUI = function () {
         var idleWorker = UIManager_1.default.instance.gameController.model.storage.getIdleWorker();
         var workingWorker = UIManager_1.default.instance.gameController.model.storage.getWorkingWorker();
-        UIManager_1.default.instance.createLand();
         this.tomatoSeed.string =
             UIManager_1.default.instance.gameController.model.storage.tomatoSeed.number.toString();
         this.blueberrySeed.string =

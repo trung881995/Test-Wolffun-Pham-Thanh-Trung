@@ -131,7 +131,7 @@ var GameModel = /** @class */ (function (_super) {
                     case 0: return [4 /*yield*/, this.setup()];
                     case 1:
                         _a.sent();
-                        this.storage.gold = 0;
+                        this.storage.gold = 5000;
                         this.storage.workingWorkerNumber = 0;
                         this.storage.land.number = GameConfig_1.FirstConfigs.land.number;
                         this.storage.land.buyPrice = GameConfig_1.LandConfigs.red.buyPrice;

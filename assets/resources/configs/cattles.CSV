@@ -1,3 +1,3 @@
 name,harvestInterval,maxHarvest,buyPrice
-Milkcow,1,2,500
-Cow,60,100,700
+Milkcow,1,2,100
+Cow,60,100,200

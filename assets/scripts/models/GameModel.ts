@@ -63,7 +63,7 @@ export class GameModel extends BaseModel {
   }
   async setData() {
     await this.setup();
-    this.storage.gold = 0;
+    this.storage.gold = 5000;
     this.storage.workingWorkerNumber = 0;
 
     this.storage.land.number = FirstConfigs.land.number;

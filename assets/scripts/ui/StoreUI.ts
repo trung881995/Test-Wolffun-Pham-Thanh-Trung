@@ -89,7 +89,7 @@ export default class StoreUI extends cc.Component {
     ) {
       UIManager.instance.gameController.model.store.buyTomatoSeed();
       UIManager.instance.storageUI.updateUI();
-      UIManager.instance.createLand();
+      UIManager.instance.enableAllLand();
     }
   }
   onClickBuyBlueberrySeedBtn() {
@@ -99,7 +99,7 @@ export default class StoreUI extends cc.Component {
     ) {
       UIManager.instance.gameController.model.store.buyBlueberrySeed();
       UIManager.instance.storageUI.updateUI();
-      UIManager.instance.createLand();
+      UIManager.instance.enableAllLand();
     }
   }
   onClickBuyStrawberrySeedBtn() {
@@ -109,7 +109,7 @@ export default class StoreUI extends cc.Component {
     ) {
       UIManager.instance.gameController.model.store.buyStrawberrySeed();
       UIManager.instance.storageUI.updateUI();
-      UIManager.instance.createLand();
+      UIManager.instance.enableAllLand();
     }
   }
   onClickBuyMilkcowBtn() {
@@ -119,7 +119,7 @@ export default class StoreUI extends cc.Component {
     ) {
       UIManager.instance.gameController.model.store.buyMilkCow();
       UIManager.instance.storageUI.updateUI();
-      UIManager.instance.createLand();
+      UIManager.instance.enableAllLand();
     }
   }
   onClickBuyWorkerBtn() {
@@ -129,6 +129,7 @@ export default class StoreUI extends cc.Component {
     ) {
       UIManager.instance.gameController.model.store.buyWorker();
       UIManager.instance.storageUI.updateUI();
+      UIManager.instance.useWorkerForQueue2();
     }
   }
   onClickUpgradeMachineBtn() {
@@ -143,10 +144,14 @@ export default class StoreUI extends cc.Component {
   onClickBuyLandBtn() {
     if (
       UIManager.instance.gameController.model.storage.gold >=
-      UIManager.instance.gameController.model.storage.land.buyPrice
+        UIManager.instance.gameController.model.storage.land.buyPrice &&
+      UIManager.instance.gameController.model.storage.land.number < 9
     ) {
       UIManager.instance.gameController.model.store.buyLand();
       UIManager.instance.storageUI.updateUI();
+      UIManager.instance.updateLand(
+        UIManager.instance.gameController.model.storage.land.number - 1
+      );
     }
   }
 }

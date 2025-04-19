@@ -192,7 +192,7 @@ var Storage = /** @class */ (function () {
         this.blueberrySeed.number += 1;
     };
     Storage.prototype.addStrawberrySeed = function () {
-        this.strawberrySeed.number += 1;
+        this.strawberrySeed.number += 10;
     };
     Storage.prototype.addMilkCow = function () {
         this.milkCow.number += 1;
@@ -227,7 +227,6 @@ var Storage = /** @class */ (function () {
         this.beef.number += beefNumber;
     };
     Storage.prototype.assignWorker = function (landUi) {
-        landUi.enableWorker();
         if (landUi.land.containYield > 0) {
             landUi.land.workerAction = LandUI_1.WorkerAction.Yielding;
             return;

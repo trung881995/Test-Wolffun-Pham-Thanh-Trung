@@ -19,7 +19,7 @@ export default class UIManager extends cc.Component {
   @property(StorageUI) storageUI: StorageUI = null;
   public static instance: UIManager;
   public gameController: GameController;
-
+  landArrayClones: Land[] = [];
   time: number = 0;
 
   // LIFE-CYCLE CALLBACKS:
@@ -47,18 +47,9 @@ export default class UIManager extends cc.Component {
   }
   async setupUI() {
     await this.gameController.model.setData();
-    const clones = Array.from({ length: 5 }, () => ({
-      ...this.gameController.model.storage.land,
-    }));
 
-    for (let i = 0; i < this.gameController.model.storage.land.number; i++) {
-      this.landUIArray[i].land = clones[i];
-      this.landUIArray[i].enabled = true;
-      this.landUIArray[i].DisplayUI();
-      //this.landUIArray[i].resetUI();
-      // this.landUIArray[i].disableWorker();
-      // this.landUIArray[i].setupUI();
-    }
+    this.createLand();
+
     this.gameController.model.queueLandArray.push(this.landUIArray[0]);
     this.useWorkerForQueue2();
     this.storageUI.setupUI();
@@ -121,8 +112,23 @@ export default class UIManager extends cc.Component {
     landUi.land.workingTime =
       this.gameController.model.storage.worker.workingInterval * 10;
     landUi.land.isReadyToWork = false;
+    landUi.enableWorker();
   }
   createLand() {
+    this.landArrayClones = Array.from({ length: 9 }, () => ({
+      ...this.gameController.model.storage.land,
+    }));
+    for (let i = 0; i < this.gameController.model.storage.land.number; i++) {
+      this.updateLand(i);
+    }
+  }
+  updateLand(index: number) {
+    this.landUIArray[index].land = this.landArrayClones[index];
+    this.landUIArray[index].enabled = true;
+    this.landUIArray[index].DisplayUI();
+    this.landUIArray[index].enableLand();
+  }
+  enableAllLand() {
     for (let i = 0; i < this.gameController.model.storage.land.number; i++) {
       this.landUIArray[i].enableLand();
     }

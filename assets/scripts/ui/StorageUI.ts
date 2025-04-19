@@ -83,8 +83,6 @@ export default class StorageUI extends cc.Component {
     const workingWorker =
       UIManager.instance.gameController.model.storage.getWorkingWorker();
 
-    UIManager.instance.createLand();
-
     this.tomatoSeed.string =
       UIManager.instance.gameController.model.storage.tomatoSeed.number.toString();
     this.blueberrySeed.string =

@@ -242,7 +242,7 @@ export async function loadCattleConfigFromCSV(): Promise<void> {
         name: row.name,
         harvestInterval: parseFloat(row.harvestInterval),
         maxHarvest: parseInt(row.maxHarvest),
-        buyPrice: parseInt(row.sellPrice),
+        buyPrice: parseInt(row.buyPrice),
       };
     }
   });

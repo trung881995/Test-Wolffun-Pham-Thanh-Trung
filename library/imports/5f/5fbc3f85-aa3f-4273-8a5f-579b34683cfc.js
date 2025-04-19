@@ -119,7 +119,7 @@ var LandUI = /** @class */ (function (_super) {
                     }
                     else {
                         this.land.landState = LandState.Empty;
-                        this.disableWorker();
+                        //this.disableWorker();
                         this.DisplayUI();
                         UIManager_1.default.instance.useWorkerForQueue2();
                     }
@@ -150,19 +150,22 @@ var LandUI = /** @class */ (function (_super) {
                 this.resetUI();
                 this.setupUI();
                 this.land.isReadyToWork = true;
+                this.disableWorker();
                 break;
             case LandState.Harvest:
                 this.updateUI();
                 this.land.isReadyToWork = true;
-                // UIManager.instance.useWorkerForQueue();
+                this.disableWorker();
                 break;
             case LandState.Plant:
                 this.updateUI();
                 this.land.isReadyToWork = false;
+                this.disableWorker();
                 break;
             case LandState.Cattle:
                 this.updateUI();
                 this.land.isReadyToWork = false;
+                this.disableWorker();
                 break;
             default:
                 break;
@@ -268,11 +271,11 @@ var LandUI = /** @class */ (function (_super) {
             UIManager_1.default.instance.gameController.model.storage.tomatoSeed.number -= 1;
             this.land.landState = LandState.Plant;
             UIManager_1.default.instance.storageUI.updateUI();
-            UIManager_1.default.instance.createLand();
-            this.disableWorker();
-            this.DisplayUI();
-            UIManager_1.default.instance.useWorkerForQueue2();
+            UIManager_1.default.instance.enableAllLand();
         }
+        //this.disableWorker();
+        this.DisplayUI();
+        UIManager_1.default.instance.useWorkerForQueue2();
     };
     LandUI.prototype.onClickBlueberrySeedBtn = function () {
         if (UIManager_1.default.instance.gameController.model.storage.blueberrySeed.number > 0) {
@@ -286,13 +289,11 @@ var LandUI = /** @class */ (function (_super) {
             UIManager_1.default.instance.gameController.model.storage.blueberrySeed.number -= 1;
             this.land.landState = LandState.Plant;
             UIManager_1.default.instance.storageUI.updateUI();
-            UIManager_1.default.instance.createLand();
-            this.disableWorker();
-            this.DisplayUI();
-            UIManager_1.default.instance.useWorkerForQueue2();
-            //this.disableWorker();
-            //UIManager.instance.useWorkerForQueue();
+            UIManager_1.default.instance.enableAllLand();
         }
+        //this.disableWorker();
+        this.DisplayUI();
+        UIManager_1.default.instance.useWorkerForQueue2();
     };
     LandUI.prototype.onClickStrawberrySeedBtn = function () {
         if (UIManager_1.default.instance.gameController.model.storage.strawberrySeed.number > 0) {
@@ -306,13 +307,11 @@ var LandUI = /** @class */ (function (_super) {
             UIManager_1.default.instance.gameController.model.storage.strawberrySeed.number -= 1;
             this.land.landState = LandState.Plant;
             UIManager_1.default.instance.storageUI.updateUI();
-            UIManager_1.default.instance.createLand();
-            this.disableWorker();
-            this.DisplayUI();
-            UIManager_1.default.instance.useWorkerForQueue2();
-            //this.disableWorker();
-            //UIManager.instance.useWorkerForQueue();
+            UIManager_1.default.instance.enableAllLand();
         }
+        //this.disableWorker();
+        this.DisplayUI();
+        UIManager_1.default.instance.useWorkerForQueue2();
     };
     LandUI.prototype.onClickMilkCowBtn = function () {
         if (UIManager_1.default.instance.gameController.model.storage.milkCow.number > 0) {
@@ -326,13 +325,11 @@ var LandUI = /** @class */ (function (_super) {
             UIManager_1.default.instance.gameController.model.storage.milkCow.number -= 1;
             this.land.landState = LandState.Cattle;
             UIManager_1.default.instance.storageUI.updateUI();
-            UIManager_1.default.instance.createLand();
-            this.disableWorker();
-            this.DisplayUI();
-            UIManager_1.default.instance.useWorkerForQueue2();
-            //this.disableWorker();
-            //UIManager.instance.useWorkerForQueue();
+            UIManager_1.default.instance.enableAllLand();
         }
+        //this.disableWorker();
+        this.DisplayUI();
+        UIManager_1.default.instance.useWorkerForQueue2();
     };
     LandUI.prototype.onClickYieldBtn = function () {
         //this.disableWorker();
@@ -363,8 +360,11 @@ var LandUI = /** @class */ (function (_super) {
             : LandState.Cattle;
         if (this.land.crop == 0) {
             this.land.landState = LandState.Empty;
+            this.DisplayUI();
+            UIManager_1.default.instance.useWorkerForQueue2();
+            return;
         }
-        this.disableWorker();
+        //this.disableWorker();
         this.DisplayUI();
         UIManager_1.default.instance.useWorkerForQueue2();
         //this.disableWorker();
@@ -450,13 +450,15 @@ var LandUI = /** @class */ (function (_super) {
         this.workingIntervalLb.node.active = true;
     };
     LandUI.prototype.disableWorker = function () {
-        this.workerSprite.node.active = false;
-        UIManager_1.default.instance.gameController.model.storage.workingWorkerNumber -= 1;
-        this.land.workingTime = 0;
-        UIManager_1.default.instance.storageUI.updateUI();
-        this.updateUI();
-        this.workingIntervalLb.node.active = false;
-        this.land.isReadyToWork = false;
+        if (this.land.workingTime != 0) {
+            this.land.workingTime = 0;
+            this.workerSprite.node.active = false;
+            UIManager_1.default.instance.gameController.model.storage.workingWorkerNumber -= 1;
+            UIManager_1.default.instance.storageUI.updateUI();
+            this.updateUI();
+            this.workingIntervalLb.node.active = false;
+            this.land.isReadyToWork = false;
+        }
     };
     __decorate([
         property(cc.Button)

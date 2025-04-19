@@ -98,7 +98,7 @@ export default class LandUI extends cc.Component {
             UIManager.instance.useWorkerForQueue2();
           } else {
             this.land.landState = LandState.Empty;
-            this.disableWorker();
+            //this.disableWorker();
             this.DisplayUI();
             UIManager.instance.useWorkerForQueue2();
           }
@@ -130,20 +130,22 @@ export default class LandUI extends cc.Component {
         this.resetUI();
         this.setupUI();
         this.land.isReadyToWork = true;
-
+        this.disableWorker();
         break;
       case LandState.Harvest:
         this.updateUI();
         this.land.isReadyToWork = true;
-        // UIManager.instance.useWorkerForQueue();
+        this.disableWorker();
         break;
       case LandState.Plant:
         this.updateUI();
         this.land.isReadyToWork = false;
+        this.disableWorker();
         break;
       case LandState.Cattle:
         this.updateUI();
         this.land.isReadyToWork = false;
+        this.disableWorker();
         break;
       default:
         break;
@@ -272,11 +274,11 @@ export default class LandUI extends cc.Component {
       UIManager.instance.gameController.model.storage.tomatoSeed.number -= 1;
       this.land.landState = LandState.Plant;
       UIManager.instance.storageUI.updateUI();
-      UIManager.instance.createLand();
-      this.disableWorker();
-      this.DisplayUI();
-      UIManager.instance.useWorkerForQueue2();
+      UIManager.instance.enableAllLand();
     }
+    //this.disableWorker();
+    this.DisplayUI();
+    UIManager.instance.useWorkerForQueue2();
   }
   onClickBlueberrySeedBtn() {
     if (
@@ -292,14 +294,11 @@ export default class LandUI extends cc.Component {
       UIManager.instance.gameController.model.storage.blueberrySeed.number -= 1;
       this.land.landState = LandState.Plant;
       UIManager.instance.storageUI.updateUI();
-      UIManager.instance.createLand();
-      this.disableWorker();
-      this.DisplayUI();
-      UIManager.instance.useWorkerForQueue2();
-      //this.disableWorker();
-
-      //UIManager.instance.useWorkerForQueue();
+      UIManager.instance.enableAllLand();
     }
+    //this.disableWorker();
+    this.DisplayUI();
+    UIManager.instance.useWorkerForQueue2();
   }
   onClickStrawberrySeedBtn() {
     if (
@@ -315,14 +314,11 @@ export default class LandUI extends cc.Component {
       UIManager.instance.gameController.model.storage.strawberrySeed.number -= 1;
       this.land.landState = LandState.Plant;
       UIManager.instance.storageUI.updateUI();
-      UIManager.instance.createLand();
-      this.disableWorker();
-      this.DisplayUI();
-      UIManager.instance.useWorkerForQueue2();
-      //this.disableWorker();
-
-      //UIManager.instance.useWorkerForQueue();
+      UIManager.instance.enableAllLand();
     }
+    //this.disableWorker();
+    this.DisplayUI();
+    UIManager.instance.useWorkerForQueue2();
   }
   onClickMilkCowBtn() {
     if (UIManager.instance.gameController.model.storage.milkCow.number > 0) {
@@ -336,14 +332,11 @@ export default class LandUI extends cc.Component {
       UIManager.instance.gameController.model.storage.milkCow.number -= 1;
       this.land.landState = LandState.Cattle;
       UIManager.instance.storageUI.updateUI();
-      UIManager.instance.createLand();
-      this.disableWorker();
-      this.DisplayUI();
-      UIManager.instance.useWorkerForQueue2();
-      //this.disableWorker();
-
-      //UIManager.instance.useWorkerForQueue();
+      UIManager.instance.enableAllLand();
     }
+    //this.disableWorker();
+    this.DisplayUI();
+    UIManager.instance.useWorkerForQueue2();
   }
   onClickYieldBtn() {
     //this.disableWorker();
@@ -389,8 +382,11 @@ export default class LandUI extends cc.Component {
       : LandState.Cattle;
     if (this.land.crop == 0) {
       this.land.landState = LandState.Empty;
+      this.DisplayUI();
+      UIManager.instance.useWorkerForQueue2();
+      return;
     }
-    this.disableWorker();
+    //this.disableWorker();
     this.DisplayUI();
     UIManager.instance.useWorkerForQueue2();
     //this.disableWorker();
@@ -498,12 +494,15 @@ export default class LandUI extends cc.Component {
   }
 
   disableWorker() {
-    this.workerSprite.node.active = false;
-    UIManager.instance.gameController.model.storage.workingWorkerNumber -= 1;
-    this.land.workingTime = 0;
-    UIManager.instance.storageUI.updateUI();
-    this.updateUI();
-    this.workingIntervalLb.node.active = false;
-    this.land.isReadyToWork = false;
+    if (this.land.workingTime != 0) {
+      this.land.workingTime = 0;
+      this.workerSprite.node.active = false;
+      UIManager.instance.gameController.model.storage.workingWorkerNumber -= 1;
+
+      UIManager.instance.storageUI.updateUI();
+      this.updateUI();
+      this.workingIntervalLb.node.active = false;
+      this.land.isReadyToWork = false;
+    }
   }
 }

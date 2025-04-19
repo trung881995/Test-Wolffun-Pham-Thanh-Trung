@@ -228,7 +228,7 @@ export class Storage implements IStorage {
     this.blueberrySeed.number += 1;
   }
   addStrawberrySeed(): void {
-    this.strawberrySeed.number += 1;
+    this.strawberrySeed.number += 10;
   }
   addMilkCow(): void {
     this.milkCow.number += 1;
@@ -264,7 +264,6 @@ export class Storage implements IStorage {
     this.beef.number += beefNumber;
   }
   assignWorker(landUi: LandUI) {
-    landUi.enableWorker();
     if (landUi.land.containYield > 0) {
       landUi.land.workerAction = WorkerAction.Yielding;
       return;
