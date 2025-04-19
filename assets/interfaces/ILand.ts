@@ -11,4 +11,5 @@ export interface ILand {
   crop: number;
   workerAction: WorkerAction;
   workingTime: number;
+  isReadyToWork: boolean;
 }

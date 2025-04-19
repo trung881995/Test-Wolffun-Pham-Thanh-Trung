@@ -13,6 +13,7 @@ import {
   TomatoSeed,
   Worker,
 } from "../scripts/storage/Storage";
+import LandUI from "../scripts/ui/LandUI";
 import { IMachine } from "./IMachine";
 import { IWorker } from "./IWorker";
 
@@ -51,4 +52,6 @@ export interface IStorage {
   addCow(): void;
   addWorker(): void;
   upgradeMachine(): void;
+
+  assignWorker(landUi: LandUI): void;
 }

@@ -62,7 +62,34 @@ var LandUI_1 = require("../ui/LandUI");
 var GameModel = /** @class */ (function (_super) {
     __extends(GameModel, _super);
     function GameModel() {
-        return _super !== null && _super.apply(this, arguments) || this;
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.queueLandArray = [];
+        return _this;
+        /*public getLandNumber(): number {
+          let firstConfig = this.getData();
+          return firstConfig.land.number;
+        }
+        public getTomatoSeedNumber(): number {
+          let firstConfig = this.getData();
+          return firstConfig.tomatoseed.number;
+        }
+        public getBlueberrySeedNumber(): number {
+          let firstConfig = this.getData();
+          return firstConfig.blueberryseed.number;
+        }
+        public getMilkCowNumber(): number {
+          let firstConfig = this.getData();
+          return firstConfig.milkcow.number;
+        }
+        public getWokerNumber(): number {
+          let firstConfig = this.getData();
+          return firstConfig.worker.number;
+        }
+        public getMachineNumber(): number {
+          let firstConfig = this.getData();
+          return firstConfig.machine.number;
+        }
+        */
     }
     GameModel.prototype.init = function () {
         var args = [];
@@ -115,6 +142,8 @@ var GameModel = /** @class */ (function (_super) {
                         this.storage.land.crop = 0;
                         this.storage.land.workerAction = LandUI_1.WorkerAction.TomatoPlant;
                         this.storage.land.workingTime = 0;
+                        this.storage.land.currentAsset = this.storage.tomatoSeed;
+                        this.storage.land.isReadyToWork = true;
                         this.storage.blueberrySeed.number = GameConfig_1.FirstConfigs.blueberryseed.number;
                         this.storage.blueberrySeed.name = GameConfig_1.PlantConfigs.blueberryseed.name;
                         this.storage.blueberrySeed.buyPrice = GameConfig_1.PlantConfigs.blueberryseed.buyPrice;

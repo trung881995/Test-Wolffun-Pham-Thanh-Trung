@@ -88,6 +88,7 @@ var UIManager = /** @class */ (function (_super) {
         _this.landUIArray = [];
         _this.storeUI = null;
         _this.storageUI = null;
+        _this.time = 0;
         return _this;
     }
     UIManager_1 = UIManager;
@@ -101,6 +102,17 @@ var UIManager = /** @class */ (function (_super) {
     UIManager.prototype.start = function () {
         this.setupUI();
     };
+    UIManager.prototype.update = function (dt) {
+        if (this.time > 0) {
+            this.time -= dt;
+        }
+        else if (this.time < 0) {
+            this.useWorkerForQueue2();
+            this.time = 0;
+        }
+        else {
+        }
+    };
     UIManager.prototype.setupUI = function () {
         return __awaiter(this, void 0, void 0, function () {
             var clones, i;
@@ -112,10 +124,15 @@ var UIManager = /** @class */ (function (_super) {
                         _a.sent();
                         clones = Array.from({ length: 5 }, function () { return (__assign({}, _this.gameController.model.storage.land)); });
                         for (i = 0; i < this.gameController.model.storage.land.number; i++) {
-                            this.landUIArray[i].node.active = true;
                             this.landUIArray[i].land = clones[i];
+                            this.landUIArray[i].enabled = true;
                             this.landUIArray[i].DisplayUI();
+                            //this.landUIArray[i].resetUI();
+                            // this.landUIArray[i].disableWorker();
+                            // this.landUIArray[i].setupUI();
                         }
+                        this.gameController.model.queueLandArray.push(this.landUIArray[0]);
+                        this.useWorkerForQueue2();
                         this.storageUI.setupUI();
                         this.storageUI.updateUI();
                         this.storeUI.setupUI();
@@ -123,6 +140,54 @@ var UIManager = /** @class */ (function (_super) {
                 }
             });
         });
+    };
+    UIManager.prototype.useWorkerForQueue = function () {
+        for (var i = 0; i < this.landUIArray.length; i++) {
+            if (this.gameController.model.storage.getWorkerIdle(this.gameController.model.storage.workingWorkerNumber) > 0) {
+                if (this.gameController.model.queueLandArray.length > 0) {
+                    this.useWorker(this.gameController.model.queueLandArray[0]);
+                    this.gameController.model.queueLandArray.splice(0, 1);
+                }
+                else {
+                    if (this.landUIArray[i].land.isReadyToWork) {
+                        this.useWorker(this.landUIArray[i]);
+                    }
+                }
+            }
+            else {
+                if (this.landUIArray[i].land.isReadyToWork) {
+                    this.gameController.model.queueLandArray.push(this.landUIArray[i]);
+                }
+            }
+        }
+    };
+    UIManager.prototype.useWorkerForQueue2 = function () {
+        for (var i = 0; i < this.landUIArray.length; i++) {
+            if (this.gameController.model.storage.getWorkerIdle(this.gameController.model.storage.workingWorkerNumber) > 0) {
+                if (this.landUIArray[i].land.isReadyToWork) {
+                    this.useWorker(this.landUIArray[i]);
+                }
+            }
+            else {
+                this.time = this.checkMinWorkingTime();
+            }
+        }
+    };
+    UIManager.prototype.checkMinWorkingTime = function () {
+        var min = this.landUIArray[0].land.workingTime;
+        for (var i = 0; i < this.landUIArray.length; i++) {
+            if (this.landUIArray[i].land.workingTime < min) {
+                min = this.landUIArray[i].land.workingTime;
+            }
+        }
+        return min;
+    };
+    UIManager.prototype.useWorker = function (landUi) {
+        this.gameController.model.storage.assignWorker(landUi);
+        this.gameController.model.storage.workingWorkerNumber += 1;
+        landUi.land.workingTime =
+            this.gameController.model.storage.worker.workingInterval * 10;
+        landUi.land.isReadyToWork = false;
     };
     UIManager.prototype.createLand = function () {
         for (var i = 0; i < this.gameController.model.storage.land.number; i++) {

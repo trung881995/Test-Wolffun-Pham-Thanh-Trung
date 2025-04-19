@@ -32,7 +32,7 @@ import {
   TomatoSeed,
   Worker,
 } from "../storage/Storage";
-import { WorkerAction } from "../ui/LandUI";
+import LandUI, { WorkerAction } from "../ui/LandUI";
 
 export class GameModel extends BaseModel {
   init(...args: any[]): void {}
@@ -41,7 +41,7 @@ export class GameModel extends BaseModel {
 
   startLandNumber: number;
 
-  landArray: Land[];
+  queueLandArray: LandUI[] = [];
   async setup() {
     await this.loadData();
     this.storage = new Storage();
@@ -75,6 +75,8 @@ export class GameModel extends BaseModel {
     this.storage.land.crop = 0;
     this.storage.land.workerAction = WorkerAction.TomatoPlant;
     this.storage.land.workingTime = 0;
+    this.storage.land.currentAsset = this.storage.tomatoSeed;
+    this.storage.land.isReadyToWork = true;
 
     this.storage.blueberrySeed.number = FirstConfigs.blueberryseed.number;
     this.storage.blueberrySeed.name = PlantConfigs.blueberryseed.name;

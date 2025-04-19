@@ -6,6 +6,7 @@ cc._RF.push(module, 'ef5e1Tq4MZK4azSZJ7rXMQr', 'Storage');
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Storage = exports.Land = exports.Machine = exports.Worker = exports.Beef = exports.Milk = exports.Strawberry = exports.Blueberry = exports.Tomato = exports.Cow = exports.MilkCow = exports.StrawberrySeed = exports.BlueberrySeed = exports.TomatoSeed = void 0;
 var LandUI_1 = require("../ui/LandUI");
+var UIManager_1 = require("../Manager/UIManager");
 var TomatoSeed = /** @class */ (function () {
     function TomatoSeed() {
     }
@@ -99,7 +100,30 @@ exports.Beef = Beef;
 var Worker = /** @class */ (function () {
     function Worker() {
     }
-    Worker.prototype.Work = function () { };
+    Worker.prototype.Work = function (landUI, workerAction) {
+        switch (workerAction) {
+            case LandUI_1.WorkerAction.Yielding:
+                landUI.onClickYieldBtn();
+                break;
+            case LandUI_1.WorkerAction.TomatoPlant:
+                landUI.onClickTomatoSeedBtn();
+                console.log("worker CLick tomatoseedbtn");
+                break;
+            case LandUI_1.WorkerAction.BlueberryPlant:
+                landUI.onClickBlueberrySeedBtn();
+                break;
+            case LandUI_1.WorkerAction.StrawberryPlant:
+                landUI.onClickStrawberrySeedBtn();
+                break;
+            case LandUI_1.WorkerAction.MilkcowLiveStock:
+                landUI.onClickMilkCowBtn();
+                break;
+            case LandUI_1.WorkerAction.CowLiveStock:
+                break;
+            default:
+                break;
+        }
+    };
     return Worker;
 }());
 exports.Worker = Worker;
@@ -201,6 +225,32 @@ var Storage = /** @class */ (function () {
     };
     Storage.prototype.addBeef = function (beefNumber) {
         this.beef.number += beefNumber;
+    };
+    Storage.prototype.assignWorker = function (landUi) {
+        landUi.enableWorker();
+        if (landUi.land.containYield > 0) {
+            landUi.land.workerAction = LandUI_1.WorkerAction.Yielding;
+            return;
+        }
+        switch (landUi.land.currentAsset) {
+            case UIManager_1.default.instance.gameController.model.storage.tomatoSeed:
+                landUi.land.workerAction = LandUI_1.WorkerAction.TomatoPlant;
+                break;
+            case UIManager_1.default.instance.gameController.model.storage.blueberrySeed:
+                landUi.land.workerAction = LandUI_1.WorkerAction.BlueberryPlant;
+                break;
+            case UIManager_1.default.instance.gameController.model.storage.strawberrySeed:
+                landUi.land.workerAction = LandUI_1.WorkerAction.StrawberryPlant;
+                break;
+            case UIManager_1.default.instance.gameController.model.storage.milkCow:
+                landUi.land.workerAction = LandUI_1.WorkerAction.MilkcowLiveStock;
+                break;
+            case UIManager_1.default.instance.gameController.model.storage.cow:
+                landUi.land.workerAction = LandUI_1.WorkerAction.CowLiveStock;
+                break;
+            default:
+                break;
+        }
     };
     return Storage;
 }());

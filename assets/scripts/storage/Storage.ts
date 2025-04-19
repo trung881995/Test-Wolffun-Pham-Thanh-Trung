@@ -6,7 +6,8 @@ import { IStorage } from "../../interfaces/IStorage";
 import { IWorker } from "../../interfaces/IWorker";
 import { IYield } from "../../interfaces/IYield";
 import { IAsset } from "../../interfaces/IAsset";
-import { LandState, WorkerAction } from "../ui/LandUI";
+import LandUI, { LandState, WorkerAction } from "../ui/LandUI";
+import UIManager from "../Manager/UIManager";
 
 export class TomatoSeed implements IAsset {
   name: string;
@@ -105,7 +106,30 @@ export class Worker implements IWorker {
   number: number;
   workingInterval: number;
   buyPrice: number;
-  Work(): void {}
+  Work(landUI: LandUI, workerAction: WorkerAction) {
+    switch (workerAction) {
+      case WorkerAction.Yielding:
+        landUI.onClickYieldBtn();
+        break;
+      case WorkerAction.TomatoPlant:
+        landUI.onClickTomatoSeedBtn();
+        console.log("worker CLick tomatoseedbtn");
+        break;
+      case WorkerAction.BlueberryPlant:
+        landUI.onClickBlueberrySeedBtn();
+        break;
+      case WorkerAction.StrawberryPlant:
+        landUI.onClickStrawberrySeedBtn();
+        break;
+      case WorkerAction.MilkcowLiveStock:
+        landUI.onClickMilkCowBtn();
+        break;
+      case WorkerAction.CowLiveStock:
+        break;
+      default:
+        break;
+    }
+  }
 }
 
 export class Machine implements IMachine {
@@ -136,6 +160,8 @@ export class Land implements ILand {
   currentAsset: any;
 
   workingTime: number;
+
+  isReadyToWork: boolean;
 }
 
 export class Storage implements IStorage {
@@ -236,5 +262,31 @@ export class Storage implements IStorage {
   }
   addBeef(beefNumber: number): void {
     this.beef.number += beefNumber;
+  }
+  assignWorker(landUi: LandUI) {
+    landUi.enableWorker();
+    if (landUi.land.containYield > 0) {
+      landUi.land.workerAction = WorkerAction.Yielding;
+      return;
+    }
+    switch (landUi.land.currentAsset) {
+      case UIManager.instance.gameController.model.storage.tomatoSeed:
+        landUi.land.workerAction = WorkerAction.TomatoPlant;
+        break;
+      case UIManager.instance.gameController.model.storage.blueberrySeed:
+        landUi.land.workerAction = WorkerAction.BlueberryPlant;
+        break;
+      case UIManager.instance.gameController.model.storage.strawberrySeed:
+        landUi.land.workerAction = WorkerAction.StrawberryPlant;
+        break;
+      case UIManager.instance.gameController.model.storage.milkCow:
+        landUi.land.workerAction = WorkerAction.MilkcowLiveStock;
+        break;
+      case UIManager.instance.gameController.model.storage.cow:
+        landUi.land.workerAction = WorkerAction.CowLiveStock;
+        break;
+      default:
+        break;
+    }
   }
 }

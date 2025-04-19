@@ -34,6 +34,7 @@ var CattleType_1 = require("../../enums/CattleType");
 var PlantType_1 = require("../../enums/PlantType");
 var UIManager_1 = require("../Manager/UIManager");
 var GameConfig_1 = require("../data/GameConfig");
+var Storage_1 = require("../storage/Storage");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var LandState;
 (function (LandState) {
@@ -95,74 +96,51 @@ var LandUI = /** @class */ (function (_super) {
     }
     // LIFE-CYCLE CALLBACKS:
     LandUI.prototype.onLoad = function () {
-        //this.land = new Land();
+        this.land = new Storage_1.Land();
     };
-    LandUI.prototype.start = function () { };
+    LandUI.prototype.start = function () {
+        //UIManager.instance.useWorkerForQueue();
+    };
     LandUI.prototype.update = function (dt) {
         if (this.land != null) {
-            if (this.land.workingTime > 0) {
-                this.land.workingTime -= dt;
-                this.updateUI();
-            }
-            else if (this.land.workingTime < 0) {
-                this.assignWorker(this.land.workerAction);
-                this.notUseWorker();
-                //this.updateUI();
-            }
-            else {
-                if (this.land.containYield > 0)
-                    this.useWorker();
-            }
             if (!this.land.isEmpty) {
-                this.land.time -= dt;
-                if (this.land.time == 0) {
-                    this.land.landState = LandState.Empty;
-                }
-                else if (this.land.time < 0) {
+                if (this.land.time < 0.5) {
                     if (this.land.containYield < this.land.currentAsset.maxHarvest &&
                         this.land.crop > 0) {
                         console.log(this.land.currentAsset.maxHarvest);
-                        switch (this.land.currentAsset) {
-                            case UIManager_1.default.instance.gameController.model.storage.tomatoSeed:
-                                this.land.workerAction = WorkerAction.TomatoPlant;
-                                break;
-                            case UIManager_1.default.instance.gameController.model.storage
-                                .blueberrySeed:
-                                this.land.workerAction = WorkerAction.BlueberryPlant;
-                                break;
-                            case UIManager_1.default.instance.gameController.model.storage
-                                .strawberrySeed:
-                                this.land.workerAction = WorkerAction.StrawberryPlant;
-                                break;
-                            case UIManager_1.default.instance.gameController.model.storage.milkCow:
-                                this.land.workerAction = WorkerAction.MilkcowLiveStock;
-                                break;
-                            case UIManager_1.default.instance.gameController.model.storage.cow:
-                                this.land.workerAction = WorkerAction.CowLiveStock;
-                                break;
-                            default:
-                                break;
-                        }
                         this.land.containYield += 1;
                         this.land.workerAction = WorkerAction.Yielding;
                         this.land.crop -= 1;
                         this.land.time = this.land.currentAsset.harvestInterval * 60;
                         console.log(this.land.currentAsset.harvestInterval);
                         this.land.landState = LandState.Harvest;
+                        this.DisplayUI();
+                        UIManager_1.default.instance.useWorkerForQueue2();
                     }
                     else {
                         this.land.landState = LandState.Empty;
+                        this.disableWorker();
+                        this.DisplayUI();
+                        UIManager_1.default.instance.useWorkerForQueue2();
                     }
                 }
-                else {
-                    this.land.landState =
-                        this.land.plantType != null ? LandState.Plant : LandState.Cattle;
+                else if (this.land.time > 0) {
+                    this.land.time -= dt;
+                    this.updateUI();
                 }
-                this.DisplayUI();
             }
             else {
-                if (UIManager_1.default.instance.gameController.model.storage != null)
-                    this.useWorker();
+            }
+            if (this.land.workingTime > 0) {
+                this.land.workingTime -= dt;
+                this.updateUI();
+                //this.land.isReadyToWork = false;
+            }
+            else if (this.land.workingTime < 0) {
+                //this.land.isReadyToWork = false;
+                UIManager_1.default.instance.gameController.model.storage.worker.Work(this, this.land.workerAction);
+            }
+            else {
             }
         }
     };
@@ -171,15 +149,20 @@ var LandUI = /** @class */ (function (_super) {
             case LandState.Empty:
                 this.resetUI();
                 this.setupUI();
+                this.land.isReadyToWork = true;
                 break;
             case LandState.Harvest:
                 this.updateUI();
+                this.land.isReadyToWork = true;
+                // UIManager.instance.useWorkerForQueue();
                 break;
             case LandState.Plant:
                 this.updateUI();
+                this.land.isReadyToWork = false;
                 break;
             case LandState.Cattle:
                 this.updateUI();
+                this.land.isReadyToWork = false;
                 break;
             default:
                 break;
@@ -275,7 +258,7 @@ var LandUI = /** @class */ (function (_super) {
     };
     LandUI.prototype.onClickTomatoSeedBtn = function () {
         if (UIManager_1.default.instance.gameController.model.storage.tomatoSeed.number > 0) {
-            this.notUseWorker();
+            //this.disableWorker();
             this.land.isEmpty = false;
             this.land.plantType = PlantType_1.PlantType.tomatoSeed;
             this.land.time = GameConfig_1.PlantConfigs.tomatoseed.harvestInterval * 60;
@@ -283,13 +266,17 @@ var LandUI = /** @class */ (function (_super) {
                 UIManager_1.default.instance.gameController.model.storage.tomatoSeed;
             this.land.crop = this.land.currentAsset.maxHarvest;
             UIManager_1.default.instance.gameController.model.storage.tomatoSeed.number -= 1;
+            this.land.landState = LandState.Plant;
             UIManager_1.default.instance.storageUI.updateUI();
             UIManager_1.default.instance.createLand();
+            this.disableWorker();
+            this.DisplayUI();
+            UIManager_1.default.instance.useWorkerForQueue2();
         }
     };
     LandUI.prototype.onClickBlueberrySeedBtn = function () {
         if (UIManager_1.default.instance.gameController.model.storage.blueberrySeed.number > 0) {
-            this.notUseWorker();
+            //this.disableWorker();
             this.land.time = GameConfig_1.PlantConfigs.blueberryseed.harvestInterval * 60;
             this.land.isEmpty = false;
             this.land.plantType = PlantType_1.PlantType.blueberrySeed;
@@ -297,13 +284,19 @@ var LandUI = /** @class */ (function (_super) {
                 UIManager_1.default.instance.gameController.model.storage.blueberrySeed;
             this.land.crop = this.land.currentAsset.maxHarvest;
             UIManager_1.default.instance.gameController.model.storage.blueberrySeed.number -= 1;
+            this.land.landState = LandState.Plant;
             UIManager_1.default.instance.storageUI.updateUI();
             UIManager_1.default.instance.createLand();
+            this.disableWorker();
+            this.DisplayUI();
+            UIManager_1.default.instance.useWorkerForQueue2();
+            //this.disableWorker();
+            //UIManager.instance.useWorkerForQueue();
         }
     };
     LandUI.prototype.onClickStrawberrySeedBtn = function () {
         if (UIManager_1.default.instance.gameController.model.storage.strawberrySeed.number > 0) {
-            this.notUseWorker();
+            //this.disableWorker();
             this.land.time = GameConfig_1.PlantConfigs.strawberryseed.harvestInterval * 60;
             this.land.isEmpty = false;
             this.land.plantType = PlantType_1.PlantType.strawberrySeed;
@@ -311,13 +304,19 @@ var LandUI = /** @class */ (function (_super) {
                 UIManager_1.default.instance.gameController.model.storage.strawberrySeed;
             this.land.crop = this.land.currentAsset.maxHarvest;
             UIManager_1.default.instance.gameController.model.storage.strawberrySeed.number -= 1;
+            this.land.landState = LandState.Plant;
             UIManager_1.default.instance.storageUI.updateUI();
             UIManager_1.default.instance.createLand();
+            this.disableWorker();
+            this.DisplayUI();
+            UIManager_1.default.instance.useWorkerForQueue2();
+            //this.disableWorker();
+            //UIManager.instance.useWorkerForQueue();
         }
     };
     LandUI.prototype.onClickMilkCowBtn = function () {
         if (UIManager_1.default.instance.gameController.model.storage.milkCow.number > 0) {
-            this.notUseWorker();
+            //this.disableWorker();
             this.land.time = GameConfig_1.CattleConfigs.milkcow.harvestInterval * 60;
             this.land.isEmpty = false;
             this.land.cattleType = CattleType_1.CattleType.Milkcow;
@@ -325,12 +324,18 @@ var LandUI = /** @class */ (function (_super) {
                 UIManager_1.default.instance.gameController.model.storage.milkCow;
             this.land.crop = this.land.currentAsset.maxHarvest;
             UIManager_1.default.instance.gameController.model.storage.milkCow.number -= 1;
+            this.land.landState = LandState.Cattle;
             UIManager_1.default.instance.storageUI.updateUI();
             UIManager_1.default.instance.createLand();
+            this.disableWorker();
+            this.DisplayUI();
+            UIManager_1.default.instance.useWorkerForQueue2();
+            //this.disableWorker();
+            //UIManager.instance.useWorkerForQueue();
         }
     };
     LandUI.prototype.onClickYieldBtn = function () {
-        this.notUseWorker();
+        //this.disableWorker();
         switch (this.land.currentAsset) {
             case UIManager_1.default.instance.gameController.model.storage.tomatoSeed:
                 UIManager_1.default.instance.gameController.model.storage.addTomato(this.land.containYield);
@@ -353,9 +358,17 @@ var LandUI = /** @class */ (function (_super) {
         this.land.containYield = 0;
         this.updateUI();
         UIManager_1.default.instance.storageUI.updateUI();
+        this.land.landState = this.land.plantType
+            ? LandState.Plant
+            : LandState.Cattle;
         if (this.land.crop == 0) {
-            this.resetUI();
+            this.land.landState = LandState.Empty;
         }
+        this.disableWorker();
+        this.DisplayUI();
+        UIManager_1.default.instance.useWorkerForQueue2();
+        //this.disableWorker();
+        //UIManager.instance.useWorkerForQueue();
     };
     LandUI.prototype.onClickMilkBtn = function () {
         this.resetUI();
@@ -429,50 +442,21 @@ var LandUI = /** @class */ (function (_super) {
         this.milkCowBtn.interactable =
             UIManager_1.default.instance.gameController.model.storage.milkCow.number > 0;
     };
-    LandUI.prototype.useWorker = function () {
-        if (UIManager_1.default.instance.gameController.model.storage.getWorkerIdle(UIManager_1.default.instance.gameController.model.storage.workingWorkerNumber) > 0) {
-            this.setWorkerSprite();
-            this.workerSprite.node.active = true;
-            UIManager_1.default.instance.gameController.model.storage.workingWorkerNumber += 1;
-            this.land.workingTime =
-                UIManager_1.default.instance.gameController.model.storage.worker.workingInterval *
-                    60;
-            UIManager_1.default.instance.storageUI.updateUI();
-            this.updateUI();
-            this.workingIntervalLb.node.active = true;
-        }
+    LandUI.prototype.enableWorker = function () {
+        this.setWorkerSprite();
+        this.workerSprite.node.active = true;
+        UIManager_1.default.instance.storageUI.updateUI();
+        this.updateUI();
+        this.workingIntervalLb.node.active = true;
     };
-    LandUI.prototype.notUseWorker = function () {
+    LandUI.prototype.disableWorker = function () {
         this.workerSprite.node.active = false;
         UIManager_1.default.instance.gameController.model.storage.workingWorkerNumber -= 1;
         this.land.workingTime = 0;
         UIManager_1.default.instance.storageUI.updateUI();
         this.updateUI();
         this.workingIntervalLb.node.active = false;
-    };
-    LandUI.prototype.assignWorker = function (workerAction) {
-        switch (workerAction) {
-            case WorkerAction.Yielding:
-                this.onClickYieldBtn();
-                break;
-            case WorkerAction.TomatoPlant:
-                this.onClickTomatoSeedBtn();
-                console.log("worker CLick tomatoseedbtn");
-                break;
-            case WorkerAction.BlueberryPlant:
-                this.onClickBlueberrySeedBtn();
-                break;
-            case WorkerAction.StrawberryPlant:
-                this.onClickStrawberrySeedBtn();
-                break;
-            case WorkerAction.MilkcowLiveStock:
-                this.onClickMilkCowBtn();
-                break;
-            case WorkerAction.CowLiveStock:
-                break;
-            default:
-                break;
-        }
+        this.land.isReadyToWork = false;
     };
     __decorate([
         property(cc.Button)
