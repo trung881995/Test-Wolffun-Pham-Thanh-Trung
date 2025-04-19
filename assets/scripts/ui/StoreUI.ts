@@ -90,6 +90,7 @@ export default class StoreUI extends cc.Component {
       UIManager.instance.gameController.model.store.buyTomatoSeed();
       UIManager.instance.storageUI.updateUI();
       UIManager.instance.enableAllLand();
+      UIManager.instance.findLandForPlant();
     }
   }
   onClickBuyBlueberrySeedBtn() {
@@ -100,6 +101,7 @@ export default class StoreUI extends cc.Component {
       UIManager.instance.gameController.model.store.buyBlueberrySeed();
       UIManager.instance.storageUI.updateUI();
       UIManager.instance.enableAllLand();
+      UIManager.instance.findLandForPlant();
     }
   }
   onClickBuyStrawberrySeedBtn() {
@@ -110,6 +112,7 @@ export default class StoreUI extends cc.Component {
       UIManager.instance.gameController.model.store.buyStrawberrySeed();
       UIManager.instance.storageUI.updateUI();
       UIManager.instance.enableAllLand();
+      UIManager.instance.findLandForPlant();
     }
   }
   onClickBuyMilkcowBtn() {
@@ -120,6 +123,7 @@ export default class StoreUI extends cc.Component {
       UIManager.instance.gameController.model.store.buyMilkCow();
       UIManager.instance.storageUI.updateUI();
       UIManager.instance.enableAllLand();
+      UIManager.instance.findLandForPlant();
     }
   }
   onClickBuyWorkerBtn() {
@@ -129,7 +133,7 @@ export default class StoreUI extends cc.Component {
     ) {
       UIManager.instance.gameController.model.store.buyWorker();
       UIManager.instance.storageUI.updateUI();
-      UIManager.instance.useWorkerForQueue2();
+      UIManager.instance.useWorkerForQueue3();
     }
   }
   onClickUpgradeMachineBtn() {
@@ -152,6 +156,7 @@ export default class StoreUI extends cc.Component {
       UIManager.instance.updateLand(
         UIManager.instance.gameController.model.storage.land.number - 1
       );
+      UIManager.instance.findLandForPlant();
     }
   }
 }

@@ -95,12 +95,14 @@ export default class LandUI extends cc.Component {
             console.log(this.land.currentAsset.harvestInterval);
             this.land.landState = LandState.Harvest;
             this.DisplayUI();
-            UIManager.instance.useWorkerForQueue2();
+            UIManager.instance.pushToQueue(this);
+            UIManager.instance.useWorkerForQueue3();
           } else {
             this.land.landState = LandState.Empty;
             //this.disableWorker();
             this.DisplayUI();
-            UIManager.instance.useWorkerForQueue2();
+            UIManager.instance.pushToQueue(this);
+            UIManager.instance.useWorkerForQueue3();
           }
         } else if (this.land.time > 0) {
           this.land.time -= dt;
@@ -129,13 +131,13 @@ export default class LandUI extends cc.Component {
       case LandState.Empty:
         this.resetUI();
         this.setupUI();
-        this.land.isReadyToWork = true;
         this.disableWorker();
+        this.land.isReadyToWork = this.land.currentAsset.number > 0;
         break;
       case LandState.Harvest:
         this.updateUI();
-        this.land.isReadyToWork = true;
         this.disableWorker();
+        this.land.isReadyToWork = true;
         break;
       case LandState.Plant:
         this.updateUI();
@@ -278,7 +280,8 @@ export default class LandUI extends cc.Component {
     }
     //this.disableWorker();
     this.DisplayUI();
-    UIManager.instance.useWorkerForQueue2();
+    UIManager.instance.pushToQueue(this);
+    UIManager.instance.useWorkerForQueue3();
   }
   onClickBlueberrySeedBtn() {
     if (
@@ -298,7 +301,8 @@ export default class LandUI extends cc.Component {
     }
     //this.disableWorker();
     this.DisplayUI();
-    UIManager.instance.useWorkerForQueue2();
+    UIManager.instance.pushToQueue(this);
+    UIManager.instance.useWorkerForQueue3();
   }
   onClickStrawberrySeedBtn() {
     if (
@@ -318,7 +322,8 @@ export default class LandUI extends cc.Component {
     }
     //this.disableWorker();
     this.DisplayUI();
-    UIManager.instance.useWorkerForQueue2();
+    UIManager.instance.pushToQueue(this);
+    UIManager.instance.useWorkerForQueue3();
   }
   onClickMilkCowBtn() {
     if (UIManager.instance.gameController.model.storage.milkCow.number > 0) {
@@ -336,7 +341,8 @@ export default class LandUI extends cc.Component {
     }
     //this.disableWorker();
     this.DisplayUI();
-    UIManager.instance.useWorkerForQueue2();
+    UIManager.instance.pushToQueue(this);
+    UIManager.instance.useWorkerForQueue3();
   }
   onClickYieldBtn() {
     //this.disableWorker();
@@ -383,12 +389,14 @@ export default class LandUI extends cc.Component {
     if (this.land.crop == 0) {
       this.land.landState = LandState.Empty;
       this.DisplayUI();
-      UIManager.instance.useWorkerForQueue2();
+      UIManager.instance.pushToQueue(this);
+      UIManager.instance.useWorkerForQueue3();
       return;
     }
     //this.disableWorker();
     this.DisplayUI();
-    UIManager.instance.useWorkerForQueue2();
+    UIManager.instance.pushToQueue(this);
+    UIManager.instance.useWorkerForQueue3();
     //this.disableWorker();
     //UIManager.instance.useWorkerForQueue();
   }
@@ -469,7 +477,7 @@ export default class LandUI extends cc.Component {
 
     this.land.landState = LandState.Empty;
 
-    this.land.currentAsset = null;
+    //this.land.currentAsset = null;
     this.land.workerAction = WorkerAction.TomatoPlant;
   }
 
