@@ -34,7 +34,6 @@ var CattleType_1 = require("../../enums/CattleType");
 var PlantType_1 = require("../../enums/PlantType");
 var UIManager_1 = require("../Manager/UIManager");
 var GameConfig_1 = require("../data/GameConfig");
-var Storage_1 = require("../storage/Storage");
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var LandState;
 (function (LandState) {
@@ -95,9 +94,7 @@ var LandUI = /** @class */ (function (_super) {
         return _this;
     }
     // LIFE-CYCLE CALLBACKS:
-    LandUI.prototype.onLoad = function () {
-        this.land = new Storage_1.Land();
-    };
+    LandUI.prototype.onLoad = function () { };
     LandUI.prototype.start = function () {
         //UIManager.instance.useWorkerForQueue();
     };
@@ -105,8 +102,7 @@ var LandUI = /** @class */ (function (_super) {
         if (this.land != null) {
             if (!this.land.isEmpty) {
                 if (this.land.time < 0.5) {
-                    if (this.land.containYield < this.land.currentAsset.maxHarvest &&
-                        this.land.crop > 0) {
+                    if (this.land.crop > 0) {
                         console.log(this.land.currentAsset.maxHarvest);
                         this.land.containYield += 1;
                         this.land.workerAction = WorkerAction.Yielding;
@@ -127,7 +123,9 @@ var LandUI = /** @class */ (function (_super) {
                     }
                 }
                 else if (this.land.time > 0) {
-                    this.land.time -= dt;
+                    this.land.time -=
+                        dt *
+                            UIManager_1.default.instance.gameController.model.storage.machine.Operate();
                     this.updateUI();
                 }
             }
@@ -269,7 +267,11 @@ var LandUI = /** @class */ (function (_super) {
             this.land.time = GameConfig_1.PlantConfigs.tomatoseed.harvestInterval * 60;
             this.land.currentAsset =
                 UIManager_1.default.instance.gameController.model.storage.tomatoSeed;
+            var maxHarvest = this.land.currentAsset.maxHarvest;
             this.land.crop = this.land.currentAsset.maxHarvest;
+            this.land.crop +=
+                Math.ceil(maxHarvest *
+                    UIManager_1.default.instance.gameController.model.storage.machine.Operate()) - maxHarvest;
             UIManager_1.default.instance.gameController.model.storage.tomatoSeed.number -= 1;
             this.land.landState = LandState.Plant;
             UIManager_1.default.instance.storageUI.updateUI();
@@ -288,7 +290,10 @@ var LandUI = /** @class */ (function (_super) {
             this.land.plantType = PlantType_1.PlantType.blueberrySeed;
             this.land.currentAsset =
                 UIManager_1.default.instance.gameController.model.storage.blueberrySeed;
-            this.land.crop = this.land.currentAsset.maxHarvest;
+            var maxHarvest = this.land.currentAsset.maxHarvest;
+            this.land.crop +=
+                Math.ceil(maxHarvest *
+                    UIManager_1.default.instance.gameController.model.storage.machine.Operate()) - maxHarvest;
             UIManager_1.default.instance.gameController.model.storage.blueberrySeed.number -= 1;
             this.land.landState = LandState.Plant;
             UIManager_1.default.instance.storageUI.updateUI();
@@ -307,7 +312,10 @@ var LandUI = /** @class */ (function (_super) {
             this.land.plantType = PlantType_1.PlantType.strawberrySeed;
             this.land.currentAsset =
                 UIManager_1.default.instance.gameController.model.storage.strawberrySeed;
-            this.land.crop = this.land.currentAsset.maxHarvest;
+            var maxHarvest = this.land.currentAsset.maxHarvest;
+            this.land.crop +=
+                Math.ceil(maxHarvest *
+                    UIManager_1.default.instance.gameController.model.storage.machine.Operate()) - maxHarvest;
             UIManager_1.default.instance.gameController.model.storage.strawberrySeed.number -= 1;
             this.land.landState = LandState.Plant;
             UIManager_1.default.instance.storageUI.updateUI();
@@ -326,7 +334,10 @@ var LandUI = /** @class */ (function (_super) {
             this.land.cattleType = CattleType_1.CattleType.Milkcow;
             this.land.currentAsset =
                 UIManager_1.default.instance.gameController.model.storage.milkCow;
-            this.land.crop = this.land.currentAsset.maxHarvest;
+            var maxHarvest = this.land.currentAsset.maxHarvest;
+            this.land.crop +=
+                Math.ceil(maxHarvest *
+                    UIManager_1.default.instance.gameController.model.storage.machine.Operate()) - maxHarvest;
             UIManager_1.default.instance.gameController.model.storage.milkCow.number -= 1;
             this.land.landState = LandState.Cattle;
             UIManager_1.default.instance.storageUI.updateUI();

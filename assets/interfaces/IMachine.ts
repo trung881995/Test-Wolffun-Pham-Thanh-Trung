@@ -4,5 +4,5 @@ export interface IMachine {
   support: number;
   upgradePrice: number;
 
-  Operate(): void;
+  Operate(): number;
 }

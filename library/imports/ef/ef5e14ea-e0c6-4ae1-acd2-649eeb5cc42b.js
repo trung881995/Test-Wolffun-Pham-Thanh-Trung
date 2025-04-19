@@ -131,18 +131,44 @@ var Machine = /** @class */ (function () {
     function Machine() {
     }
     Machine.prototype.Operate = function () {
-        throw new Error("Method not implemented.");
+        return (this.support * (this.level - 1) + 100) / 100;
+    };
+    Machine.prototype.upgradePerformace = function () {
+        this.support += 10;
     };
     return Machine;
 }());
 exports.Machine = Machine;
 var Land = /** @class */ (function () {
-    function Land() {
+    function Land(workerAction, crop, containYield, name, number, missionNumber, containInterval, buyPrice, isEmpty, time, landState, plantType, cattleType, currentAsset, workingTime, isReadyToWork) {
+        if (isEmpty === void 0) { isEmpty = true; }
+        if (landState === void 0) { landState = LandUI_1.LandState.Empty; }
+        if (plantType === void 0) { plantType = null; }
+        if (cattleType === void 0) { cattleType = null; }
         this.isEmpty = true;
         this.landState = LandUI_1.LandState.Empty;
         this.plantType = null;
         this.cattleType = null;
+        this.workerAction = workerAction;
+        this.crop = crop;
+        this.containYield = containYield;
+        this.name = name;
+        this.number = number;
+        this.missionNumber = missionNumber;
+        this.containInterval = containInterval;
+        this.buyPrice = buyPrice;
+        this.isEmpty = isEmpty;
+        this.time = time;
+        this.landState = landState;
+        this.plantType = plantType;
+        this.cattleType = cattleType;
+        this.currentAsset = currentAsset;
+        this.workingTime = workingTime;
+        this.isReadyToWork = isReadyToWork;
     }
+    Land.prototype.clone = function () {
+        return new Land(this.workerAction, this.crop, this.containYield, this.name, this.missionNumber, this.containInterval, this.buyPrice, this.number, this.isEmpty, this.time, this.landState, this.plantType, this.cattleType, this.currentAsset, this.workingTime, this.isReadyToWork);
+    };
     return Land;
 }());
 exports.Land = Land;
@@ -204,9 +230,15 @@ var Storage = /** @class */ (function () {
         this.worker.number += 1;
     };
     Storage.prototype.upgradeMachine = function () {
-        this.land.time -=
-            (this.land.currentAsset.time * this.machine.support) / 100;
-        this.land.currentAsset.maxHarvest *= 100 + this.machine.support;
+        this.machine.level += 1;
+        this.machine.upgradePerformace();
+        for (var i = 0; i < this.land.number; i++) {
+            var maxHarvest = UIManager_1.default.instance.landUIArray[i].land.currentAsset.maxHarvest;
+            UIManager_1.default.instance.landUIArray[i].land.crop =
+                UIManager_1.default.instance.landUIArray[i].land.currentAsset.maxHarvest;
+            UIManager_1.default.instance.landUIArray[i].land.crop +=
+                Math.ceil(maxHarvest * this.machine.Operate()) - maxHarvest;
+        }
     };
     Storage.prototype.addLand = function () {
         this.land.number += 1;

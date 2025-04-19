@@ -55,6 +55,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GameModel = void 0;
 var BaseModel_1 = require("../../core/mvc/BaseModel");
+var CattleType_1 = require("../../enums/CattleType");
+var PlantType_1 = require("../../enums/PlantType");
 var Store_1 = require("../Store/Store");
 var GameConfig_1 = require("../data/GameConfig");
 var Storage_1 = require("../storage/Storage");
@@ -106,7 +108,6 @@ var GameModel = /** @class */ (function (_super) {
                         _a.sent();
                         this.storage = new Storage_1.Storage();
                         this.store = new Store_1.Store(this.storage);
-                        this.storage.land = new Storage_1.Land();
                         this.storage.tomatoSeed = new Storage_1.TomatoSeed();
                         this.storage.blueberrySeed = new Storage_1.BlueberrySeed();
                         this.storage.strawberrySeed = new Storage_1.StrawberrySeed();
@@ -131,19 +132,21 @@ var GameModel = /** @class */ (function (_super) {
                     case 0: return [4 /*yield*/, this.setup()];
                     case 1:
                         _a.sent();
-                        this.storage.gold = 5000;
+                        this.storage.gold = 10000;
                         this.storage.workingWorkerNumber = 0;
-                        this.storage.land.number = GameConfig_1.FirstConfigs.land.number;
-                        this.storage.land.buyPrice = GameConfig_1.LandConfigs.red.buyPrice;
-                        this.storage.land.name = GameConfig_1.LandConfigs.red.name;
-                        this.storage.land.missionNumber = GameConfig_1.LandConfigs.red.missionNumber;
-                        this.storage.land.containInterval = GameConfig_1.LandConfigs.red.containInterval;
+                        /*
+                        this.storage.land.number = FirstConfigs.land.number;
+                        this.storage.land.buyPrice = LandConfigs.red.buyPrice;
+                        this.storage.land.name = LandConfigs.red.name;
+                        this.storage.land.missionNumber = LandConfigs.red.missionNumber;
+                        this.storage.land.containInterval = LandConfigs.red.containInterval;
                         this.storage.land.containYield = 0;
                         this.storage.land.crop = 0;
-                        this.storage.land.workerAction = LandUI_1.WorkerAction.TomatoPlant;
+                        this.storage.land.workerAction = WorkerAction.TomatoPlant;
                         this.storage.land.workingTime = 0;
                         this.storage.land.currentAsset = this.storage.tomatoSeed;
                         this.storage.land.isReadyToWork = true;
+                    */
                         this.storage.blueberrySeed.number = GameConfig_1.FirstConfigs.blueberryseed.number;
                         this.storage.blueberrySeed.name = GameConfig_1.PlantConfigs.blueberryseed.name;
                         this.storage.blueberrySeed.buyPrice = GameConfig_1.PlantConfigs.blueberryseed.buyPrice;
@@ -233,6 +236,9 @@ var GameModel = /** @class */ (function (_super) {
                 }
             });
         });
+    };
+    GameModel.prototype.newLand = function () {
+        this.storage.land = new Storage_1.Land(LandUI_1.WorkerAction.TomatoPlant, 0, 0, GameConfig_1.LandConfigs.red.name, GameConfig_1.FirstConfigs.land.number, GameConfig_1.LandConfigs.red.missionNumber, GameConfig_1.LandConfigs.red.containInterval, GameConfig_1.LandConfigs.red.buyPrice, true, 0, LandUI_1.LandState.Empty, PlantType_1.PlantType.tomatoSeed, CattleType_1.CattleType.Milkcow, this.storage.tomatoSeed, 0, true);
     };
     GameModel.prototype.getFirstData = function () {
         return GameConfig_1.FirstConfigs;

@@ -22,17 +22,6 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var __assign = (this && this.__assign) || function () {
-    __assign = Object.assign || function(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
-                t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -104,14 +93,19 @@ var UIManager = /** @class */ (function (_super) {
         this.setupUI();
     };
     UIManager.prototype.update = function (dt) {
+        /*
         if (this.time > 0) {
-            this.time -= dt;
+          this.time -= dt;
+        } else if (this.time < 0) {
+          this.useWorkerForQueue3();
+          this.time = 0;
+        } else {
         }
-        else if (this.time < 0) {
-            this.useWorkerForQueue3();
-            this.time = 0;
-        }
-        else {
+        */
+        if (this.gameController.model.queueLandArray.length > 0 &&
+            this.gameController.model.storage.getWorkerIdle(this.gameController.model.storage.workingWorkerNumber) > 0) {
+            this.useWorker(this.gameController.model.queueLandArray[0]);
+            this.gameController.model.queueLandArray.splice(0, 1);
         }
     };
     UIManager.prototype.setupUI = function () {
@@ -121,6 +115,7 @@ var UIManager = /** @class */ (function (_super) {
                     case 0: return [4 /*yield*/, this.gameController.model.setData()];
                     case 1:
                         _a.sent();
+                        this.gameController.model.newLand();
                         this.createLand();
                         this.useWorkerForQueue3();
                         this.storageUI.setupUI();
@@ -170,15 +165,7 @@ var UIManager = /** @class */ (function (_super) {
         }
     };
     UIManager.prototype.useWorkerForQueue3 = function () {
-        for (var i = 0; i < this.gameController.model.queueLandArray.length; i++) {
-            if (this.gameController.model.storage.getWorkerIdle(this.gameController.model.storage.workingWorkerNumber) > 0) {
-                this.useWorker(this.gameController.model.queueLandArray[0]);
-                this.gameController.model.queueLandArray.splice(0, 1);
-            }
-            else {
-                this.time = this.checkMinWorkingTime();
-            }
-        }
+        for (var i = 0; i < this.gameController.model.queueLandArray.length; i++) { }
     };
     UIManager.prototype.checkMinWorkingTime = function () {
         var min = this.landUIArray[0].land.workingTime;
@@ -199,7 +186,13 @@ var UIManager = /** @class */ (function (_super) {
     };
     UIManager.prototype.createLand = function () {
         var _this = this;
-        this.landArrayClones = Array.from({ length: 9 }, function () { return (__assign({}, _this.gameController.model.storage.land)); });
+        /*this.landArrayClones = Array.from({ length: 9 }, () => ({
+          ...this.gameController.model.storage.land,
+        }));*/
+        this.landArrayClones = Array.from({ length: 9 }, function () {
+            return _this.gameController.model.storage.land.clone();
+        });
+        cc.log(this.landArrayClones);
         for (var i = 0; i < this.gameController.model.storage.land.number; i++) {
             this.updateLand(i);
             this.gameController.model.queueLandArray.push(this.landUIArray[i]);

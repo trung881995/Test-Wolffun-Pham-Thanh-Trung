@@ -37,6 +37,7 @@ export default class UIManager extends cc.Component {
   }
 
   update(dt: number): void {
+    /*
     if (this.time > 0) {
       this.time -= dt;
     } else if (this.time < 0) {
@@ -44,9 +45,20 @@ export default class UIManager extends cc.Component {
       this.time = 0;
     } else {
     }
+    */
+    if (
+      this.gameController.model.queueLandArray.length > 0 &&
+      this.gameController.model.storage.getWorkerIdle(
+        this.gameController.model.storage.workingWorkerNumber
+      ) > 0
+    ) {
+      this.useWorker(this.gameController.model.queueLandArray[0]);
+      this.gameController.model.queueLandArray.splice(0, 1);
+    }
   }
   async setupUI() {
     await this.gameController.model.setData();
+    this.gameController.model.newLand();
 
     this.createLand();
 
@@ -103,18 +115,7 @@ export default class UIManager extends cc.Component {
     }
   }
   useWorkerForQueue3() {
-    for (let i = 0; i < this.gameController.model.queueLandArray.length; i++) {
-      if (
-        this.gameController.model.storage.getWorkerIdle(
-          this.gameController.model.storage.workingWorkerNumber
-        ) > 0
-      ) {
-        this.useWorker(this.gameController.model.queueLandArray[0]);
-        this.gameController.model.queueLandArray.splice(0, 1);
-      } else {
-        this.time = this.checkMinWorkingTime();
-      }
-    }
+    for (let i = 0; i < this.gameController.model.queueLandArray.length; i++) {}
   }
 
   checkMinWorkingTime(): number {
@@ -136,9 +137,13 @@ export default class UIManager extends cc.Component {
     landUi.enableWorker();
   }
   createLand() {
-    this.landArrayClones = Array.from({ length: 9 }, () => ({
+    /*this.landArrayClones = Array.from({ length: 9 }, () => ({
       ...this.gameController.model.storage.land,
-    }));
+    }));*/
+    this.landArrayClones = Array.from({ length: 9 }, () =>
+      this.gameController.model.storage.land.clone()
+    );
+    cc.log(this.landArrayClones);
     for (let i = 0; i < this.gameController.model.storage.land.number; i++) {
       this.updateLand(i);
       this.gameController.model.queueLandArray.push(this.landUIArray[i]);

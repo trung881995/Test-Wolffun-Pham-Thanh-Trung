@@ -137,11 +137,54 @@ export class Machine implements IMachine {
   level: number;
   support: number;
   upgradePrice: number;
-  Operate(): void {
-    throw new Error("Method not implemented.");
+  Operate(): number {
+    return (this.support * (this.level - 1) + 100) / 100;
+  }
+  upgradePerformace() {
+    this.support += 10;
   }
 }
 export class Land implements ILand {
+  constructor(
+    workerAction: WorkerAction,
+    crop: number,
+    containYield: number,
+    name: string,
+    number: number,
+    missionNumber: number,
+    containInterval: number,
+    buyPrice: number,
+
+    isEmpty: boolean = true,
+    time: number,
+    landState: LandState = LandState.Empty,
+    plantType: PlantType = null,
+    cattleType: CattleType = null,
+
+    currentAsset: any,
+
+    workingTime: number,
+
+    isReadyToWork: boolean
+  ) {
+    this.workerAction = workerAction;
+    this.crop = crop;
+    this.containYield = containYield;
+    this.name = name;
+    this.number = number;
+    this.missionNumber = missionNumber;
+    this.containInterval = containInterval;
+    this.buyPrice = buyPrice;
+    this.isEmpty = isEmpty;
+    this.time = time;
+    this.landState = landState;
+    this.plantType = plantType;
+    this.cattleType = cattleType;
+    this.currentAsset = currentAsset;
+    this.workingTime = workingTime;
+    this.isReadyToWork = isReadyToWork;
+  }
+
   workerAction: WorkerAction;
   crop: number;
   containYield: number;
@@ -162,6 +205,27 @@ export class Land implements ILand {
   workingTime: number;
 
   isReadyToWork: boolean;
+
+  clone(): Land {
+    return new Land(
+      this.workerAction,
+      this.crop,
+      this.containYield,
+      this.name,
+      this.missionNumber,
+      this.containInterval,
+      this.buyPrice,
+      this.number,
+      this.isEmpty,
+      this.time,
+      this.landState,
+      this.plantType,
+      this.cattleType,
+      this.currentAsset,
+      this.workingTime,
+      this.isReadyToWork
+    );
+  }
 }
 
 export class Storage implements IStorage {
@@ -240,9 +304,16 @@ export class Storage implements IStorage {
     this.worker.number += 1;
   }
   upgradeMachine(): void {
-    this.land.time -=
-      (this.land.currentAsset.time * this.machine.support) / 100;
-    this.land.currentAsset.maxHarvest *= 100 + this.machine.support;
+    this.machine.level += 1;
+    this.machine.upgradePerformace();
+    for (let i = 0; i < this.land.number; i++) {
+      let maxHarvest =
+        UIManager.instance.landUIArray[i].land.currentAsset.maxHarvest;
+      UIManager.instance.landUIArray[i].land.crop =
+        UIManager.instance.landUIArray[i].land.currentAsset.maxHarvest;
+      UIManager.instance.landUIArray[i].land.crop +=
+        Math.ceil(maxHarvest * this.machine.Operate()) - maxHarvest;
+    }
   }
   addLand(): void {
     this.land.number += 1;

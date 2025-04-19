@@ -564,11 +564,6 @@
     "meta": 1744746191259,
     "relativePath": "enums"
   },
-  "d4cea23e-ac79-47f9-9bf3-c53344982a81": {
-    "asset": 1744715596700,
-    "meta": 1744716516794,
-    "relativePath": "enums/CattleType.ts"
-  },
   "dcd90cc5-befa-42be-98fb-830873d1df1a": {
     "asset": 1744731643846,
     "meta": 1744731955424,
@@ -744,11 +739,6 @@
     "meta": 1744810076137,
     "relativePath": "resources/images/strawberrySeed.png"
   },
-  "e0a62040-0a76-4745-a682-19a897e065f9": {
-    "asset": 1744861510239,
-    "meta": 1744861538679,
-    "relativePath": "enums/PlantType.ts"
-  },
   "ae14abc0-67ae-4c49-a61e-80da127c836a": {
     "asset": 1744861611318,
     "meta": 1744861614077,
@@ -784,11 +774,6 @@
     "meta": 1744867221434,
     "relativePath": "interfaces/IYield.ts"
   },
-  "ea8a0b4f-882d-45ad-a104-b04a8a05d51f": {
-    "asset": 1744869226909,
-    "meta": 1744869677500,
-    "relativePath": "interfaces/IMachine.ts"
-  },
   "2fbeaa61-c799-4e54-9df3-68f91ac3ca4f": {
     "asset": 1744870440237,
     "meta": 1744871380560,
@@ -809,25 +794,10 @@
     "meta": 1745040105554,
     "relativePath": "interfaces/IStorage.ts"
   },
-  "47d22bfc-8652-4fa7-9ca5-39d9b4547502": {
-    "asset": 1745040174048,
-    "meta": 1745040329118,
-    "relativePath": "interfaces/ILand.ts"
-  },
-  "4666a4d1-788e-49e0-9333-0d80f0ccd728": {
-    "asset": 1745069866441,
-    "meta": 1745069868092,
-    "relativePath": "scripts/models/GameModel.ts"
-  },
   "cf0ec30f-dfbb-4f81-805b-ae2b7678e7df": {
     "asset": 1745070152224,
     "meta": 1745070220902,
     "relativePath": "scripts/ui/StorageUI.ts"
-  },
-  "ef5e14ea-e0c6-4ae1-acd2-649eeb5cc42b": {
-    "asset": 1745072330417,
-    "meta": 1745072333334,
-    "relativePath": "scripts/storage/Storage.ts"
   },
   "716773f9-9f37-4268-9086-435f370c5b77": {
     "asset": 1745072935950,
@@ -839,19 +809,49 @@
     "meta": 1745073298130,
     "relativePath": "scripts/data/GameConfig.ts"
   },
-  "5fbc3f85-aa3f-4273-8a5f-579b34683cfc": {
-    "asset": 1745075869261,
-    "meta": 1745075870794,
-    "relativePath": "scripts/ui/LandUI.ts"
-  },
   "66f8fe43-f752-44a0-822c-f83d2f33efab": {
     "asset": 1745077194532,
     "meta": 1745077196927,
     "relativePath": "scripts/ui/StoreUI.ts"
   },
+  "d4cea23e-ac79-47f9-9bf3-c53344982a81": {
+    "asset": 1745083079342,
+    "meta": 1745083123700,
+    "relativePath": "enums/CattleType.ts"
+  },
+  "e0a62040-0a76-4745-a682-19a897e065f9": {
+    "asset": 1745083075191,
+    "meta": 1745083123703,
+    "relativePath": "enums/PlantType.ts"
+  },
   "fd7df33d-3ebd-4c95-815c-ea012e2cea8d": {
-    "asset": 1745077935912,
-    "meta": 1745077937811,
+    "asset": 1745084306552,
+    "meta": 1745084332763,
     "relativePath": "scripts/Manager/UIManager.ts"
+  },
+  "4666a4d1-788e-49e0-9333-0d80f0ccd728": {
+    "asset": 1745084476735,
+    "meta": 1745084478342,
+    "relativePath": "scripts/models/GameModel.ts"
+  },
+  "47d22bfc-8652-4fa7-9ca5-39d9b4547502": {
+    "asset": 1745085256113,
+    "meta": 1745085842570,
+    "relativePath": "interfaces/ILand.ts"
+  },
+  "ea8a0b4f-882d-45ad-a104-b04a8a05d51f": {
+    "asset": 1745085064637,
+    "meta": 1745085842573,
+    "relativePath": "interfaces/IMachine.ts"
+  },
+  "5fbc3f85-aa3f-4273-8a5f-579b34683cfc": {
+    "asset": 1745087715102,
+    "meta": 1745087716769,
+    "relativePath": "scripts/ui/LandUI.ts"
+  },
+  "ef5e14ea-e0c6-4ae1-acd2-649eeb5cc42b": {
+    "asset": 1745087799049,
+    "meta": 1745087800439,
+    "relativePath": "scripts/storage/Storage.ts"
   }
 }

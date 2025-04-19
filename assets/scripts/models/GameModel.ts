@@ -1,4 +1,6 @@
 import { BaseModel } from "../../core/mvc/BaseModel";
+import { CattleType } from "../../enums/CattleType";
+import { PlantType } from "../../enums/PlantType";
 import { Store } from "../Store/Store";
 import {
   FirstConfigs,
@@ -32,7 +34,7 @@ import {
   TomatoSeed,
   Worker,
 } from "../storage/Storage";
-import LandUI, { WorkerAction } from "../ui/LandUI";
+import LandUI, { LandState, WorkerAction } from "../ui/LandUI";
 
 export class GameModel extends BaseModel {
   init(...args: any[]): void {}
@@ -46,7 +48,7 @@ export class GameModel extends BaseModel {
     await this.loadData();
     this.storage = new Storage();
     this.store = new Store(this.storage);
-    this.storage.land = new Land();
+
     this.storage.tomatoSeed = new TomatoSeed();
     this.storage.blueberrySeed = new BlueberrySeed();
     this.storage.strawberrySeed = new StrawberrySeed();
@@ -63,9 +65,9 @@ export class GameModel extends BaseModel {
   }
   async setData() {
     await this.setup();
-    this.storage.gold = 5000;
+    this.storage.gold = 10000;
     this.storage.workingWorkerNumber = 0;
-
+    /*
     this.storage.land.number = FirstConfigs.land.number;
     this.storage.land.buyPrice = LandConfigs.red.buyPrice;
     this.storage.land.name = LandConfigs.red.name;
@@ -77,7 +79,7 @@ export class GameModel extends BaseModel {
     this.storage.land.workingTime = 0;
     this.storage.land.currentAsset = this.storage.tomatoSeed;
     this.storage.land.isReadyToWork = true;
-
+*/
     this.storage.blueberrySeed.number = FirstConfigs.blueberryseed.number;
     this.storage.blueberrySeed.name = PlantConfigs.blueberryseed.name;
     this.storage.blueberrySeed.buyPrice = PlantConfigs.blueberryseed.buyPrice;
@@ -154,6 +156,27 @@ export class GameModel extends BaseModel {
     await loadYieldConfigFromCSV();
     await loadWorkerConfigFromCSV();
     await loadMachineConfigFromCSV();
+  }
+
+  newLand() {
+    this.storage.land = new Land(
+      WorkerAction.TomatoPlant,
+      0,
+      0,
+      LandConfigs.red.name,
+      FirstConfigs.land.number,
+      LandConfigs.red.missionNumber,
+      LandConfigs.red.containInterval,
+      LandConfigs.red.buyPrice,
+      true,
+      0,
+      LandState.Empty,
+      PlantType.tomatoSeed,
+      CattleType.Milkcow,
+      this.storage.tomatoSeed,
+      0,
+      true
+    );
   }
   public getFirstData() {
     return FirstConfigs;
