@@ -113,7 +113,7 @@ var LandUI = /** @class */ (function (_super) {
                             this.land.landState = LandState.Harvest;
                             this.setupLandState();
                             UIManager_1.default.instance.pushToQueue(this);
-                            //UIManager.instance.useWorkerForQueue3();
+                            UIManager_1.default.instance.useWorkerForQueue3();
                         }
                     }
                     else {
@@ -121,6 +121,7 @@ var LandUI = /** @class */ (function (_super) {
                         this.disableWorker();
                         this.setupLandState();
                         UIManager_1.default.instance.pushToQueue(this);
+                        UIManager_1.default.instance.useWorkerForQueue3();
                         //UIManager.instance.useWorkerForQueue3();
                     }
                 }
@@ -279,6 +280,7 @@ var LandUI = /** @class */ (function (_super) {
             this.disableWorker();
             UIManager_1.default.instance.storageUI.updateUI();
             UIManager_1.default.instance.enableAllLand();
+            UIManager_1.default.instance.useWorkerForQueue3();
         }
         //this.disableWorker();
         this.setupLandState();
@@ -303,6 +305,7 @@ var LandUI = /** @class */ (function (_super) {
             this.disableWorker();
             UIManager_1.default.instance.storageUI.updateUI();
             UIManager_1.default.instance.enableAllLand();
+            UIManager_1.default.instance.useWorkerForQueue3();
         }
         //this.disableWorker();
         this.setupLandState();
@@ -327,6 +330,7 @@ var LandUI = /** @class */ (function (_super) {
             this.disableWorker();
             UIManager_1.default.instance.storageUI.updateUI();
             UIManager_1.default.instance.enableAllLand();
+            UIManager_1.default.instance.useWorkerForQueue3();
         }
         //this.disableWorker();
         this.setupLandState();
@@ -351,6 +355,7 @@ var LandUI = /** @class */ (function (_super) {
             this.disableWorker();
             UIManager_1.default.instance.storageUI.updateUI();
             UIManager_1.default.instance.enableAllLand();
+            UIManager_1.default.instance.useWorkerForQueue3();
         }
         //this.disableWorker();
         this.setupLandState();
@@ -389,11 +394,14 @@ var LandUI = /** @class */ (function (_super) {
             this.disableWorker();
             this.setupLandState();
             UIManager_1.default.instance.pushToQueue(this);
+            UIManager_1.default.instance.useWorkerForQueue3();
+            //UIManager.instance.useWorkerForQueue3();
             //UIManager.instance.useWorkerForQueue3();
             return;
         }
         this.disableWorker();
         this.setupLandState();
+        UIManager_1.default.instance.useWorkerForQueue3();
         //UIManager.instance.pushToQueue(this);
         //UIManager.instance.useWorkerForQueue3();
         //this.disableWorker();

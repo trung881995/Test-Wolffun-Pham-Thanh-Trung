@@ -101,8 +101,7 @@ var UIManager = /** @class */ (function (_super) {
         } else {
         }
         */
-        if (this.gameController.model.storage)
-            this.useWorkerForQueue3();
+        //if (this.gameController.model.storage);
     };
     UIManager.prototype.setupUI = function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -113,7 +112,7 @@ var UIManager = /** @class */ (function (_super) {
                         _a.sent();
                         this.gameController.model.newLand();
                         this.createLand();
-                        //this.useWorkerForQueue3();
+                        this.useWorkerForQueue3();
                         this.storageUI.setupUI();
                         this.storageUI.updateUI();
                         this.storeUI.setupUI();
@@ -230,7 +229,7 @@ var UIManager = /** @class */ (function (_super) {
                     this.landUIArray[i].land.isReadyToWork) {
                     //this.landUIArray[i].setupLandState();
                     this.pushToQueue(this.landUIArray[i]);
-                    //this.useWorkerForQueue3();
+                    this.useWorkerForQueue3();
                 }
             }
         }

@@ -45,7 +45,7 @@ export default class UIManager extends cc.Component {
     } else {
     }
     */
-    if (this.gameController.model.storage) this.useWorkerForQueue3();
+    //if (this.gameController.model.storage);
   }
   async setupUI() {
     await this.gameController.model.setData();
@@ -53,7 +53,7 @@ export default class UIManager extends cc.Component {
 
     this.createLand();
 
-    //this.useWorkerForQueue3();
+    this.useWorkerForQueue3();
     this.storageUI.setupUI();
     this.storageUI.updateUI();
 
@@ -178,7 +178,8 @@ export default class UIManager extends cc.Component {
         ) {
           //this.landUIArray[i].setupLandState();
           this.pushToQueue(this.landUIArray[i]);
-          //this.useWorkerForQueue3();
+
+          this.useWorkerForQueue3();
         }
       }
     }

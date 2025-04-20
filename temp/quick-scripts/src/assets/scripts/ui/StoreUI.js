@@ -109,7 +109,7 @@ var StoreUI = /** @class */ (function (_super) {
             UIManager_1.default.instance.gameController.model.storage.worker.buyPrice) {
             UIManager_1.default.instance.gameController.model.store.buyWorker();
             UIManager_1.default.instance.storageUI.updateUI();
-            //UIManager.instance.useWorkerForQueue3();
+            UIManager_1.default.instance.useWorkerForQueue3();
         }
     };
     StoreUI.prototype.onClickUpgradeMachineBtn = function () {

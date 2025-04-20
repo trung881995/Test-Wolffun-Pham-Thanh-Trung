@@ -97,13 +97,14 @@ export default class LandUI extends cc.Component {
               this.land.landState = LandState.Harvest;
               this.setupLandState();
               UIManager.instance.pushToQueue(this);
-              //UIManager.instance.useWorkerForQueue3();
+              UIManager.instance.useWorkerForQueue3();
             }
           } else {
             this.land.landState = LandState.Empty;
             this.disableWorker();
             this.setupLandState();
             UIManager.instance.pushToQueue(this);
+            UIManager.instance.useWorkerForQueue3();
             //UIManager.instance.useWorkerForQueue3();
           }
         } else if (this.land.time > -0.5) {
@@ -290,6 +291,7 @@ export default class LandUI extends cc.Component {
       this.disableWorker();
       UIManager.instance.storageUI.updateUI();
       UIManager.instance.enableAllLand();
+      UIManager.instance.useWorkerForQueue3();
     }
     //this.disableWorker();
     this.setupLandState();
@@ -320,6 +322,7 @@ export default class LandUI extends cc.Component {
       this.disableWorker();
       UIManager.instance.storageUI.updateUI();
       UIManager.instance.enableAllLand();
+      UIManager.instance.useWorkerForQueue3();
     }
     //this.disableWorker();
     this.setupLandState();
@@ -348,6 +351,7 @@ export default class LandUI extends cc.Component {
       this.disableWorker();
       UIManager.instance.storageUI.updateUI();
       UIManager.instance.enableAllLand();
+      UIManager.instance.useWorkerForQueue3();
     }
     //this.disableWorker();
     this.setupLandState();
@@ -374,6 +378,7 @@ export default class LandUI extends cc.Component {
       this.disableWorker();
       UIManager.instance.storageUI.updateUI();
       UIManager.instance.enableAllLand();
+      UIManager.instance.useWorkerForQueue3();
     }
     //this.disableWorker();
     this.setupLandState();
@@ -427,11 +432,14 @@ export default class LandUI extends cc.Component {
       this.disableWorker();
       this.setupLandState();
       UIManager.instance.pushToQueue(this);
+      UIManager.instance.useWorkerForQueue3();
+      //UIManager.instance.useWorkerForQueue3();
       //UIManager.instance.useWorkerForQueue3();
       return;
     }
     this.disableWorker();
     this.setupLandState();
+    UIManager.instance.useWorkerForQueue3();
     //UIManager.instance.pushToQueue(this);
     //UIManager.instance.useWorkerForQueue3();
     //this.disableWorker();

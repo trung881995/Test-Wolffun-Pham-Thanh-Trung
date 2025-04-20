@@ -824,11 +824,6 @@
     "meta": 1745085842573,
     "relativePath": "interfaces/IMachine.ts"
   },
-  "66f8fe43-f752-44a0-822c-f83d2f33efab": {
-    "asset": 1745124344322,
-    "meta": 1745124385509,
-    "relativePath": "scripts/ui/StoreUI.ts"
-  },
   "58a6ed62-ff53-45d1-bfaf-185481b6cd43": {
     "asset": 1745125963580,
     "meta": 1745126615540,
@@ -844,14 +839,19 @@
     "meta": 1745126615599,
     "relativePath": "scripts/storage/Storage.ts"
   },
-  "5fbc3f85-aa3f-4273-8a5f-579b34683cfc": {
-    "asset": 1745126609298,
-    "meta": 1745126615638,
-    "relativePath": "scripts/ui/LandUI.ts"
+  "66f8fe43-f752-44a0-822c-f83d2f33efab": {
+    "asset": 1745131210480,
+    "meta": 1745131212031,
+    "relativePath": "scripts/ui/StoreUI.ts"
   },
   "fd7df33d-3ebd-4c95-815c-ea012e2cea8d": {
-    "asset": 1745127197785,
-    "meta": 1745127214389,
+    "asset": 1745131270377,
+    "meta": 1745131327741,
     "relativePath": "scripts/Manager/UIManager.ts"
+  },
+  "5fbc3f85-aa3f-4273-8a5f-579b34683cfc": {
+    "asset": 1745131297060,
+    "meta": 1745131327786,
+    "relativePath": "scripts/ui/LandUI.ts"
   }
 }

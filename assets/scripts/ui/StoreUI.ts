@@ -133,7 +133,7 @@ export default class StoreUI extends cc.Component {
     ) {
       UIManager.instance.gameController.model.store.buyWorker();
       UIManager.instance.storageUI.updateUI();
-      //UIManager.instance.useWorkerForQueue3();
+      UIManager.instance.useWorkerForQueue3();
     }
   }
   onClickUpgradeMachineBtn() {
