@@ -7,10 +7,12 @@
 
 const { ccclass, property } = cc._decorator;
 import { GameController } from "../controllers/GameController";
+import { GameModel } from "../models/GameModel";
 import { Land } from "../storage/Storage";
 import LandUI, { LandState } from "../ui/LandUI";
 import StorageUI from "../ui/StorageUI";
 import StoreUI from "../ui/StoreUI";
+import { GameView } from "../views/GameView";
 
 @ccclass
 export default class UIManager extends cc.Component {
@@ -18,7 +20,11 @@ export default class UIManager extends cc.Component {
   @property(StoreUI) storeUI: StoreUI = null;
   @property(StorageUI) storageUI: StorageUI = null;
   public static instance: UIManager;
-  public gameController: GameController;
+
+  gameController: GameController;
+  gameModel: GameModel;
+  gameView: GameView;
+
   landArrayClones: Land[] = [];
   time: number = 0;
 
@@ -30,9 +36,13 @@ export default class UIManager extends cc.Component {
     }
 
     this.gameController = new GameController();
+    this.gameModel = new GameModel();
+    this.gameView = new GameView(this.gameController);
   }
 
   start() {
+    this.gameController.init(this.gameModel, this.gameView);
+    this.gameController.setupUI();
     this.setupUI();
   }
 

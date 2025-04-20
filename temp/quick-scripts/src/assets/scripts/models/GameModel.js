@@ -93,45 +93,136 @@ var GameModel = /** @class */ (function (_super) {
         }
         */
     }
+    GameModel.prototype.loadTomatoSeedFromSave = function (data) {
+        this.storage.tomatoSeed.name = data.name || "";
+        //this.storage.tomatoSeed.number = data.number || 0;
+        //this.storage.tomatoSeed.harvestInterval = data.harvestInterval || 0;
+        //this.storage.tomatoSeed.maxHarvest = data.maxHarvest || 0;
+        //this.storage.tomatoSeed.buyPrice = data.buyPrice || 0;
+    };
+    GameModel.prototype.getSaveTomatoSeedData = function () {
+        return this.storage.tomatoSeed;
+    };
+    GameModel.prototype.loadBlueberrySeedFromSave = function (data) {
+        this.storage.blueberrySeed.name = data.name || "";
+        this.storage.blueberrySeed.number = data.number || 0;
+        this.storage.blueberrySeed.harvestInterval = data.harvestInterval || 0;
+        this.storage.blueberrySeed.maxHarvest = data.maxHarvest || 0;
+        this.storage.blueberrySeed.buyPrice = data.buyPrice || 0;
+    };
+    GameModel.prototype.getSaveBlueberrySeedData = function () {
+        return this.storage.blueberrySeed;
+    };
+    GameModel.prototype.loadStrawberrySeedFromSave = function (data) {
+        this.storage.strawberrySeed.name = data.name || "";
+        this.storage.strawberrySeed.number = data.number || 0;
+        this.storage.strawberrySeed.harvestInterval = data.harvestInterval || 0;
+        this.storage.strawberrySeed.maxHarvest = data.maxHarvest || 0;
+        this.storage.strawberrySeed.buyPrice = data.buyPrice || 0;
+    };
+    GameModel.prototype.getSaveStrawberrySeedData = function () {
+        return this.storage.strawberrySeed;
+    };
+    GameModel.prototype.loadMilkCowFromSave = function (data) {
+        this.storage.milkCow.name = data.name || "";
+        this.storage.milkCow.number = data.number || 0;
+        this.storage.milkCow.harvestInterval = data.harvestInterval || 0;
+        this.storage.milkCow.maxHarvest = data.maxHarvest || 0;
+        this.storage.milkCow.buyPrice = data.buyPrice || 0;
+    };
+    GameModel.prototype.getSaveMilkCowData = function () {
+        return this.storage.milkCow;
+    };
+    GameModel.prototype.loadWokerFromSave = function (data) {
+        this.storage.worker.name = data.name || "";
+        this.storage.worker.number = data.number || 0;
+        this.storage.worker.workingInterval = data.workingInterval || 0;
+        this.storage.worker.buyPrice = data.buyPrice || 0;
+    };
+    GameModel.prototype.getSaveWorkerData = function () {
+        return this.storage.worker;
+    };
+    GameModel.prototype.loadMachineFromSave = function (data) {
+        this.storage.machine.name = data.name || "";
+        this.storage.machine.level = data.level || 1;
+        this.storage.machine.support = data.support || 10;
+        this.storage.machine.upgradePrice = data.upgradePrice || 500;
+    };
+    GameModel.prototype.getSaveMachineData = function () {
+        return this.storage.machine;
+    };
+    GameModel.prototype.loadGoldFromSave = function (data) {
+        this.storage.gold = data || 0;
+    };
+    GameModel.prototype.getSaveGoldData = function () {
+        return this.storage.gold;
+    };
+    GameModel.prototype.loadTimeStampFromSave = function (data) {
+        this.storage.timestamp = data || 0;
+    };
+    GameModel.prototype.getSaveTimeStampData = function () {
+        return this.storage.timestamp;
+    };
+    GameModel.prototype.loadTomatoFromSave = function (data) {
+        this.storage.tomato.name = data.name || "";
+        this.storage.tomato.number = data.number || 0;
+        this.storage.tomato.sellPrice = data.sellPrice || 5;
+    };
+    GameModel.prototype.getSaveTomatoData = function () {
+        return this.storage.tomato;
+    };
+    GameModel.prototype.loadBlueberryFromSave = function (data) {
+        this.storage.blueberry.name = data.name || "";
+        this.storage.blueberry.number = data.number || 0;
+        this.storage.blueberry.sellPrice = data.sellPrice || 8;
+    };
+    GameModel.prototype.getSaveBlueberryData = function () {
+        return this.storage.blueberry;
+    };
+    GameModel.prototype.loadStrawberryFromSave = function (data) {
+        this.storage.strawberry.name = data.name || "";
+        this.storage.strawberry.number = data.number || 0;
+        this.storage.strawberry.sellPrice = data.sellPrice || 10;
+    };
+    GameModel.prototype.getSaveStrawberryData = function () {
+        return this.storage.strawberry;
+    };
+    GameModel.prototype.loadMilkFromSave = function (data) {
+        this.storage.milk.name = data.name || "";
+        this.storage.milk.number = data.number || 0;
+        this.storage.milk.sellPrice = data.sellPrice || 15;
+    };
+    GameModel.prototype.getSaveMilkData = function () {
+        return this.storage.milk;
+    };
     GameModel.prototype.init = function () {
         var args = [];
         for (var _i = 0; _i < arguments.length; _i++) {
             args[_i] = arguments[_i];
         }
+        this.storage = new Storage_1.Storage();
+        this.store = new Store_1.Store(this.storage);
+        this.storage.tomatoSeed = new Storage_1.TomatoSeed();
+        this.storage.blueberrySeed = new Storage_1.BlueberrySeed();
+        this.storage.strawberrySeed = new Storage_1.StrawberrySeed();
+        this.storage.milkCow = new Storage_1.MilkCow();
+        this.storage.cow = new Storage_1.Cow();
+        this.storage.worker = new Storage_1.Worker();
+        this.storage.machine = new Storage_1.Machine();
+        this.storage.tomato = new Storage_1.Tomato();
+        this.storage.blueberry = new Storage_1.Blueberry();
+        this.storage.strawberry = new Storage_1.Strawberry();
+        this.storage.milk = new Storage_1.Milk();
+        this.storage.beef = new Storage_1.Beef();
     };
-    GameModel.prototype.setup = function () {
+    GameModel.prototype.setData = function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.loadData()];
                     case 1:
                         _a.sent();
-                        this.storage = new Storage_1.Storage();
-                        this.store = new Store_1.Store(this.storage);
-                        this.storage.tomatoSeed = new Storage_1.TomatoSeed();
-                        this.storage.blueberrySeed = new Storage_1.BlueberrySeed();
-                        this.storage.strawberrySeed = new Storage_1.StrawberrySeed();
-                        this.storage.milkCow = new Storage_1.MilkCow();
-                        this.storage.cow = new Storage_1.Cow();
-                        this.storage.worker = new Storage_1.Worker();
-                        this.storage.machine = new Storage_1.Machine();
-                        this.storage.tomato = new Storage_1.Tomato();
-                        this.storage.blueberry = new Storage_1.Blueberry();
-                        this.storage.strawberry = new Storage_1.Strawberry();
-                        this.storage.milk = new Storage_1.Milk();
-                        this.storage.beef = new Storage_1.Beef();
-                        return [2 /*return*/];
-                }
-            });
-        });
-    };
-    GameModel.prototype.setData = function () {
-        return __awaiter(this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.setup()];
-                    case 1:
-                        _a.sent();
+                        this.init();
                         this.storage.gold = 10000;
                         this.storage.workingWorkerNumber = 0;
                         /*

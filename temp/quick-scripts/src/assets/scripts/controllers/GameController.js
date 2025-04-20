@@ -19,20 +19,62 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GameController = void 0;
 var BaseController_1 = require("../../core/mvc/BaseController");
-var GameView_1 = require("../views/GameView");
-var GameModel_1 = require("../models/GameModel");
+var GameSaveManager_1 = require("../Manager/GameSaveManager");
 var GameController = /** @class */ (function (_super) {
     __extends(GameController, _super);
     function GameController() {
-        var _this = _super.call(this) || this;
-        _this.model = new GameModel_1.GameModel();
-        _this.view = new GameView_1.GameView(_this);
-        return _this;
+        return _super !== null && _super.apply(this, arguments) || this;
     }
+    /* constructor() {
+      super();
+      this.model = new GameModel();
+  
+      this.view = new GameView(this);
+  
+    }
+    */
+    GameController.prototype.init = function (model, view) {
+        this.model = model;
+        this.view = view;
+    };
     GameController.prototype.update = function (dt) {
         throw new Error("Method not implemented.");
     };
-    GameController.prototype.setupUI = function () { };
+    GameController.prototype.setupUI = function () {
+        var _this = this;
+        cc.game.on(cc.game.EVENT_HIDE, function () {
+            _this.saveGame();
+        });
+    };
+    GameController.prototype.saveGame = function () {
+        var data = {
+            gold: this.model.getSaveGoldData(),
+            tomatoSeed: this.model.getSaveTomatoSeedData(),
+            blueberrySeed: this.model.getSaveBlueberrySeedData(),
+            strawberrySeed: this.model.getSaveStrawberrySeedData(),
+            milkCow: this.model.getSaveMilkCowData(),
+            worker: this.model.getSaveWorkerData(),
+            machine: this.model.getSaveMachineData(),
+            tomato: this.model.getSaveTomatoData(),
+            blueberry: this.model.getSaveBlueberryData(),
+            strawberry: this.model.getSaveStrawberryData(),
+            milk: this.model.getSaveMilkData(),
+            timestamp: this.model.getSaveTimeStampData(),
+        };
+        GameSaveManager_1.GameSaveManager.save(data);
+    };
+    GameController.prototype.loadGame = function () {
+        var saved = GameSaveManager_1.GameSaveManager.load();
+        if (saved) {
+            this.model.loadGoldFromSave(saved.gold);
+            this.model.loadFromSave(saved.tomato);
+            this.blueberryController.model.loadFromSave(saved.blueberry);
+            this.cowController.model.loadFromSave(saved.cow);
+            this.workerController.model.loadFromSave(saved.worker);
+            var offlineDuration = Date.now() - saved.timestamp;
+            this.updateOfflineProgress(offlineDuration);
+        }
+    };
     return GameController;
 }(BaseController_1.BaseController));
 exports.GameController = GameController;

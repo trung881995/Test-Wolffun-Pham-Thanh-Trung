@@ -67,9 +67,11 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var _a = cc._decorator, ccclass = _a.ccclass, property = _a.property;
 var GameController_1 = require("../controllers/GameController");
+var GameModel_1 = require("../models/GameModel");
 var LandUI_1 = require("../ui/LandUI");
 var StorageUI_1 = require("../ui/StorageUI");
 var StoreUI_1 = require("../ui/StoreUI");
+var GameView_1 = require("../views/GameView");
 var UIManager = /** @class */ (function (_super) {
     __extends(UIManager, _super);
     function UIManager() {
@@ -88,8 +90,12 @@ var UIManager = /** @class */ (function (_super) {
             UIManager_1.instance = this;
         }
         this.gameController = new GameController_1.GameController();
+        this.gameModel = new GameModel_1.GameModel();
+        this.gameView = new GameView_1.GameView(this.gameController);
     };
     UIManager.prototype.start = function () {
+        this.gameController.init(this.gameModel, this.gameView);
+        this.gameController.setupUI();
         this.setupUI();
     };
     UIManager.prototype.update = function (dt) {

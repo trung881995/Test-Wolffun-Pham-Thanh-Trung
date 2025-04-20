@@ -514,11 +514,6 @@
     "meta": 1744746191259,
     "relativePath": "core/mvc"
   },
-  "3b6dd67d-4c74-4df8-844b-f15eeb13f51b": {
-    "asset": 1744713236039,
-    "meta": 1744713251290,
-    "relativePath": "core/mvc/BaseModel.ts"
-  },
   "f2dad672-cbe7-4246-9807-c9e9ee6557d9": {
     "asset": 1744713271158,
     "meta": 1744713295611,
@@ -754,11 +749,6 @@
     "meta": 1744876741736,
     "relativePath": "scripts/Store"
   },
-  "e7a15517-dad8-44a6-8702-aa8b0664c068": {
-    "asset": 1745034521131,
-    "meta": 1745034529686,
-    "relativePath": "scripts/controllers/GameController.ts"
-  },
   "619e86bc-f4e2-445e-a7d7-d074d6f96251": {
     "asset": 1745034521136,
     "meta": 1745034529657,
@@ -783,11 +773,6 @@
     "asset": 1744873548184,
     "meta": 1744873952139,
     "relativePath": "scripts/Store/Store.ts"
-  },
-  "fd97c6e2-9a9d-40e5-b3f1-67991d76d51d": {
-    "asset": 1745040013533,
-    "meta": 1745040105554,
-    "relativePath": "interfaces/IStorage.ts"
   },
   "cf0ec30f-dfbb-4f81-805b-ae2b7678e7df": {
     "asset": 1745070152224,
@@ -829,29 +814,49 @@
     "meta": 1745126615540,
     "relativePath": "interfaces/IWorker.ts"
   },
-  "4666a4d1-788e-49e0-9333-0d80f0ccd728": {
-    "asset": 1745126017217,
-    "meta": 1745126615573,
-    "relativePath": "scripts/models/GameModel.ts"
-  },
-  "ef5e14ea-e0c6-4ae1-acd2-649eeb5cc42b": {
-    "asset": 1745126079495,
-    "meta": 1745126615599,
-    "relativePath": "scripts/storage/Storage.ts"
-  },
   "66f8fe43-f752-44a0-822c-f83d2f33efab": {
     "asset": 1745131210480,
     "meta": 1745131212031,
     "relativePath": "scripts/ui/StoreUI.ts"
   },
-  "fd7df33d-3ebd-4c95-815c-ea012e2cea8d": {
-    "asset": 1745131270377,
-    "meta": 1745131327741,
-    "relativePath": "scripts/Manager/UIManager.ts"
-  },
   "5fbc3f85-aa3f-4273-8a5f-579b34683cfc": {
     "asset": 1745131297060,
     "meta": 1745131327786,
     "relativePath": "scripts/ui/LandUI.ts"
+  },
+  "3b6dd67d-4c74-4df8-844b-f15eeb13f51b": {
+    "asset": 1745136146742,
+    "meta": 1745136469958,
+    "relativePath": "core/mvc/BaseModel.ts"
+  },
+  "fd97c6e2-9a9d-40e5-b3f1-67991d76d51d": {
+    "asset": 1745136066258,
+    "meta": 1745136469961,
+    "relativePath": "interfaces/IStorage.ts"
+  },
+  "ef5e14ea-e0c6-4ae1-acd2-649eeb5cc42b": {
+    "asset": 1745136081467,
+    "meta": 1745136470033,
+    "relativePath": "scripts/storage/Storage.ts"
+  },
+  "fd7df33d-3ebd-4c95-815c-ea012e2cea8d": {
+    "asset": 1745137051472,
+    "meta": 1745137055618,
+    "relativePath": "scripts/Manager/UIManager.ts"
+  },
+  "e7a15517-dad8-44a6-8702-aa8b0664c068": {
+    "asset": 1745138846544,
+    "meta": 1745138851754,
+    "relativePath": "scripts/controllers/GameController.ts"
+  },
+  "f9f6de96-342a-42a9-a937-9010c43c6635": {
+    "asset": 1745138339323,
+    "meta": 1745138851759,
+    "relativePath": "scripts/Manager/GameSaveManager.ts"
+  },
+  "4666a4d1-788e-49e0-9333-0d80f0ccd728": {
+    "asset": 1745138159048,
+    "meta": 1745138851802,
+    "relativePath": "scripts/models/GameModel.ts"
   }
 }

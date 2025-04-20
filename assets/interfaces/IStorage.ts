@@ -19,6 +19,8 @@ import { IWorker } from "./IWorker";
 
 export interface IStorage {
   gold: number;
+  timestamp: number;
+
   tomato: Tomato;
   blueberry: Blueberry;
   strawberry: Strawberry;

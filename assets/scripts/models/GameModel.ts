@@ -1,6 +1,7 @@
 import { BaseModel } from "../../core/mvc/BaseModel";
 import { CattleType } from "../../enums/CattleType";
 import { PlantType } from "../../enums/PlantType";
+import { SaveData } from "../Manager/GameSaveManager";
 import { Store } from "../Store/Store";
 import {
   FirstConfigs,
@@ -37,15 +38,136 @@ import {
 import LandUI, { LandState, WorkerAction } from "../ui/LandUI";
 
 export class GameModel extends BaseModel {
-  init(...args: any[]): void {}
-  store: Store;
-  storage: Storage;
+  loadTomatoSeedFromSave(data: Partial<SaveData["tomatoSeed"]>): void {
+    this.storage.tomatoSeed.name = data.name || "";
+    this.storage.tomatoSeed.number = data.number || 0;
+    this.storage.tomatoSeed.harvestInterval = data.harvestInterval || 0;
+    this.storage.tomatoSeed.maxHarvest = data.maxHarvest || 0;
+    this.storage.tomatoSeed.buyPrice = data.buyPrice || 0;
+  }
+  getSaveTomatoSeedData(): Partial<SaveData["tomatoSeed"]> {
+    return this.storage.tomatoSeed;
+  }
+  loadBlueberrySeedFromSave(data: Partial<SaveData["blueberrySeed"]>): void {
+    this.storage.blueberrySeed.name = data.name || "";
+    this.storage.blueberrySeed.number = data.number || 0;
+    this.storage.blueberrySeed.harvestInterval = data.harvestInterval || 0;
+    this.storage.blueberrySeed.maxHarvest = data.maxHarvest || 0;
+    this.storage.blueberrySeed.buyPrice = data.buyPrice || 0;
+  }
+  getSaveBlueberrySeedData(): Partial<SaveData["blueberrySeed"]> {
+    return this.storage.blueberrySeed;
+  }
+  loadStrawberrySeedFromSave(data: Partial<SaveData["strawberrySeed"]>): void {
+    this.storage.strawberrySeed.name = data.name || "";
+    this.storage.strawberrySeed.number = data.number || 0;
+    this.storage.strawberrySeed.harvestInterval = data.harvestInterval || 0;
+    this.storage.strawberrySeed.maxHarvest = data.maxHarvest || 0;
+    this.storage.strawberrySeed.buyPrice = data.buyPrice || 0;
+  }
+  getSaveStrawberrySeedData(): Partial<SaveData["strawberrySeed"]> {
+    return this.storage.strawberrySeed;
+  }
+  loadMilkCowFromSave(data: Partial<SaveData["milkCow"]>): void {
+    this.storage.milkCow.name = data.name || "";
+    this.storage.milkCow.number = data.number || 0;
+    this.storage.milkCow.harvestInterval = data.harvestInterval || 0;
+    this.storage.milkCow.maxHarvest = data.maxHarvest || 0;
+    this.storage.milkCow.buyPrice = data.buyPrice || 0;
+  }
+  getSaveMilkCowData(): Partial<SaveData["milkCow"]> {
+    return this.storage.milkCow;
+  }
 
-  startLandNumber: number;
+  loadWokerFromSave(data: Partial<SaveData["worker"]>): void {
+    this.storage.worker.name = data.name || "";
+    this.storage.worker.number = data.number || 0;
+    this.storage.worker.workingInterval = data.workingInterval || 0;
+    this.storage.worker.buyPrice = data.buyPrice || 0;
+  }
+  getSaveWorkerData(): Partial<SaveData["worker"]> {
+    return this.storage.worker;
+  }
+  loadMachineFromSave(data: Partial<SaveData["machine"]>): void {
+    this.storage.machine.name = data.name || "";
+    this.storage.machine.level = data.level || 1;
+    this.storage.machine.support = data.support || 10;
+    this.storage.machine.upgradePrice = data.upgradePrice || 500;
+  }
+  getSaveMachineData(): Partial<SaveData["machine"]> {
+    return this.storage.machine;
+  }
+  loadGoldFromSave(data: Partial<SaveData["gold"]>): void {
+    this.storage.gold = data || 0;
+  }
+  getSaveGoldData(): Partial<SaveData["gold"]> {
+    return this.storage.gold;
+  }
+  loadTimeStampFromSave(data: Partial<SaveData["timestamp"]>): void {
+    this.storage.timestamp = data || 0;
+  }
+  getSaveTimeStampData(): Partial<SaveData["timestamp"]> {
+    return this.storage.timestamp;
+  }
+  loadTomatoFromSave(data: Partial<SaveData["tomato"]>): void {
+    this.storage.tomato.name = data.name || "";
+    this.storage.tomato.number = data.number || 0;
+    this.storage.tomato.sellPrice = data.sellPrice || 5;
+  }
+  getSaveTomatoData(): Partial<SaveData["tomato"]> {
+    return this.storage.tomato;
+  }
+  loadBlueberryFromSave(data: Partial<SaveData["blueberry"]>): void {
+    this.storage.blueberry.name = data.name || "";
+    this.storage.blueberry.number = data.number || 0;
+    this.storage.blueberry.sellPrice = data.sellPrice || 8;
+  }
+  getSaveBlueberryData(): Partial<SaveData["blueberry"]> {
+    return this.storage.blueberry;
+  }
+  loadStrawberryFromSave(data: Partial<SaveData["strawberry"]>): void {
+    this.storage.strawberry.name = data.name || "";
+    this.storage.strawberry.number = data.number || 0;
+    this.storage.strawberry.sellPrice = data.sellPrice || 10;
+  }
+  getSaveStrawberryData(): Partial<SaveData["strawberry"]> {
+    return this.storage.strawberry;
+  }
+  loadMilkFromSave(data: Partial<SaveData["milk"]>): void {
+    this.storage.milk.name = data.name || "";
+    this.storage.milk.number = data.number || 0;
+    this.storage.milk.sellPrice = data.sellPrice || 15;
+  }
+  getSaveMilkData(): Partial<SaveData["milk"]> {
+    return this.storage.milk;
+  }
 
-  queueLandArray: LandUI[] = [];
-  async setup() {
-    await this.loadData();
+  loadLandFromSave(data: Partial<SaveData["land"]>): void {
+    this.storage.land.name = data.name || "";
+    this.storage.land.number = data.number || 0;
+    this.storage.land.missionNumber = data.missionNumber || 1;
+    this.storage.land.containInterval = data.containInterval =
+      data.containInterval || 0;
+    this.storage.land.buyPrice = data.buyPrice || 0;
+    this.storage.land.containYield = data.containYield || 0;
+    this.storage.land.currentAsset = data.currentAsset || new TomatoSeed();
+    this.storage.land.crop = data.crop || 0;
+    this.storage.land.workerAction =
+      data.workerAction || WorkerAction.TomatoPlant;
+    this.storage.land.workingTime = data.workingTime || 0;
+    this.storage.land.isReadyToWork = data.isReadyToWork || true;
+
+    this.storage.land.isEmpty = data.isEmpty || true;
+    this.storage.land.time = data.time || 0;
+    this.storage.land.landState = data.landState || LandState.Empty;
+    this.storage.land.plantType = data.plantType || null;
+    this.storage.land.cattleType = data.cattleType || null;
+  }
+  getSaveLandData(): Partial<SaveData["land"]> {
+    return this.storage.land;
+  }
+
+  init(...args: any[]): void {
     this.storage = new Storage();
     this.store = new Store(this.storage);
 
@@ -63,8 +185,16 @@ export class GameModel extends BaseModel {
     this.storage.milk = new Milk();
     this.storage.beef = new Beef();
   }
+  store: Store;
+  storage: Storage;
+
+  startLandNumber: number;
+
+  queueLandArray: LandUI[] = [];
+
   async setData() {
-    await this.setup();
+    await this.loadData();
+    this.init();
     this.storage.gold = 10000;
     this.storage.workingWorkerNumber = 0;
     /*

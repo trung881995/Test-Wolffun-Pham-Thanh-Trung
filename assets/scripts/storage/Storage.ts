@@ -230,6 +230,7 @@ export class Land implements ILand {
 }
 
 export class Storage implements IStorage {
+  timestamp: number;
   worker: Worker;
 
   machine: Machine;

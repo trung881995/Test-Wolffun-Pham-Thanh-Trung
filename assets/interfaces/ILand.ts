@@ -1,4 +1,6 @@
-import { WorkerAction } from "../scripts/ui/LandUI";
+import { CattleType } from "../enums/CattleType";
+import { PlantType } from "../enums/PlantType";
+import { LandState, WorkerAction } from "../scripts/ui/LandUI";
 
 export interface ILand {
   name: string;
@@ -12,4 +14,10 @@ export interface ILand {
   workerAction: WorkerAction;
   workingTime: number;
   isReadyToWork: boolean;
+
+  isEmpty: boolean;
+  time: number;
+  landState: LandState;
+  plantType: PlantType;
+  cattleType: CattleType;
 }

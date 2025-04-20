@@ -28,6 +28,7 @@ require('./assets/interfaces/IStore');
 require('./assets/interfaces/IWorker');
 require('./assets/interfaces/IYield');
 require('./assets/scripts/Manager/ConfigManager');
+require('./assets/scripts/Manager/GameSaveManager');
 require('./assets/scripts/Manager/UIManager');
 require('./assets/scripts/Store/Store');
 require('./assets/scripts/controllers/GameController');
