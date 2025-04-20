@@ -31,6 +31,8 @@ export interface SaveData {
 
   land: Partial<Land>;
 
+  workingWorkerNumber: number;
+
   /*tomato: {
     totalHarvested: number;
     lastUpdate: number;

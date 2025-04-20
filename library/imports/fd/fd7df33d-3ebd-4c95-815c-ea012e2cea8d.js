@@ -72,6 +72,7 @@ var LandUI_1 = require("../ui/LandUI");
 var StorageUI_1 = require("../ui/StorageUI");
 var StoreUI_1 = require("../ui/StoreUI");
 var GameView_1 = require("../views/GameView");
+var GameSaveManager_1 = require("./GameSaveManager");
 var UIManager = /** @class */ (function (_super) {
     __extends(UIManager, _super);
     function UIManager() {
@@ -79,6 +80,7 @@ var UIManager = /** @class */ (function (_super) {
         _this.landUIArray = [];
         _this.storeUI = null;
         _this.storageUI = null;
+        _this.GamePanel = null;
         _this.landArrayClones = [];
         _this.time = 0;
         return _this;
@@ -89,15 +91,8 @@ var UIManager = /** @class */ (function (_super) {
         if (UIManager_1.instance == null) {
             UIManager_1.instance = this;
         }
-        this.gameController = new GameController_1.GameController();
-        this.gameModel = new GameModel_1.GameModel();
-        this.gameView = new GameView_1.GameView(this.gameController);
     };
-    UIManager.prototype.start = function () {
-        this.gameController.init(this.gameModel, this.gameView);
-        this.gameController.setupUI();
-        this.setupUI();
-    };
+    UIManager.prototype.start = function () { };
     UIManager.prototype.update = function (dt) {
         /*  if (this.time > 0) {
           this.time -= dt;
@@ -240,6 +235,19 @@ var UIManager = /** @class */ (function (_super) {
             }
         }
     };
+    UIManager.prototype.clearCache = function () {
+        GameSaveManager_1.GameSaveManager.clear();
+    };
+    UIManager.prototype.startGame = function () {
+        //this.gameController.loadGame();
+        this.gameController = new GameController_1.GameController();
+        this.gameModel = new GameModel_1.GameModel();
+        this.gameView = new GameView_1.GameView(this.gameController);
+        this.gameController.init(this.gameModel, this.gameView);
+        this.gameController.setupUI();
+        this.setupUI();
+        this.GamePanel.node.active = false;
+    };
     var UIManager_1;
     __decorate([
         property(LandUI_1.default)
@@ -250,6 +258,9 @@ var UIManager = /** @class */ (function (_super) {
     __decorate([
         property(StorageUI_1.default)
     ], UIManager.prototype, "storageUI", void 0);
+    __decorate([
+        property(cc.Sprite)
+    ], UIManager.prototype, "GamePanel", void 0);
     UIManager = UIManager_1 = __decorate([
         ccclass
     ], UIManager);

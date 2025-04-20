@@ -46,6 +46,8 @@ export class GameController extends BaseController<GameModel, GameView> {
       timestamp: this.model.getSaveTimeStampData(),
 
       land: this.model.getSaveLandData(),
+
+      workingWorkerNumber: this.model.getSaveWorkingWorkerNumberData(),
     };
     GameSaveManager.save(data);
   }
@@ -68,10 +70,15 @@ export class GameController extends BaseController<GameModel, GameView> {
 
       this.model.loadLandFromSave(saved.land);
 
-      const offlineDuration = Date.now() - saved.timestamp;
+      this.model.loadWorkingWorkerNumberFromSave(saved.workingWorkerNumber);
+
+      const offlineDuration = Date.now() - this.model.storage.timestamp;
       this.updateOfflineProgress(offlineDuration);
     }
   }
 
   updateOfflineProgress(duration: number) {}
+
+  calculateLand(duration: number) {}
+  calculateWorker(duration: number) {}
 }

@@ -60,6 +60,8 @@ var GameController = /** @class */ (function (_super) {
             strawberry: this.model.getSaveStrawberryData(),
             milk: this.model.getSaveMilkData(),
             timestamp: this.model.getSaveTimeStampData(),
+            land: this.model.getSaveLandData(),
+            workingWorkerNumber: this.model.getSaveWorkingWorkerNumberData(),
         };
         GameSaveManager_1.GameSaveManager.save(data);
     };
@@ -67,14 +69,26 @@ var GameController = /** @class */ (function (_super) {
         var saved = GameSaveManager_1.GameSaveManager.load();
         if (saved) {
             this.model.loadGoldFromSave(saved.gold);
-            this.model.loadFromSave(saved.tomato);
-            this.blueberryController.model.loadFromSave(saved.blueberry);
-            this.cowController.model.loadFromSave(saved.cow);
-            this.workerController.model.loadFromSave(saved.worker);
-            var offlineDuration = Date.now() - saved.timestamp;
+            this.model.loadTomatoSeedFromSave(saved.tomatoSeed);
+            this.model.loadBlueberrySeedFromSave(saved.blueberrySeed);
+            this.model.loadStrawberrySeedFromSave(saved.strawberrySeed);
+            this.model.loadMilkCowFromSave(saved.milkCow);
+            this.model.loadWokerFromSave(saved.worker);
+            this.model.loadMachineFromSave(saved.machine);
+            this.model.loadTomatoFromSave(saved.tomato);
+            this.model.loadBlueberryFromSave(saved.blueberry);
+            this.model.loadStrawberryFromSave(saved.strawberry);
+            this.model.loadMilkFromSave(saved.milk);
+            this.model.loadTimeStampFromSave(saved.timestamp);
+            this.model.loadLandFromSave(saved.land);
+            this.model.loadWorkingWorkerNumberFromSave(saved.workingWorkerNumber);
+            var offlineDuration = Date.now() - this.model.storage.timestamp;
             this.updateOfflineProgress(offlineDuration);
         }
     };
+    GameController.prototype.updateOfflineProgress = function (duration) { };
+    GameController.prototype.calculateLand = function (duration) { };
+    GameController.prototype.calculateWorker = function (duration) { };
     return GameController;
 }(BaseController_1.BaseController));
 exports.GameController = GameController;

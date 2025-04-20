@@ -13,12 +13,15 @@ import LandUI, { LandState } from "../ui/LandUI";
 import StorageUI from "../ui/StorageUI";
 import StoreUI from "../ui/StoreUI";
 import { GameView } from "../views/GameView";
+import { GameSaveManager } from "./GameSaveManager";
 
 @ccclass
 export default class UIManager extends cc.Component {
   @property(LandUI) landUIArray: LandUI[] = [];
   @property(StoreUI) storeUI: StoreUI = null;
   @property(StorageUI) storageUI: StorageUI = null;
+
+  @property(cc.Sprite) GamePanel: cc.Sprite = null;
   public static instance: UIManager;
 
   gameController: GameController;
@@ -34,17 +37,9 @@ export default class UIManager extends cc.Component {
     if (UIManager.instance == null) {
       UIManager.instance = this;
     }
-
-    this.gameController = new GameController();
-    this.gameModel = new GameModel();
-    this.gameView = new GameView(this.gameController);
   }
 
-  start() {
-    this.gameController.init(this.gameModel, this.gameView);
-    this.gameController.setupUI();
-    this.setupUI();
-  }
+  start() {}
 
   update(dt: number): void {
     /*  if (this.time > 0) {
@@ -193,5 +188,22 @@ export default class UIManager extends cc.Component {
         }
       }
     }
+  }
+
+  clearCache() {
+    GameSaveManager.clear();
+  }
+  startGame() {
+    //this.gameController.loadGame();
+
+    this.gameController = new GameController();
+    this.gameModel = new GameModel();
+    this.gameView = new GameView(this.gameController);
+
+    this.gameController.init(this.gameModel, this.gameView);
+    this.gameController.setupUI();
+    this.setupUI();
+
+    this.GamePanel.node.active = false;
   }
 }

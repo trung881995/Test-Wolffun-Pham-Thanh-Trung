@@ -95,10 +95,10 @@ var GameModel = /** @class */ (function (_super) {
     }
     GameModel.prototype.loadTomatoSeedFromSave = function (data) {
         this.storage.tomatoSeed.name = data.name || "";
-        //this.storage.tomatoSeed.number = data.number || 0;
-        //this.storage.tomatoSeed.harvestInterval = data.harvestInterval || 0;
-        //this.storage.tomatoSeed.maxHarvest = data.maxHarvest || 0;
-        //this.storage.tomatoSeed.buyPrice = data.buyPrice || 0;
+        this.storage.tomatoSeed.number = data.number || 0;
+        this.storage.tomatoSeed.harvestInterval = data.harvestInterval || 0;
+        this.storage.tomatoSeed.maxHarvest = data.maxHarvest || 0;
+        this.storage.tomatoSeed.buyPrice = data.buyPrice || 0;
     };
     GameModel.prototype.getSaveTomatoSeedData = function () {
         return this.storage.tomatoSeed;
@@ -163,6 +163,12 @@ var GameModel = /** @class */ (function (_super) {
     GameModel.prototype.getSaveTimeStampData = function () {
         return this.storage.timestamp;
     };
+    GameModel.prototype.loadWorkingWorkerNumberFromSave = function (data) {
+        this.storage.workingWorkerNumber = data || 0;
+    };
+    GameModel.prototype.getSaveWorkingWorkerNumberData = function () {
+        return this.storage.workingWorkerNumber;
+    };
     GameModel.prototype.loadTomatoFromSave = function (data) {
         this.storage.tomato.name = data.name || "";
         this.storage.tomato.number = data.number || 0;
@@ -194,6 +200,29 @@ var GameModel = /** @class */ (function (_super) {
     };
     GameModel.prototype.getSaveMilkData = function () {
         return this.storage.milk;
+    };
+    GameModel.prototype.loadLandFromSave = function (data) {
+        this.storage.land.name = data.name || "";
+        this.storage.land.number = data.number || 0;
+        this.storage.land.missionNumber = data.missionNumber || 1;
+        this.storage.land.containInterval = data.containInterval =
+            data.containInterval || 0;
+        this.storage.land.buyPrice = data.buyPrice || 0;
+        this.storage.land.containYield = data.containYield || 0;
+        this.storage.land.currentAsset = data.currentAsset || new Storage_1.TomatoSeed();
+        this.storage.land.crop = data.crop || 0;
+        this.storage.land.workerAction =
+            data.workerAction || LandUI_1.WorkerAction.TomatoPlant;
+        this.storage.land.workingTime = data.workingTime || 0;
+        this.storage.land.isReadyToWork = data.isReadyToWork || true;
+        this.storage.land.isEmpty = data.isEmpty || true;
+        this.storage.land.time = data.time || 0;
+        this.storage.land.landState = data.landState || LandUI_1.LandState.Empty;
+        this.storage.land.plantType = data.plantType || null;
+        this.storage.land.cattleType = data.cattleType || null;
+    };
+    GameModel.prototype.getSaveLandData = function () {
+        return this.storage.land;
     };
     GameModel.prototype.init = function () {
         var args = [];

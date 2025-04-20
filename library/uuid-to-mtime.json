@@ -680,8 +680,8 @@
     "relativePath": "resources/configs/first.CSV"
   },
   "3b22d275-0baa-4d53-b2bb-36b393fb46d4": {
-    "asset": 1745043433250,
-    "meta": 1745043433256,
+    "asset": 1745143268761,
+    "meta": 1745143268767,
     "relativePath": "Scene.fire"
   },
   "2686bd4a-882a-46a9-9305-5d43e42429ea": {
@@ -799,11 +799,6 @@
     "meta": 1745083123703,
     "relativePath": "enums/PlantType.ts"
   },
-  "47d22bfc-8652-4fa7-9ca5-39d9b4547502": {
-    "asset": 1745085256113,
-    "meta": 1745085842570,
-    "relativePath": "interfaces/ILand.ts"
-  },
   "ea8a0b4f-882d-45ad-a104-b04a8a05d51f": {
     "asset": 1745085064637,
     "meta": 1745085842573,
@@ -839,24 +834,34 @@
     "meta": 1745136470033,
     "relativePath": "scripts/storage/Storage.ts"
   },
-  "fd7df33d-3ebd-4c95-815c-ea012e2cea8d": {
-    "asset": 1745137051472,
-    "meta": 1745137055618,
-    "relativePath": "scripts/Manager/UIManager.ts"
+  "47d22bfc-8652-4fa7-9ca5-39d9b4547502": {
+    "asset": 1745141019121,
+    "meta": 1745141734771,
+    "relativePath": "interfaces/ILand.ts"
   },
   "e7a15517-dad8-44a6-8702-aa8b0664c068": {
-    "asset": 1745138846544,
-    "meta": 1745138851754,
+    "asset": 1745141721835,
+    "meta": 1745141734782,
     "relativePath": "scripts/controllers/GameController.ts"
   },
   "f9f6de96-342a-42a9-a937-9010c43c6635": {
-    "asset": 1745138339323,
-    "meta": 1745138851759,
+    "asset": 1745141467653,
+    "meta": 1745141734788,
     "relativePath": "scripts/Manager/GameSaveManager.ts"
   },
   "4666a4d1-788e-49e0-9333-0d80f0ccd728": {
-    "asset": 1745138159048,
-    "meta": 1745138851802,
+    "asset": 1745141638321,
+    "meta": 1745141734819,
     "relativePath": "scripts/models/GameModel.ts"
+  },
+  "96af4945-230f-461d-a706-ccc5645532b2": {
+    "asset": 1745142556297,
+    "meta": 1745142556312,
+    "relativePath": "Sprites/4661507.png"
+  },
+  "fd7df33d-3ebd-4c95-815c-ea012e2cea8d": {
+    "asset": 1745143247428,
+    "meta": 1745143250919,
+    "relativePath": "scripts/Manager/UIManager.ts"
   }
 }

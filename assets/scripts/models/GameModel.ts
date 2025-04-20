@@ -109,6 +109,15 @@ export class GameModel extends BaseModel {
   getSaveTimeStampData(): Partial<SaveData["timestamp"]> {
     return this.storage.timestamp;
   }
+
+  loadWorkingWorkerNumberFromSave(
+    data: Partial<SaveData["workingWorkerNumber"]>
+  ): void {
+    this.storage.workingWorkerNumber = data || 0;
+  }
+  getSaveWorkingWorkerNumberData(): Partial<SaveData["workingWorkerNumber"]> {
+    return this.storage.workingWorkerNumber;
+  }
   loadTomatoFromSave(data: Partial<SaveData["tomato"]>): void {
     this.storage.tomato.name = data.name || "";
     this.storage.tomato.number = data.number || 0;
