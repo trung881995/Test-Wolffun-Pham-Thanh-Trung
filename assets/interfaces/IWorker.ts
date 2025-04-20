@@ -5,6 +5,6 @@ export interface IWorker {
   number: number;
   workingInterval: number;
   buyPrice: number;
-
+  isBusy: boolean;
   Work(landUI: LandUI, workerAction: WorkerAction): void;
 }

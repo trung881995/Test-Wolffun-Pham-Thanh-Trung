@@ -102,6 +102,7 @@ export class Beef implements IYield {
 }
 
 export class Worker implements IWorker {
+  isBusy: boolean;
   name: string;
   number: number;
   workingInterval: number;

@@ -120,6 +120,7 @@ export class GameModel extends BaseModel {
     this.storage.worker.name = WorkerConfigs.middle.name;
     this.storage.worker.workingInterval = WorkerConfigs.middle.workingInterval;
     this.storage.worker.buyPrice = WorkerConfigs.middle.buyPrice;
+    this.storage.worker.isBusy = false;
 
     this.storage.workingWorkerNumber = 0;
 

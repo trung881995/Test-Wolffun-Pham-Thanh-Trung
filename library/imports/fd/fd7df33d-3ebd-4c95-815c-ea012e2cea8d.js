@@ -93,8 +93,7 @@ var UIManager = /** @class */ (function (_super) {
         this.setupUI();
     };
     UIManager.prototype.update = function (dt) {
-        /*
-        if (this.time > 0) {
+        /*  if (this.time > 0) {
           this.time -= dt;
         } else if (this.time < 0) {
           this.useWorkerForQueue3();
@@ -102,11 +101,8 @@ var UIManager = /** @class */ (function (_super) {
         } else {
         }
         */
-        if (this.gameController.model.queueLandArray.length > 0 &&
-            this.gameController.model.storage.getWorkerIdle(this.gameController.model.storage.workingWorkerNumber) > 0) {
-            this.useWorker(this.gameController.model.queueLandArray[0]);
-            this.gameController.model.queueLandArray.splice(0, 1);
-        }
+        if (this.gameController.model.storage)
+            this.useWorkerForQueue3();
     };
     UIManager.prototype.setupUI = function () {
         return __awaiter(this, void 0, void 0, function () {
@@ -117,7 +113,7 @@ var UIManager = /** @class */ (function (_super) {
                         _a.sent();
                         this.gameController.model.newLand();
                         this.createLand();
-                        this.useWorkerForQueue3();
+                        //this.useWorkerForQueue3();
                         this.storageUI.setupUI();
                         this.storageUI.updateUI();
                         this.storeUI.setupUI();
@@ -165,7 +161,25 @@ var UIManager = /** @class */ (function (_super) {
         }
     };
     UIManager.prototype.useWorkerForQueue3 = function () {
-        for (var i = 0; i < this.gameController.model.queueLandArray.length; i++) { }
+        var idleWorker = this.gameController.model.storage.getWorkerIdle(this.gameController.model.storage.workingWorkerNumber);
+        if (idleWorker > 0) {
+            for (var i = 0; i < idleWorker; i++) {
+                if (this.gameController.model.queueLandArray.length > 0) {
+                    if (this.gameController.model.queueLandArray[0].land.isReadyToWork) {
+                        this.useWorker(this.gameController.model.queueLandArray[0]);
+                    }
+                    else {
+                        console.log("thua");
+                        //this.gameController.model.queueLandArray[0].disableWorker();
+                    }
+                    //this.gameController.model.queueLandArray[0].land.isReadyToWork = false;
+                    this.gameController.model.queueLandArray.splice(0, 1);
+                }
+            }
+        }
+        else {
+            //this.time = this.checkMinWorkingTime();
+        }
     };
     UIManager.prototype.checkMinWorkingTime = function () {
         var min = this.landUIArray[0].land.workingTime;
@@ -201,7 +215,7 @@ var UIManager = /** @class */ (function (_super) {
     UIManager.prototype.updateLand = function (index) {
         this.landUIArray[index].land = this.landArrayClones[index];
         this.landUIArray[index].enabled = true;
-        this.landUIArray[index].DisplayUI();
+        this.landUIArray[index].setupLandState();
         this.landUIArray[index].enableLand();
     };
     UIManager.prototype.enableAllLand = function () {
@@ -214,8 +228,9 @@ var UIManager = /** @class */ (function (_super) {
             if (this.landUIArray[i].enabled) {
                 if (this.landUIArray[i].land.currentAsset.number > 0 &&
                     this.landUIArray[i].land.isReadyToWork) {
+                    //this.landUIArray[i].setupLandState();
                     this.pushToQueue(this.landUIArray[i]);
-                    this.useWorkerForQueue3();
+                    //this.useWorkerForQueue3();
                 }
             }
         }

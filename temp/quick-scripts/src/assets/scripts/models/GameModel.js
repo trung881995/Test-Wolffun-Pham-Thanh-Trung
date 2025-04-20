@@ -182,6 +182,7 @@ var GameModel = /** @class */ (function (_super) {
                         this.storage.worker.name = GameConfig_1.WorkerConfigs.middle.name;
                         this.storage.worker.workingInterval = GameConfig_1.WorkerConfigs.middle.workingInterval;
                         this.storage.worker.buyPrice = GameConfig_1.WorkerConfigs.middle.buyPrice;
+                        this.storage.worker.isBusy = false;
                         this.storage.workingWorkerNumber = 0;
                         this.storage.machine.level = GameConfig_1.MachineConfigs.china.level;
                         this.storage.machine.name = GameConfig_1.MachineConfigs.china.name;

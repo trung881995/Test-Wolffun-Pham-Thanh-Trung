@@ -8,7 +8,7 @@
 const { ccclass, property } = cc._decorator;
 import { GameController } from "../controllers/GameController";
 import { Land } from "../storage/Storage";
-import LandUI from "../ui/LandUI";
+import LandUI, { LandState } from "../ui/LandUI";
 import StorageUI from "../ui/StorageUI";
 import StoreUI from "../ui/StoreUI";
 
@@ -37,8 +37,7 @@ export default class UIManager extends cc.Component {
   }
 
   update(dt: number): void {
-    /*
-    if (this.time > 0) {
+    /*  if (this.time > 0) {
       this.time -= dt;
     } else if (this.time < 0) {
       this.useWorkerForQueue3();
@@ -46,15 +45,7 @@ export default class UIManager extends cc.Component {
     } else {
     }
     */
-    if (
-      this.gameController.model.queueLandArray.length > 0 &&
-      this.gameController.model.storage.getWorkerIdle(
-        this.gameController.model.storage.workingWorkerNumber
-      ) > 0
-    ) {
-      this.useWorker(this.gameController.model.queueLandArray[0]);
-      this.gameController.model.queueLandArray.splice(0, 1);
-    }
+    if (this.gameController.model.storage) this.useWorkerForQueue3();
   }
   async setupUI() {
     await this.gameController.model.setData();
@@ -62,7 +53,7 @@ export default class UIManager extends cc.Component {
 
     this.createLand();
 
-    this.useWorkerForQueue3();
+    //this.useWorkerForQueue3();
     this.storageUI.setupUI();
     this.storageUI.updateUI();
 
@@ -115,7 +106,25 @@ export default class UIManager extends cc.Component {
     }
   }
   useWorkerForQueue3() {
-    for (let i = 0; i < this.gameController.model.queueLandArray.length; i++) {}
+    let idleWorker = this.gameController.model.storage.getWorkerIdle(
+      this.gameController.model.storage.workingWorkerNumber
+    );
+    if (idleWorker > 0) {
+      for (let i = 0; i < idleWorker; i++) {
+        if (this.gameController.model.queueLandArray.length > 0) {
+          if (this.gameController.model.queueLandArray[0].land.isReadyToWork) {
+            this.useWorker(this.gameController.model.queueLandArray[0]);
+          } else {
+            console.log("thua");
+            //this.gameController.model.queueLandArray[0].disableWorker();
+          }
+          //this.gameController.model.queueLandArray[0].land.isReadyToWork = false;
+          this.gameController.model.queueLandArray.splice(0, 1);
+        }
+      }
+    } else {
+      //this.time = this.checkMinWorkingTime();
+    }
   }
 
   checkMinWorkingTime(): number {
@@ -152,7 +161,7 @@ export default class UIManager extends cc.Component {
   updateLand(index: number) {
     this.landUIArray[index].land = this.landArrayClones[index];
     this.landUIArray[index].enabled = true;
-    this.landUIArray[index].DisplayUI();
+    this.landUIArray[index].setupLandState();
     this.landUIArray[index].enableLand();
   }
   enableAllLand() {
@@ -167,8 +176,9 @@ export default class UIManager extends cc.Component {
           this.landUIArray[i].land.currentAsset.number > 0 &&
           this.landUIArray[i].land.isReadyToWork
         ) {
+          //this.landUIArray[i].setupLandState();
           this.pushToQueue(this.landUIArray[i]);
-          this.useWorkerForQueue3();
+          //this.useWorkerForQueue3();
         }
       }
     }
