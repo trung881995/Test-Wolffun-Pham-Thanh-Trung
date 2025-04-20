@@ -66,6 +66,7 @@ var GameModel = /** @class */ (function (_super) {
     function GameModel() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.queueLandArray = [];
+        _this.landArray = [];
         return _this;
         /*public getLandNumber(): number {
           let firstConfig = this.getData();
@@ -223,6 +224,18 @@ var GameModel = /** @class */ (function (_super) {
     };
     GameModel.prototype.getSaveLandData = function () {
         return this.storage.land;
+    };
+    GameModel.prototype.loadQueueLandArrayFromSave = function (data) {
+        this.queueLandArray = data;
+    };
+    GameModel.prototype.getSaveQueueLandArrayData = function () {
+        return this.queueLandArray;
+    };
+    GameModel.prototype.loadLandArrayFromSave = function (data) {
+        this.landArray = data;
+    };
+    GameModel.prototype.getSavelandArrayData = function () {
+        return this.landArray;
     };
     GameModel.prototype.init = function () {
         var args = [];

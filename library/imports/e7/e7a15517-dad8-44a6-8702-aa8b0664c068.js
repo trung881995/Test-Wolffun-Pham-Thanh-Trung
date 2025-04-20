@@ -40,7 +40,7 @@ var GameController = /** @class */ (function (_super) {
     GameController.prototype.update = function (dt) {
         throw new Error("Method not implemented.");
     };
-    GameController.prototype.setupUI = function () {
+    GameController.prototype.setup = function () {
         var _this = this;
         cc.game.on(cc.game.EVENT_HIDE, function () {
             _this.saveGame();
@@ -62,6 +62,8 @@ var GameController = /** @class */ (function (_super) {
             timestamp: this.model.getSaveTimeStampData(),
             land: this.model.getSaveLandData(),
             workingWorkerNumber: this.model.getSaveWorkingWorkerNumberData(),
+            queueLandArray: this.model.getSaveQueueLandArrayData(),
+            landArray: this.model.getSavelandArrayData(),
         };
         GameSaveManager_1.GameSaveManager.save(data);
     };
@@ -82,9 +84,12 @@ var GameController = /** @class */ (function (_super) {
             this.model.loadTimeStampFromSave(saved.timestamp);
             this.model.loadLandFromSave(saved.land);
             this.model.loadWorkingWorkerNumberFromSave(saved.workingWorkerNumber);
+            this.model.loadQueueLandArrayFromSave(saved.queueLandArray);
+            this.model.loadLandArrayFromSave(saved.landArray);
             var offlineDuration = Date.now() - this.model.storage.timestamp;
             this.updateOfflineProgress(offlineDuration);
         }
+        GameSaveManager_1.GameSaveManager.clear();
     };
     GameController.prototype.updateOfflineProgress = function (duration) { };
     GameController.prototype.calculateLand = function (duration) { };

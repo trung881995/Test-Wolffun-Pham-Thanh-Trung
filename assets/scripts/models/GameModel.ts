@@ -176,6 +176,19 @@ export class GameModel extends BaseModel {
     return this.storage.land;
   }
 
+  loadQueueLandArrayFromSave(data: Partial<SaveData["queueLandArray"]>): void {
+    this.queueLandArray = data;
+  }
+  getSaveQueueLandArrayData(): Partial<SaveData["queueLandArray"]> {
+    return this.queueLandArray;
+  }
+
+  loadLandArrayFromSave(data: Partial<SaveData["landArray"]>): void {
+    this.landArray = data;
+  }
+  getSavelandArrayData(): Partial<SaveData["landArray"]> {
+    return this.landArray;
+  }
   init(...args: any[]): void {
     this.storage = new Storage();
     this.store = new Store(this.storage);
@@ -200,6 +213,7 @@ export class GameModel extends BaseModel {
   startLandNumber: number;
 
   queueLandArray: LandUI[] = [];
+  landArray: Land[] = [];
 
   async setData() {
     await this.loadData();

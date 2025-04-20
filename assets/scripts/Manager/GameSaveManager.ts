@@ -11,6 +11,7 @@ import {
   TomatoSeed,
   Worker,
 } from "../storage/Storage";
+import LandUI from "../ui/LandUI";
 
 export interface SaveData {
   gold: number;
@@ -32,6 +33,9 @@ export interface SaveData {
   land: Partial<Land>;
 
   workingWorkerNumber: number;
+
+  queueLandArray: LandUI[];
+  landArray: Land[];
 
   /*tomato: {
     totalHarvested: number;

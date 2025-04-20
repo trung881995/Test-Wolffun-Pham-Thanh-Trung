@@ -22,7 +22,7 @@ export class GameController extends BaseController<GameModel, GameView> {
   update(dt: number): void {
     throw new Error("Method not implemented.");
   }
-  setupUI(): void {
+  setup(): void {
     cc.game.on(cc.game.EVENT_HIDE, () => {
       this.saveGame();
     });
@@ -48,6 +48,9 @@ export class GameController extends BaseController<GameModel, GameView> {
       land: this.model.getSaveLandData(),
 
       workingWorkerNumber: this.model.getSaveWorkingWorkerNumberData(),
+
+      queueLandArray: this.model.getSaveQueueLandArrayData(),
+      landArray: this.model.getSavelandArrayData(),
     };
     GameSaveManager.save(data);
   }
@@ -72,9 +75,13 @@ export class GameController extends BaseController<GameModel, GameView> {
 
       this.model.loadWorkingWorkerNumberFromSave(saved.workingWorkerNumber);
 
+      this.model.loadQueueLandArrayFromSave(saved.queueLandArray);
+      this.model.loadLandArrayFromSave(saved.landArray);
+
       const offlineDuration = Date.now() - this.model.storage.timestamp;
       this.updateOfflineProgress(offlineDuration);
     }
+    GameSaveManager.clear();
   }
 
   updateOfflineProgress(duration: number) {}

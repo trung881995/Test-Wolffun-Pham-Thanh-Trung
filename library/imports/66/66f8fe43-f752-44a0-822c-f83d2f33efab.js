@@ -125,7 +125,7 @@ var StoreUI = /** @class */ (function (_super) {
             UIManager_1.default.instance.gameController.model.storage.land.number < 9) {
             UIManager_1.default.instance.gameController.model.store.buyLand();
             UIManager_1.default.instance.storageUI.updateUI();
-            UIManager_1.default.instance.updateLand(UIManager_1.default.instance.gameController.model.storage.land.number - 1);
+            UIManager_1.default.instance.updateLandUI(UIManager_1.default.instance.gameController.model.storage.land.number - 1);
             UIManager_1.default.instance.findLandForPlant();
         }
     };

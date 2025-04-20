@@ -28,7 +28,6 @@ export default class UIManager extends cc.Component {
   gameModel: GameModel;
   gameView: GameView;
 
-  landArrayClones: Land[] = [];
   time: number = 0;
 
   // LIFE-CYCLE CALLBACKS:
@@ -37,6 +36,7 @@ export default class UIManager extends cc.Component {
     if (UIManager.instance == null) {
       UIManager.instance = this;
     }
+    //this.Init();
   }
 
   start() {}
@@ -52,13 +52,30 @@ export default class UIManager extends cc.Component {
     */
     //if (this.gameController.model.storage);
   }
-  async setupUI() {
+  Init() {
+    this.setup();
+  }
+  async setup() {
+    this.gameController = new GameController();
+    this.gameModel = new GameModel();
+    this.gameView = new GameView(this.gameController);
+
+    this.gameController.init(this.gameModel, this.gameView);
+    await this.setupData();
+    this.setupUI();
+    this.gameController.setup();
+  }
+  async setupData() {
     await this.gameController.model.setData();
+
     this.gameController.model.newLand();
 
-    this.createLand();
+    this.gameController.loadGame();
 
-    this.useWorkerForQueue3();
+    this.createLandData();
+  }
+  setupUI() {
+    this.createLandUI();
     this.storageUI.setupUI();
     this.storageUI.updateUI();
 
@@ -149,24 +166,37 @@ export default class UIManager extends cc.Component {
       this.gameController.model.storage.worker.workingInterval * 10;
     landUi.land.isReadyToWork = false;
     landUi.enableWorker();
+    UIManager.instance.storageUI.updateUI();
+    landUi.updateUI();
   }
-  createLand() {
+  createLandUI() {
+    for (let i = 0; i < this.gameController.model.storage.land.number; i++) {
+      this.updateLandUI(i);
+      if (this.gameModel.landArray[i].isReadyToWork) {
+        this.pushToQueue(this.landUIArray[i]);
+        this.useWorkerForQueue3();
+      } else {
+        if (this.gameModel.landArray[i].workingTime > 0) {
+          this.landUIArray[i].enableWorker();
+        }
+      }
+    }
+  }
+  createLandData() {
     /*this.landArrayClones = Array.from({ length: 9 }, () => ({
       ...this.gameController.model.storage.land,
     }));*/
-    this.landArrayClones = Array.from({ length: 9 }, () =>
-      this.gameController.model.storage.land.clone()
-    );
-    cc.log(this.landArrayClones);
-    for (let i = 0; i < this.gameController.model.storage.land.number; i++) {
-      this.updateLand(i);
-      this.gameController.model.queueLandArray.push(this.landUIArray[i]);
+    if (this.gameModel.landArray.length == 0) {
+      this.gameModel.landArray = Array.from({ length: 9 }, () =>
+        this.gameModel.storage.land.clone()
+      );
     }
+    cc.log(this.gameModel.landArray);
   }
-  updateLand(index: number) {
-    this.landUIArray[index].land = this.landArrayClones[index];
+  updateLandUI(index: number) {
+    this.landUIArray[index].land = this.gameModel.landArray[index];
     this.landUIArray[index].enabled = true;
-    this.landUIArray[index].setupLandState();
+    //this.landUIArray[index].setupLandState();
     this.landUIArray[index].enableLand();
   }
   enableAllLand() {
@@ -194,16 +224,7 @@ export default class UIManager extends cc.Component {
     GameSaveManager.clear();
   }
   startGame() {
-    //this.gameController.loadGame();
-
-    this.gameController = new GameController();
-    this.gameModel = new GameModel();
-    this.gameView = new GameView(this.gameController);
-
-    this.gameController.init(this.gameModel, this.gameView);
-    this.gameController.setupUI();
-    this.setupUI();
-
+    this.Init();
     this.GamePanel.node.active = false;
   }
 }

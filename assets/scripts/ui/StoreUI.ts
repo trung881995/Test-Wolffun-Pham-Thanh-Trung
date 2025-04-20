@@ -153,7 +153,7 @@ export default class StoreUI extends cc.Component {
     ) {
       UIManager.instance.gameController.model.store.buyLand();
       UIManager.instance.storageUI.updateUI();
-      UIManager.instance.updateLand(
+      UIManager.instance.updateLandUI(
         UIManager.instance.gameController.model.storage.land.number - 1
       );
       UIManager.instance.findLandForPlant();
