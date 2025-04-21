@@ -1,4 +1,4 @@
 name,harvestInterval,maxHarvest,buyPrice
-tomatoSeed,1,2,30
-blueberrySeed,1,2,50
-strawberrySeed,1,2,40
+tomatoSeed,10,40,30
+blueberrySeed,15,40,50
+strawberrySeed,5,20,40
