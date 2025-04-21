@@ -96,7 +96,9 @@ export default class StorageUI extends cc.Component {
 
     this.workerIdle.string = idleWorker.toString();
     this.machineLevel.string =
-      UIManager.instance.gameController.model.storage.machine.level.toString();
+      UIManager.instance.gameModel.storage.machine.level < 10
+        ? UIManager.instance.gameModel.storage.machine.level.toString()
+        : "Max";
     this.workerWorking.string = workingWorker.toString();
 
     this.tomato.string =

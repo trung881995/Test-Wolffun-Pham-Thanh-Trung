@@ -139,10 +139,10 @@ export class Machine implements IMachine {
   support: number;
   upgradePrice: number;
   Operate(): number {
-    return (this.support * (this.level - 1) + 100) / 100;
+    return this.support;
   }
   upgradePerformace() {
-    this.support += 10;
+    this.level += 1;
   }
 }
 export class Land implements ILand {
@@ -306,15 +306,26 @@ export class Storage implements IStorage {
     this.worker.number += 1;
   }
   upgradeMachine(): void {
-    this.machine.level += 1;
+    //this.machine.level += 1;
     this.machine.upgradePerformace();
     for (let i = 0; i < this.land.number; i++) {
-      let maxHarvest =
-        UIManager.instance.gameModel.landArray[i].currentAsset.maxHarvest;
-      UIManager.instance.gameModel.landArray[i].crop =
-        UIManager.instance.gameModel.landArray[i].currentAsset.maxHarvest;
-      UIManager.instance.gameModel.landArray[i].crop +=
-        Math.ceil(maxHarvest * this.machine.Operate()) - maxHarvest;
+      if (
+        UIManager.instance.gameModel.landArray[i].landState != LandState.Empty
+      ) {
+        let maxHarvest =
+          UIManager.instance.gameModel.landArray[i].currentAsset.maxHarvest;
+
+        UIManager.instance.gameModel.landArray[i].crop +=
+          Math.ceil(maxHarvest * this.machine.Operate()) / 100;
+
+        let harvestInterval =
+          UIManager.instance.gameModel.landArray[i].currentAsset
+            .harvestInterval;
+        UIManager.instance.gameModel.landArray[i].time -=
+          Math.ceil(harvestInterval * 60 * this.machine.Operate()) / 100;
+
+        console.log("value: " + this.machine.Operate());
+      }
     }
   }
   addLand(): void {

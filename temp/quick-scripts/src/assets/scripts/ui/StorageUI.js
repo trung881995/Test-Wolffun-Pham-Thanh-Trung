@@ -82,7 +82,9 @@ var StorageUI = /** @class */ (function (_super) {
             UIManager_1.default.instance.gameController.model.storage.gold.toString();
         this.workerIdle.string = idleWorker.toString();
         this.machineLevel.string =
-            UIManager_1.default.instance.gameController.model.storage.machine.level.toString();
+            UIManager_1.default.instance.gameModel.storage.machine.level < 10
+                ? UIManager_1.default.instance.gameModel.storage.machine.level.toString()
+                : "Max";
         this.workerWorking.string = workingWorker.toString();
         this.tomato.string =
             UIManager_1.default.instance.gameController.model.storage.tomato.number.toString();

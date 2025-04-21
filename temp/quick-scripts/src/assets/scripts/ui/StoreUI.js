@@ -65,7 +65,10 @@ var StoreUI = /** @class */ (function (_super) {
         this.buyLandBtn.node.on(cc.Node.EventType.TOUCH_END, this.onClickBuyLandBtn, this);
         console.log("setup UI Done!!!!");
     };
-    StoreUI.prototype.updateUI = function () { };
+    StoreUI.prototype.updateUI = function () {
+        // this.buyTomatoSeedBtn.interactable= (UIManager.instance.gameModel.storage.gold >=
+        // UIManager.instance.gameModel.storage.tomatoSeed.buyPrice);
+    };
     StoreUI.prototype.resetUI = function () { };
     StoreUI.prototype.onClickBuyTomatoSeedBtn = function () {
         console.log("onClickBuyTomatoSeedBtn!!!!");
@@ -114,7 +117,8 @@ var StoreUI = /** @class */ (function (_super) {
     };
     StoreUI.prototype.onClickUpgradeMachineBtn = function () {
         if (UIManager_1.default.instance.gameController.model.storage.gold >=
-            UIManager_1.default.instance.gameController.model.storage.machine.upgradePrice) {
+            UIManager_1.default.instance.gameController.model.storage.machine.upgradePrice &&
+            UIManager_1.default.instance.gameController.model.storage.machine.level < 10) {
             UIManager_1.default.instance.gameController.model.store.upgradeMachine();
             UIManager_1.default.instance.storageUI.updateUI();
         }

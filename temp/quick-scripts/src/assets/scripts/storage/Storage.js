@@ -131,10 +131,10 @@ var Machine = /** @class */ (function () {
     function Machine() {
     }
     Machine.prototype.Operate = function () {
-        return (this.support * (this.level - 1) + 100) / 100;
+        return this.support;
     };
     Machine.prototype.upgradePerformace = function () {
-        this.support += 10;
+        this.level += 1;
     };
     return Machine;
 }());
@@ -230,14 +230,19 @@ var Storage = /** @class */ (function () {
         this.worker.number += 1;
     };
     Storage.prototype.upgradeMachine = function () {
-        this.machine.level += 1;
+        //this.machine.level += 1;
         this.machine.upgradePerformace();
         for (var i = 0; i < this.land.number; i++) {
-            var maxHarvest = UIManager_1.default.instance.gameModel.landArray[i].currentAsset.maxHarvest;
-            UIManager_1.default.instance.gameModel.landArray[i].crop =
-                UIManager_1.default.instance.gameModel.landArray[i].currentAsset.maxHarvest;
-            UIManager_1.default.instance.gameModel.landArray[i].crop +=
-                Math.ceil(maxHarvest * this.machine.Operate()) - maxHarvest;
+            if (UIManager_1.default.instance.gameModel.landArray[i].landState != LandUI_1.LandState.Empty) {
+                var maxHarvest = UIManager_1.default.instance.gameModel.landArray[i].currentAsset.maxHarvest;
+                UIManager_1.default.instance.gameModel.landArray[i].crop +=
+                    Math.ceil(maxHarvest * this.machine.Operate()) / 100;
+                var harvestInterval = UIManager_1.default.instance.gameModel.landArray[i].currentAsset
+                    .harvestInterval;
+                UIManager_1.default.instance.gameModel.landArray[i].time -=
+                    Math.ceil(harvestInterval * 60 * this.machine.Operate()) / 100;
+                console.log("value: " + this.machine.Operate());
+            }
         }
     };
     Storage.prototype.addLand = function () {

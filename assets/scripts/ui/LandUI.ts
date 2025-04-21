@@ -94,9 +94,7 @@ export default class LandUI extends cc.Component {
         } else if (
           UIManager.instance.gameModel.landArray[this.index].time > -0.5
         ) {
-          let duration =
-            dt * UIManager.instance.gameModel.storage.machine.Operate();
-          this.changeLandTime(duration);
+          this.changeLandTime(dt);
           this.updateUI();
           console.log("change Time!!!!!");
         }
@@ -243,13 +241,24 @@ export default class LandUI extends cc.Component {
   onClickTomatoSeedBtn() {
     if (UIManager.instance.gameController.model.storage.tomatoSeed.number > 0) {
       //this.disableWorker();
+
+      UIManager.instance.gameModel.landArray[this.index].currentAsset =
+        UIManager.instance.gameController.model.storage.tomatoSeed;
       UIManager.instance.gameModel.landArray[this.index].isEmpty = false;
       UIManager.instance.gameModel.landArray[this.index].plantType =
         PlantType.tomatoSeed;
       UIManager.instance.gameModel.landArray[this.index].time =
         PlantConfigs.tomatoseed.harvestInterval * 60;
-      UIManager.instance.gameModel.landArray[this.index].currentAsset =
-        UIManager.instance.gameController.model.storage.tomatoSeed;
+
+      UIManager.instance.gameModel.landArray[this.index].time -=
+        (Math.ceil(
+          UIManager.instance.gameModel.landArray[this.index].currentAsset
+            .harvestInterval *
+            60 *
+            UIManager.instance.gameModel.storage.machine.Operate()
+        ) /
+          100) *
+        (UIManager.instance.gameModel.storage.machine.level - 1);
 
       let maxHarvest =
         UIManager.instance.gameModel.landArray[this.index].currentAsset
@@ -259,10 +268,11 @@ export default class LandUI extends cc.Component {
           this.index
         ].currentAsset.maxHarvest;
       UIManager.instance.gameModel.landArray[this.index].crop +=
-        Math.ceil(
-          maxHarvest *
-            UIManager.instance.gameController.model.storage.machine.Operate()
-        ) - maxHarvest;
+        (Math.ceil(
+          maxHarvest * UIManager.instance.gameModel.storage.machine.Operate()
+        ) /
+          100) *
+        (UIManager.instance.gameModel.storage.machine.level - 1);
 
       UIManager.instance.gameController.model.storage.tomatoSeed.number -= 1;
       UIManager.instance.gameModel.landArray[this.index].landState =
@@ -284,14 +294,25 @@ export default class LandUI extends cc.Component {
     if (
       UIManager.instance.gameController.model.storage.blueberrySeed.number > 0
     ) {
+      UIManager.instance.gameModel.landArray[this.index].currentAsset =
+        UIManager.instance.gameController.model.storage.blueberrySeed;
       //this.disableWorker();
       UIManager.instance.gameModel.landArray[this.index].time =
         PlantConfigs.blueberryseed.harvestInterval * 60;
+
+      UIManager.instance.gameModel.landArray[this.index].time -=
+        (Math.ceil(
+          UIManager.instance.gameModel.landArray[this.index].currentAsset
+            .harvestInterval *
+            60 *
+            UIManager.instance.gameModel.storage.machine.Operate()
+        ) /
+          100) *
+        (UIManager.instance.gameModel.storage.machine.level - 1);
+
       UIManager.instance.gameModel.landArray[this.index].isEmpty = false;
       UIManager.instance.gameModel.landArray[this.index].plantType =
         PlantType.blueberrySeed;
-      UIManager.instance.gameModel.landArray[this.index].currentAsset =
-        UIManager.instance.gameController.model.storage.blueberrySeed;
 
       let maxHarvest =
         UIManager.instance.gameModel.landArray[this.index].currentAsset
@@ -301,10 +322,11 @@ export default class LandUI extends cc.Component {
           this.index
         ].currentAsset.maxHarvest;
       UIManager.instance.gameModel.landArray[this.index].crop +=
-        Math.ceil(
-          maxHarvest *
-            UIManager.instance.gameController.model.storage.machine.Operate()
-        ) - maxHarvest;
+        (Math.ceil(
+          maxHarvest * UIManager.instance.gameModel.storage.machine.Operate()
+        ) /
+          100) *
+        (UIManager.instance.gameModel.storage.machine.level - 1);
 
       UIManager.instance.gameController.model.storage.blueberrySeed.number -= 1;
       UIManager.instance.gameModel.landArray[this.index].landState =
@@ -322,14 +344,26 @@ export default class LandUI extends cc.Component {
     if (
       UIManager.instance.gameController.model.storage.strawberrySeed.number > 0
     ) {
+      UIManager.instance.gameModel.landArray[this.index].currentAsset =
+        UIManager.instance.gameController.model.storage.strawberrySeed;
       //this.disableWorker();
       UIManager.instance.gameModel.landArray[this.index].time =
         PlantConfigs.strawberryseed.harvestInterval * 60;
+
+      UIManager.instance.gameModel.landArray[this.index].time -=
+        (Math.ceil(
+          UIManager.instance.gameModel.landArray[this.index].currentAsset
+            .harvestInterval *
+            60 *
+            UIManager.instance.gameModel.storage.machine.Operate()
+        ) /
+          100) *
+        (UIManager.instance.gameModel.storage.machine.level - 1);
+
       UIManager.instance.gameModel.landArray[this.index].isEmpty = false;
       UIManager.instance.gameModel.landArray[this.index].plantType =
         PlantType.strawberrySeed;
-      UIManager.instance.gameModel.landArray[this.index].currentAsset =
-        UIManager.instance.gameController.model.storage.strawberrySeed;
+
       let maxHarvest =
         UIManager.instance.gameModel.landArray[this.index].currentAsset
           .maxHarvest;
@@ -338,10 +372,11 @@ export default class LandUI extends cc.Component {
           this.index
         ].currentAsset.maxHarvest;
       UIManager.instance.gameModel.landArray[this.index].crop +=
-        Math.ceil(
-          maxHarvest *
-            UIManager.instance.gameController.model.storage.machine.Operate()
-        ) - maxHarvest;
+        (Math.ceil(
+          maxHarvest * UIManager.instance.gameModel.storage.machine.Operate()
+        ) /
+          100) *
+        (UIManager.instance.gameModel.storage.machine.level - 1);
       UIManager.instance.gameModel.storage.strawberrySeed.number -= 1;
       UIManager.instance.gameModel.landArray[this.index].landState =
         LandState.Plant;
@@ -356,14 +391,26 @@ export default class LandUI extends cc.Component {
   }
   onClickMilkCowBtn() {
     if (UIManager.instance.gameController.model.storage.milkCow.number > 0) {
+      UIManager.instance.gameModel.landArray[this.index].currentAsset =
+        UIManager.instance.gameController.model.storage.milkCow;
       //this.disableWorker();
       UIManager.instance.gameModel.landArray[this.index].time =
         CattleConfigs.milkcow.harvestInterval * 60;
+
+      UIManager.instance.gameModel.landArray[this.index].time -=
+        (Math.ceil(
+          UIManager.instance.gameModel.landArray[this.index].currentAsset
+            .harvestInterval *
+            60 *
+            UIManager.instance.gameModel.storage.machine.Operate()
+        ) /
+          100) *
+        (UIManager.instance.gameModel.storage.machine.level - 1);
+
       UIManager.instance.gameModel.landArray[this.index].isEmpty = false;
       UIManager.instance.gameModel.landArray[this.index].cattleType =
         CattleType.Milkcow;
-      UIManager.instance.gameModel.landArray[this.index].currentAsset =
-        UIManager.instance.gameController.model.storage.milkCow;
+
       let maxHarvest =
         UIManager.instance.gameModel.landArray[this.index].currentAsset
           .maxHarvest;
@@ -372,10 +419,11 @@ export default class LandUI extends cc.Component {
           this.index
         ].currentAsset.maxHarvest;
       UIManager.instance.gameModel.landArray[this.index].crop +=
-        Math.ceil(
-          maxHarvest *
-            UIManager.instance.gameController.model.storage.machine.Operate()
-        ) - maxHarvest;
+        (Math.ceil(
+          maxHarvest * UIManager.instance.gameModel.storage.machine.Operate()
+        ) /
+          100) *
+        (UIManager.instance.gameModel.storage.machine.level - 1);
       UIManager.instance.gameController.model.storage.milkCow.number -= 1;
       UIManager.instance.gameModel.landArray[this.index].landState =
         LandState.Cattle;
@@ -565,6 +613,17 @@ export default class LandUI extends cc.Component {
     UIManager.instance.gameModel.landArray[this.index].time =
       UIManager.instance.gameModel.landArray[this.index].currentAsset
         .harvestInterval * 60;
+
+    UIManager.instance.gameModel.landArray[this.index].time -=
+      (Math.ceil(
+        UIManager.instance.gameModel.landArray[this.index].currentAsset
+          .harvestInterval *
+          60 *
+          UIManager.instance.gameModel.storage.machine.Operate()
+      ) /
+        100) *
+      (UIManager.instance.gameModel.storage.machine.level - 1);
+
     console.log(
       UIManager.instance.gameModel.landArray[this.index].currentAsset
         .harvestInterval

@@ -79,7 +79,10 @@ export default class StoreUI extends cc.Component {
     );
     console.log("setup UI Done!!!!");
   }
-  updateUI() {}
+  updateUI() {
+    // this.buyTomatoSeedBtn.interactable= (UIManager.instance.gameModel.storage.gold >=
+    // UIManager.instance.gameModel.storage.tomatoSeed.buyPrice);
+  }
   resetUI() {}
   onClickBuyTomatoSeedBtn() {
     console.log("onClickBuyTomatoSeedBtn!!!!");
@@ -139,7 +142,8 @@ export default class StoreUI extends cc.Component {
   onClickUpgradeMachineBtn() {
     if (
       UIManager.instance.gameController.model.storage.gold >=
-      UIManager.instance.gameController.model.storage.machine.upgradePrice
+        UIManager.instance.gameController.model.storage.machine.upgradePrice &&
+      UIManager.instance.gameController.model.storage.machine.level < 10
     ) {
       UIManager.instance.gameController.model.store.upgradeMachine();
       UIManager.instance.storageUI.updateUI();
