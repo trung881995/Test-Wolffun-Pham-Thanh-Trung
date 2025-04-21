@@ -127,7 +127,7 @@ export default class UIManager extends cc.Component {
     this.gameController.model.storage.assignWorker(land);
     this.gameController.model.storage.workingWorkerNumber += 1;
     land.workingTime =
-      this.gameController.model.storage.worker.workingInterval * 10;
+      this.gameController.model.storage.worker.workingInterval * 60;
     land.isReadyToWork = false;
 
     UIManager.instance.storageUI.updateUI();

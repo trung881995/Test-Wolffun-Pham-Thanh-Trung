@@ -535,8 +535,8 @@
     "relativePath": "resources"
   },
   "a80137bd-a8e0-42a8-ab2e-3f7473fcc38b": {
-    "asset": 1744865248557,
-    "meta": 1744876741736,
+    "asset": 1745158293281,
+    "meta": 1745213997410,
     "relativePath": "scripts"
   },
   "7ec856cd-1b8e-4b48-a732-bbe88893330f": {
@@ -580,8 +580,8 @@
     "relativePath": "enums/WorkerType.ts"
   },
   "e358fdc1-e533-4fba-be45-65b427f5c74c": {
-    "asset": 1745034521133,
-    "meta": 1745034529666,
+    "asset": 1745131918126,
+    "meta": 1745213997410,
     "relativePath": "scripts/Manager"
   },
   "af14a609-f9f8-412a-bc95-40d09066bdb0": {
@@ -635,8 +635,8 @@
     "relativePath": "scripts/models/YieldModel.ts"
   },
   "99488f47-6bb1-49a4-9cba-1a3598640caf": {
-    "asset": 1744809754068,
-    "meta": 1744810355298,
+    "asset": 1745142556298,
+    "meta": 1745213997410,
     "relativePath": "Sprites"
   },
   "991a2dd6-551a-45b6-b7f1-e5da9611bef6": {
@@ -735,8 +735,8 @@
     "relativePath": "resources/images/strawberrySeed.png"
   },
   "ae14abc0-67ae-4c49-a61e-80da127c836a": {
-    "asset": 1744861611318,
-    "meta": 1744861614077,
+    "asset": 1745213598624,
+    "meta": 1745213997654,
     "relativePath": "resources/configs/plants.CSV"
   },
   "2aac939f-d30a-49af-9cff-b511985acde2": {
@@ -780,8 +780,8 @@
     "relativePath": "scripts/ui/StorageUI.ts"
   },
   "716773f9-9f37-4268-9086-435f370c5b77": {
-    "asset": 1745072935950,
-    "meta": 1745072938216,
+    "asset": 1745213378631,
+    "meta": 1745213997654,
     "relativePath": "resources/configs/cattles.CSV"
   },
   "1c45b0c1-5435-4197-85ac-4bb912977fe5": {
@@ -840,13 +840,13 @@
     "relativePath": "scripts/storage/Storage.ts"
   },
   "e7a15517-dad8-44a6-8702-aa8b0664c068": {
-    "asset": 1745187063800,
-    "meta": 1745187087221,
+    "asset": 1745213099257,
+    "meta": 1745213997489,
     "relativePath": "scripts/controllers/GameController.ts"
   },
   "f9f6de96-342a-42a9-a937-9010c43c6635": {
-    "asset": 1745187386512,
-    "meta": 1745187446284,
+    "asset": 1745213010002,
+    "meta": 1745213997425,
     "relativePath": "scripts/Manager/GameSaveManager.ts"
   },
   "ee5483d6-aaab-45e2-bbef-44f1fc4e8236": {
@@ -855,18 +855,18 @@
     "relativePath": "scripts/PanelUI.ts"
   },
   "4666a4d1-788e-49e0-9333-0d80f0ccd728": {
-    "asset": 1745211885770,
-    "meta": 1745211888155,
+    "asset": 1745213069355,
+    "meta": 1745213997589,
     "relativePath": "scripts/models/GameModel.ts"
   },
   "fd7df33d-3ebd-4c95-815c-ea012e2cea8d": {
-    "asset": 1745212313035,
-    "meta": 1745212315784,
+    "asset": 1745213976027,
+    "meta": 1745213997461,
     "relativePath": "scripts/Manager/UIManager.ts"
   },
   "5fbc3f85-aa3f-4273-8a5f-579b34683cfc": {
-    "asset": 1745212300234,
-    "meta": 1745212315837,
+    "asset": 1745212994984,
+    "meta": 1745213997646,
     "relativePath": "scripts/ui/LandUI.ts"
   }
 }

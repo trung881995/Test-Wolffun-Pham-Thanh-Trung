@@ -443,19 +443,6 @@ var GameModel = /** @class */ (function (_super) {
                         this.init();
                         this.storage.gold = 10000;
                         this.storage.workingWorkerNumber = 0;
-                        /*
-                        this.storage.land.number = FirstConfigs.land.number;
-                        this.storage.land.buyPrice = LandConfigs.red.buyPrice;
-                        this.storage.land.name = LandConfigs.red.name;
-                        this.storage.land.missionNumber = LandConfigs.red.missionNumber;
-                        this.storage.land.containInterval = LandConfigs.red.containInterval;
-                        this.storage.land.containYield = 0;
-                        this.storage.land.crop = 0;
-                        this.storage.land.workerAction = WorkerAction.TomatoPlant;
-                        this.storage.land.workingTime = 0;
-                        this.storage.land.currentAsset = this.storage.tomatoSeed;
-                        this.storage.land.isReadyToWork = true;
-                    */
                         this.storage.blueberrySeed.number = GameConfig_1.FirstConfigs.blueberryseed.number;
                         this.storage.blueberrySeed.name = GameConfig_1.PlantConfigs.blueberryseed.name;
                         this.storage.blueberrySeed.buyPrice = GameConfig_1.PlantConfigs.blueberryseed.buyPrice;

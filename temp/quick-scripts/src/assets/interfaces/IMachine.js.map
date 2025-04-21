@@ -1,1 +1,1 @@
-{"version":3,"sources":["assets/interfaces/IMachine.ts"],"names":[],"mappings":"","file":"","sourceRoot":"/","sourcesContent":["export interface IMachine {\n  name: string;\n  level: number;\n  support: number;\n  upgradePrice: number;\n\n  Operate(): void;\n}\n"]}
+{"version":3,"sources":["assets/interfaces/IMachine.ts"],"names":[],"mappings":"","file":"","sourceRoot":"/","sourcesContent":["export interface IMachine {\n  name: string;\n  level: number;\n  support: number;\n  upgradePrice: number;\n\n  Operate(): number;\n}\n"]}

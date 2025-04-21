@@ -25,14 +25,6 @@ var GameController = /** @class */ (function (_super) {
     function GameController() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    /* constructor() {
-      super();
-      this.model = new GameModel();
-  
-      this.view = new GameView(this);
-  
-    }
-    */
     GameController.prototype.init = function (model, view) {
         this.model = model;
         this.view = view;
@@ -126,8 +118,6 @@ var GameController = /** @class */ (function (_super) {
             this.model.loadTimeStampFromSave(saved.timestamp);
             this.model.loadLandFromSave(saved.land);
             this.model.loadWorkingWorkerNumberFromSave(saved.workingWorkerNumber);
-            //this.model.loadQueueLandArrayFromSave(saved.queueLandArray);
-            // this.model.loadLandArrayFromSave(saved.landArray);
             var offlineDuration = Date.now() - this.model.storage.timestamp;
             this.updateOfflineProgress(offlineDuration);
         }

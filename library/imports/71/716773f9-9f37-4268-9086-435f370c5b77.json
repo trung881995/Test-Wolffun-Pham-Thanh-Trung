@@ -3,5 +3,5 @@
   "_name": "cattles",
   "_objFlags": 0,
   "_native": "",
-  "text": "name,harvestInterval,maxHarvest,buyPrice\nMilkcow,1,2,100\nCow,60,100,200"
+  "text": "name,harvestInterval,maxHarvest,buyPrice\nMilkcow,30,100,100\nCow,60,100,200"
 }

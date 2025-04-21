@@ -3,5 +3,5 @@
   "_name": "plants",
   "_objFlags": 0,
   "_native": "",
-  "text": "name,harvestInterval,maxHarvest,buyPrice\ntomatoSeed,1,2,30\nblueberrySeed,1,2,50\nstrawberrySeed,1,2,40"
+  "text": "name,harvestInterval,maxHarvest,buyPrice\ntomatoSeed,10,40,30\nblueberrySeed,15,40,50\nstrawberrySeed,5,20,40"
 }
