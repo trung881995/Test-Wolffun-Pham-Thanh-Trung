@@ -3429,9 +3429,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 0,
+      "r": 163,
       "g": 0,
-      "b": 0,
+      "b": 255,
       "a": 255
     },
     "_contentSize": {
@@ -6427,9 +6427,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 0,
+      "r": 163,
       "g": 0,
-      "b": 0,
+      "b": 255,
       "a": 255
     },
     "_contentSize": {
@@ -9425,9 +9425,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 0,
+      "r": 163,
       "g": 0,
-      "b": 0,
+      "b": 255,
       "a": 255
     },
     "_contentSize": {
@@ -12423,9 +12423,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 0,
+      "r": 163,
       "g": 0,
-      "b": 0,
+      "b": 255,
       "a": 255
     },
     "_contentSize": {
@@ -15421,9 +15421,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 0,
+      "r": 163,
       "g": 0,
-      "b": 0,
+      "b": 255,
       "a": 255
     },
     "_contentSize": {
@@ -18419,9 +18419,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 0,
+      "r": 163,
       "g": 0,
-      "b": 0,
+      "b": 255,
       "a": 255
     },
     "_contentSize": {
@@ -21417,9 +21417,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 0,
+      "r": 163,
       "g": 0,
-      "b": 0,
+      "b": 255,
       "a": 255
     },
     "_contentSize": {
@@ -24415,9 +24415,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 0,
+      "r": 163,
       "g": 0,
-      "b": 0,
+      "b": 255,
       "a": 255
     },
     "_contentSize": {
@@ -26940,9 +26940,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 0,
+      "r": 163,
       "g": 0,
-      "b": 0,
+      "b": 255,
       "a": 255
     },
     "_contentSize": {
@@ -34384,7 +34384,7 @@
         "__id__": 674
       }
     ],
-    "_active": false,
+    "_active": true,
     "_components": [
       {
         "__id__": 677
