@@ -849,11 +849,6 @@
     "meta": 1745204672444,
     "relativePath": "scripts/PanelUI.ts"
   },
-  "4666a4d1-788e-49e0-9333-0d80f0ccd728": {
-    "asset": 1745213069355,
-    "meta": 1745213997589,
-    "relativePath": "scripts/models/GameModel.ts"
-  },
   "fd7df33d-3ebd-4c95-815c-ea012e2cea8d": {
     "asset": 1745213976027,
     "meta": 1745213997461,
@@ -868,5 +863,10 @@
     "asset": 1745216298495,
     "meta": 1745216298501,
     "relativePath": "Scene.fire"
+  },
+  "4666a4d1-788e-49e0-9333-0d80f0ccd728": {
+    "asset": 1745216363190,
+    "meta": 1745216365682,
+    "relativePath": "scripts/models/GameModel.ts"
   }
 }

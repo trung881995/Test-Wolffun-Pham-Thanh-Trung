@@ -441,7 +441,7 @@ var GameModel = /** @class */ (function (_super) {
                     case 1:
                         _a.sent();
                         this.init();
-                        this.storage.gold = 10000;
+                        this.storage.gold = 20000;
                         this.storage.workingWorkerNumber = 0;
                         this.storage.blueberrySeed.number = GameConfig_1.FirstConfigs.blueberryseed.number;
                         this.storage.blueberrySeed.name = GameConfig_1.PlantConfigs.blueberryseed.name;

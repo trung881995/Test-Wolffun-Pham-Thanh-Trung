@@ -451,7 +451,7 @@ export class GameModel extends BaseModel {
   async setData() {
     await this.loadData();
     this.init();
-    this.storage.gold = 10000;
+    this.storage.gold = 20000;
     this.storage.workingWorkerNumber = 0;
 
     this.storage.blueberrySeed.number = FirstConfigs.blueberryseed.number;
