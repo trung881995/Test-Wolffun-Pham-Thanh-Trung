@@ -679,11 +679,6 @@
     "meta": 1744743860336,
     "relativePath": "resources/configs/first.CSV"
   },
-  "3b22d275-0baa-4d53-b2bb-36b393fb46d4": {
-    "asset": 1745208443563,
-    "meta": 1745208443570,
-    "relativePath": "Scene.fire"
-  },
   "2686bd4a-882a-46a9-9305-5d43e42429ea": {
     "asset": 1744747823307,
     "meta": 1744747827077,
@@ -868,5 +863,10 @@
     "asset": 1745212994984,
     "meta": 1745213997646,
     "relativePath": "scripts/ui/LandUI.ts"
+  },
+  "3b22d275-0baa-4d53-b2bb-36b393fb46d4": {
+    "asset": 1745215775629,
+    "meta": 1745215775636,
+    "relativePath": "Scene.fire"
   }
 }
