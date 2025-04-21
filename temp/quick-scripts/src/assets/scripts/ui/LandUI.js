@@ -188,25 +188,25 @@ var LandUI = /** @class */ (function (_super) {
         else {
         }
         this.yieldBtn.node.active =
-            (UIManager_1.default.instance.gameModel.landArray[this.index].plantType != null ||
-                UIManager_1.default.instance.gameModel.landArray[this.index].cattleType !=
-                    null) &&
+            (UIManager_1.default.instance.gameModel.landArray[this.index].plantType ||
+                UIManager_1.default.instance.gameModel.landArray[this.index].cattleType) &&
                 UIManager_1.default.instance.gameModel.landArray[this.index].containYield > 0;
         if (this.yieldBtn.node.active) {
-            switch (UIManager_1.default.instance.gameModel.landArray[this.index].currentAsset) {
-                case UIManager_1.default.instance.gameController.model.storage.tomatoSeed:
+            switch (UIManager_1.default.instance.gameModel.landArray[this.index].currentAsset.name) {
+                case UIManager_1.default.instance.gameController.model.storage.tomatoSeed.name:
                     this.yieldButtonLb.string = YeildAction.Harvest;
                     break;
-                case UIManager_1.default.instance.gameController.model.storage.blueberrySeed:
+                case UIManager_1.default.instance.gameController.model.storage.blueberrySeed.name:
                     this.yieldButtonLb.string = YeildAction.Harvest;
                     break;
-                case UIManager_1.default.instance.gameController.model.storage.strawberrySeed:
+                case UIManager_1.default.instance.gameController.model.storage.strawberrySeed
+                    .name:
                     this.yieldButtonLb.string = YeildAction.Harvest;
                     break;
-                case UIManager_1.default.instance.gameController.model.storage.milkCow:
+                case UIManager_1.default.instance.gameController.model.storage.milkCow.name:
                     this.yieldButtonLb.string = YeildAction.Milk;
                     break;
-                case UIManager_1.default.instance.gameController.model.storage.cow:
+                case UIManager_1.default.instance.gameController.model.storage.cow.name:
                     this.yieldButtonLb.string = YeildAction.Butcher;
                     break;
                 default:
