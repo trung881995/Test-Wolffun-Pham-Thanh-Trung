@@ -20,8 +20,8 @@ export default class UIManager extends cc.Component {
   @property(LandUI) landUIArray: LandUI[] = [];
   @property(StoreUI) storeUI: StoreUI = null;
   @property(StorageUI) storageUI: StorageUI = null;
+  @property(cc.Button) StartBtn: cc.Button = null;
 
-  @property(cc.Sprite) GamePanel: cc.Sprite = null;
   public static instance: UIManager;
 
   gameController: GameController;
@@ -29,31 +29,24 @@ export default class UIManager extends cc.Component {
   gameView: GameView;
 
   time: number = 0;
-
+  saveTime: number = 1;
   // LIFE-CYCLE CALLBACKS:
 
   onLoad() {
     if (UIManager.instance == null) {
       UIManager.instance = this;
     }
-    //this.Init();
+
+    this.Init();
   }
 
-  start() {}
-
-  update(dt: number): void {
-    /*  if (this.time > 0) {
-      this.time -= dt;
-    } else if (this.time < 0) {
-      this.useWorkerForQueue3();
-      this.time = 0;
-    } else {
-    }
-    */
-    //if (this.gameController.model.storage);
+  start() {
+    //this.Save();
   }
-  Init() {
-    this.setup();
+
+  update(dt: number): void {}
+  async Init() {
+    await this.setup();
   }
   async setup() {
     this.gameController = new GameController();
@@ -61,18 +54,17 @@ export default class UIManager extends cc.Component {
     this.gameView = new GameView(this.gameController);
 
     this.gameController.init(this.gameModel, this.gameView);
+
     await this.setupData();
+    this.gameController.model.newLand();
+    this.createLandData();
+    this.gameController.loadGame();
     this.setupUI();
     this.gameController.setup();
+    this.StartBtn.interactable = true;
   }
   async setupData() {
-    await this.gameController.model.setData();
-
-    this.gameController.model.newLand();
-
-    this.gameController.loadGame();
-
-    this.createLandData();
+    await this.gameModel.setData();
   }
   setupUI() {
     this.createLandUI();
@@ -81,99 +73,71 @@ export default class UIManager extends cc.Component {
 
     this.storeUI.setupUI();
   }
-  useWorkerForQueue() {
-    for (let i = 0; i < this.landUIArray.length; i++) {
-      if (
-        this.gameController.model.storage.getWorkerIdle(
-          this.gameController.model.storage.workingWorkerNumber
-        ) > 0
-      ) {
-        if (this.gameController.model.queueLandArray.length > 0) {
-          this.useWorker(this.gameController.model.queueLandArray[0]);
-          this.gameController.model.queueLandArray.splice(0, 1);
-        } else {
-          if (this.landUIArray[i].land.isReadyToWork) {
-            this.useWorker(this.landUIArray[i]);
-          }
-        }
-      } else {
-        if (this.landUIArray[i].land.isReadyToWork) {
-          this.gameController.model.queueLandArray.push(this.landUIArray[i]);
-        }
-      }
-    }
-  }
 
-  useWorkerForQueue2() {
-    for (let i = 0; i < this.landUIArray.length; i++) {
-      if (
-        this.gameController.model.storage.getWorkerIdle(
-          this.gameController.model.storage.workingWorkerNumber
-        ) > 0
-      ) {
-        if (this.landUIArray[i].land.isReadyToWork) {
-          this.useWorker(this.landUIArray[i]);
-        }
-      } else {
-        this.time = this.checkMinWorkingTime();
-      }
-    }
-  }
-  pushToQueue(landUI: LandUI) {
+  pushToQueue(index: number) {
     if (
-      landUI.land.isReadyToWork &&
-      !this.gameController.model.queueLandArray.includes(landUI)
+      this.gameModel.landArray[index].isReadyToWork &&
+      !this.gameModel.queueIndexArray.includes(index)
     ) {
-      this.gameController.model.queueLandArray.push(landUI);
+      this.gameModel.queueIndexArray.push(index);
     }
   }
   useWorkerForQueue3() {
+    console.log("queueIndex: " + this.gameModel.queueIndexArray);
     let idleWorker = this.gameController.model.storage.getWorkerIdle(
       this.gameController.model.storage.workingWorkerNumber
     );
     if (idleWorker > 0) {
       for (let i = 0; i < idleWorker; i++) {
-        if (this.gameController.model.queueLandArray.length > 0) {
-          if (this.gameController.model.queueLandArray[0].land.isReadyToWork) {
-            this.useWorker(this.gameController.model.queueLandArray[0]);
+        if (this.gameController.model.queueIndexArray.length > 0) {
+          if (
+            this.gameModel.landArray[this.gameModel.queueIndexArray[0]]
+              .isReadyToWork
+          ) {
+            UIManager.instance.landUIArray[
+              this.gameModel.queueIndexArray[0]
+            ].enableWorker();
+            this.useWorker(
+              this.gameModel.landArray[this.gameModel.queueIndexArray[0]]
+            );
+            UIManager.instance.landUIArray[
+              this.gameModel.queueIndexArray[0]
+            ].updateUI();
           } else {
-            console.log("thua");
-            //this.gameController.model.queueLandArray[0].disableWorker();
           }
-          //this.gameController.model.queueLandArray[0].land.isReadyToWork = false;
-          this.gameController.model.queueLandArray.splice(0, 1);
+
+          this.gameModel.queueIndexArray.splice(0, 1);
         }
       }
     } else {
-      //this.time = this.checkMinWorkingTime();
     }
   }
 
   checkMinWorkingTime(): number {
-    let min: number = this.landUIArray[0].land.workingTime;
+    let min: number = this.gameModel.landArray[0].workingTime;
     for (let i = 0; i < this.landUIArray.length; i++) {
-      if (this.landUIArray[i].land.workingTime < min) {
-        min = this.landUIArray[i].land.workingTime;
+      if (this.gameModel.landArray[i].workingTime < min) {
+        min = this.gameModel.landArray[i].workingTime;
       }
     }
     return min;
   }
 
-  useWorker(landUi: LandUI) {
-    this.gameController.model.storage.assignWorker(landUi);
+  useWorker(land: Land) {
+    this.gameController.model.storage.assignWorker(land);
     this.gameController.model.storage.workingWorkerNumber += 1;
-    landUi.land.workingTime =
+    land.workingTime =
       this.gameController.model.storage.worker.workingInterval * 10;
-    landUi.land.isReadyToWork = false;
-    landUi.enableWorker();
+    land.isReadyToWork = false;
+
     UIManager.instance.storageUI.updateUI();
-    landUi.updateUI();
   }
   createLandUI() {
-    for (let i = 0; i < this.gameController.model.storage.land.number; i++) {
+    for (let i = 0; i < this.gameModel.storage.land.number; i++) {
       this.updateLandUI(i);
+
       if (this.gameModel.landArray[i].isReadyToWork) {
-        this.pushToQueue(this.landUIArray[i]);
+        this.pushToQueue(i);
         this.useWorkerForQueue3();
       } else {
         if (this.gameModel.landArray[i].workingTime > 0) {
@@ -194,13 +158,13 @@ export default class UIManager extends cc.Component {
     cc.log(this.gameModel.landArray);
   }
   updateLandUI(index: number) {
-    this.landUIArray[index].land = this.gameModel.landArray[index];
     this.landUIArray[index].enabled = true;
-    //this.landUIArray[index].setupLandState();
+    this.landUIArray[index].index = index;
+
     this.landUIArray[index].enableLand();
   }
   enableAllLand() {
-    for (let i = 0; i < this.gameController.model.storage.land.number; i++) {
+    for (let i = 0; i < this.gameModel.storage.land.number; i++) {
       this.landUIArray[i].enableLand();
     }
   }
@@ -208,11 +172,10 @@ export default class UIManager extends cc.Component {
     for (let i = 0; i < this.landUIArray.length; i++) {
       if (this.landUIArray[i].enabled) {
         if (
-          this.landUIArray[i].land.currentAsset.number > 0 &&
-          this.landUIArray[i].land.isReadyToWork
+          this.gameModel.landArray[i].currentAsset.number > 0 &&
+          this.gameModel.landArray[i].isReadyToWork
         ) {
-          //this.landUIArray[i].setupLandState();
-          this.pushToQueue(this.landUIArray[i]);
+          this.pushToQueue(i);
 
           this.useWorkerForQueue3();
         }
@@ -220,11 +183,11 @@ export default class UIManager extends cc.Component {
     }
   }
 
+  Save() {
+    this.gameController.saveGame();
+  }
+
   clearCache() {
     GameSaveManager.clear();
-  }
-  startGame() {
-    this.Init();
-    this.GamePanel.node.active = false;
   }
 }

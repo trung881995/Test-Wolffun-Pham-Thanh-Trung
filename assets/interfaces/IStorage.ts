@@ -55,5 +55,5 @@ export interface IStorage {
   addWorker(): void;
   upgradeMachine(): void;
 
-  assignWorker(landUi: LandUI): void;
+  assignWorker(land: Land): void;
 }

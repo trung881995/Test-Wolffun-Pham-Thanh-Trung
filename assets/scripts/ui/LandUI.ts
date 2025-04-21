@@ -73,7 +73,8 @@ export default class LandUI extends cc.Component {
   @property(cc.Sprite)
   Sprite: cc.Sprite = null;
 
-  land: Land;
+  index: number;
+  //land: Land;
   // LIFE-CYCLE CALLBACKS:
   onLoad() {}
 
@@ -82,60 +83,64 @@ export default class LandUI extends cc.Component {
   }
 
   update(dt) {
-    if (this.land != null) {
-      if (!this.land.isEmpty) {
-        if (this.land.time < -0.5) {
-          if (this.land.crop > 0) {
-            console.log(this.land.currentAsset.maxHarvest);
+    if (UIManager.instance.gameModel.landArray[this.index]) {
+      if (!UIManager.instance.gameModel.landArray[this.index].isEmpty) {
+        if (UIManager.instance.gameModel.landArray[this.index].time < -0.5) {
+          if (UIManager.instance.gameModel.landArray[this.index].crop > 0) {
             this.addYield();
           } else {
             this.switchToEmptyLand();
           }
-        } else if (this.land.time > -0.5) {
+        } else if (
+          UIManager.instance.gameModel.landArray[this.index].time > -0.5
+        ) {
           let duration =
-            dt *
-            UIManager.instance.gameController.model.storage.machine.Operate();
+            dt * UIManager.instance.gameModel.storage.machine.Operate();
           this.changeLandTime(duration);
           this.updateUI();
+          console.log("change Time!!!!!");
         }
-      } else {
-        //nothing
       }
 
-      if (this.land.workingTime > 0) {
-        this.land.workingTime -= dt;
+      if (UIManager.instance.gameModel.landArray[this.index].workingTime > 0) {
+        UIManager.instance.gameModel.landArray[this.index].workingTime -= dt;
         this.updateUI();
-      } else if (this.land.workingTime < 0) {
-        UIManager.instance.gameController.model.storage.worker.Work(
+      } else if (
+        UIManager.instance.gameModel.landArray[this.index].workingTime < 0
+      ) {
+        UIManager.instance.gameModel.storage.worker.Work(
           this,
-          this.land.workerAction
+          UIManager.instance.gameModel.landArray[this.index].workerAction
         );
       } else {
       }
     }
   }
   public setupLandState() {
-    switch (this.land.landState) {
+    switch (UIManager.instance.gameModel.landArray[this.index].landState) {
       case LandState.Empty:
         this.resetUI();
-        //this.setupUI();
-        //this.disableWorker();
-        this.land.isReadyToWork = this.land.currentAsset.number > 0;
+
+        UIManager.instance.gameModel.landArray[this.index].isReadyToWork =
+          UIManager.instance.gameModel.landArray[this.index].currentAsset
+            .number > 0;
         break;
       case LandState.Harvest:
         this.updateUI();
-        //this.disableWorker();
-        this.land.isReadyToWork = true;
+
+        UIManager.instance.gameModel.landArray[this.index].isReadyToWork = true;
         break;
       case LandState.Plant:
         this.updateUI();
-        this.land.isReadyToWork = false;
-        //this.disableWorker();
+        UIManager.instance.gameModel.landArray[this.index].isReadyToWork =
+          false;
+
         break;
       case LandState.Cattle:
         this.updateUI();
-        this.land.isReadyToWork = false;
-        //this.disableWorker();
+        UIManager.instance.gameModel.landArray[this.index].isReadyToWork =
+          false;
+
         break;
       default:
         break;
@@ -176,42 +181,21 @@ export default class LandUI extends cc.Component {
     console.log("setup LandUI Done!!!!");
   }
   public updateUI() {
-    this.setTimeLb(this.land.time);
-    this.setCropLb(this.land.crop);
-    this.setWorkingIntervalLb(this.land.workingTime);
-    this.setYieldContainLb(this.land.containYield);
-    if (this.land.time > 0) {
-      if (this.land.landState == LandState.Plant) {
-        switch (this.land.plantType) {
-          case PlantType.tomatoSeed:
-            this.setSprite(PlantConfigs.tomatoseed.name);
-            this.setNameLb(PlantConfigs.tomatoseed.name);
-            break;
-          case PlantType.blueberrySeed:
-            this.setSprite(PlantConfigs.blueberryseed.name);
-            this.setNameLb(PlantConfigs.blueberryseed.name);
-            break;
-          case PlantType.strawberrySeed:
-            this.setSprite(PlantConfigs.strawberryseed.name);
-            this.setNameLb(PlantConfigs.strawberryseed.name);
-            break;
-          default:
-            break;
-        }
-      } else if (this.land.landState == LandState.Cattle) {
-        switch (this.land.cattleType) {
-          case CattleType.Cow:
-            this.setSprite(CattleConfigs.cow.name);
-            this.setNameLb(CattleConfigs.cow.name);
-            break;
-          case CattleType.Milkcow:
-            this.setSprite(CattleConfigs.milkcow.name);
-            this.setNameLb(CattleConfigs.milkcow.name);
-            break;
-          default:
-            break;
-        }
-      }
+    this.setTimeLb(UIManager.instance.gameModel.landArray[this.index].time);
+    this.setCropLb(UIManager.instance.gameModel.landArray[this.index].crop);
+    this.setWorkingIntervalLb(
+      UIManager.instance.gameModel.landArray[this.index].workingTime
+    );
+    this.setYieldContainLb(
+      UIManager.instance.gameModel.landArray[this.index].containYield
+    );
+    if (UIManager.instance.gameModel.landArray[this.index].time > 0) {
+      this.setSprite(
+        UIManager.instance.gameModel.landArray[this.index].currentAsset.name
+      );
+      this.setNameLb(
+        UIManager.instance.gameModel.landArray[this.index].currentAsset.name
+      );
 
       this.tomatoSeedBtn.node.active = false;
       this.blueberrySeedBtn.node.active = false;
@@ -227,10 +211,12 @@ export default class LandUI extends cc.Component {
     }
 
     this.yieldBtn.node.active =
-      (this.land.plantType != null || this.land.cattleType != null) &&
-      this.land.containYield > 0;
+      (UIManager.instance.gameModel.landArray[this.index].plantType != null ||
+        UIManager.instance.gameModel.landArray[this.index].cattleType !=
+          null) &&
+      UIManager.instance.gameModel.landArray[this.index].containYield > 0;
     if (this.yieldBtn.node.active) {
-      switch (this.land.currentAsset) {
+      switch (UIManager.instance.gameModel.landArray[this.index].currentAsset) {
         case UIManager.instance.gameController.model.storage.tomatoSeed:
           this.yieldButtonLb.string = YeildAction.Harvest;
           break;
@@ -255,22 +241,30 @@ export default class LandUI extends cc.Component {
   onClickTomatoSeedBtn() {
     if (UIManager.instance.gameController.model.storage.tomatoSeed.number > 0) {
       //this.disableWorker();
-      this.land.isEmpty = false;
-      this.land.plantType = PlantType.tomatoSeed;
-      this.land.time = PlantConfigs.tomatoseed.harvestInterval * 60;
-      this.land.currentAsset =
+      UIManager.instance.gameModel.landArray[this.index].isEmpty = false;
+      UIManager.instance.gameModel.landArray[this.index].plantType =
+        PlantType.tomatoSeed;
+      UIManager.instance.gameModel.landArray[this.index].time =
+        PlantConfigs.tomatoseed.harvestInterval * 60;
+      UIManager.instance.gameModel.landArray[this.index].currentAsset =
         UIManager.instance.gameController.model.storage.tomatoSeed;
 
-      let maxHarvest = this.land.currentAsset.maxHarvest;
-      this.land.crop = this.land.currentAsset.maxHarvest;
-      this.land.crop +=
+      let maxHarvest =
+        UIManager.instance.gameModel.landArray[this.index].currentAsset
+          .maxHarvest;
+      UIManager.instance.gameModel.landArray[this.index].crop =
+        UIManager.instance.gameModel.landArray[
+          this.index
+        ].currentAsset.maxHarvest;
+      UIManager.instance.gameModel.landArray[this.index].crop +=
         Math.ceil(
           maxHarvest *
             UIManager.instance.gameController.model.storage.machine.Operate()
         ) - maxHarvest;
 
       UIManager.instance.gameController.model.storage.tomatoSeed.number -= 1;
-      this.land.landState = LandState.Plant;
+      UIManager.instance.gameModel.landArray[this.index].landState =
+        LandState.Plant;
       this.disableWorker();
 
       UIManager.instance.storageUI.updateUI();
@@ -289,143 +283,163 @@ export default class LandUI extends cc.Component {
       UIManager.instance.gameController.model.storage.blueberrySeed.number > 0
     ) {
       //this.disableWorker();
-      this.land.time = PlantConfigs.blueberryseed.harvestInterval * 60;
-      this.land.isEmpty = false;
-      this.land.plantType = PlantType.blueberrySeed;
-      this.land.currentAsset =
+      UIManager.instance.gameModel.landArray[this.index].time =
+        PlantConfigs.blueberryseed.harvestInterval * 60;
+      UIManager.instance.gameModel.landArray[this.index].isEmpty = false;
+      UIManager.instance.gameModel.landArray[this.index].plantType =
+        PlantType.blueberrySeed;
+      UIManager.instance.gameModel.landArray[this.index].currentAsset =
         UIManager.instance.gameController.model.storage.blueberrySeed;
 
-      let maxHarvest = this.land.currentAsset.maxHarvest;
-      this.land.crop = this.land.currentAsset.maxHarvest;
-      this.land.crop +=
+      let maxHarvest =
+        UIManager.instance.gameModel.landArray[this.index].currentAsset
+          .maxHarvest;
+      UIManager.instance.gameModel.landArray[this.index].crop =
+        UIManager.instance.gameModel.landArray[
+          this.index
+        ].currentAsset.maxHarvest;
+      UIManager.instance.gameModel.landArray[this.index].crop +=
         Math.ceil(
           maxHarvest *
             UIManager.instance.gameController.model.storage.machine.Operate()
         ) - maxHarvest;
 
       UIManager.instance.gameController.model.storage.blueberrySeed.number -= 1;
-      this.land.landState = LandState.Plant;
+      UIManager.instance.gameModel.landArray[this.index].landState =
+        LandState.Plant;
       this.disableWorker();
       UIManager.instance.storageUI.updateUI();
       this.updateUI();
       UIManager.instance.enableAllLand();
       UIManager.instance.useWorkerForQueue3();
     }
-    //this.disableWorker();
+
     this.setupLandState();
-    //UIManager.instance.pushToQueue(this);
-    //UIManager.instance.useWorkerForQueue3();
   }
   onClickStrawberrySeedBtn() {
     if (
       UIManager.instance.gameController.model.storage.strawberrySeed.number > 0
     ) {
       //this.disableWorker();
-      this.land.time = PlantConfigs.strawberryseed.harvestInterval * 60;
-      this.land.isEmpty = false;
-      this.land.plantType = PlantType.strawberrySeed;
-      this.land.currentAsset =
+      UIManager.instance.gameModel.landArray[this.index].time =
+        PlantConfigs.strawberryseed.harvestInterval * 60;
+      UIManager.instance.gameModel.landArray[this.index].isEmpty = false;
+      UIManager.instance.gameModel.landArray[this.index].plantType =
+        PlantType.strawberrySeed;
+      UIManager.instance.gameModel.landArray[this.index].currentAsset =
         UIManager.instance.gameController.model.storage.strawberrySeed;
-      let maxHarvest = this.land.currentAsset.maxHarvest;
-      this.land.crop = this.land.currentAsset.maxHarvest;
-      this.land.crop +=
+      let maxHarvest =
+        UIManager.instance.gameModel.landArray[this.index].currentAsset
+          .maxHarvest;
+      UIManager.instance.gameModel.landArray[this.index].crop =
+        UIManager.instance.gameModel.landArray[
+          this.index
+        ].currentAsset.maxHarvest;
+      UIManager.instance.gameModel.landArray[this.index].crop +=
         Math.ceil(
           maxHarvest *
             UIManager.instance.gameController.model.storage.machine.Operate()
         ) - maxHarvest;
-      UIManager.instance.gameController.model.storage.strawberrySeed.number -= 1;
-      this.land.landState = LandState.Plant;
+      UIManager.instance.gameModel.storage.strawberrySeed.number -= 1;
+      UIManager.instance.gameModel.landArray[this.index].landState =
+        LandState.Plant;
       this.disableWorker();
       UIManager.instance.storageUI.updateUI();
       this.updateUI();
       UIManager.instance.enableAllLand();
       UIManager.instance.useWorkerForQueue3();
     }
-    //this.disableWorker();
+
     this.setupLandState();
-    //UIManager.instance.pushToQueue(this);
-    //UIManager.instance.useWorkerForQueue3();
   }
   onClickMilkCowBtn() {
     if (UIManager.instance.gameController.model.storage.milkCow.number > 0) {
       //this.disableWorker();
-      this.land.time = CattleConfigs.milkcow.harvestInterval * 60;
-      this.land.isEmpty = false;
-      this.land.cattleType = CattleType.Milkcow;
-      this.land.currentAsset =
+      UIManager.instance.gameModel.landArray[this.index].time =
+        CattleConfigs.milkcow.harvestInterval * 60;
+      UIManager.instance.gameModel.landArray[this.index].isEmpty = false;
+      UIManager.instance.gameModel.landArray[this.index].cattleType =
+        CattleType.Milkcow;
+      UIManager.instance.gameModel.landArray[this.index].currentAsset =
         UIManager.instance.gameController.model.storage.milkCow;
-      let maxHarvest = this.land.currentAsset.maxHarvest;
-      this.land.crop = this.land.currentAsset.maxHarvest;
-      this.land.crop +=
+      let maxHarvest =
+        UIManager.instance.gameModel.landArray[this.index].currentAsset
+          .maxHarvest;
+      UIManager.instance.gameModel.landArray[this.index].crop =
+        UIManager.instance.gameModel.landArray[
+          this.index
+        ].currentAsset.maxHarvest;
+      UIManager.instance.gameModel.landArray[this.index].crop +=
         Math.ceil(
           maxHarvest *
             UIManager.instance.gameController.model.storage.machine.Operate()
         ) - maxHarvest;
       UIManager.instance.gameController.model.storage.milkCow.number -= 1;
-      this.land.landState = LandState.Cattle;
+      UIManager.instance.gameModel.landArray[this.index].landState =
+        LandState.Cattle;
       this.disableWorker();
       UIManager.instance.storageUI.updateUI();
       this.updateUI();
       UIManager.instance.enableAllLand();
       UIManager.instance.useWorkerForQueue3();
     }
-    //this.disableWorker();
+
     this.setupLandState();
-    //UIManager.instance.pushToQueue(this);
-    //UIManager.instance.useWorkerForQueue3();
   }
   onClickYieldBtn() {
     //this.disableWorker();
-    switch (this.land.currentAsset.name) {
+    switch (
+      UIManager.instance.gameModel.landArray[this.index].currentAsset.name
+    ) {
       case UIManager.instance.gameController.model.storage.tomatoSeed.name:
         UIManager.instance.gameController.model.storage.addTomato(
-          this.land.containYield
+          UIManager.instance.gameModel.landArray[this.index].containYield
         );
 
         break;
       case UIManager.instance.gameController.model.storage.blueberrySeed.name:
         UIManager.instance.gameController.model.storage.addBlueberry(
-          this.land.containYield
+          UIManager.instance.gameModel.landArray[this.index].containYield
         );
 
         break;
       case UIManager.instance.gameController.model.storage.strawberrySeed.name:
         UIManager.instance.gameController.model.storage.addStrawberry(
-          this.land.containYield
+          UIManager.instance.gameModel.landArray[this.index].containYield
         );
 
         break;
       case UIManager.instance.gameController.model.storage.milkCow.name:
         UIManager.instance.gameController.model.storage.addMilk(
-          this.land.containYield
+          UIManager.instance.gameModel.landArray[this.index].containYield
         );
 
         break;
       case UIManager.instance.gameController.model.storage.cow.name:
         UIManager.instance.gameController.model.storage.addBeef(
-          this.land.containYield
+          UIManager.instance.gameModel.landArray[this.index].containYield
         );
 
         break;
       default:
         break;
     }
-    this.land.containYield = 0;
-    //this.updateUI();
-    //UIManager.instance.storageUI.updateUI();
-    this.land.landState = this.land.plantType
+    UIManager.instance.gameModel.landArray[this.index].containYield = 0;
+
+    UIManager.instance.gameModel.landArray[this.index].landState = UIManager
+      .instance.gameModel.landArray[this.index].plantType
       ? LandState.Plant
       : LandState.Cattle;
-    if (this.land.crop == 0) {
-      this.land.landState = LandState.Empty;
+    if (UIManager.instance.gameModel.landArray[this.index].crop == 0) {
+      UIManager.instance.gameModel.landArray[this.index].landState =
+        LandState.Empty;
       this.disableWorker();
       this.setupLandState();
       UIManager.instance.storageUI.updateUI();
       this.updateUI();
-      UIManager.instance.pushToQueue(this);
+      UIManager.instance.pushToQueue(this.index);
       UIManager.instance.useWorkerForQueue3();
-      //UIManager.instance.useWorkerForQueue3();
-      //UIManager.instance.useWorkerForQueue3();
+
       return;
     }
     this.disableWorker();
@@ -433,10 +447,6 @@ export default class LandUI extends cc.Component {
     UIManager.instance.storageUI.updateUI();
     this.updateUI();
     UIManager.instance.useWorkerForQueue3();
-    //UIManager.instance.pushToQueue(this);
-    //UIManager.instance.useWorkerForQueue3();
-    //this.disableWorker();
-    //UIManager.instance.useWorkerForQueue();
   }
   onClickMilkBtn() {
     this.resetUI();
@@ -507,16 +517,17 @@ export default class LandUI extends cc.Component {
     this.workingIntervalLb.string = "";
     this.workingIntervalLb.node.active = false;
 
-    this.land.plantType = null;
-    this.land.cattleType = null;
+    UIManager.instance.gameModel.landArray[this.index].plantType = null;
+    UIManager.instance.gameModel.landArray[this.index].cattleType = null;
 
-    this.land.time = 0;
-    this.land.isEmpty = true;
+    UIManager.instance.gameModel.landArray[this.index].time = 0;
+    UIManager.instance.gameModel.landArray[this.index].isEmpty = true;
 
-    this.land.landState = LandState.Empty;
+    UIManager.instance.gameModel.landArray[this.index].landState =
+      LandState.Empty;
 
-    //this.land.currentAsset = null;
-    this.land.workerAction = WorkerAction.TomatoPlant;
+    UIManager.instance.gameModel.landArray[this.index].workerAction =
+      WorkerAction.TomatoPlant;
   }
 
   enableLand() {
@@ -537,37 +548,48 @@ export default class LandUI extends cc.Component {
   }
 
   disableWorker() {
-    if (this.land.workingTime != 0) {
-      this.land.workingTime = 0;
+    if (UIManager.instance.gameModel.landArray[this.index].workingTime != 0) {
+      UIManager.instance.gameModel.landArray[this.index].workingTime = 0;
       this.workerSprite.node.active = false;
       UIManager.instance.gameController.model.storage.workingWorkerNumber -= 1;
       this.workingIntervalLb.node.active = false;
     }
   }
   addYield() {
-    this.land.containYield += 1;
-    this.land.workerAction = WorkerAction.Yielding;
-    this.land.crop -= 1;
-    this.land.time = this.land.currentAsset.harvestInterval * 60;
-    console.log(this.land.currentAsset.harvestInterval);
-    if (this.land.landState != LandState.Harvest) {
-      this.land.landState = LandState.Harvest;
+    UIManager.instance.gameModel.landArray[this.index].containYield += 1;
+    UIManager.instance.gameModel.landArray[this.index].workerAction =
+      WorkerAction.Yielding;
+    UIManager.instance.gameModel.landArray[this.index].crop -= 1;
+    UIManager.instance.gameModel.landArray[this.index].time =
+      UIManager.instance.gameModel.landArray[this.index].currentAsset
+        .harvestInterval * 60;
+    console.log(
+      UIManager.instance.gameModel.landArray[this.index].currentAsset
+        .harvestInterval
+    );
+    if (
+      UIManager.instance.gameModel.landArray[this.index].landState !=
+      LandState.Harvest
+    ) {
+      UIManager.instance.gameModel.landArray[this.index].landState =
+        LandState.Harvest;
       this.setupLandState();
-      UIManager.instance.pushToQueue(this);
+      UIManager.instance.pushToQueue(this.index);
       UIManager.instance.useWorkerForQueue3();
     }
   }
   switchToEmptyLand() {
-    this.land.landState = LandState.Empty;
+    console.log("switch to empty land");
+    UIManager.instance.gameModel.landArray[this.index].landState =
+      LandState.Empty;
     this.disableWorker();
     this.setupLandState();
     UIManager.instance.storageUI.updateUI();
     this.updateUI();
-    UIManager.instance.pushToQueue(this);
+    UIManager.instance.pushToQueue(this.index);
     UIManager.instance.useWorkerForQueue3();
-    //UIManager.instance.useWorkerForQueue3();
   }
   changeLandTime(duration: number) {
-    this.land.time -= duration;
+    UIManager.instance.gameModel.landArray[this.index].time -= duration;
   }
 }

@@ -233,10 +233,10 @@ var Storage = /** @class */ (function () {
         this.machine.level += 1;
         this.machine.upgradePerformace();
         for (var i = 0; i < this.land.number; i++) {
-            var maxHarvest = UIManager_1.default.instance.landUIArray[i].land.currentAsset.maxHarvest;
-            UIManager_1.default.instance.landUIArray[i].land.crop =
-                UIManager_1.default.instance.landUIArray[i].land.currentAsset.maxHarvest;
-            UIManager_1.default.instance.landUIArray[i].land.crop +=
+            var maxHarvest = UIManager_1.default.instance.gameModel.landArray[i].currentAsset.maxHarvest;
+            UIManager_1.default.instance.gameModel.landArray[i].crop =
+                UIManager_1.default.instance.gameModel.landArray[i].currentAsset.maxHarvest;
+            UIManager_1.default.instance.gameModel.landArray[i].crop +=
                 Math.ceil(maxHarvest * this.machine.Operate()) - maxHarvest;
         }
     };
@@ -258,26 +258,26 @@ var Storage = /** @class */ (function () {
     Storage.prototype.addBeef = function (beefNumber) {
         this.beef.number += beefNumber;
     };
-    Storage.prototype.assignWorker = function (landUi) {
-        if (landUi.land.containYield > 0) {
-            landUi.land.workerAction = LandUI_1.WorkerAction.Yielding;
+    Storage.prototype.assignWorker = function (land) {
+        if (land.containYield > 0) {
+            land.workerAction = LandUI_1.WorkerAction.Yielding;
             return;
         }
-        switch (landUi.land.currentAsset) {
+        switch (land.currentAsset) {
             case UIManager_1.default.instance.gameController.model.storage.tomatoSeed:
-                landUi.land.workerAction = LandUI_1.WorkerAction.TomatoPlant;
+                land.workerAction = LandUI_1.WorkerAction.TomatoPlant;
                 break;
             case UIManager_1.default.instance.gameController.model.storage.blueberrySeed:
-                landUi.land.workerAction = LandUI_1.WorkerAction.BlueberryPlant;
+                land.workerAction = LandUI_1.WorkerAction.BlueberryPlant;
                 break;
             case UIManager_1.default.instance.gameController.model.storage.strawberrySeed:
-                landUi.land.workerAction = LandUI_1.WorkerAction.StrawberryPlant;
+                land.workerAction = LandUI_1.WorkerAction.StrawberryPlant;
                 break;
             case UIManager_1.default.instance.gameController.model.storage.milkCow:
-                landUi.land.workerAction = LandUI_1.WorkerAction.MilkcowLiveStock;
+                land.workerAction = LandUI_1.WorkerAction.MilkcowLiveStock;
                 break;
             case UIManager_1.default.instance.gameController.model.storage.cow:
-                landUi.land.workerAction = LandUI_1.WorkerAction.CowLiveStock;
+                land.workerAction = LandUI_1.WorkerAction.CowLiveStock;
                 break;
             default:
                 break;

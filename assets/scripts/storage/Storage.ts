@@ -310,10 +310,10 @@ export class Storage implements IStorage {
     this.machine.upgradePerformace();
     for (let i = 0; i < this.land.number; i++) {
       let maxHarvest =
-        UIManager.instance.landUIArray[i].land.currentAsset.maxHarvest;
-      UIManager.instance.landUIArray[i].land.crop =
-        UIManager.instance.landUIArray[i].land.currentAsset.maxHarvest;
-      UIManager.instance.landUIArray[i].land.crop +=
+        UIManager.instance.gameModel.landArray[i].currentAsset.maxHarvest;
+      UIManager.instance.gameModel.landArray[i].crop =
+        UIManager.instance.gameModel.landArray[i].currentAsset.maxHarvest;
+      UIManager.instance.gameModel.landArray[i].crop +=
         Math.ceil(maxHarvest * this.machine.Operate()) - maxHarvest;
     }
   }
@@ -336,26 +336,26 @@ export class Storage implements IStorage {
   addBeef(beefNumber: number): void {
     this.beef.number += beefNumber;
   }
-  assignWorker(landUi: LandUI) {
-    if (landUi.land.containYield > 0) {
-      landUi.land.workerAction = WorkerAction.Yielding;
+  assignWorker(land: Land) {
+    if (land.containYield > 0) {
+      land.workerAction = WorkerAction.Yielding;
       return;
     }
-    switch (landUi.land.currentAsset) {
+    switch (land.currentAsset) {
       case UIManager.instance.gameController.model.storage.tomatoSeed:
-        landUi.land.workerAction = WorkerAction.TomatoPlant;
+        land.workerAction = WorkerAction.TomatoPlant;
         break;
       case UIManager.instance.gameController.model.storage.blueberrySeed:
-        landUi.land.workerAction = WorkerAction.BlueberryPlant;
+        land.workerAction = WorkerAction.BlueberryPlant;
         break;
       case UIManager.instance.gameController.model.storage.strawberrySeed:
-        landUi.land.workerAction = WorkerAction.StrawberryPlant;
+        land.workerAction = WorkerAction.StrawberryPlant;
         break;
       case UIManager.instance.gameController.model.storage.milkCow:
-        landUi.land.workerAction = WorkerAction.MilkcowLiveStock;
+        land.workerAction = WorkerAction.MilkcowLiveStock;
         break;
       case UIManager.instance.gameController.model.storage.cow:
-        landUi.land.workerAction = WorkerAction.CowLiveStock;
+        land.workerAction = WorkerAction.CowLiveStock;
         break;
       default:
         break;

@@ -1,7 +1,20 @@
 import { BaseModel } from "../../core/mvc/BaseModel";
 import { CattleType } from "../../enums/CattleType";
 import { PlantType } from "../../enums/PlantType";
-import { SaveData } from "../Manager/GameSaveManager";
+import {
+  SaveData,
+  SaveLand0Data,
+  SaveLand1Data,
+  SaveLand2Data,
+  SaveLand3Data,
+  SaveLand4Data,
+  SaveLand5Data,
+  SaveLand6Data,
+  SaveLand7Data,
+  SaveLand8Data,
+  SaveQueueData,
+} from "../Manager/GameSaveManager";
+import UIManager from "../Manager/UIManager";
 import { Store } from "../Store/Store";
 import {
   FirstConfigs,
@@ -176,18 +189,238 @@ export class GameModel extends BaseModel {
     return this.storage.land;
   }
 
-  loadQueueLandArrayFromSave(data: Partial<SaveData["queueLandArray"]>): void {
-    this.queueLandArray = data;
+  loadQueueIndexArrayFromSave(
+    data: Partial<SaveQueueData["queueIndexArray"]>
+  ): void {
+    this.queueIndexArray = data || [];
   }
-  getSaveQueueLandArrayData(): Partial<SaveData["queueLandArray"]> {
-    return this.queueLandArray;
+  getSaveQueueIndexArrayData(): Partial<SaveQueueData["queueIndexArray"]> {
+    return this.queueIndexArray;
   }
 
-  loadLandArrayFromSave(data: Partial<SaveData["landArray"]>): void {
-    this.landArray = data;
+  loadLand0FromSave(data: Partial<SaveLand0Data["land_0"]>): void {
+    this.landArray[0].name = data.name ?? "";
+    this.landArray[0].number = data.number || 0;
+    this.landArray[0].missionNumber = data.missionNumber || 1;
+    this.landArray[0].containInterval = data.containInterval || 0;
+    this.landArray[0].buyPrice = data.buyPrice || 0;
+    this.landArray[0].containYield = data.containYield || 0;
+    this.landArray[0].currentAsset =
+      data.currentAsset ?? this.storage.tomatoSeed;
+    this.landArray[0].crop = data.crop || 0;
+    this.landArray[0].workerAction =
+      data.workerAction || WorkerAction.TomatoPlant;
+    this.landArray[0].workingTime = data.workingTime || 0;
+    this.landArray[0].isReadyToWork = data.isReadyToWork ?? true;
+
+    this.landArray[0].isEmpty = data.isEmpty ?? true;
+    this.landArray[0].time = data.time || 0;
+    this.landArray[0].landState = data.landState || LandState.Empty;
+    this.landArray[0].plantType = data.plantType;
+    this.landArray[0].cattleType = data.cattleType;
   }
-  getSavelandArrayData(): Partial<SaveData["landArray"]> {
-    return this.landArray;
+  getSaveLand0Data(): Partial<SaveLand0Data["land_0"]> {
+    return this.landArray[0];
+  }
+
+  loadLand1FromSave(data: Partial<SaveLand1Data["land_1"]>): void {
+    this.landArray[1].name = data.name || "";
+    this.landArray[1].number = data.number || 0;
+    this.landArray[1].missionNumber = data.missionNumber || 1;
+    this.landArray[1].containInterval = data.containInterval || 0;
+    this.landArray[1].buyPrice = data.buyPrice || 0;
+    this.landArray[1].containYield = data.containYield || 0;
+    this.landArray[1].currentAsset =
+      data.currentAsset ?? this.storage.tomatoSeed;
+    this.landArray[1].crop = data.crop || 0;
+    this.landArray[1].workerAction =
+      data.workerAction || WorkerAction.TomatoPlant;
+    this.landArray[1].workingTime = data.workingTime || 0;
+    this.landArray[1].isReadyToWork = data.isReadyToWork ?? true;
+
+    this.landArray[1].isEmpty = data.isEmpty ?? true;
+    this.landArray[1].time = data.time || 0;
+    this.landArray[1].landState = data.landState || LandState.Empty;
+    this.landArray[1].plantType = data.plantType;
+    this.landArray[1].cattleType = data.cattleType;
+  }
+  getSaveLand1Data(): Partial<SaveLand1Data["land_1"]> {
+    return this.landArray[1];
+  }
+
+  loadLand2FromSave(data: Partial<SaveLand2Data["land_2"]>): void {
+    this.landArray[2].name = data.name || "";
+    this.landArray[2].number = data.number || 0;
+    this.landArray[2].missionNumber = data.missionNumber || 1;
+    this.landArray[2].containInterval = data.containInterval || 0;
+    this.landArray[2].buyPrice = data.buyPrice || 0;
+    this.landArray[2].containYield = data.containYield || 0;
+    this.landArray[2].currentAsset =
+      data.currentAsset ?? this.storage.tomatoSeed;
+    this.landArray[2].crop = data.crop || 0;
+    this.landArray[2].workerAction =
+      data.workerAction || WorkerAction.TomatoPlant;
+    this.landArray[2].workingTime = data.workingTime || 0;
+    this.landArray[2].isReadyToWork = data.isReadyToWork ?? true;
+
+    this.landArray[2].isEmpty = data.isEmpty ?? true;
+    this.landArray[2].time = data.time || 0;
+    this.landArray[2].landState = data.landState || LandState.Empty;
+    this.landArray[2].plantType = data.plantType;
+    this.landArray[2].cattleType = data.cattleType;
+  }
+  getSaveLand2Data(): Partial<SaveLand2Data["land_2"]> {
+    return this.landArray[2];
+  }
+
+  loadLand3FromSave(data: Partial<SaveLand3Data["land_3"]>): void {
+    this.landArray[3].name = data.name || "";
+    this.landArray[3].number = data.number || 0;
+    this.landArray[3].missionNumber = data.missionNumber || 1;
+    this.landArray[3].containInterval = data.containInterval || 0;
+    this.landArray[3].buyPrice = data.buyPrice || 0;
+    this.landArray[3].containYield = data.containYield || 0;
+    this.landArray[3].currentAsset =
+      data.currentAsset ?? this.storage.tomatoSeed;
+    this.landArray[3].crop = data.crop || 0;
+    this.landArray[3].workerAction =
+      data.workerAction || WorkerAction.TomatoPlant;
+    this.landArray[3].workingTime = data.workingTime || 0;
+    this.landArray[3].isReadyToWork = data.isReadyToWork ?? true;
+
+    this.landArray[3].isEmpty = data.isEmpty ?? true;
+    this.landArray[3].time = data.time || 0;
+    this.landArray[3].landState = data.landState || LandState.Empty;
+    this.landArray[3].plantType = data.plantType;
+    this.landArray[3].cattleType = data.cattleType;
+  }
+  getSaveLand3Data(): Partial<SaveLand3Data["land_3"]> {
+    return this.landArray[3];
+  }
+
+  loadLand4FromSave(data: Partial<SaveLand4Data["land_4"]>): void {
+    this.landArray[4].name = data.name || "";
+    this.landArray[4].number = data.number || 0;
+    this.landArray[4].missionNumber = data.missionNumber || 1;
+    this.landArray[4].containInterval = data.containInterval || 0;
+    this.landArray[4].buyPrice = data.buyPrice || 0;
+    this.landArray[4].containYield = data.containYield || 0;
+    this.landArray[4].currentAsset =
+      data.currentAsset ?? this.storage.tomatoSeed;
+    this.landArray[4].crop = data.crop || 0;
+    this.landArray[4].workerAction =
+      data.workerAction || WorkerAction.TomatoPlant;
+    this.landArray[4].workingTime = data.workingTime || 0;
+    this.landArray[4].isReadyToWork = data.isReadyToWork ?? true;
+
+    this.landArray[4].isEmpty = data.isEmpty ?? true;
+    this.landArray[4].time = data.time || 0;
+    this.landArray[4].landState = data.landState || LandState.Empty;
+    this.landArray[4].plantType = data.plantType;
+    this.landArray[4].cattleType = data.cattleType;
+  }
+  getSaveLand4Data(): Partial<SaveLand4Data["land_4"]> {
+    return this.landArray[4];
+  }
+
+  loadLand5FromSave(data: Partial<SaveLand5Data["land_5"]>): void {
+    this.landArray[5].name = data.name || "";
+    this.landArray[5].number = data.number || 0;
+    this.landArray[5].missionNumber = data.missionNumber || 1;
+    this.landArray[5].containInterval = data.containInterval || 0;
+    this.landArray[5].buyPrice = data.buyPrice || 0;
+    this.landArray[5].containYield = data.containYield || 0;
+    this.landArray[5].currentAsset =
+      data.currentAsset ?? this.storage.tomatoSeed;
+    this.landArray[5].crop = data.crop || 0;
+    this.landArray[5].workerAction =
+      data.workerAction || WorkerAction.TomatoPlant;
+    this.landArray[5].workingTime = data.workingTime || 0;
+    this.landArray[5].isReadyToWork = data.isReadyToWork ?? true;
+
+    this.landArray[5].isEmpty = data.isEmpty ?? true;
+    this.landArray[5].time = data.time || 0;
+    this.landArray[5].landState = data.landState || LandState.Empty;
+    this.landArray[5].plantType = data.plantType;
+    this.landArray[5].cattleType = data.cattleType;
+  }
+  getSaveLand5Data(): Partial<SaveLand5Data["land_5"]> {
+    return this.landArray[5];
+  }
+
+  loadLand6FromSave(data: Partial<SaveLand6Data["land_6"]>): void {
+    this.landArray[6].name = data.name || "";
+    this.landArray[6].number = data.number || 0;
+    this.landArray[6].missionNumber = data.missionNumber || 1;
+    this.landArray[6].containInterval = data.containInterval || 0;
+    this.landArray[6].buyPrice = data.buyPrice || 0;
+    this.landArray[6].containYield = data.containYield || 0;
+    this.landArray[6].currentAsset =
+      data.currentAsset ?? this.storage.tomatoSeed;
+    this.landArray[6].crop = data.crop || 0;
+    this.landArray[6].workerAction =
+      data.workerAction || WorkerAction.TomatoPlant;
+    this.landArray[6].workingTime = data.workingTime || 0;
+    this.landArray[6].isReadyToWork = data.isReadyToWork ?? true;
+
+    this.landArray[6].isEmpty = data.isEmpty ?? true;
+    this.landArray[6].time = data.time || 0;
+    this.landArray[6].landState = data.landState || LandState.Empty;
+    this.landArray[6].plantType = data.plantType;
+    this.landArray[6].cattleType = data.cattleType;
+  }
+  getSaveLand6Data(): Partial<SaveLand6Data["land_6"]> {
+    return this.landArray[6];
+  }
+
+  loadLand7FromSave(data: Partial<SaveLand7Data["land_7"]>): void {
+    this.landArray[7].name = data.name || "";
+    this.landArray[7].number = data.number || 0;
+    this.landArray[7].missionNumber = data.missionNumber || 1;
+    this.landArray[7].containInterval = data.containInterval || 0;
+    this.landArray[7].buyPrice = data.buyPrice || 0;
+    this.landArray[7].containYield = data.containYield || 0;
+    this.landArray[7].currentAsset =
+      data.currentAsset ?? this.storage.tomatoSeed;
+    this.landArray[7].crop = data.crop || 0;
+    this.landArray[7].workerAction =
+      data.workerAction || WorkerAction.TomatoPlant;
+    this.landArray[7].workingTime = data.workingTime || 0;
+    this.landArray[7].isReadyToWork = data.isReadyToWork ?? true;
+
+    this.landArray[7].isEmpty = data.isEmpty ?? true;
+    this.landArray[7].time = data.time || 0;
+    this.landArray[7].landState = data.landState || LandState.Empty;
+    this.landArray[7].plantType = data.plantType;
+    this.landArray[7].cattleType = data.cattleType;
+  }
+  getSaveLand7Data(): Partial<SaveLand7Data["land_7"]> {
+    return this.landArray[7];
+  }
+
+  loadLand8FromSave(data: Partial<SaveLand8Data["land_8"]>): void {
+    this.landArray[8].name = data.name || "";
+    this.landArray[8].number = data.number || 0;
+    this.landArray[8].missionNumber = data.missionNumber || 1;
+    this.landArray[8].containInterval = data.containInterval || 0;
+    this.landArray[8].buyPrice = data.buyPrice || 0;
+    this.landArray[8].containYield = data.containYield || 0;
+    this.landArray[8].currentAsset =
+      data.currentAsset ?? this.storage.tomatoSeed;
+    this.landArray[8].crop = data.crop || 0;
+    this.landArray[8].workerAction =
+      data.workerAction || WorkerAction.TomatoPlant;
+    this.landArray[8].workingTime = data.workingTime || 0;
+    this.landArray[8].isReadyToWork = data.isReadyToWork ?? true;
+
+    this.landArray[8].isEmpty = data.isEmpty ?? true;
+    this.landArray[8].time = data.time || 0;
+    this.landArray[8].landState = data.landState || LandState.Empty;
+    this.landArray[8].plantType = data.plantType;
+    this.landArray[8].cattleType = data.cattleType;
+  }
+  getSaveLand8Data(): Partial<SaveLand8Data["land_8"]> {
+    return this.landArray[8];
   }
   init(...args: any[]): void {
     this.storage = new Storage();
@@ -212,7 +445,7 @@ export class GameModel extends BaseModel {
 
   startLandNumber: number;
 
-  queueLandArray: LandUI[] = [];
+  queueIndexArray: number[] = [];
   landArray: Land[] = [];
 
   async setData() {
@@ -220,19 +453,7 @@ export class GameModel extends BaseModel {
     this.init();
     this.storage.gold = 10000;
     this.storage.workingWorkerNumber = 0;
-    /*
-    this.storage.land.number = FirstConfigs.land.number;
-    this.storage.land.buyPrice = LandConfigs.red.buyPrice;
-    this.storage.land.name = LandConfigs.red.name;
-    this.storage.land.missionNumber = LandConfigs.red.missionNumber;
-    this.storage.land.containInterval = LandConfigs.red.containInterval;
-    this.storage.land.containYield = 0;
-    this.storage.land.crop = 0;
-    this.storage.land.workerAction = WorkerAction.TomatoPlant;
-    this.storage.land.workingTime = 0;
-    this.storage.land.currentAsset = this.storage.tomatoSeed;
-    this.storage.land.isReadyToWork = true;
-*/
+
     this.storage.blueberrySeed.number = FirstConfigs.blueberryseed.number;
     this.storage.blueberrySeed.name = PlantConfigs.blueberryseed.name;
     this.storage.blueberrySeed.buyPrice = PlantConfigs.blueberryseed.buyPrice;
@@ -353,30 +574,4 @@ export class GameModel extends BaseModel {
   public getMachineData() {
     return MachineConfigs;
   }
-
-  /*public getLandNumber(): number {
-    let firstConfig = this.getData();
-    return firstConfig.land.number;
-  }
-  public getTomatoSeedNumber(): number {
-    let firstConfig = this.getData();
-    return firstConfig.tomatoseed.number;
-  }
-  public getBlueberrySeedNumber(): number {
-    let firstConfig = this.getData();
-    return firstConfig.blueberryseed.number;
-  }
-  public getMilkCowNumber(): number {
-    let firstConfig = this.getData();
-    return firstConfig.milkcow.number;
-  }
-  public getWokerNumber(): number {
-    let firstConfig = this.getData();
-    return firstConfig.worker.number;
-  }
-  public getMachineNumber(): number {
-    let firstConfig = this.getData();
-    return firstConfig.machine.number;
-  }
-  */
 }

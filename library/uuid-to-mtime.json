@@ -680,8 +680,8 @@
     "relativePath": "resources/configs/first.CSV"
   },
   "3b22d275-0baa-4d53-b2bb-36b393fb46d4": {
-    "asset": 1745154588223,
-    "meta": 1745154588230,
+    "asset": 1745208443563,
+    "meta": 1745208443570,
     "relativePath": "Scene.fire"
   },
   "2686bd4a-882a-46a9-9305-5d43e42429ea": {
@@ -814,54 +814,59 @@
     "meta": 1745136469958,
     "relativePath": "core/mvc/BaseModel.ts"
   },
-  "fd97c6e2-9a9d-40e5-b3f1-67991d76d51d": {
-    "asset": 1745136066258,
-    "meta": 1745136469961,
-    "relativePath": "interfaces/IStorage.ts"
-  },
-  "ef5e14ea-e0c6-4ae1-acd2-649eeb5cc42b": {
-    "asset": 1745136081467,
-    "meta": 1745136470033,
-    "relativePath": "scripts/storage/Storage.ts"
-  },
-  "47d22bfc-8652-4fa7-9ca5-39d9b4547502": {
-    "asset": 1745141019121,
-    "meta": 1745141734771,
-    "relativePath": "interfaces/ILand.ts"
-  },
   "96af4945-230f-461d-a706-ccc5645532b2": {
     "asset": 1745142556297,
     "meta": 1745142556312,
     "relativePath": "Sprites/4661507.png"
-  },
-  "f9f6de96-342a-42a9-a937-9010c43c6635": {
-    "asset": 1745151320692,
-    "meta": 1745151736106,
-    "relativePath": "scripts/Manager/GameSaveManager.ts"
-  },
-  "4666a4d1-788e-49e0-9333-0d80f0ccd728": {
-    "asset": 1745151509588,
-    "meta": 1745151736164,
-    "relativePath": "scripts/models/GameModel.ts"
   },
   "66f8fe43-f752-44a0-822c-f83d2f33efab": {
     "asset": 1745151013400,
     "meta": 1745151736177,
     "relativePath": "scripts/ui/StoreUI.ts"
   },
+  "fd97c6e2-9a9d-40e5-b3f1-67991d76d51d": {
+    "asset": 1745172357230,
+    "meta": 1745174908990,
+    "relativePath": "interfaces/IStorage.ts"
+  },
+  "47d22bfc-8652-4fa7-9ca5-39d9b4547502": {
+    "asset": 1745184513351,
+    "meta": 1745185341746,
+    "relativePath": "interfaces/ILand.ts"
+  },
+  "ef5e14ea-e0c6-4ae1-acd2-649eeb5cc42b": {
+    "asset": 1745184540100,
+    "meta": 1745185341873,
+    "relativePath": "scripts/storage/Storage.ts"
+  },
   "e7a15517-dad8-44a6-8702-aa8b0664c068": {
-    "asset": 1745153495829,
-    "meta": 1745153498814,
+    "asset": 1745187063800,
+    "meta": 1745187087221,
     "relativePath": "scripts/controllers/GameController.ts"
   },
+  "f9f6de96-342a-42a9-a937-9010c43c6635": {
+    "asset": 1745187386512,
+    "meta": 1745187446284,
+    "relativePath": "scripts/Manager/GameSaveManager.ts"
+  },
+  "ee5483d6-aaab-45e2-bbef-44f1fc4e8236": {
+    "asset": 1745204584366,
+    "meta": 1745204672444,
+    "relativePath": "scripts/PanelUI.ts"
+  },
+  "4666a4d1-788e-49e0-9333-0d80f0ccd728": {
+    "asset": 1745211885770,
+    "meta": 1745211888155,
+    "relativePath": "scripts/models/GameModel.ts"
+  },
   "fd7df33d-3ebd-4c95-815c-ea012e2cea8d": {
-    "asset": 1745154555745,
-    "meta": 1745154566289,
+    "asset": 1745212313035,
+    "meta": 1745212315784,
     "relativePath": "scripts/Manager/UIManager.ts"
   },
   "5fbc3f85-aa3f-4273-8a5f-579b34683cfc": {
-    "asset": 1745156095365,
-    "meta": 1745156096802,
+    "asset": 1745212300234,
+    "meta": 1745212315837,
     "relativePath": "scripts/ui/LandUI.ts"
   }
 }

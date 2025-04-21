@@ -65,34 +65,9 @@ var GameModel = /** @class */ (function (_super) {
     __extends(GameModel, _super);
     function GameModel() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.queueLandArray = [];
+        _this.queueIndexArray = [];
         _this.landArray = [];
         return _this;
-        /*public getLandNumber(): number {
-          let firstConfig = this.getData();
-          return firstConfig.land.number;
-        }
-        public getTomatoSeedNumber(): number {
-          let firstConfig = this.getData();
-          return firstConfig.tomatoseed.number;
-        }
-        public getBlueberrySeedNumber(): number {
-          let firstConfig = this.getData();
-          return firstConfig.blueberryseed.number;
-        }
-        public getMilkCowNumber(): number {
-          let firstConfig = this.getData();
-          return firstConfig.milkcow.number;
-        }
-        public getWokerNumber(): number {
-          let firstConfig = this.getData();
-          return firstConfig.worker.number;
-        }
-        public getMachineNumber(): number {
-          let firstConfig = this.getData();
-          return firstConfig.machine.number;
-        }
-        */
     }
     GameModel.prototype.loadTomatoSeedFromSave = function (data) {
         this.storage.tomatoSeed.name = data.name || "";
@@ -225,17 +200,218 @@ var GameModel = /** @class */ (function (_super) {
     GameModel.prototype.getSaveLandData = function () {
         return this.storage.land;
     };
-    GameModel.prototype.loadQueueLandArrayFromSave = function (data) {
-        this.queueLandArray = data;
+    GameModel.prototype.loadQueueIndexArrayFromSave = function (data) {
+        this.queueIndexArray = data || [];
     };
-    GameModel.prototype.getSaveQueueLandArrayData = function () {
-        return this.queueLandArray;
+    GameModel.prototype.getSaveQueueIndexArrayData = function () {
+        return this.queueIndexArray;
     };
-    GameModel.prototype.loadLandArrayFromSave = function (data) {
-        this.landArray = data;
+    GameModel.prototype.loadLand0FromSave = function (data) {
+        var _a, _b, _c, _d;
+        this.landArray[0].name = (_a = data.name) !== null && _a !== void 0 ? _a : "";
+        this.landArray[0].number = data.number || 0;
+        this.landArray[0].missionNumber = data.missionNumber || 1;
+        this.landArray[0].containInterval = data.containInterval || 0;
+        this.landArray[0].buyPrice = data.buyPrice || 0;
+        this.landArray[0].containYield = data.containYield || 0;
+        this.landArray[0].currentAsset = (_b = data.currentAsset) !== null && _b !== void 0 ? _b : this.storage.tomatoSeed;
+        this.landArray[0].crop = data.crop || 0;
+        this.landArray[0].workerAction =
+            data.workerAction || LandUI_1.WorkerAction.TomatoPlant;
+        this.landArray[0].workingTime = data.workingTime || 0;
+        this.landArray[0].isReadyToWork = (_c = data.isReadyToWork) !== null && _c !== void 0 ? _c : true;
+        this.landArray[0].isEmpty = (_d = data.isEmpty) !== null && _d !== void 0 ? _d : true;
+        this.landArray[0].time = data.time || 0;
+        this.landArray[0].landState = data.landState || LandUI_1.LandState.Empty;
+        this.landArray[0].plantType = data.plantType;
+        this.landArray[0].cattleType = data.cattleType;
     };
-    GameModel.prototype.getSavelandArrayData = function () {
-        return this.landArray;
+    GameModel.prototype.getSaveLand0Data = function () {
+        return this.landArray[0];
+    };
+    GameModel.prototype.loadLand1FromSave = function (data) {
+        var _a, _b, _c;
+        this.landArray[1].name = data.name || "";
+        this.landArray[1].number = data.number || 0;
+        this.landArray[1].missionNumber = data.missionNumber || 1;
+        this.landArray[1].containInterval = data.containInterval || 0;
+        this.landArray[1].buyPrice = data.buyPrice || 0;
+        this.landArray[1].containYield = data.containYield || 0;
+        this.landArray[1].currentAsset = (_a = data.currentAsset) !== null && _a !== void 0 ? _a : this.storage.tomatoSeed;
+        this.landArray[1].crop = data.crop || 0;
+        this.landArray[1].workerAction =
+            data.workerAction || LandUI_1.WorkerAction.TomatoPlant;
+        this.landArray[1].workingTime = data.workingTime || 0;
+        this.landArray[1].isReadyToWork = (_b = data.isReadyToWork) !== null && _b !== void 0 ? _b : true;
+        this.landArray[1].isEmpty = (_c = data.isEmpty) !== null && _c !== void 0 ? _c : true;
+        this.landArray[1].time = data.time || 0;
+        this.landArray[1].landState = data.landState || LandUI_1.LandState.Empty;
+        this.landArray[1].plantType = data.plantType;
+        this.landArray[1].cattleType = data.cattleType;
+    };
+    GameModel.prototype.getSaveLand1Data = function () {
+        return this.landArray[1];
+    };
+    GameModel.prototype.loadLand2FromSave = function (data) {
+        var _a, _b, _c;
+        this.landArray[2].name = data.name || "";
+        this.landArray[2].number = data.number || 0;
+        this.landArray[2].missionNumber = data.missionNumber || 1;
+        this.landArray[2].containInterval = data.containInterval || 0;
+        this.landArray[2].buyPrice = data.buyPrice || 0;
+        this.landArray[2].containYield = data.containYield || 0;
+        this.landArray[2].currentAsset = (_a = data.currentAsset) !== null && _a !== void 0 ? _a : this.storage.tomatoSeed;
+        this.landArray[2].crop = data.crop || 0;
+        this.landArray[2].workerAction =
+            data.workerAction || LandUI_1.WorkerAction.TomatoPlant;
+        this.landArray[2].workingTime = data.workingTime || 0;
+        this.landArray[2].isReadyToWork = (_b = data.isReadyToWork) !== null && _b !== void 0 ? _b : true;
+        this.landArray[2].isEmpty = (_c = data.isEmpty) !== null && _c !== void 0 ? _c : true;
+        this.landArray[2].time = data.time || 0;
+        this.landArray[2].landState = data.landState || LandUI_1.LandState.Empty;
+        this.landArray[2].plantType = data.plantType;
+        this.landArray[2].cattleType = data.cattleType;
+    };
+    GameModel.prototype.getSaveLand2Data = function () {
+        return this.landArray[2];
+    };
+    GameModel.prototype.loadLand3FromSave = function (data) {
+        var _a, _b, _c;
+        this.landArray[3].name = data.name || "";
+        this.landArray[3].number = data.number || 0;
+        this.landArray[3].missionNumber = data.missionNumber || 1;
+        this.landArray[3].containInterval = data.containInterval || 0;
+        this.landArray[3].buyPrice = data.buyPrice || 0;
+        this.landArray[3].containYield = data.containYield || 0;
+        this.landArray[3].currentAsset = (_a = data.currentAsset) !== null && _a !== void 0 ? _a : this.storage.tomatoSeed;
+        this.landArray[3].crop = data.crop || 0;
+        this.landArray[3].workerAction =
+            data.workerAction || LandUI_1.WorkerAction.TomatoPlant;
+        this.landArray[3].workingTime = data.workingTime || 0;
+        this.landArray[3].isReadyToWork = (_b = data.isReadyToWork) !== null && _b !== void 0 ? _b : true;
+        this.landArray[3].isEmpty = (_c = data.isEmpty) !== null && _c !== void 0 ? _c : true;
+        this.landArray[3].time = data.time || 0;
+        this.landArray[3].landState = data.landState || LandUI_1.LandState.Empty;
+        this.landArray[3].plantType = data.plantType;
+        this.landArray[3].cattleType = data.cattleType;
+    };
+    GameModel.prototype.getSaveLand3Data = function () {
+        return this.landArray[3];
+    };
+    GameModel.prototype.loadLand4FromSave = function (data) {
+        var _a, _b, _c;
+        this.landArray[4].name = data.name || "";
+        this.landArray[4].number = data.number || 0;
+        this.landArray[4].missionNumber = data.missionNumber || 1;
+        this.landArray[4].containInterval = data.containInterval || 0;
+        this.landArray[4].buyPrice = data.buyPrice || 0;
+        this.landArray[4].containYield = data.containYield || 0;
+        this.landArray[4].currentAsset = (_a = data.currentAsset) !== null && _a !== void 0 ? _a : this.storage.tomatoSeed;
+        this.landArray[4].crop = data.crop || 0;
+        this.landArray[4].workerAction =
+            data.workerAction || LandUI_1.WorkerAction.TomatoPlant;
+        this.landArray[4].workingTime = data.workingTime || 0;
+        this.landArray[4].isReadyToWork = (_b = data.isReadyToWork) !== null && _b !== void 0 ? _b : true;
+        this.landArray[4].isEmpty = (_c = data.isEmpty) !== null && _c !== void 0 ? _c : true;
+        this.landArray[4].time = data.time || 0;
+        this.landArray[4].landState = data.landState || LandUI_1.LandState.Empty;
+        this.landArray[4].plantType = data.plantType;
+        this.landArray[4].cattleType = data.cattleType;
+    };
+    GameModel.prototype.getSaveLand4Data = function () {
+        return this.landArray[4];
+    };
+    GameModel.prototype.loadLand5FromSave = function (data) {
+        var _a, _b, _c;
+        this.landArray[5].name = data.name || "";
+        this.landArray[5].number = data.number || 0;
+        this.landArray[5].missionNumber = data.missionNumber || 1;
+        this.landArray[5].containInterval = data.containInterval || 0;
+        this.landArray[5].buyPrice = data.buyPrice || 0;
+        this.landArray[5].containYield = data.containYield || 0;
+        this.landArray[5].currentAsset = (_a = data.currentAsset) !== null && _a !== void 0 ? _a : this.storage.tomatoSeed;
+        this.landArray[5].crop = data.crop || 0;
+        this.landArray[5].workerAction =
+            data.workerAction || LandUI_1.WorkerAction.TomatoPlant;
+        this.landArray[5].workingTime = data.workingTime || 0;
+        this.landArray[5].isReadyToWork = (_b = data.isReadyToWork) !== null && _b !== void 0 ? _b : true;
+        this.landArray[5].isEmpty = (_c = data.isEmpty) !== null && _c !== void 0 ? _c : true;
+        this.landArray[5].time = data.time || 0;
+        this.landArray[5].landState = data.landState || LandUI_1.LandState.Empty;
+        this.landArray[5].plantType = data.plantType;
+        this.landArray[5].cattleType = data.cattleType;
+    };
+    GameModel.prototype.getSaveLand5Data = function () {
+        return this.landArray[5];
+    };
+    GameModel.prototype.loadLand6FromSave = function (data) {
+        var _a, _b, _c;
+        this.landArray[6].name = data.name || "";
+        this.landArray[6].number = data.number || 0;
+        this.landArray[6].missionNumber = data.missionNumber || 1;
+        this.landArray[6].containInterval = data.containInterval || 0;
+        this.landArray[6].buyPrice = data.buyPrice || 0;
+        this.landArray[6].containYield = data.containYield || 0;
+        this.landArray[6].currentAsset = (_a = data.currentAsset) !== null && _a !== void 0 ? _a : this.storage.tomatoSeed;
+        this.landArray[6].crop = data.crop || 0;
+        this.landArray[6].workerAction =
+            data.workerAction || LandUI_1.WorkerAction.TomatoPlant;
+        this.landArray[6].workingTime = data.workingTime || 0;
+        this.landArray[6].isReadyToWork = (_b = data.isReadyToWork) !== null && _b !== void 0 ? _b : true;
+        this.landArray[6].isEmpty = (_c = data.isEmpty) !== null && _c !== void 0 ? _c : true;
+        this.landArray[6].time = data.time || 0;
+        this.landArray[6].landState = data.landState || LandUI_1.LandState.Empty;
+        this.landArray[6].plantType = data.plantType;
+        this.landArray[6].cattleType = data.cattleType;
+    };
+    GameModel.prototype.getSaveLand6Data = function () {
+        return this.landArray[6];
+    };
+    GameModel.prototype.loadLand7FromSave = function (data) {
+        var _a, _b, _c;
+        this.landArray[7].name = data.name || "";
+        this.landArray[7].number = data.number || 0;
+        this.landArray[7].missionNumber = data.missionNumber || 1;
+        this.landArray[7].containInterval = data.containInterval || 0;
+        this.landArray[7].buyPrice = data.buyPrice || 0;
+        this.landArray[7].containYield = data.containYield || 0;
+        this.landArray[7].currentAsset = (_a = data.currentAsset) !== null && _a !== void 0 ? _a : this.storage.tomatoSeed;
+        this.landArray[7].crop = data.crop || 0;
+        this.landArray[7].workerAction =
+            data.workerAction || LandUI_1.WorkerAction.TomatoPlant;
+        this.landArray[7].workingTime = data.workingTime || 0;
+        this.landArray[7].isReadyToWork = (_b = data.isReadyToWork) !== null && _b !== void 0 ? _b : true;
+        this.landArray[7].isEmpty = (_c = data.isEmpty) !== null && _c !== void 0 ? _c : true;
+        this.landArray[7].time = data.time || 0;
+        this.landArray[7].landState = data.landState || LandUI_1.LandState.Empty;
+        this.landArray[7].plantType = data.plantType;
+        this.landArray[7].cattleType = data.cattleType;
+    };
+    GameModel.prototype.getSaveLand7Data = function () {
+        return this.landArray[7];
+    };
+    GameModel.prototype.loadLand8FromSave = function (data) {
+        var _a, _b, _c;
+        this.landArray[8].name = data.name || "";
+        this.landArray[8].number = data.number || 0;
+        this.landArray[8].missionNumber = data.missionNumber || 1;
+        this.landArray[8].containInterval = data.containInterval || 0;
+        this.landArray[8].buyPrice = data.buyPrice || 0;
+        this.landArray[8].containYield = data.containYield || 0;
+        this.landArray[8].currentAsset = (_a = data.currentAsset) !== null && _a !== void 0 ? _a : this.storage.tomatoSeed;
+        this.landArray[8].crop = data.crop || 0;
+        this.landArray[8].workerAction =
+            data.workerAction || LandUI_1.WorkerAction.TomatoPlant;
+        this.landArray[8].workingTime = data.workingTime || 0;
+        this.landArray[8].isReadyToWork = (_b = data.isReadyToWork) !== null && _b !== void 0 ? _b : true;
+        this.landArray[8].isEmpty = (_c = data.isEmpty) !== null && _c !== void 0 ? _c : true;
+        this.landArray[8].time = data.time || 0;
+        this.landArray[8].landState = data.landState || LandUI_1.LandState.Empty;
+        this.landArray[8].plantType = data.plantType;
+        this.landArray[8].cattleType = data.cattleType;
+    };
+    GameModel.prototype.getSaveLand8Data = function () {
+        return this.landArray[8];
     };
     GameModel.prototype.init = function () {
         var args = [];

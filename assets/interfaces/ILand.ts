@@ -1,6 +1,6 @@
 import { CattleType } from "../enums/CattleType";
 import { PlantType } from "../enums/PlantType";
-import { LandState, WorkerAction } from "../scripts/ui/LandUI";
+import LandUI, { LandState, WorkerAction } from "../scripts/ui/LandUI";
 
 export interface ILand {
   name: string;

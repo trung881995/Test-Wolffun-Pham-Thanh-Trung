@@ -19,6 +19,7 @@ require('./assets/interfaces/IYield');
 require('./assets/scripts/Manager/ConfigManager');
 require('./assets/scripts/Manager/GameSaveManager');
 require('./assets/scripts/Manager/UIManager');
+require('./assets/scripts/PanelUI');
 require('./assets/scripts/Store/Store');
 require('./assets/scripts/controllers/GameController');
 require('./assets/scripts/data/GameConfig');

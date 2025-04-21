@@ -45,6 +45,9 @@ var GameController = /** @class */ (function (_super) {
         cc.game.on(cc.game.EVENT_HIDE, function () {
             _this.saveGame();
         });
+        cc.game.on(cc.game.EVENT_RESTART, function () {
+            _this.saveGame();
+        });
     };
     GameController.prototype.saveGame = function () {
         var data = {
@@ -62,13 +65,52 @@ var GameController = /** @class */ (function (_super) {
             timestamp: this.model.getSaveTimeStampData(),
             land: this.model.getSaveLandData(),
             workingWorkerNumber: this.model.getSaveWorkingWorkerNumberData(),
-            queueLandArray: this.model.getSaveQueueLandArrayData(),
-            landArray: this.model.getSavelandArrayData(),
         };
-        GameSaveManager_1.GameSaveManager.save(data);
+        var data2 = {
+            queueIndexArray: this.model.getSaveQueueIndexArrayData(),
+        };
+        var landData0 = {
+            land_0: this.model.getSaveLand0Data(),
+        };
+        var landData1 = {
+            land_1: this.model.getSaveLand1Data(),
+        };
+        var landData2 = {
+            land_2: this.model.getSaveLand2Data(),
+        };
+        var landData3 = {
+            land_3: this.model.getSaveLand3Data(),
+        };
+        var landData4 = {
+            land_4: this.model.getSaveLand4Data(),
+        };
+        var landData5 = {
+            land_5: this.model.getSaveLand5Data(),
+        };
+        var landData6 = {
+            land_6: this.model.getSaveLand6Data(),
+        };
+        var landData7 = {
+            land_7: this.model.getSaveLand7Data(),
+        };
+        var landData8 = {
+            land_8: this.model.getSaveLand8Data(),
+        };
+        GameSaveManager_1.GameSaveManager.save(GameSaveManager_1.GameSaveManager.SAVE_KEY, data);
+        GameSaveManager_1.GameSaveManager.save(GameSaveManager_1.GameSaveManager.SAVE_KEY2, data2);
+        GameSaveManager_1.GameSaveManager.save(GameSaveManager_1.GameSaveManager.SAVE_KEY3, landData0);
+        GameSaveManager_1.GameSaveManager.save(GameSaveManager_1.GameSaveManager.SAVE_KEY4, landData1);
+        GameSaveManager_1.GameSaveManager.save(GameSaveManager_1.GameSaveManager.SAVE_KEY5, landData2);
+        GameSaveManager_1.GameSaveManager.save(GameSaveManager_1.GameSaveManager.SAVE_KEY6, landData3);
+        GameSaveManager_1.GameSaveManager.save(GameSaveManager_1.GameSaveManager.SAVE_KEY7, landData4);
+        GameSaveManager_1.GameSaveManager.save(GameSaveManager_1.GameSaveManager.SAVE_KEY8, landData5);
+        GameSaveManager_1.GameSaveManager.save(GameSaveManager_1.GameSaveManager.SAVE_KEY9, landData6);
+        GameSaveManager_1.GameSaveManager.save(GameSaveManager_1.GameSaveManager.SAVE_KEY10, landData7);
+        GameSaveManager_1.GameSaveManager.save(GameSaveManager_1.GameSaveManager.SAVE_KEY11, landData8);
+        console.log("game Saved!!!!!!!!!");
     };
     GameController.prototype.loadGame = function () {
-        var saved = GameSaveManager_1.GameSaveManager.load();
+        var saved = GameSaveManager_1.GameSaveManager.load(GameSaveManager_1.GameSaveManager.SAVE_KEY);
         if (saved) {
             this.model.loadGoldFromSave(saved.gold);
             this.model.loadTomatoSeedFromSave(saved.tomatoSeed);
@@ -84,11 +126,52 @@ var GameController = /** @class */ (function (_super) {
             this.model.loadTimeStampFromSave(saved.timestamp);
             this.model.loadLandFromSave(saved.land);
             this.model.loadWorkingWorkerNumberFromSave(saved.workingWorkerNumber);
-            this.model.loadQueueLandArrayFromSave(saved.queueLandArray);
-            this.model.loadLandArrayFromSave(saved.landArray);
+            //this.model.loadQueueLandArrayFromSave(saved.queueLandArray);
+            // this.model.loadLandArrayFromSave(saved.landArray);
             var offlineDuration = Date.now() - this.model.storage.timestamp;
             this.updateOfflineProgress(offlineDuration);
         }
+        var saved2 = GameSaveManager_1.GameSaveManager.load(GameSaveManager_1.GameSaveManager.SAVE_KEY2);
+        if (saved2) {
+            this.model.loadQueueIndexArrayFromSave(saved2.queueIndexArray);
+        }
+        var landSaved0 = GameSaveManager_1.GameSaveManager.load(GameSaveManager_1.GameSaveManager.SAVE_KEY3);
+        if (landSaved0) {
+            this.model.loadLand0FromSave(landSaved0.land_0);
+        }
+        var landSaved1 = GameSaveManager_1.GameSaveManager.load(GameSaveManager_1.GameSaveManager.SAVE_KEY4);
+        if (landSaved1) {
+            this.model.loadLand1FromSave(landSaved1.land_1);
+        }
+        var landSaved2 = GameSaveManager_1.GameSaveManager.load(GameSaveManager_1.GameSaveManager.SAVE_KEY5);
+        if (landSaved2) {
+            this.model.loadLand2FromSave(landSaved2.land_2);
+        }
+        var landSaved3 = GameSaveManager_1.GameSaveManager.load(GameSaveManager_1.GameSaveManager.SAVE_KEY6);
+        if (landSaved3) {
+            this.model.loadLand3FromSave(landSaved3.land_3);
+        }
+        var landSaved4 = GameSaveManager_1.GameSaveManager.load(GameSaveManager_1.GameSaveManager.SAVE_KEY7);
+        if (landSaved4) {
+            this.model.loadLand4FromSave(landSaved4.land_4);
+        }
+        var landSaved5 = GameSaveManager_1.GameSaveManager.load(GameSaveManager_1.GameSaveManager.SAVE_KEY8);
+        if (landSaved5) {
+            this.model.loadLand5FromSave(landSaved5.land_5);
+        }
+        var landSaved6 = GameSaveManager_1.GameSaveManager.load(GameSaveManager_1.GameSaveManager.SAVE_KEY9);
+        if (landSaved6) {
+            this.model.loadLand6FromSave(landSaved6.land_6);
+        }
+        var landSaved7 = GameSaveManager_1.GameSaveManager.load(GameSaveManager_1.GameSaveManager.SAVE_KEY10);
+        if (landSaved7) {
+            this.model.loadLand7FromSave(landSaved7.land_7);
+        }
+        var landSaved8 = GameSaveManager_1.GameSaveManager.load(GameSaveManager_1.GameSaveManager.SAVE_KEY11);
+        if (landSaved8) {
+            this.model.loadLand8FromSave(landSaved8.land_8);
+        }
+        console.log("game Loaded!!!!!!!!!");
         GameSaveManager_1.GameSaveManager.clear();
     };
     GameController.prototype.updateOfflineProgress = function (duration) { };

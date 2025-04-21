@@ -13,7 +13,7 @@ import {
 } from "../storage/Storage";
 import LandUI from "../ui/LandUI";
 
-export interface SaveData {
+export class SaveData {
   gold: number;
   tomatoSeed: Partial<TomatoSeed>;
   blueberrySeed: Partial<BlueberrySeed>;
@@ -33,40 +33,61 @@ export interface SaveData {
   land: Partial<Land>;
 
   workingWorkerNumber: number;
-
-  queueLandArray: LandUI[];
-  landArray: Land[];
-
-  /*tomato: {
-    totalHarvested: number;
-    lastUpdate: number;
-  };
-  blueberry: {
-    totalHarvested: number;
-    lastUpdate: number;
-  };
-  cow: {
-    totalMilk: number;
-    lastMilkTime: number;
-  };
-
-  timestamp: number;
-  */
 }
-
-const SAVE_KEY = "wolffun_farm_save";
-
+export class SaveQueueData {
+  queueIndexArray: Partial<number[]>;
+}
+export class SaveLand0Data {
+  land_0: Partial<Land>;
+}
+export class SaveLand1Data {
+  land_1: Partial<Land>;
+}
+export class SaveLand2Data {
+  land_2: Partial<Land>;
+}
+export class SaveLand3Data {
+  land_3: Partial<Land>;
+}
+export class SaveLand4Data {
+  land_4: Partial<Land>;
+}
+export class SaveLand5Data {
+  land_5: Partial<Land>;
+}
+export class SaveLand6Data {
+  land_6: Partial<Land>;
+}
+export class SaveLand7Data {
+  land_7: Partial<Land>;
+}
+export class SaveLand8Data {
+  land_8: Partial<Land>;
+}
 export class GameSaveManager {
-  static save(data: SaveData): void {
-    localStorage.setItem(SAVE_KEY, JSON.stringify(data));
+  static SAVE_KEY = "wolffun_test_save";
+  static SAVE_KEY2 = "wolffun_test_save2";
+  static SAVE_KEY3 = "wolffun_test_land_save0";
+  static SAVE_KEY4 = "wolffun_test_land_save1";
+  static SAVE_KEY5 = "wolffun_test_land_save2";
+  static SAVE_KEY6 = "wolffun_test_land_save3";
+  static SAVE_KEY7 = "wolffun_test_land_save4";
+  static SAVE_KEY8 = "wolffun_test_land_save5";
+  static SAVE_KEY9 = "wolffun_test_land_save6";
+  static SAVE_KEY10 = "wolffun_test_land_save7";
+  static SAVE_KEY11 = "wolffun_test_land_save8";
+
+  static save(key: string, data: any): void {
+    localStorage.setItem(key, JSON.stringify(data));
   }
 
-  static load(): SaveData | null {
-    const raw = localStorage.getItem(SAVE_KEY);
-    return raw ? JSON.parse(raw) : null;
+  static load(key: string): any {
+    let raw = localStorage.getItem(key);
+    console.log("raw: " + raw);
+    return JSON.parse(raw);
   }
 
   static clear(): void {
-    localStorage.removeItem(SAVE_KEY);
+    localStorage.clear();
   }
 }
