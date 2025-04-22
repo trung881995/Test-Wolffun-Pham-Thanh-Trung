@@ -365,27 +365,33 @@ var LandUI = /** @class */ (function (_super) {
         switch (UIManager_1.default.instance.gameModel.landArray[this.index].currentAsset.name) {
             case UIManager_1.default.instance.gameController.model.storage.tomatoSeed.name:
                 UIManager_1.default.instance.gameController.model.storage.addTomato(UIManager_1.default.instance.gameModel.landArray[this.index].containYield);
+                UIManager_1.default.instance.gameModel.landArray[this.index].landState =
+                    LandState.Plant;
                 break;
             case UIManager_1.default.instance.gameController.model.storage.blueberrySeed.name:
                 UIManager_1.default.instance.gameController.model.storage.addBlueberry(UIManager_1.default.instance.gameModel.landArray[this.index].containYield);
+                UIManager_1.default.instance.gameModel.landArray[this.index].landState =
+                    LandState.Plant;
                 break;
             case UIManager_1.default.instance.gameController.model.storage.strawberrySeed.name:
                 UIManager_1.default.instance.gameController.model.storage.addStrawberry(UIManager_1.default.instance.gameModel.landArray[this.index].containYield);
+                UIManager_1.default.instance.gameModel.landArray[this.index].landState =
+                    LandState.Plant;
                 break;
             case UIManager_1.default.instance.gameController.model.storage.milkCow.name:
                 UIManager_1.default.instance.gameController.model.storage.addMilk(UIManager_1.default.instance.gameModel.landArray[this.index].containYield);
+                UIManager_1.default.instance.gameModel.landArray[this.index].landState =
+                    LandState.Cattle;
                 break;
             case UIManager_1.default.instance.gameController.model.storage.cow.name:
                 UIManager_1.default.instance.gameController.model.storage.addBeef(UIManager_1.default.instance.gameModel.landArray[this.index].containYield);
+                UIManager_1.default.instance.gameModel.landArray[this.index].landState =
+                    LandState.Cattle;
                 break;
             default:
                 break;
         }
         UIManager_1.default.instance.gameModel.landArray[this.index].containYield = 0;
-        UIManager_1.default.instance.gameModel.landArray[this.index].landState = UIManager_1.default
-            .instance.gameModel.landArray[this.index].plantType
-            ? LandState.Plant
-            : LandState.Cattle;
         if (UIManager_1.default.instance.gameModel.landArray[this.index].crop == 0) {
             UIManager_1.default.instance.gameModel.landArray[this.index].landState =
                 LandState.Empty;

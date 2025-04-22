@@ -445,41 +445,42 @@ export default class LandUI extends cc.Component {
         UIManager.instance.gameController.model.storage.addTomato(
           UIManager.instance.gameModel.landArray[this.index].containYield
         );
-
+        UIManager.instance.gameModel.landArray[this.index].landState =
+          LandState.Plant;
         break;
       case UIManager.instance.gameController.model.storage.blueberrySeed.name:
         UIManager.instance.gameController.model.storage.addBlueberry(
           UIManager.instance.gameModel.landArray[this.index].containYield
         );
-
+        UIManager.instance.gameModel.landArray[this.index].landState =
+          LandState.Plant;
         break;
       case UIManager.instance.gameController.model.storage.strawberrySeed.name:
         UIManager.instance.gameController.model.storage.addStrawberry(
           UIManager.instance.gameModel.landArray[this.index].containYield
         );
-
+        UIManager.instance.gameModel.landArray[this.index].landState =
+          LandState.Plant;
         break;
       case UIManager.instance.gameController.model.storage.milkCow.name:
         UIManager.instance.gameController.model.storage.addMilk(
           UIManager.instance.gameModel.landArray[this.index].containYield
         );
-
+        UIManager.instance.gameModel.landArray[this.index].landState =
+          LandState.Cattle;
         break;
       case UIManager.instance.gameController.model.storage.cow.name:
         UIManager.instance.gameController.model.storage.addBeef(
           UIManager.instance.gameModel.landArray[this.index].containYield
         );
-
+        UIManager.instance.gameModel.landArray[this.index].landState =
+          LandState.Cattle;
         break;
       default:
         break;
     }
     UIManager.instance.gameModel.landArray[this.index].containYield = 0;
 
-    UIManager.instance.gameModel.landArray[this.index].landState = UIManager
-      .instance.gameModel.landArray[this.index].plantType
-      ? LandState.Plant
-      : LandState.Cattle;
     if (UIManager.instance.gameModel.landArray[this.index].crop == 0) {
       UIManager.instance.gameModel.landArray[this.index].landState =
         LandState.Empty;

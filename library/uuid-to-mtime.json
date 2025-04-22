@@ -604,36 +604,6 @@
     "meta": 1744788072474,
     "relativePath": "scripts/views"
   },
-  "4b85b63a-0d40-4f67-accb-4d7bf196ff22": {
-    "asset": 1744737453825,
-    "meta": 1744737459505,
-    "relativePath": "scripts/models/PlantModel.ts"
-  },
-  "a5f6e694-236f-4f68-a635-a3cdc44ddbbe": {
-    "asset": 1744737464340,
-    "meta": 1744737470821,
-    "relativePath": "scripts/models/CattleModel.ts"
-  },
-  "6053186f-7bf1-4738-9053-39df567ac786": {
-    "asset": 1744737475514,
-    "meta": 1744737484504,
-    "relativePath": "scripts/models/WorkerModel.ts"
-  },
-  "29c3c545-7af6-4376-a5fd-399ce9d3cca4": {
-    "asset": 1744737488661,
-    "meta": 1744737493848,
-    "relativePath": "scripts/models/MachineModel.ts"
-  },
-  "4aae11e6-51c9-48a7-bab5-b9f3f2f5f38f": {
-    "asset": 1744737503206,
-    "meta": 1744737506550,
-    "relativePath": "scripts/models/LandModel.ts"
-  },
-  "cb2f9803-4a6f-4ea9-a67d-0369acc9112c": {
-    "asset": 1744737545157,
-    "meta": 1744737558764,
-    "relativePath": "scripts/models/YieldModel.ts"
-  },
   "99488f47-6bb1-49a4-9cba-1a3598640caf": {
     "asset": 1745142556298,
     "meta": 1745213997410,
@@ -865,8 +835,8 @@
     "relativePath": "scripts/storage/Storage.ts"
   },
   "5fbc3f85-aa3f-4273-8a5f-579b34683cfc": {
-    "asset": 1745254700363,
-    "meta": 1745254713822,
+    "asset": 1745302703289,
+    "meta": 1745302706754,
     "relativePath": "scripts/ui/LandUI.ts"
   }
 }
